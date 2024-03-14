@@ -24,6 +24,7 @@ export const useSlackLoginMutation = () => {
 
         router.replace(ROUTES.MAIN);
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (error: any) => {
         const errorCode = error?.response?.data?.code;
         errorCode === ERROR_CODE.AUTH.INVALID_NAME &&

@@ -6,7 +6,7 @@ interface DropupItem {
   onClick: () => void;
 }
 
-interface DropupProps extends PropsWithChildren<{}> {
+interface DropupProps extends PropsWithChildren {
   title: string;
   items: DropupItem[];
 }

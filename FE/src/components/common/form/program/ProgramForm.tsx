@@ -10,10 +10,7 @@ import ProgramDemandCheckBox from "./ProgramDemandCheckBox";
 import ProgramTitle from "./ProgramTitle";
 import FORM_INFO from "@/constants/FORM_INFO";
 import PROGRAM from "@/constants/PROGRAM";
-import {
-  ProgramFormData,
-  ProgramFormDataAction,
-} from "@/hooks/useProgramFormData";
+import { ProgramFormData } from "@/hooks/useProgramFormData";
 import { FormType } from "@/types/form";
 import { ProgramCategory } from "@/types/program";
 
