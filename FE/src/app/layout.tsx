@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
-import Header from "@/components/common/header/Header";
 import Provider from "@/utils/provider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "EEOS",
@@ -23,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: PropsWithChildren<{}>) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
       <body className="flex flex-col items-center">

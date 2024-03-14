@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import Header from "@/components/common/header/Header";
 
-export default function ProgramLayout({ children }: PropsWithChildren<{}>) {
+export default function ProgramLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Header />

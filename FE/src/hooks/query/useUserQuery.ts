@@ -53,7 +53,7 @@ export const usePutMyAttendStatus = ({
         beforeAttendStatus,
         afterAttendStatus: afterAttendStatus,
       }),
-    onSettled: (data) => {
+    onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
       });

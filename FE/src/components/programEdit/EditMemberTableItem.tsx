@@ -5,12 +5,12 @@ import AttendStatusToggle from "../common/attendStatusToggle/AttendStatusToggle"
 import CheckBox from "../common/CheckBox";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
-import { AttendStatus } from "@/types/member";
+import { ActiveStatus, AttendStatus } from "@/types/member";
 
 interface EditMemberTableItemProps {
   memberId: number;
   name: string;
-  activeStatus: AttendStatus;
+  activeStatus: ActiveStatus;
   initAttendStatus: AttendStatus;
   setMembers: (
     memberId: number,
@@ -27,7 +27,7 @@ const EditMemberTableItem = ({
   initAttendStatus,
   setMembers,
   isEditable = true,
-}) => {
+}: EditMemberTableItemProps) => {
   const [selectedAttend, setSelectedAttend] =
     useState<AttendStatus>(initAttendStatus);
   const isRelated = selectedAttend !== "nonRelated";
