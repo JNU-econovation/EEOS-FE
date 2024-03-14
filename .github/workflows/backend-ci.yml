@@ -1,0 +1,56 @@
+# github repository actions 페이지에 나타날 이름
+name: Backend CI
+
+# event trigger
+# main 브랜치에 push, PR이 되었을 때 workflow 실행
+on:
+  push:
+    branches: [ "main","be","be-release"]
+    paths : 'BE/**'
+  pull_request:
+    branches: [ "main","be","be-release"]
+    paths : 'BE/**'
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+defaults:
+  run:
+    working-directory: ./BE/eeos
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: JDK 17 설정
+      uses: actions/checkout@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: DB를 실행
+      run: |
+        docker-compose -f resources/local-develop-environment/docker-compose.yml up -d
+        sleep 20
+      
+    - name: Gradle 캐싱
+      uses: actions/cache@v3
+      with:
+        path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+            ${{ runner.os }}-gradle-
+
+    - name: Gradle로 빌드
+      run: ./gradlew build
+
+    - name: 테스트 결과를 PR에 코멘트로 등록
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: contains(github.event.pull_request.head.repo.full_name, 'JNU-econovation') == false
+      with:
+        files: '**/build/test-results/test/TEST-*.xml'
