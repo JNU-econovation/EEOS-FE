@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import InputStatusInfoContainer from "@/components/teamBuildingDetail/inputStatus/InputStatusInfo.container";
 import TeamBuildingInfo from "@/components/teamBuildingDetail/teamBuilding/TeamBuildingInfo";
 import UserInputModalContainer from "@/components/teamBuildingDetail/userInputModal/UserInputModal.container";
 import ERROR_CODE from "@/constants/ERROR_CODE";

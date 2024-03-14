@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 import {
   CreateTeamBuildingRequest,
   TeamBuildingSentenceRequest,

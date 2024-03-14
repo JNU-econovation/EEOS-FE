@@ -1,18 +1,9 @@
 "use client"; // Error components must be Client Components
 
 import { useRouter } from "next/navigation";
-import Title from "@/components/common/Title";
-import ERROR_CODE from "@/constants/ERROR_CODE";
-import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
 
-export default function TeamBuildingResultError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+export default function TeamBuildingResultError() {
   const router = useRouter();
   const handleBackHome = () => {
     router.push(ROUTES.MAIN);

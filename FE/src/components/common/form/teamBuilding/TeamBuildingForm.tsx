@@ -3,7 +3,6 @@ import { PropsWithChildren } from "react";
 import MarkdownEditor from "../../markdown/MarkdownEditor";
 import FormBtn from "../FormBtn";
 import TeamBuildingMaxTeamSize from "./TeamBuildingMaxTeamSize";
-import TeamBuildingMinTeamSize from "./TeamBuildingMinTeamSize";
 import TeamBuildingTitle from "./TeamBuildingTitle";
 import FORM_INFO from "@/constants/FORM_INFO";
 import { TeamBuildingFormData } from "@/hooks/useTeamBuildingFormData";
