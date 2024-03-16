@@ -1,6 +1,6 @@
 "use client";
 
-import { useUpdateUserAttendStatus } from "../../apis/updateAttendStatus";
+import { useUpdateAttendStatus } from "../../apis/updateAttendStatus";
 import { getDisplayInfo, getEditableStatus } from "../../utils";
 import { UserAttendStatusEditorLoader } from "./Editor.loader";
 import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
@@ -19,7 +19,7 @@ export const UserAttendStatusEditor = ({
 }: UserAttendStatusEditorProps) => {
   const { userAttendStatusInfo, isLoading, programType, programStatus } =
     useGetAttendStatusAndProgramInfo(programId);
-  const { mutate: updateAttendStatus } = useUpdateUserAttendStatus(programId);
+  const { mutate: updateAttendStatus } = useUpdateAttendStatus(programId);
 
   if (isLoading) return <UserAttendStatusEditorLoader />;
   const { name, attendStatus } = userAttendStatusInfo;

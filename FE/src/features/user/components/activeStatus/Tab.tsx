@@ -1,11 +1,11 @@
-import { useUpdateUserActiveStatus } from "../../apis/updateActiveStatus";
+import { useUpdateActiveStatus } from "../../apis/updateActiveStatus";
 import Tab from "@/components/common/tabs/Tab";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
 import { ActiveStatus } from "@/types/member";
 
 const UserActiveStatusTab = ({ activeStatus }) => {
-  const { mutate: updateActiveStatus } = useUpdateUserActiveStatus();
+  const { mutate: updateActiveStatus } = useUpdateActiveStatus();
 
   const handleChangeActiveStatus = (activeStatus: ActiveStatus) => {
     if (confirm(MESSAGE.CONFIRM.EDIT)) {

@@ -3,7 +3,7 @@ import { UserActiveStatusInfoDto } from "./dtos";
 import { https } from "@/apis/instance";
 import API from "@/constants/API";
 
-const getUserActiveStatus = async () => {
+const getActiveStatus = async () => {
   const { data } = await https({
     url: API.USER.ACTIVE_STATUS,
     method: "GET",
@@ -11,10 +11,10 @@ const getUserActiveStatus = async () => {
   return new UserActiveStatusInfoDto(data?.data);
 };
 
-export const useGetUserActiveStatus = () => {
+export const useGetActiveStatus = () => {
   return useQuery({
     queryKey: [API.USER.ACTIVE_STATUS],
-    queryFn: getUserActiveStatus,
+    queryFn: getActiveStatus,
     suspense: true,
   });
 };

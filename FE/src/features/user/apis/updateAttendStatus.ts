@@ -6,14 +6,14 @@ import API from "@/constants/API";
 import MESSAGE from "@/constants/MESSAGE";
 import { AttendStatus } from "@/types/member";
 
-export interface UpdateUserAttendStatusRequest {
+export interface UpdateAttendStatusRequest {
   beforeAttendStatus: AttendStatus;
   afterAttendStatus: AttendStatus;
 }
 
-const updateUserAttendStatus = async (
+const updateAttendStatus = async (
   programId: number,
-  body: UpdateUserAttendStatusRequest,
+  body: UpdateAttendStatusRequest,
 ): Promise<UserAttendStatusInfoDto> => {
   const { data } = await toast.promise(
     https({
@@ -30,13 +30,13 @@ const updateUserAttendStatus = async (
   return new UserAttendStatusInfoDto(data?.data);
 };
 
-export const useUpdateUserAttendStatus = (programId: number) => {
+export const useUpdateAttendStatus = (programId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [API.USER.ATTEND_STATUS],
-    mutationFn: (body: UpdateUserAttendStatusRequest) =>
-      updateUserAttendStatus(programId, body),
+    mutationFn: (body: UpdateAttendStatusRequest) =>
+      updateAttendStatus(programId, body),
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],

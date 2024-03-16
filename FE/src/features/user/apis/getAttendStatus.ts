@@ -3,7 +3,7 @@ import { UserAttendStatusInfoDto } from "./dtos";
 import { https } from "@/apis/instance";
 import API from "@/constants/API";
 
-const getUserAttendStatus = async (
+const getAttendStatus = async (
   programId: number,
 ): Promise<UserAttendStatusInfoDto> => {
   const { data } = await https({
@@ -13,9 +13,9 @@ const getUserAttendStatus = async (
   return new UserAttendStatusInfoDto(data?.data);
 };
 
-export const useGetUserAttendStatus = (programId: number) => {
+export const useGetAttendStatus = (programId: number) => {
   return useQuery({
     queryKey: [API.USER.ATTEND_STATUS(programId)],
-    queryFn: () => getUserAttendStatus(programId),
+    queryFn: () => getAttendStatus(programId),
   });
 };
