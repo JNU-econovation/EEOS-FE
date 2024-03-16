@@ -1,0 +1,35 @@
+import { useQuery } from "@tanstack/react-query";
+import { ActiveStatusWithAll, MemberInfo } from "../types";
+import { MemberInfoDto } from "./dtos";
+import { https } from "@/apis/instance";
+import API from "@/constants/API";
+
+interface GetMembersByActiveAndProgram {
+  status: ActiveStatusWithAll;
+  programId: number;
+}
+
+const getMembersByActiveAndProgram = async (
+  programId: number,
+  activeStatus: ActiveStatusWithAll,
+): Promise<MemberInfoDto[]> => {
+  const { data } = await https({
+    url: API.MEMBER.ACTIVE_STATUS(programId),
+    method: "GET",
+    params: { activeStatus },
+  });
+
+  return data?.data?.members.map(
+    (member: MemberInfo) => new MemberInfoDto(member),
+  );
+};
+
+export const useGetMembersByActiveAndProgram = ({
+  programId,
+  status,
+}: GetMembersByActiveAndProgram) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ACTIVE_STATUS(programId), status],
+    queryFn: () => getMembersByActiveAndProgram(programId, status),
+  });
+};
