@@ -13,5 +13,6 @@ export * from "./components/result/TeamList";
 export * from "./components/result/Team";
 export * from "./components/detail/Info";
 export * from "./components/CreateForm";
+export * from "./components/inputStatus/Editor";
 
 export * from "./types";

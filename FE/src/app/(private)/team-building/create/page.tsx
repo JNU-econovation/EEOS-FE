@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import Title from "@/components/common/Title";
-import TeamBuildingCreateForm from "@/components/teamBuildingCreate/TeamBuildingCreateForm";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
-import { useGetIsTeamBuildingCreable } from "@/features/teamBuilding";
+import {
+  TeamBuildingCreateForm,
+  useGetIsTeamBuildingCreable,
+} from "@/features/teamBuilding";
 
 const TeamBuildingCreatePage = () => {
   const router = useRouter();

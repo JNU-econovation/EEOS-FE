@@ -2,13 +2,16 @@
 
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import BottonSheet from "@/components/common/BottomSheet";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import TeamBuildingInfo from "@/components/teamBuildingDetail/teamBuilding/TeamBuildingInfo";
-import UserInputModalContainer from "@/components/teamBuildingDetail/userInputModal/UserInputModal.container";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
-import { useGetIsTeamBuildingJoinable } from "@/features/teamBuilding";
+import {
+  InputStatusEditor,
+  TeamBuildingDetailInfo,
+  useGetIsTeamBuildingJoinable,
+} from "@/features/teamBuilding";
 
 const TeamBuildingDetailPage = () => {
   const router = useRouter();
@@ -24,9 +27,10 @@ const TeamBuildingDetailPage = () => {
 
   return (
     <div className="mb-16 space-y-16">
-      <TeamBuildingInfo />
-      {/* <InputStatusInfoContainer /> */}
-      <UserInputModalContainer />
+      <TeamBuildingDetailInfo />
+      <BottonSheet>
+        <InputStatusEditor />
+      </BottonSheet>
     </div>
   );
 };
