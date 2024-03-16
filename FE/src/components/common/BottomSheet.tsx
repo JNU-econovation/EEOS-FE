@@ -14,8 +14,6 @@ const BottonSheet = ({ children }: BottonSheetProps) => {
   const { isOpen, openModal, closeModal } = useModal();
   const modalRef = useOutsideRef(closeModal);
 
-  console.log(isOpen);
-
   const modalStyle = classNames(
     "fixed left-0 z-10 flex h-fit w-full flex-col items-center gap-6 rounded-t-3xl border-t-2 bg-background pb-10 shadow-2xl transition-all duration-500",
     {

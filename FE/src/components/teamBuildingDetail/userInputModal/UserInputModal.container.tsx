@@ -22,7 +22,6 @@ const UserInputModalContainer = () => {
 
   const handleOpenModal = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log("hi", isOpen);
     isOpen ? closeModal() : openModal();
   };
 
