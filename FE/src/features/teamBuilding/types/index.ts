@@ -29,3 +29,5 @@ export type TeamBuildingResultList = {
 export interface SentenceRequest {
   content: string;
 }
+
+export type FieldType = "default" | "inputting" | "editing" | "viewer";
