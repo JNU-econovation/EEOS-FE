@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import TeamBuildingForm from "./form/Form";
-import MemberTable from "@/components/common/memberTable/MemberTable";
+import { MemberTable } from "@/features/member";
 import { useCreateTeamBuilding } from "@/features/teamBuilding";
 import useTeamBuildingFormData from "@/hooks/useTeamBuildingFormData";
 
