@@ -1,6 +1,6 @@
-import MemberTableItemLoader from "./MemberTableItem.loader";
+import { MemberTableItemLoader } from "./TableItem.loader";
 
-const MemberTableLoader = () => {
+export const MemberTableLoader = () => {
   return (
     <>
       {[...Array(4)].map((_, index) => (
@@ -9,4 +9,3 @@ const MemberTableLoader = () => {
     </>
   );
 };
-export default MemberTableLoader;

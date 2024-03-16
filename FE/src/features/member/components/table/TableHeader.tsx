@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import CheckBox from "../CheckBox";
+import CheckBox from "@/components/common/CheckBox";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
 import { FormType } from "@/types/form";
 
@@ -13,7 +13,7 @@ const HEADER_TEXT = {
   edit: ["활동 상태", "이름", "", "출석 상태"],
 };
 
-const MemberTableHeader = ({
+export const MemberTableHeader = ({
   formType,
   onClickCheckBox,
 }: MemberTableHeaderProps) => {
@@ -37,4 +37,3 @@ const MemberTableHeader = ({
     </div>
   );
 };
-export default MemberTableHeader;

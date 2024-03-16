@@ -1,9 +1,12 @@
 "use client";
 
-import MemberTableLoader from "../common/memberTable/MemberTable.loader";
-import EditMemberTableItem from "./EditMemberTableItem";
-import { useGetProgramMembersByActive } from "@/hooks/query/useMemberQuery";
-import { ActiveStatusWithAll, AttendStatus } from "@/types/member";
+import { MemberTableLoader } from "../Table.loader";
+import { EditMemberTableItem } from "./EditMemberTableItem";
+import {
+  ActiveStatusWithAll,
+  AttendStatus,
+  useGetMembersByActiveAndProgram,
+} from "@/features/member";
 
 interface EditMemberTableItemContainerProps {
   setMembers: (
@@ -16,13 +19,13 @@ interface EditMemberTableItemContainerProps {
   isEditable?: boolean;
 }
 
-const EditMemberTableItemContainer = ({
+export const EditMemberTableItemContainer = ({
   setMembers,
   programId,
   status,
   isEditable = true,
 }: EditMemberTableItemContainerProps) => {
-  const { data: memberList, isLoading } = useGetProgramMembersByActive({
+  const { data: memberList, isLoading } = useGetMembersByActiveAndProgram({
     programId,
     status,
   });
@@ -45,4 +48,3 @@ const EditMemberTableItemContainer = ({
     </>
   );
 };
-export default EditMemberTableItemContainer;

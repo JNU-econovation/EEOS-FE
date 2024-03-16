@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ProgramForm from "../common/form/program/ProgramForm";
-import MemberTable from "../common/memberTable/MemberTable";
+import { AttendStatus, MemberTable } from "@/features/member";
 import { useUpdateProgram } from "@/hooks/query/useProgramQuery";
 import useProgramFormData from "@/hooks/useProgramFormData";
-import { AttendStatus } from "@/types/member";
 import { ProgramInfo } from "@/types/program";
 
 interface ProgramEditFormProps {

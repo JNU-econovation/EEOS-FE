@@ -1,8 +1,8 @@
 "use client";
 
-import CheckBox from "../../CheckBox";
+import CheckBox from "@/components/common/CheckBox";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
-import { ActiveStatus } from "@/types/member";
+import { ActiveStatus } from "@/features/member/types";
 
 interface CreateMemberTableItemProps {
   memberId: number;
@@ -12,7 +12,7 @@ interface CreateMemberTableItemProps {
   setMembers: (memberId: number) => void;
 }
 
-const CreateMemberTableItem = ({
+export const CreateMemberTableItem = ({
   memberId,
   name,
   activeStatus,
@@ -33,4 +33,3 @@ const CreateMemberTableItem = ({
     </div>
   );
 };
-export default CreateMemberTableItem;

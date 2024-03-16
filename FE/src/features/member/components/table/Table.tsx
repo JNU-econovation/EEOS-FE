@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "../ErrorFallback";
-import Tab from "../tabs/Tab";
-import MemberTableHeader from "./MemberTableHeader";
-import CreateMemberTableItemContainer from "@/components/common/memberTable/create/CreateMemberTableItemContainer";
-import EditMemberTableItemContainer from "@/components/programEdit/EditMemberTableItemContainer";
+import { ActiveStatusWithAll, AttendStatus } from "../../types";
+import { CreateMemberTableItemContainer } from "./create/CreateMemberTableItemContainer";
+import { EditMemberTableItemContainer } from "./edit/EditMemberTableItemContainer";
+import { MemberTableHeader } from "./TableHeader";
+import ErrorFallback from "@/components/common/ErrorFallback";
+import Tab from "@/components/common/tabs/Tab";
 import { Members } from "@/components/programEdit/ProgramEditForm";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { FormType } from "@/types/form";
-import { ActiveStatusWithAll, AttendStatus } from "@/types/member";
 
 interface MemberTableProps {
   formType: FormType;
@@ -23,7 +23,7 @@ interface MemberTableProps {
   isEditable?: boolean;
 }
 
-const MemberTable = ({
+export const MemberTable = ({
   formType,
   members,
   setMembers,
@@ -76,5 +76,3 @@ const MemberTable = ({
     </div>
   );
 };
-
-export default MemberTable;

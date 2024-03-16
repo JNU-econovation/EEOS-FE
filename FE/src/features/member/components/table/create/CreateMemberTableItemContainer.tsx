@@ -1,10 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useSetAtom } from "jotai";
-import MemberTableLoader from "../MemberTable.loader";
-import CreateMemberTableItem from "./CreateMemberTableItem";
-import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
+import { MemberTableLoader } from "../Table.loader";
+import { CreateMemberTableItem } from "./CreateMemberTableItem";
+import { ActiveStatusWithAll, useGetMembersByActive } from "@/features/member";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
-import { ActiveStatusWithAll } from "@/types/member";
 
 interface CreateMemberTableItemContainerProps {
   members: Set<number>;
@@ -12,14 +11,14 @@ interface CreateMemberTableItemContainerProps {
   status: ActiveStatusWithAll;
 }
 
-const CreateMemberTableItemContainer = ({
+export const CreateMemberTableItemContainer = ({
   members,
   setMembers,
   status,
 }: CreateMemberTableItemContainerProps) => {
   const queryClient = useQueryClient();
   const setChecked = useSetAtom(memberTableCheckedAtom);
-  const { data: memberList, isLoading } = useGetMemberByActive(status);
+  const { data: memberList, isLoading } = useGetMembersByActive(status);
 
   if (isLoading) return <MemberTableLoader />;
 
@@ -48,5 +47,3 @@ const CreateMemberTableItemContainer = ({
     </>
   );
 };
-
-export default CreateMemberTableItemContainer;

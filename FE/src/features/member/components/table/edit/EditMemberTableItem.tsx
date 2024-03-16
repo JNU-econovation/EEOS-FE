@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import AttendStatusToggle from "../common/attendStatusToggle/AttendStatusToggle";
-import CheckBox from "../common/CheckBox";
+import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
+import CheckBox from "@/components/common/CheckBox";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
-import { ActiveStatus, AttendStatus } from "@/types/member";
+import { ActiveStatus, AttendStatus } from "@/features/member/types";
 
 interface EditMemberTableItemProps {
   memberId: number;
@@ -20,7 +20,7 @@ interface EditMemberTableItemProps {
   isEditable?: boolean;
 }
 
-const EditMemberTableItem = ({
+export const EditMemberTableItem = ({
   memberId,
   name,
   activeStatus,
@@ -84,4 +84,3 @@ const EditMemberTableItem = ({
     </div>
   );
 };
-export default EditMemberTableItem;
