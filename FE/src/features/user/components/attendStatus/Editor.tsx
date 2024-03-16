@@ -41,7 +41,7 @@ export const UserAttendStatusEditor = ({
         <p className="text-lg font-semibold">{name}</p>
         <StatusToggleItem text={displayText} color={color} />
       </div>
-      <p className="mb-2">{ATTEND_STATUS.LABEL[editableStatus]}</p>
+      <p className="mb-4">{ATTEND_STATUS.LABEL[editableStatus]}</p>
       <AttendStatusToggle
         selectedValue={attendStatus}
         disabled={editableStatus !== "EDITABLE"}

@@ -15,10 +15,10 @@ const BottonSheet = ({ children }: BottonSheetProps) => {
   const modalRef = useOutsideRef(closeModal);
 
   const modalStyle = classNames(
-    "fixed left-0 z-10 flex h-fit w-full flex-col items-center gap-6 rounded-t-3xl border-t-2 bg-background pb-10 shadow-2xl transition-all duration-500",
+    "fixed left-0 z-10 flex h-72 w-full flex-col items-center gap-6 rounded-t-3xl border-t-2 bg-background pb-10 shadow-2xl transition-all duration-500",
     {
       "bottom-0": isOpen,
-      "-bottom-[9rem]": !isOpen,
+      "-bottom-[11rem]": !isOpen,
     },
   );
 
