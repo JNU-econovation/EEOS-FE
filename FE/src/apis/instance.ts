@@ -3,11 +3,7 @@ import { toast } from "react-toastify";
 import { postTokenReissue } from "./auth";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
-import {
-  deleteTokenInfo,
-  setAccessToken,
-  setTokenExpiration,
-} from "@/utils/authWithStorage";
+import LocalStorage from "@/utils/localStorage";
 
 const https = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
@@ -19,8 +15,7 @@ const https = axios.create({
 
 https.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem("accessToken")?.replace(/"/g, "");
-    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    const { accessToken, tokenExpiration } = LocalStorage.getToken();
 
     if (accessToken && tokenExpiration) {
       const currentTime = new Date().getTime();
@@ -31,8 +26,7 @@ https.interceptors.request.use(
 
       if (timeToExpiration < TOKEN_REISSUE_THRESHOLD) {
         const { accessToken, accessExpiredTime } = await postTokenReissue();
-        setAccessToken(accessToken);
-        setTokenExpiration(accessExpiredTime);
+        LocalStorage.setToken(accessToken, accessExpiredTime);
       }
 
       config.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -56,8 +50,7 @@ https.interceptors.response.use(
     if (errorCode === ERROR_CODE.AUTH.EXPIRED_ACCESS_TOKEN) {
       const { accessToken, accessExpiredTime } = await postTokenReissue();
 
-      setAccessToken(accessToken);
-      setTokenExpiration(accessExpiredTime);
+      LocalStorage.setToken(accessToken, accessExpiredTime);
       originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
 
       return await axios(originalRequest);
@@ -74,7 +67,7 @@ https.interceptors.response.use(
       toast.error(errorMessage, {
         toastId: errorCode,
       });
-      deleteTokenInfo();
+      LocalStorage.clearToken();
       setTimeout(() => {
         window.location.href = "/login";
       }, 3000);
