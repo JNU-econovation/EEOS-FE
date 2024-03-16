@@ -6,10 +6,7 @@ import AttendStatusView from "./AttendStatusView";
 import AttendToggleLabel from "./AttendToggleLabel";
 import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
 import MESSAGE from "@/constants/MESSAGE";
-import {
-  useGetMyAttendStatus,
-  usePutMyAttendStatus,
-} from "@/hooks/query/useUserQuery";
+import { useGetAttendStatus, useUpdateAttendStatus } from "@/features/user";
 import { EditableStatus } from "@/types/attendStatusModal";
 import { AttendStatus } from "@/types/member";
 import { ProgramStatus } from "@/types/program";
@@ -20,11 +17,8 @@ interface UserAttendModalProps {
 
 const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   const queryClient = useQueryClient();
-  const { data: userInfo, isLoading } = useGetMyAttendStatus(programId);
-  const { mutate: updateAttendStatus } = usePutMyAttendStatus({
-    programId,
-    beforeAttendStatus: userInfo ? userInfo.attendStatus : "nonRelated",
-  });
+  const { data: userInfo, isLoading } = useGetAttendStatus(programId);
+  const { mutate: updateAttendStatus } = useUpdateAttendStatus(programId);
 
   if (isLoading) return <AttendStatusModalLoader />;
 
@@ -46,7 +40,11 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   const editableStatus = getEditableStatus(attendStatus, programStatus);
 
   const handleSelectorClick = (value: AttendStatus) => {
-    confirm(MESSAGE.CONFIRM.EDIT) && updateAttendStatus(value);
+    confirm(MESSAGE.CONFIRM.EDIT) &&
+      updateAttendStatus({
+        beforeAttendStatus: userInfo ? userInfo.attendStatus : "nonRelated",
+        afterAttendStatus: value,
+      });
   };
 
   return (

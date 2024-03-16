@@ -1,10 +1,10 @@
 import ActiveStatusTab from "./ActiveStatusTab";
-import { useGetMyActiveStatus } from "@/hooks/query/useUserQuery";
+import { useGetActiveStatus } from "@/features/user";
 
 const MESSAGE = "본인의 회원 상태를 선택해주세요.";
 
 const UserInfoSection = () => {
-  const { data: myActiveData } = useGetMyActiveStatus();
+  const { data: myActiveData } = useGetActiveStatus();
   const { name, activeStatus } = myActiveData;
 
   return (
