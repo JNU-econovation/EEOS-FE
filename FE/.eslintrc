@@ -48,6 +48,17 @@
     ],
     "import/no-unresolved": "off",
     "import/export": "off",
-    "import/named": "off"
+    "import/named": "off",
+    "import/no-named-as-default-member": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ]
   }
 }
