@@ -1,6 +1,7 @@
+import BottonSheet from "@/components/common/BottomSheet";
 import AttendeeInfoContainer from "@/components/programDetail/attendee/AttendeeInfo.container";
 import ProgramInfo from "@/components/programDetail/program/ProgramInfo";
-import UserAttendModalContainer from "@/components/programDetail/userAttendModal/UserAttendModal.container";
+import { UserAttendStatusEditor } from "@/features/user";
 
 interface ProgramDetailPageProps {
   params: {
@@ -15,7 +16,9 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
     <div className="mb-16 space-y-16">
       <ProgramInfo programId={+programId} />
       <AttendeeInfoContainer programId={+programId} />
-      <UserAttendModalContainer programId={+programId} />
+      <BottonSheet>
+        <UserAttendStatusEditor programId={+programId} />
+      </BottonSheet>
     </div>
   );
 };

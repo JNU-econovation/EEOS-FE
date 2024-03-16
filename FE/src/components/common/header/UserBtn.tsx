@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import UserActiveModal from "./Modal/UserActiveModal";
+import UserModal from "./UserModal";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
 
@@ -27,7 +27,7 @@ const UserBtn = () => {
         height={28}
         className="h-[28px] w-[28px]"
       />
-      {isOpen && <UserActiveModal />}
+      {isOpen && <UserModal />}
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Button from "../../Button";
-import ErrorFallback from "../../ErrorFallback";
-import UserActiveModalSkeleton from "./UserActiveModal.loader";
-import UserInfoSection from "./UserInfoSection";
+import Button from "../Button";
+import ErrorFallback from "../ErrorFallback";
 import ROUTES from "@/constants/ROUTES";
+import {
+  UserActiveStatusEditorLoader,
+  UserActiveStatusEditor,
+} from "@/features/user";
 import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 
-const LOGOUT = "로그아웃";
-
-const UserActiveModal = () => {
+const UserModal = () => {
   const router = useRouter();
   const { mutate: logout } = useLogoutMutation();
 
@@ -22,19 +22,20 @@ const UserActiveModal = () => {
   return (
     <section className="absolute -left-44 top-10 flex w-80 min-w-fit flex-col items-center gap-6 rounded-2xl bg-background px-12 py-6 drop-shadow-lg">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Suspense fallback={<UserActiveModalSkeleton />}>
-          <UserInfoSection />
+        <Suspense fallback={<UserActiveStatusEditorLoader />}>
+          <UserActiveStatusEditor />
         </Suspense>
       </ErrorBoundary>
+      {/* TODO: Logout Component 분리 : feature > auth */}
       <Button
         color="white"
         size="lg"
         className="w-full font-semibold transition-colors duration-200 hover:bg-paragraph hover:text-background"
         onClick={handleLogout}
       >
-        {LOGOUT}
+        로그아웃
       </Button>
     </section>
   );
 };
-export default UserActiveModal;
+export default UserModal;
