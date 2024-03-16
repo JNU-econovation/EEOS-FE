@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import TeamBuildingForm from "../common/form/teamBuilding/TeamBuildingForm";
 import MemberTable from "../common/memberTable/MemberTable";
-import { useCreateTeamBuildingMutation } from "@/hooks/query/useTeamBuildingQuery";
+import { useCreateTeamBuilding } from "@/features/teamBuilding";
 import useTeamBuildingFormData from "@/hooks/useTeamBuildingFormData";
 
 const TeamBuildingCreateForm = () => {
@@ -14,7 +14,7 @@ const TeamBuildingCreateForm = () => {
   const formData = useTeamBuildingFormData();
   const { title, content, maxTeamSize } = formData;
 
-  const { mutate: createTeamBuilding } = useCreateTeamBuildingMutation();
+  const { mutate: createTeamBuilding } = useCreateTeamBuilding();
 
   const updateMembers = (memberId: number) => {
     const newMembers = new Set<number>(members);

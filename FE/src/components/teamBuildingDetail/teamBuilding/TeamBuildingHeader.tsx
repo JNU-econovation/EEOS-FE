@@ -2,9 +2,9 @@
 
 import Title from "@/components/common/Title";
 import {
-  useCompleteTeamBuildingMutation,
-  useDeleteTeamBuildingMutation,
-} from "@/hooks/query/useTeamBuildingQuery";
+  useCompleteTeamBuilding,
+  useDeleteTeamBuilding,
+} from "@/features/teamBuilding";
 import { AccessRight } from "@/types/program";
 
 interface TeamBuildingHeaderProps {
@@ -40,8 +40,8 @@ const ProgressDisplay = () => {
 };
 
 const CloseBtn = () => {
-  const { mutate: completeTeamBuilding } = useCompleteTeamBuildingMutation();
-  const { mutate: deleteTeamBuilding } = useDeleteTeamBuildingMutation();
+  const { mutate: completeTeamBuilding } = useCompleteTeamBuilding();
+  const { mutate: deleteTeamBuilding } = useDeleteTeamBuilding();
 
   const handleCompleteButtonClick = () => {
     if (confirm("팀빌딩을 완료하시겠습니까?")) {

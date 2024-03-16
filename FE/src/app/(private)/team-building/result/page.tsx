@@ -4,10 +4,10 @@ import LoadingSpinner from "@/components/common/LoadingSpinner";
 import Title from "@/components/common/Title";
 import TeamBuildingCloseBtn from "@/components/teamBuildingResult/TeamBuildingCloseBtn";
 import TeamResultInfoContainer from "@/components/teamBuildingResult/TeamResultInfo.container";
-import { useGetTeamBuildingResultQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetTeamBuildingResult } from "@/features/teamBuilding";
 
 const TeamBuildingResultPage = () => {
-  const { data: teamResult, isLoading } = useGetTeamBuildingResultQuery();
+  const { data: teamResult, isLoading } = useGetTeamBuildingResult();
 
   if (isLoading) return <LoadingSpinner />;
 

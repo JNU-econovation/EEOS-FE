@@ -1,9 +1,9 @@
 import InputStatusView from "./InputStatusView";
 import SentenceField from "./SentenceField";
-import { useGetUserInputStatusQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetInputStatus } from "@/features/teamBuilding";
 
 const UserInputModal = () => {
-  const { data: userInfo, isLoading } = useGetUserInputStatusQuery();
+  const { data: userInfo, isLoading } = useGetInputStatus();
 
   if (isLoading) return null;
 

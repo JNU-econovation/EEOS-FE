@@ -1,8 +1,8 @@
 import TeamResultInfo from "./TeamResultInfo";
-import { useGetTeamBuildingResultQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetTeamBuildingResult } from "@/features/teamBuilding";
 
 interface TeamResultInfoContainerProps {
-  teamResult: ReturnType<typeof useGetTeamBuildingResultQuery>["data"];
+  teamResult: ReturnType<typeof useGetTeamBuildingResult>["data"];
 }
 
 const TeamResultInfoContainer = ({

@@ -3,10 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { FieldType } from "./SentenceField";
 import Button from "@/components/common/Button";
-import {
-  usePostSentenceMutation,
-  usePutSentenceMutation,
-} from "@/hooks/query/useTeamBuildingQuery";
+import { useCreateSentence, useUpdateSentence } from "@/features/teamBuilding";
 
 const color = {
   default: "border-gray-20",
@@ -37,8 +34,8 @@ const SentenceForm = ({
     handleResizeHeight();
   }, [content]);
 
-  const { mutate: createSentence } = usePostSentenceMutation();
-  const { mutate: editSentence } = usePutSentenceMutation();
+  const { mutate: createSentence } = useCreateSentence();
+  const { mutate: editSentence } = useUpdateSentence();
 
   const handleResizeHeight = () => {
     textareaRef.current.style.height = "auto";

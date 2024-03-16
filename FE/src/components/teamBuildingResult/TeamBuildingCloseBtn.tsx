@@ -1,8 +1,8 @@
 import Button from "../common/Button";
-import { useCloseTeamBuildingMutation } from "@/hooks/query/useTeamBuildingQuery";
+import { useDeleteTeamBuilding } from "@/features/teamBuilding";
 
 const TeamBuildingCloseBtn = () => {
-  const { mutate: closeTeamBuilding } = useCloseTeamBuildingMutation();
+  const { mutate: deleteTeamBuilding } = useDeleteTeamBuilding();
 
   const handleCloseButtonClick = () => {
     if (
@@ -10,7 +10,7 @@ const TeamBuildingCloseBtn = () => {
         "팀빌딩 결과는 저장되지 않습니다. 정말 팀빌딩을 종료하시겠습니까? ",
       )
     ) {
-      closeTeamBuilding();
+      deleteTeamBuilding();
     }
   };
   return (

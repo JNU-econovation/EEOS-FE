@@ -3,7 +3,7 @@ import { UserInputStatusInfoDto } from "./dtos";
 import { https } from "@/apis/instance";
 import API from "@/constants/API";
 
-const getUserInputStatus = async (): Promise<UserInputStatusInfoDto> => {
+const getInputStatus = async (): Promise<UserInputStatusInfoDto> => {
   const { data } = await https({
     url: API.TEAM_BUILDING.INPUT_STATUS,
     method: "GET",
@@ -12,9 +12,9 @@ const getUserInputStatus = async (): Promise<UserInputStatusInfoDto> => {
   return new UserInputStatusInfoDto(data?.data);
 };
 
-export const useGetUserInputStatus = () => {
+export const useGetInputStatus = () => {
   return useQuery({
     queryKey: [API.TEAM_BUILDING.INPUT_STATUS],
-    queryFn: () => getUserInputStatus(),
+    queryFn: () => getInputStatus(),
   });
 };

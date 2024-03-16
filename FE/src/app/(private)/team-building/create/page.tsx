@@ -8,11 +8,11 @@ import TeamBuildingCreateForm from "@/components/teamBuildingCreate/TeamBuilding
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
-import { useGetIsCreableQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetIsTeamBuildingCreable } from "@/features/teamBuilding";
 
 const TeamBuildingCreatePage = () => {
   const router = useRouter();
-  const { data: createable, isLoading } = useGetIsCreableQuery(true);
+  const { data: createable, isLoading } = useGetIsTeamBuildingCreable(true);
 
   if (isLoading) return <LoadingSpinner />;
   if (createable.status === "noncreatable") {

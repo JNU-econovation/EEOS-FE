@@ -6,14 +6,14 @@ import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
 import {
-  useGetIsCreableQuery,
-  useGetIsJoinableQuery,
-} from "@/hooks/query/useTeamBuildingQuery";
+  useGetIsTeamBuildingCreable,
+  useGetIsTeamBuildingJoinable,
+} from "@/features/teamBuilding";
 
 const TeamBuildingDropup = () => {
   const router = useRouter();
-  const { refetch: refetchCreatable } = useGetIsCreableQuery(false);
-  const { refetch: refetchJoinable } = useGetIsJoinableQuery(false);
+  const { refetch: refetchCreatable } = useGetIsTeamBuildingCreable(false);
+  const { refetch: refetchJoinable } = useGetIsTeamBuildingJoinable(false);
 
   const TITLE = "AI 팀빌딩";
   const ITEMS = [

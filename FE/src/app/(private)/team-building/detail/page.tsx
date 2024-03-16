@@ -8,11 +8,11 @@ import UserInputModalContainer from "@/components/teamBuildingDetail/userInputMo
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
-import { useGetIsJoinableQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetIsTeamBuildingJoinable } from "@/features/teamBuilding";
 
 const TeamBuildingDetailPage = () => {
   const router = useRouter();
-  const { data: joinable, isLoading } = useGetIsJoinableQuery(true);
+  const { data: joinable, isLoading } = useGetIsTeamBuildingJoinable(true);
 
   if (isLoading) return <LoadingSpinner />;
   if (joinable.status === "nonjoinable") {

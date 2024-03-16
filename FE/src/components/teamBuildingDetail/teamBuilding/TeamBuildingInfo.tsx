@@ -3,10 +3,10 @@
 import TeamBuildingDetail from "./TeamBuildingDetail";
 import TeamBuildingHeader from "./TeamBuildingHeader";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import { useGetTeamBuildingInfoQuery } from "@/hooks/query/useTeamBuildingQuery";
+import { useGetTeamBuilding } from "@/features/teamBuilding";
 
 const TeamBuildingInfo = () => {
-  const { data: teamBuildingData, isLoading } = useGetTeamBuildingInfoQuery();
+  const { data: teamBuildingData, isLoading } = useGetTeamBuilding();
 
   if (isLoading) {
     return <LoadingSpinner />;
