@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { ActiveStatusWithAll, MemberActiveStatusInfo } from "../types";
 import { MemberActiveStatusInfoDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
+import { https } from "@/utils/axios";
 
 const getMembersByActive = async (
   activeStatus: ActiveStatusWithAll,

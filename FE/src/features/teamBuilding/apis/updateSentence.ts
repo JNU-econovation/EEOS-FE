@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { SentenceRequest } from "../types";
-import { https } from "@/apis/instance";
+import { https } from "@/utils/axios";
 import API from "@/constants/API";
 import MESSAGE from "@/constants/MESSAGE";
 

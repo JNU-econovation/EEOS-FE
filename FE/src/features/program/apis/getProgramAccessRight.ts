@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProgramAccessRightDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
+import { https } from "@/utils/axios";
 
 const getProgramAccessRight = async (
   programId: number,

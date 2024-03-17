@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProgramCategoryWithAll, ProgramStatus } from "../types";
 import { ProgramListDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
+import { https } from "@/utils/axios";
 
 interface GetProgramListRequest {
   category: ProgramCategoryWithAll;

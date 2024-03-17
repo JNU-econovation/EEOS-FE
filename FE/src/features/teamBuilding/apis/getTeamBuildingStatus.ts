@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { StatusType } from "../types";
 import { TeamBuildingStatusDto } from "./dtos";
-import { https } from "@/apis/instance";
+import { https } from "@/utils/axios";
 import API from "@/constants/API";
 
 interface GetTeamBuildingStatusRequest {

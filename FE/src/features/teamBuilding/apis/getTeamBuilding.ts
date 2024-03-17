@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { TeamBuildingInfoDto } from "./dtos";
-import { https } from "@/apis/instance";
+import { https } from "@/utils/axios";
 import API from "@/constants/API";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ROUTES from "@/constants/ROUTES";

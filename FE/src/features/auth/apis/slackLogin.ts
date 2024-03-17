@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { TokenDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ROUTES from "@/constants/ROUTES";
+import { https } from "@/utils/axios";
 import { setAccessToken, setTokenExpiration } from "@/utils/localStorage";
 
 const slackLogin = async (

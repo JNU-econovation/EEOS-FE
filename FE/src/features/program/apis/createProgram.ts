@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { ProgramInfo } from "../types";
 import { ProgramIdDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
 import MESSAGE from "@/constants/MESSAGE";
 import ROUTES from "@/constants/ROUTES";
+import { https } from "@/utils/axios";
 
 interface CreateProgramRequest
   extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { AttendStatus, MemberAttendStatusInfo } from "../types";
 import { MemberAttendStatusInfoDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
+import { https } from "@/utils/axios";
 
 interface GetProgramMemebersByAttend {
   status: AttendStatus;

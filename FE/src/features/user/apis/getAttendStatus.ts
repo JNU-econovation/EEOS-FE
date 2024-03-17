@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { UserAttendStatusInfoDto } from "./dtos";
-import { https } from "@/apis/instance";
+import { https } from "@/utils/axios";
 import API from "@/constants/API";
 
 const getAttendStatus = async (

@@ -1,5 +1,5 @@
 import { TokenDto } from "./dtos";
-import { https } from "@/apis/instance";
+import { https } from "@/utils/axios";
 import API from "@/constants/API";
 
 export const tokenReissue = async (): Promise<TokenDto> => {

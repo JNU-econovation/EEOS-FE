@@ -1,8 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProgramStatus, ProgramType } from "../types";
 import { ProgramInfoDto } from "./dtos";
-import { https } from "@/apis/instance";
 import API from "@/constants/API";
+import { https } from "@/utils/axios";
 
 export const getProgramById = async (
   programId: number,
