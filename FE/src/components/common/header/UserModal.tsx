@@ -4,15 +4,15 @@ import { ErrorBoundary } from "react-error-boundary";
 import Button from "../Button";
 import ErrorFallback from "../ErrorFallback";
 import ROUTES from "@/constants/ROUTES";
+import { useLogout } from "@/features/auth";
 import {
   UserActiveStatusEditorLoader,
   UserActiveStatusEditor,
 } from "@/features/user";
-import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 
 const UserModal = () => {
   const router = useRouter();
-  const { mutate: logout } = useLogoutMutation();
+  const { mutate: logout } = useLogout();
 
   const handleLogout = () => {
     logout();

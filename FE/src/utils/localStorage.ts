@@ -1,45 +1,42 @@
-class LocalStorage {
-  constructor() {}
+export const setAccessToken = (token: string) => {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem("accessToken");
+  localStorage.setItem("accessToken", token);
+};
 
-  static setItem(key: string, value: any) {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(key, JSON.stringify(value));
-    }
-  }
+export const setTokenExpiration = (accessExpiredTime: number) => {
+  if (typeof window === "undefined") return;
 
-  static getItem(key: string) {
-    if (typeof window !== "undefined") {
-      const value = localStorage.getItem(key);
-      try {
-        return JSON.parse(value);
-      } catch (e) {
-        return value;
-      }
-    }
-    return null;
-  }
+  localStorage.removeItem("tokenExpiration");
+  const accessExpiredTimeDate = new Date().getTime() + accessExpiredTime;
+  localStorage.setItem("tokenExpiration", accessExpiredTimeDate.toString());
+};
 
-  static removeItem(key: string) {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(key);
-    }
-  }
+export const removeAccessToken = () => {
+  if (typeof window === "undefined") return;
 
-  static setToken(token: string, expiration: number) {
-    LocalStorage.setItem("accessToken", token);
-    LocalStorage.setItem("tokenExpiration", expiration);
-  }
+  localStorage.removeItem("accessToken");
+};
 
-  static getToken() {
-    const accessToken = LocalStorage.getItem("accessToken");
-    const tokenExpiration = LocalStorage.getItem("tokenExpiration");
-    return { accessToken, tokenExpiration };
-  }
+export const removeTokenExpiration = () => {
+  if (typeof window === "undefined") return;
 
-  static clearToken() {
-    LocalStorage.removeItem("accessToken");
-    LocalStorage.removeItem("tokenExpiration");
-  }
-}
+  localStorage.removeItem("tokenExpiration");
+};
 
-export default LocalStorage;
+export const deleteTokenInfo = () => {
+  removeAccessToken();
+  removeTokenExpiration();
+};
+
+export const getAccessToken = () => {
+  if (typeof window === "undefined") return;
+
+  return localStorage.getItem("accessToken");
+};
+
+export const getTokenExpiration = () => {
+  if (typeof window === "undefined") return;
+
+  return localStorage.getItem("tokenExpiration");
+};

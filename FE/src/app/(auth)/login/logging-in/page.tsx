@@ -3,13 +3,13 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
+import { useSlackLogin } from "@/features/auth";
 
 const LoginSlackCallbackPage = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
-  const { mutate: loginSlack } = useSlackLoginMutation();
+  const { mutate: loginSlack } = useSlackLogin();
 
   useEffect(() => {
     if (code) {

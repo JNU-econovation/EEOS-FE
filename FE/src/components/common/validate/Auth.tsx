@@ -3,16 +3,20 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import ROUTES from "@/constants/ROUTES";
-import LocalStorage from "@/utils/localStorage";
+import {
+  deleteTokenInfo,
+  getAccessToken,
+  getTokenExpiration,
+} from "@/utils/localStorage";
 
 const AuthValidate = () => {
   const router = useRouter();
   useEffect(() => {
-    const accessToken = LocalStorage.getItem("accessToken");
-    const tokenExpiration = LocalStorage.getItem("tokenExpiration");
+    const accessToken = getAccessToken();
+    const tokenExpiration = getTokenExpiration();
 
     if (!accessToken || !tokenExpiration) {
-      LocalStorage.clearToken();
+      deleteTokenInfo();
       router.push(ROUTES.LOGIN);
     }
   }, []);

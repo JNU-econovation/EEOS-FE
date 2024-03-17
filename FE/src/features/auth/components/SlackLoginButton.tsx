@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { useSlackLogin } from "@/features/auth";
+import { useSlackLogin } from "../apis/slackLogin";
 
-const SlackLoginButton = () => {
+export const SlackLoginButton = () => {
   const clientId = process.env.NEXT_PUBLIC_SLACK_CLIENT_ID;
   const redirectUri = process.env.NEXT_PUBLIC_SLACK_REDIRECT_URI;
   const teamId = process.env.NEXT_PUBLIC_SLACK_TEAM_ID;
@@ -33,4 +33,3 @@ const SlackLoginButton = () => {
     </Link>
   );
 };
-export default SlackLoginButton;
