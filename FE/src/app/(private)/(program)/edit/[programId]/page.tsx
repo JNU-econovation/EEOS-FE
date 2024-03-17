@@ -3,8 +3,7 @@
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import Title from "@/components/common/Title";
 import AccessRightValidate from "@/components/common/validate/AccessRight";
-import ProgramEditForm from "@/components/programEdit/ProgramEditForm";
-import { useGetProgramById } from "@/hooks/query/useProgramQuery";
+import { ProgramEditForm, useGetProgramById } from "@/features/program";
 
 interface ProgramEditPageProps {
   params: {
@@ -14,7 +13,7 @@ interface ProgramEditPageProps {
 
 const ProgramEditPage = ({ params }: ProgramEditPageProps) => {
   const { programId } = params;
-  const { data: programInfo, isLoading } = useGetProgramById(+programId);
+  const { data: ProgramViewer, isLoading } = useGetProgramById(+programId);
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -23,7 +22,7 @@ const ProgramEditPage = ({ params }: ProgramEditPageProps) => {
       <AccessRightValidate programId={programId} />
       <div className="space-y-12">
         <Title text="행사 수정" />
-        <ProgramEditForm programId={programId} programInfo={programInfo} />
+        <ProgramEditForm programId={programId} programInfo={ProgramViewer} />
       </div>
     </>
   );

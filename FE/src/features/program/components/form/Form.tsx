@@ -2,17 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { PropsWithChildren } from "react";
-import MarkdownEditor from "../../markdown/MarkdownEditor";
-import Tab from "../../tabs/Tab";
-import FormBtn from "../FormBtn";
-import ProgramDate from "./ProgramDate";
-import ProgramDemandCheckBox from "./ProgramDemandCheckBox";
-import ProgramTitle from "./ProgramTitle";
+import { ProgramCategory } from "../../types";
+import { ProgramDateInput } from "./DateInput";
+import { ProgramDemandCheckBox } from "./DemandCheckBox";
+import { ProgramTitleInput } from "./TitleInput";
+import FormBtn from "@/components/common/form/FormBtn";
+import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
+import Tab from "@/components/common/tabs/Tab";
 import FORM_INFO from "@/constants/FORM_INFO";
 import PROGRAM from "@/constants/PROGRAM";
 import { ProgramFormData } from "@/hooks/useProgramFormData";
 import { FormType } from "@/types/form";
-import { ProgramCategory } from "@/types/program";
 
 interface ProgramFormProps extends ProgramFormData {
   formType: FormType;
@@ -50,7 +50,7 @@ const ProgramForm = ({
 
   return (
     <form className="space-y-6" onSubmit={onSubmit}>
-      <ProgramTitle
+      <ProgramTitleInput
         title={title}
         setTitle={setTitle}
         prefix={isDemand && FORM_INFO.DEMAND_PREFIX}
@@ -60,9 +60,9 @@ const ProgramForm = ({
           isDemand={isDemand}
           onClick={() => handleChangeType()}
         />
-      </ProgramTitle>
+      </ProgramTitleInput>
       <div className="flex flex-col items-end gap-8 sm:flex-row">
-        <ProgramDate programDate={deadLine} setProgramDate={setDeadLine} />
+        <ProgramDateInput programDate={deadLine} setProgramDate={setDeadLine} />
         <div className="flex w-full flex-col gap-2 sm:w-fit">
           <label className="text-sm">행사 카테고리</label>
           <Tab<ProgramCategory>

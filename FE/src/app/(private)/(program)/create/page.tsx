@@ -1,5 +1,5 @@
 import Title from "@/components/common/Title";
-import ProgramCreateForm from "@/components/programCreate/ProgramCreateForm";
+import { ProgramCreateForm } from "@/features/program";
 
 const ProgramCreatePage = () => {
   return (

@@ -12,7 +12,8 @@ export * from "./components/result/DeleteButton";
 export * from "./components/result/TeamList";
 export * from "./components/result/Team";
 export * from "./components/detail/Info";
-export * from "./components/CreateForm";
+export * from "./components/form/CreateForm";
 export * from "./components/inputStatus/Editor";
+export * from "./components/DropUp";
 
 export * from "./types";

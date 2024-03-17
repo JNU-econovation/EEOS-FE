@@ -1,20 +1,20 @@
 import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
-import LabeledInput from "../LabeledInput";
+import LabeledInput from "@/components/common/form/LabeledInput";
 import FORM_INFO from "@/constants/FORM_INFO";
 import { convertText } from "@/utils/convert";
 
-interface ProgramTitleProps {
+interface ProgramTitleInputProps {
   title: string;
   setTitle: Dispatch<SetStateAction<string>>;
   prefix?: string;
 }
 
-const ProgramTitle = ({
+export const ProgramTitleInput = ({
   title,
   setTitle,
   prefix,
   children,
-}: PropsWithChildren<ProgramTitleProps>) => {
+}: PropsWithChildren<ProgramTitleInputProps>) => {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (title.includes(FORM_INFO.DEMAND_PREFIX)) {
       const newTitle = convertText(title, FORM_INFO.DEMAND_PREFIX);
@@ -38,4 +38,3 @@ const ProgramTitle = ({
     </div>
   );
 };
-export default ProgramTitle;

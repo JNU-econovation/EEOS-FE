@@ -1,4 +1,4 @@
-import { ProgramSimpleInfoDto } from "@/apis/dtos/program.dto";
+import { ProgramSimpleInfoDto } from "../../apis/dtos";
 import Link from "@/components/common/Link";
 import ROUTES from "@/constants/ROUTES";
 import { convertDate } from "@/utils/convert";
@@ -7,7 +7,7 @@ interface ProgramListItemProps {
   programData: ProgramSimpleInfoDto;
 }
 
-const ProgramListItem = ({ programData }: ProgramListItemProps) => {
+export const ProgramListItem = ({ programData }: ProgramListItemProps) => {
   const { programId, title, deadLine } = programData;
   return (
     <Link
@@ -22,5 +22,3 @@ const ProgramListItem = ({ programData }: ProgramListItemProps) => {
     </Link>
   );
 };
-
-export default ProgramListItem;

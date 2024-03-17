@@ -1,9 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
-import Paginataion from "../common/pagination/Pagination";
-import ProgramListItem from "./ProgramListItem";
+import { ProgramListItem } from "./ListItem";
+import Paginataion from "@/components/common/pagination/Pagination";
 import PROGRAM from "@/constants/PROGRAM";
-import { useGetProgramList } from "@/hooks/query/useProgramQuery";
-import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
+import {
+  ProgramCategoryWithAll,
+  ProgramStatus,
+  useGetProgramList,
+} from "@/features/program";
 
 interface ProgramListProps {
   category?: ProgramCategoryWithAll;
@@ -12,7 +15,7 @@ interface ProgramListProps {
   setPage: (page: number) => void;
 }
 
-const ProgramList = ({
+export const ProgramList = ({
   category = "all",
   programStatus = "active",
   page = 1,
@@ -44,4 +47,3 @@ const ProgramList = ({
     </>
   );
 };
-export default ProgramList;

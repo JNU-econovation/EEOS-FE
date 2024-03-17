@@ -1,18 +1,21 @@
 "use client";
 
 import { Dispatch, SetStateAction, useState } from "react";
-import Calendar from "../../calendar/Calendar";
-import LabeledInput from "../LabeledInput";
+import Calendar from "@/components/common/calendar/Calendar";
+import LabeledInput from "@/components/common/form/LabeledInput";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useOutsideRef from "@/hooks/useOutsideRef";
 import { convertDate } from "@/utils/convert";
 
-interface ProgramDateProps {
+interface ProgramDateInputProps {
   programDate: string;
   setProgramDate: Dispatch<SetStateAction<string>>;
 }
 
-const ProgramDate = ({ programDate, setProgramDate }: ProgramDateProps) => {
+export const ProgramDateInput = ({
+  programDate,
+  setProgramDate,
+}: ProgramDateInputProps) => {
   const [openCalender, setOpenCalender] = useState<boolean>(false);
   const calenderRef = useOutsideRef(() => setOpenCalender(false));
   const [date, setDate] = useState<Date | undefined>(
@@ -49,4 +52,3 @@ const ProgramDate = ({ programDate, setProgramDate }: ProgramDateProps) => {
     </div>
   );
 };
-export default ProgramDate;

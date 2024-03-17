@@ -5,7 +5,7 @@ import {
   ProgramStatus,
   ProgramCategory,
   AccessRight,
-} from "@/types/program";
+} from "../types";
 
 export class ProgramIdDto {
   public readonly programId: number;

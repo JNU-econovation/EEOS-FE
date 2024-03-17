@@ -7,12 +7,15 @@ import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@/components/common/ErrorFallback";
 import Tab from "@/components/common/tabs/Tab";
 import TextTab from "@/components/common/tabs/TextTab";
-import ProgramList from "@/components/main/ProgramList";
-import ProgramListLoader from "@/components/main/ProgramList.loader";
-import TeamBuildingDropup from "@/components/main/TeamBuildingDropup";
 import MAIN from "@/constants/MAIN";
 import PROGRAM from "@/constants/PROGRAM";
-import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
+import {
+  ProgramCategoryWithAll,
+  ProgramList,
+  ProgramListLoader,
+  ProgramStatus,
+} from "@/features/program";
+import { TeamBuildingDropup } from "@/features/teamBuilding";
 
 const MainPage = () => {
   const searchParams = useSearchParams();

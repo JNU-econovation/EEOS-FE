@@ -3,18 +3,29 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import TeamBuildingForm from "./form/Form";
+import ProgramForm from "./Form";
+import FORM_INFO from "@/constants/FORM_INFO";
 import { MemberTable } from "@/features/member";
-import { useCreateTeamBuilding } from "@/features/teamBuilding";
-import useTeamBuildingFormData from "@/hooks/useTeamBuildingFormData";
+import { useCreateProgram } from "@/features/program";
+import useProgramFormData from "@/hooks/useProgramFormData";
 
-export const TeamBuildingCreateForm = () => {
+export const ProgramCreateForm = () => {
   const queryClient = useQueryClient();
   const [members, setMembers] = useState<Set<number>>(new Set<number>());
-  const formData = useTeamBuildingFormData();
-  const { title, content, maxTeamSize } = formData;
+  const formData = useProgramFormData();
+  const { title, deadLine, content, category, type, reset } = formData;
 
-  const { mutate: createTeamBuilding } = useCreateTeamBuilding();
+  const { mutate: createProgramMutate } = useCreateProgram({
+    programData: {
+      members: Array.from(members, (memberId) => ({ memberId })),
+      title: type === "demand" ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
+      deadLine: deadLine,
+      content: content,
+      category: category,
+      type: type,
+    },
+    formReset: reset,
+  });
 
   const updateMembers = (memberId: number) => {
     const newMembers = new Set<number>(members);
@@ -38,27 +49,21 @@ export const TeamBuildingCreateForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!title || !content || !maxTeamSize) {
+    if (!title || !content || !deadLine || !category || !type) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
-
-    createTeamBuilding({
-      title,
-      content,
-      maxTeamSize,
-      members: Array.from(members).map((memberId) => ({ memberId })),
-    });
+    createProgramMutate();
   };
 
   return (
-    <TeamBuildingForm formType="create" onSubmit={handleSubmit} {...formData}>
+    <ProgramForm formType="create" onSubmit={handleSubmit} {...formData}>
       <MemberTable
         formType="create"
         members={members}
         setMembers={updateMembers}
         onClickHeaderCheckBox={updateAllMembers}
       />
-    </TeamBuildingForm>
+    </ProgramForm>
   );
 };

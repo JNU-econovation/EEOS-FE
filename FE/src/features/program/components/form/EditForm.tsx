@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import ProgramForm from "../common/form/program/ProgramForm";
+import ProgramForm from "./Form";
 import { AttendStatus, MemberTable } from "@/features/member";
-import { useUpdateProgram } from "@/hooks/query/useProgramQuery";
+import { ProgramInfo, useUpdateProgram } from "@/features/program";
 import useProgramFormData from "@/hooks/useProgramFormData";
-import { ProgramInfo } from "@/types/program";
 
 interface ProgramEditFormProps {
   programId: string;
@@ -18,7 +17,10 @@ export interface Members {
   afterAttendStatus: AttendStatus;
 }
 
-const ProgramEditForm = ({ programId, programInfo }: ProgramEditFormProps) => {
+export const ProgramEditForm = ({
+  programId,
+  programInfo,
+}: ProgramEditFormProps) => {
   const formData = useProgramFormData(programInfo);
   const [members, setMembers] = useState<Map<number, Members>>(new Map());
 
@@ -87,4 +89,3 @@ const ProgramEditForm = ({ programId, programInfo }: ProgramEditFormProps) => {
     </ProgramForm>
   );
 };
-export default ProgramEditForm;

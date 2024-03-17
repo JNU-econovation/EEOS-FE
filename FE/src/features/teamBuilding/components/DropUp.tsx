@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Dropup from "../common/Dropup";
+import Dropup from "@/components/common/Dropup";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import ROUTES from "@/constants/ROUTES";
@@ -10,7 +10,7 @@ import {
   useGetIsTeamBuildingJoinable,
 } from "@/features/teamBuilding";
 
-const TeamBuildingDropup = () => {
+export const TeamBuildingDropup = () => {
   const router = useRouter();
   const { refetch: refetchCreatable } = useGetIsTeamBuildingCreable(false);
   const { refetch: refetchJoinable } = useGetIsTeamBuildingJoinable(false);
@@ -51,5 +51,3 @@ const TeamBuildingDropup = () => {
     </Dropup>
   );
 };
-
-export default TeamBuildingDropup;

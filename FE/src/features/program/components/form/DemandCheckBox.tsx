@@ -6,7 +6,7 @@ interface ProgramDemandCheckBoxProps {
   onClick: () => void;
 }
 
-const ProgramDemandCheckBox = ({
+export const ProgramDemandCheckBox = ({
   disabled,
   isDemand,
   onClick,
@@ -28,4 +28,3 @@ const ProgramDemandCheckBox = ({
     </>
   );
 };
-export default ProgramDemandCheckBox;
