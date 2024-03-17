@@ -4,7 +4,9 @@ import { ProgramInfoDto } from "./dtos";
 import { https } from "@/apis/instance";
 import API from "@/constants/API";
 
-const getProgramById = async (programId: number): Promise<ProgramInfoDto> => {
+export const getProgramById = async (
+  programId: number,
+): Promise<ProgramInfoDto> => {
   const { data } = await https({
     url: API.PROGRAM.DETAIL(programId),
   });

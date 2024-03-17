@@ -1,8 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getProgramById } from "@/apis/program";
 import API from "@/constants/API";
+import { ProgramStatus, ProgramType, getProgramById } from "@/features/program";
 import { useGetAttendStatus } from "@/features/user";
-import { ProgramStatus, ProgramType } from "@/types/program";
 
 const useGetAttendStatusAndProgramInfo = (programId: number) => {
   const queryClient = useQueryClient();
