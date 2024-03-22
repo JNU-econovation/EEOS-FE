@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { useGetInputStatus } from "../../apis/getInputStatus";
-import { FieldType } from "../../types";
+import { FieldType, InputStatus } from "../../types";
 import { getType } from "../../utils";
 import { InputStatusForm } from "./Form";
 import { InputStatusViewer } from "./Viewer";
 import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
 import INPUT_STATUS from "@/constants/INPUT_STATUS";
-import { InputStatus } from "@/types/teamBuilding";
 
 interface EditFieldProps {
   inputStatus: InputStatus;
