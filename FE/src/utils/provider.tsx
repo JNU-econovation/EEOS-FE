@@ -12,6 +12,9 @@ const Provider = ({ children }: PropsWithChildren) => {
         retry: false,
         useErrorBoundary: true,
       },
+      mutations: {
+        retry: false,
+      },
     },
   });
 
