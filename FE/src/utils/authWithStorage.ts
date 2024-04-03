@@ -21,3 +21,31 @@ export const deleteTokenInfo = () => {
   removeAccessToken();
   removeTokenExpiration();
 };
+
+export const getAccessToken = () => {
+  return localStorage.getItem("accessToken");
+};
+
+export const getTokenExpiration = () => {
+  return localStorage.getItem("tokenExpiration");
+};
+
+export const CheckIsLoggedIn = () => {
+  const accessToken = getAccessToken();
+  const tokenExpiration = getTokenExpiration();
+
+  if (!accessToken || !tokenExpiration) {
+    deleteTokenInfo();
+    return false;
+  }
+
+  const tokenExpirationDate = new Date(+tokenExpiration);
+  const now = new Date();
+
+  if (tokenExpirationDate < now) {
+    deleteTokenInfo();
+    return false;
+  }
+
+  return true;
+};
