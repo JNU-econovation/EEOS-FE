@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import ROUTES from "@/constants/ROUTES";
 import { CheckIsLoggedIn, deleteTokenInfo } from "@/utils/authWithStorage";
 
-const AuthValidate = () => {
+const useAuthValidate = () => {
   const router = useRouter();
   useEffect(() => {
     const isLoggedIn = CheckIsLoggedIn();
@@ -14,7 +14,5 @@ const AuthValidate = () => {
       router.push(ROUTES.LOGIN);
     }
   }, []);
-
-  return <></>;
 };
-export default AuthValidate;
+export default useAuthValidate;
