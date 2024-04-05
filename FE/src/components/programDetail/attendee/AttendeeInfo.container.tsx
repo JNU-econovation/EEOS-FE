@@ -2,20 +2,37 @@
 
 import { ErrorBoundary } from "react-error-boundary";
 import AttendeeInfo from "./AttendeeInfo";
+import BluredAttedee from "./BluredAttedee";
 import ErrorFallback from "@/components/common/ErrorFallback";
+import { CheckIsLoggedIn } from "@/utils/authWithStorage";
 
 interface AttendeeInfoContainerProps {
   programId: number;
 }
 
+export const attendStatuses = [
+  "attend",
+  "late",
+  "absent",
+  "nonResponse",
+] as const;
+
 const AttendeeInfoContainer = ({ programId }: AttendeeInfoContainerProps) => {
+  const isLoggedIn = CheckIsLoggedIn();
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <div className="space-y-16">
-        <AttendeeInfo programId={programId} status="attend" />
-        <AttendeeInfo programId={programId} status="late" />
-        <AttendeeInfo programId={programId} status="absent" />
-        <AttendeeInfo programId={programId} status="nonResponse" />
+        {isLoggedIn
+          ? attendStatuses.map((status) => (
+              <AttendeeInfo
+                key={status}
+                programId={programId}
+                status={status}
+              />
+            ))
+          : attendStatuses.map((status) => (
+              <BluredAttedee key={status} status={status} />
+            ))}
       </div>
     </ErrorBoundary>
   );

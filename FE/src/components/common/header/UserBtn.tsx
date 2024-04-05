@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import UserActiveModal from "./Modal/UserActiveModal";
 import useModal from "@/hooks/useModal";

@@ -1,5 +1,3 @@
-"use client";
-
 import { useQueryClient } from "@tanstack/react-query";
 import AttendStatusModalLoader from "./AttendStatusModal.loader";
 import AttendStatusView from "./AttendStatusView";
