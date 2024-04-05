@@ -1,8 +1,12 @@
 import { PropsWithChildren } from "react";
-import useAuthValidate from "@/hooks/useAuthValidate";
+import AuthValidate from "@/components/common/validate/Auth";
 
 const PrivateLayout = ({ children }: PropsWithChildren) => {
-  useAuthValidate();
-  return <>{children}</>;
+  return (
+    <>
+      <AuthValidate />
+      {children}
+    </>
+  );
 };
 export default PrivateLayout;
