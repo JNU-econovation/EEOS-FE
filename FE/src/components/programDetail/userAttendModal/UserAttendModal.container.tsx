@@ -3,10 +3,12 @@
 import classNames from "classnames";
 import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
+import LoginModal from "./LoginModal";
 import UserAttendModal from "./UserAttendModal";
 import ErrorFallbackNoIcon from "@/components/common/ErrorFallbackNoIcon";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
+import { CheckIsLoggedIn } from "@/utils/authWithStorage";
 
 interface UserAttendModalProps {
   programId: number;
@@ -15,6 +17,7 @@ interface UserAttendModalProps {
 const UserAttendModalContainer = ({ programId }: UserAttendModalProps) => {
   const { isOpen, openModal, closeModal } = useModal();
   const modalRef = useOutsideRef(closeModal);
+  const isLoggedIn = CheckIsLoggedIn();
 
   const modalStyle = classNames(
     "fixed left-0 z-10 flex h-60 w-full flex-col items-center gap-5 rounded-t-3xl border-t-2 bg-background shadow-2xl transition-all duration-500",
@@ -26,7 +29,6 @@ const UserAttendModalContainer = ({ programId }: UserAttendModalProps) => {
 
   const handleOpenModal = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log("hi", isOpen);
     isOpen ? closeModal() : openModal();
   };
 
@@ -46,9 +48,13 @@ const UserAttendModalContainer = ({ programId }: UserAttendModalProps) => {
           style={{ width: 38, height: 6 }}
         />
       </div>
-      <ErrorBoundary FallbackComponent={ErrorFallbackNoIcon}>
-        <UserAttendModal programId={programId} />
-      </ErrorBoundary>
+      {isLoggedIn ? (
+        <ErrorBoundary FallbackComponent={ErrorFallbackNoIcon}>
+          <UserAttendModal programId={programId} />
+        </ErrorBoundary>
+      ) : (
+        <LoginModal />
+      )}
     </button>
   );
 };
