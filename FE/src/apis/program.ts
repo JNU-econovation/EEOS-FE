@@ -23,7 +23,7 @@ export const getProgramById = async (
   programId: number,
 ): Promise<ProgramInfoDto> => {
   const { data } = await https({
-    url: API.PROGRAM.DETAIL(programId),
+    url: API.PROGRAM.GUEST_DETAIL(programId),
   });
   return new ProgramInfoDto(data?.data);
 };
@@ -46,7 +46,7 @@ export const getProgramList = async ({
   page,
 }: GetProgramListRequest): Promise<ProgramListDto> => {
   const { data } = await https({
-    url: API.PROGRAM.LIST,
+    url: API.PROGRAM.GUEST_LIST,
     method: "GET",
     params: {
       category,
