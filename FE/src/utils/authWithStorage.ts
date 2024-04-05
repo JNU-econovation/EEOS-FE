@@ -31,6 +31,7 @@ export const getTokenExpiration = () => {
 };
 
 export const CheckIsLoggedIn = () => {
+  if (!window) return false;
   const accessToken = getAccessToken();
   const tokenExpiration = getTokenExpiration();
 
@@ -46,6 +47,5 @@ export const CheckIsLoggedIn = () => {
     deleteTokenInfo();
     return false;
   }
-
   return true;
 };
