@@ -3,6 +3,7 @@
 import ProgramDetail from "./ProgramDetail";
 import ProgramHeader from "./ProgramHeader";
 import ProgramInfoLoader from "./ProgramInfo.loader";
+import { sendMessage } from "@/apis/program";
 import { useGetProgramById } from "@/hooks/query/useProgramQuery";
 
 interface ProgramInfoProps {
@@ -21,6 +22,7 @@ const ProgramInfo = ({ programId }: ProgramInfoProps) => {
 
   return (
     <section className="space-y-8">
+      <button onClick={() => sendMessage(+programId)}>메시지 보내기</button>
       <ProgramHeader data={programData} />
       <ProgramDetail data={programData} />
     </section>

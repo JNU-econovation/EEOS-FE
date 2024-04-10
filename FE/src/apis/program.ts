@@ -87,6 +87,7 @@ export interface PostProgramRequest
 }
 
 export const sendMessage = async (programId: number) => {
+  if (!window) return;
   const isConfirmed = confirm("메시지를 보내시겠습니까?");
   if (!isConfirmed) return;
 
