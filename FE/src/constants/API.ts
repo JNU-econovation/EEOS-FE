@@ -7,6 +7,8 @@ const PROGRAM = {
   DETAIL: (programId: number) => `/programs/${programId}`,
   GUEST_DETAIL: (programId: number) => `/guest/programs/${programId}`,
   ACCESS_RIGHT: (programId: number) => `/programs/${programId}/accessRight`,
+  SEND_MESSAGE: (programId: number) =>
+    `/programs/${programId}/slack/notification`,
 };
 
 const MEMBER = {
