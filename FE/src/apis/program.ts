@@ -86,6 +86,20 @@ export interface PostProgramRequest
   members: { memberId: number }[];
 }
 
+export const sendMessage = async (programId: number) => {
+  if (!window) return;
+  const isConfirmed = confirm("메시지를 보내시겠습니까?");
+  if (!isConfirmed) return;
+
+  return await https({
+    url: API.PROGRAM.SEND_MESSAGE(programId),
+    method: "POST",
+    data: {
+      programUrl: "https://econo.eeos.store/detail/" + programId,
+    },
+  });
+};
+
 export const postProgram = async (
   body: PostProgramRequest,
 ): Promise<ProgramIdDto> => {
