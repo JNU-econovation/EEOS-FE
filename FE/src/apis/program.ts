@@ -95,9 +95,12 @@ export const sendSlackMessage = async (programId: number) => {
     url: API.PROGRAM.SEND_MESSAGE(programId),
     method: "POST",
     data: {
-      programUrl: "https://econo.eeos.store/detail/" + programId,
+      programUrl:
+        process.env.NEXT_PUBLIC_SLACK_MESSAGE_REQUEST_URL_PREFIX + programId,
     },
-  });
+  })
+    .then(() => alert("메시지를 성공적으로 전송했습니다."))
+    .catch(() => alert("메시지 전송에 실패했습니다."));
 };
 
 export const postProgram = async (
