@@ -31,7 +31,7 @@ export const getTokenExpiration = () => {
 };
 
 export const CheckIsLoggedIn = () => {
-  if (!window) return false;
+  if (typeof window !== "undefined") return false;
   const accessToken = getAccessToken();
   const tokenExpiration = getTokenExpiration();
 
