@@ -1,12 +1,17 @@
-import SlackLoginButton from "./LoginButton";
+import React from "react";
 
-const SlackLoginSection = () => {
+interface LoginSectionProps {
+  title: string;
+  loginBtnComponent: React.ReactNode;
+}
+
+const LoginSection = ({ title, loginBtnComponent }: LoginSectionProps) => {
   return (
     <div className="flex flex-col items-center gap-4">
-      <p className="font-light">에코노베이션 슬랙으로 로그인</p>
-      <SlackLoginButton />
+      <p className="font-light">{title}</p>
+      {loginBtnComponent}
     </div>
   );
 };
 
-export default SlackLoginSection;
+export default LoginSection;
