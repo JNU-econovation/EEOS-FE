@@ -8,16 +8,18 @@ import UserAttendModal from "./UserAttendModal";
 import ErrorFallbackNoIcon from "@/components/common/ErrorFallbackNoIcon";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
-import { CheckIsLoggedIn } from "@/utils/authWithStorage";
 
 interface UserAttendModalProps {
   programId: number;
+  isLoggedIn: boolean;
 }
 
-const UserAttendModalContainer = ({ programId }: UserAttendModalProps) => {
+const UserAttendModalContainer = ({
+  programId,
+  isLoggedIn,
+}: UserAttendModalProps) => {
   const { isOpen, openModal, closeModal } = useModal();
   const modalRef = useOutsideRef(closeModal);
-  const isLoggedIn = CheckIsLoggedIn();
 
   const modalStyle = classNames(
     "fixed left-0 z-10 flex h-60 w-full flex-col items-center gap-5 rounded-t-3xl border-t-2 bg-background shadow-2xl transition-all duration-500",

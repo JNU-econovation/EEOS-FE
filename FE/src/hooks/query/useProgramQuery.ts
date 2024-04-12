@@ -71,13 +71,13 @@ export const useDeleteProgram = (programId: number) => {
   });
 };
 
-export const useGetProgramById = (programId: number) => {
+export const useGetProgramById = (programId: number, isLoggedIn: boolean) => {
   const queryClient = useQueryClient();
 
   return useQuery({
     queryKey: [API.PROGRAM.DETAIL(programId)],
     queryFn: () =>
-      getProgramById(programId).then((res) => {
+      getProgramById(programId, isLoggedIn).then((res) => {
         queryClient.setQueryData<ProgramStatus>(
           ["programStatus", programId],
           res.programStatus,
@@ -96,10 +96,12 @@ export const useGetProgramList = ({
   programStatus,
   size,
   page,
+  isLoggedIn,
 }: GetProgramListRequest) => {
   return useQuery({
     queryKey: [API.PROGRAM.LIST, category, programStatus, size, page],
-    queryFn: () => getProgramList({ category, programStatus, size, page }),
+    queryFn: () =>
+      getProgramList({ category, programStatus, size, page, isLoggedIn }),
     select: (data) => ({
       totalPage: data?.totalPage,
       programs: data?.programs,

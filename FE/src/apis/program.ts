@@ -21,9 +21,13 @@ import MESSAGE from "@/constants/MESSAGE";
 
 export const getProgramById = async (
   programId: number,
+  isLoggedIn: boolean,
 ): Promise<ProgramInfoDto> => {
+  const url = isLoggedIn
+    ? API.PROGRAM.DETAIL(programId)
+    : API.PROGRAM.GUEST_DETAIL(programId);
   const { data } = await https({
-    url: API.PROGRAM.GUEST_DETAIL(programId),
+    url,
   });
   return new ProgramInfoDto(data?.data);
 };
@@ -37,6 +41,7 @@ export interface GetProgramListRequest {
   programStatus: ProgramStatus;
   size: number;
   page: number;
+  isLoggedIn: boolean;
 }
 
 export const getProgramList = async ({
@@ -44,9 +49,11 @@ export const getProgramList = async ({
   programStatus,
   size,
   page,
+  isLoggedIn,
 }: GetProgramListRequest): Promise<ProgramListDto> => {
+  const url = isLoggedIn ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
   const { data } = await https({
-    url: API.PROGRAM.GUEST_LIST,
+    url,
     method: "GET",
     params: {
       category,
