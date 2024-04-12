@@ -7,7 +7,7 @@ interface LoginSectionProps {
 
 const LoginSection = ({ title, loginBtnComponent }: LoginSectionProps) => {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-6">
       <p className="font-light">{title}</p>
       {loginBtnComponent}
     </div>
