@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // rewrite
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/login",
-        permanent: false,
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/main",
+  //       destination: "/",
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;
