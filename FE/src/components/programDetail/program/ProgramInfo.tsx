@@ -7,14 +7,15 @@ import { useGetProgramById } from "@/hooks/query/useProgramQuery";
 
 interface ProgramInfoProps {
   programId: number;
+  isLoggedIn: boolean;
 }
 
-const ProgramInfo = ({ programId }: ProgramInfoProps) => {
+const ProgramInfo = ({ programId, isLoggedIn }: ProgramInfoProps) => {
   const {
     data: programData,
     isLoading,
     isError,
-  } = useGetProgramById(programId);
+  } = useGetProgramById(programId, isLoggedIn);
 
   if (isLoading) return <ProgramInfoLoader />;
   if (isError) return <div>에러 발생</div>;

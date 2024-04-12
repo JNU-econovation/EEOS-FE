@@ -1,7 +1,9 @@
 const ROUTES = {
   MAIN: "/main",
+  GUEST_MAIN: "/guest/main",
   CREATE: "/create",
   DETAIL: (programId: number) => `/detail/${programId}`,
+  GUEST_DETAIL: (programId: number) => `/guest/detail/${programId}`,
   EDIT: (programId: number) => `/edit/${programId}`,
   ERROR: "/error",
   LOGIN: "/login",

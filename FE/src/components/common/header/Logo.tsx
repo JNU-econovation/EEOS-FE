@@ -6,16 +6,22 @@ const INIT_CATEGORY = "all";
 const INIT_STATUS = "active";
 const INIT_PAGE = "1";
 
-const Logo = () => {
+interface LogoProps {
+  isLoggedIn: boolean;
+}
+
+const Logo = ({ isLoggedIn }: LogoProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const mainUrl = isLoggedIn ? ROUTES.MAIN : ROUTES.GUEST_MAIN;
+
   const handleClick = () => {
-    if (pathname === ROUTES.MAIN) {
-      window.location.href = `${ROUTES.MAIN}?category=${INIT_CATEGORY}&status=${INIT_STATUS}&page=${INIT_PAGE}`;
+    if (pathname === mainUrl) {
+      window.location.href = `${mainUrl}?category=${INIT_CATEGORY}&status=${INIT_STATUS}&page=${INIT_PAGE}`;
       return;
     }
-    router.push(ROUTES.MAIN);
+    router.push(mainUrl);
   };
 
   return (
