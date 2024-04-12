@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import StyledLoginButton from "../ui/StyledLoginButton";
 import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
 const SlackLoginButton = () => {
@@ -24,13 +23,13 @@ const SlackLoginButton = () => {
   }, [code]);
 
   return (
-    <Link
-      className="flex w-64 justify-center gap-4 rounded-3xl bg-slack py-3"
-      href={slackLoginUrl}
-    >
-      <Image src="/icons/slack.svg" alt="슬랙 로고" width={24} height={24} />
-      <p className="text-center font-semibold text-white">슬랙으로 로그인</p>
-    </Link>
+    <StyledLoginButton
+      linkUrl={slackLoginUrl}
+      buttonText="슬랙으로 로그인"
+      imageUrl="/icons/slack.svg"
+      color="slack"
+    />
   );
 };
+
 export default SlackLoginButton;
