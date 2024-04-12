@@ -86,18 +86,30 @@ export interface PostProgramRequest
   members: { memberId: number }[];
 }
 
-export const sendMessage = async (programId: number) => {
+export const sendSlackMessage = async (
+  programId: number,
+  isRetry: boolean = false,
+) => {
   if (!window) return;
-  const isConfirmed = confirm("메시지를 보내시겠습니까?");
-  if (!isConfirmed) return;
+
+  if (!isRetry) {
+    const isConfirmed = confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
+    if (!isConfirmed) return;
+  }
 
   return await https({
     url: API.PROGRAM.SEND_MESSAGE(programId),
     method: "POST",
     data: {
-      programUrl: "https://econo.eeos.store/detail/" + programId,
+      programUrl:
+        process.env.NEXT_PUBLIC_SLACK_MESSAGE_REQUEST_URL_PREFIX + programId,
     },
-  });
+  })
+    .then(() => alert(MESSAGE.SLACK_MESSAGE.SUCCESS))
+    .catch(() => {
+      const retry = confirm(MESSAGE.SLACK_MESSAGE.FAIL);
+      if (retry) sendSlackMessage(programId);
+    });
 };
 
 export const postProgram = async (

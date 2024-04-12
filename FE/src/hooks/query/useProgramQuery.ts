@@ -10,6 +10,7 @@ import {
   getProgramList,
   patchProgram,
   postProgram,
+  sendSlackMessage,
 } from "@/apis/program";
 import API from "@/constants/API";
 import ROUTES from "@/constants/ROUTES";
@@ -26,10 +27,14 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
 
   return useMutation({
     mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: () => postProgram(programData),
-    onSettled: (data) => {
+    mutationFn: async () => {
+      const { programId } = await postProgram(programData);
+      await sendSlackMessage(programId);
+      return programId;
+    },
+    onSuccess: (programId) => {
       formReset();
-      data && router.replace(ROUTES.DETAIL(data?.programId));
+      programId && router.replace(ROUTES.DETAIL(programId));
     },
   });
 };
