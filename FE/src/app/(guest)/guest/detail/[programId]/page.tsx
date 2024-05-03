@@ -13,9 +13,9 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
 
   return (
     <div className="mb-16 space-y-16">
-      <ProgramInfo programId={+programId} isLoggedIn />
-      <AttendeeInfoContainer programId={+programId} isLoggedIn />
-      <UserAttendModalContainer programId={+programId} isLoggedIn />
+      <ProgramInfo programId={+programId} isLoggedIn={false} />
+      <AttendeeInfoContainer programId={+programId} isLoggedIn={false} />
+      <UserAttendModalContainer programId={+programId} isLoggedIn={false} />
     </div>
   );
 };

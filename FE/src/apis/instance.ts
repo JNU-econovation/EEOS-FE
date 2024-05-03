@@ -19,6 +19,7 @@ const https = axios.create({
 
 https.interceptors.request.use(
   async (config) => {
+    if (typeof window === "undefined") return config;
     const accessToken = localStorage.getItem("accessToken")?.replace(/"/g, "");
     const tokenExpiration = localStorage.getItem("tokenExpiration");
 

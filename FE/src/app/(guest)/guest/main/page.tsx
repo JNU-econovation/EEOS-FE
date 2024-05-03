@@ -86,7 +86,7 @@ const MainPage = () => {
             programStatus={queryValue.status}
             page={+queryValue.page}
             setPage={handleSetPage}
-            isLoggedIn
+            isLoggedIn={false}
           />
         </Suspense>
       </ErrorBoundary>

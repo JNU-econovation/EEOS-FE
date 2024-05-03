@@ -21,9 +21,13 @@ import MESSAGE from "@/constants/MESSAGE";
 
 export const getProgramById = async (
   programId: number,
+  isLoggedIn: boolean,
 ): Promise<ProgramInfoDto> => {
+  const url = isLoggedIn
+    ? API.PROGRAM.DETAIL(programId)
+    : API.PROGRAM.GUEST_DETAIL(programId);
   const { data } = await https({
-    url: API.PROGRAM.DETAIL(programId),
+    url,
   });
   return new ProgramInfoDto(data?.data);
 };
@@ -37,6 +41,7 @@ export interface GetProgramListRequest {
   programStatus: ProgramStatus;
   size: number;
   page: number;
+  isLoggedIn: boolean;
 }
 
 export const getProgramList = async ({
@@ -44,9 +49,11 @@ export const getProgramList = async ({
   programStatus,
   size,
   page,
+  isLoggedIn,
 }: GetProgramListRequest): Promise<ProgramListDto> => {
+  const url = isLoggedIn ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
   const { data } = await https({
-    url: API.PROGRAM.LIST,
+    url,
     method: "GET",
     params: {
       category,
@@ -85,6 +92,32 @@ export interface PostProgramRequest
   extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {
   members: { memberId: number }[];
 }
+
+export const sendSlackMessage = async (
+  programId: number,
+  isRetry: boolean = false,
+) => {
+  if (!window) return;
+
+  if (!isRetry) {
+    const isConfirmed = confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
+    if (!isConfirmed) return;
+  }
+
+  return await https({
+    url: API.PROGRAM.SEND_MESSAGE(programId),
+    method: "POST",
+    data: {
+      programUrl:
+        process.env.NEXT_PUBLIC_SLACK_MESSAGE_REQUEST_URL_PREFIX + programId,
+    },
+  })
+    .then(() => alert(MESSAGE.SLACK_MESSAGE.SUCCESS))
+    .catch(() => {
+      const retry = confirm(MESSAGE.SLACK_MESSAGE.FAIL);
+      if (retry) sendSlackMessage(programId);
+    });
+};
 
 export const postProgram = async (
   body: PostProgramRequest,

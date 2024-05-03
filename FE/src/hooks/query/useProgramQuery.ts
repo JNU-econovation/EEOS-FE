@@ -10,6 +10,7 @@ import {
   getProgramList,
   patchProgram,
   postProgram,
+  sendSlackMessage,
 } from "@/apis/program";
 import API from "@/constants/API";
 import ROUTES from "@/constants/ROUTES";
@@ -26,10 +27,14 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
 
   return useMutation({
     mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: () => postProgram(programData),
-    onSettled: (data) => {
+    mutationFn: async () => {
+      const { programId } = await postProgram(programData);
+      await sendSlackMessage(programId);
+      return programId;
+    },
+    onSuccess: (programId) => {
       formReset();
-      data && router.replace(ROUTES.DETAIL(data?.programId));
+      programId && router.replace(ROUTES.DETAIL(programId));
     },
   });
 };
@@ -66,13 +71,13 @@ export const useDeleteProgram = (programId: number) => {
   });
 };
 
-export const useGetProgramById = (programId: number) => {
+export const useGetProgramById = (programId: number, isLoggedIn: boolean) => {
   const queryClient = useQueryClient();
 
   return useQuery({
     queryKey: [API.PROGRAM.DETAIL(programId)],
     queryFn: () =>
-      getProgramById(programId).then((res) => {
+      getProgramById(programId, isLoggedIn).then((res) => {
         queryClient.setQueryData<ProgramStatus>(
           ["programStatus", programId],
           res.programStatus,
@@ -91,10 +96,12 @@ export const useGetProgramList = ({
   programStatus,
   size,
   page,
+  isLoggedIn,
 }: GetProgramListRequest) => {
   return useQuery({
     queryKey: [API.PROGRAM.LIST, category, programStatus, size, page],
-    queryFn: () => getProgramList({ category, programStatus, size, page }),
+    queryFn: () =>
+      getProgramList({ category, programStatus, size, page, isLoggedIn }),
     select: (data) => ({
       totalPage: data?.totalPage,
       programs: data?.programs,

@@ -41,6 +41,13 @@ const TEAM_BUILDING = {
   INCREATABLE: "진행중인 팀빌딩이 있어 팀빌딩을 생성할 수 없습니다.",
 };
 
+const SLACK_MESSAGE = {
+  CONFIRM:
+    "슬랙 알림을 보내시겠습니까? 슬랙 알림은 공지사항 채널에 전송됩니다.",
+  SUCCESS: "슬랙 알림이 성공적으로 보내졌습니다! 공지사항 채널을 확인해주세요",
+  FAIL: "알 수 없는 이유로 슬랙 알림 전송에 실패했습니다. 다시 시도하겠습니까?",
+};
+
 Object.freeze(EDIT_DISABLED);
 Object.freeze(AUTH);
 Object.freeze(EDIT);
@@ -59,4 +66,5 @@ export default {
   CONFIRM,
   TEAM_BUILDING,
   COMPLATE,
+  SLACK_MESSAGE,
 };

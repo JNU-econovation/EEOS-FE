@@ -14,7 +14,7 @@ interface ProgramEditPageProps {
 
 const ProgramEditPage = ({ params }: ProgramEditPageProps) => {
   const { programId } = params;
-  const { data: programInfo, isLoading } = useGetProgramById(+programId);
+  const { data: programInfo, isLoading } = useGetProgramById(+programId, true);
 
   if (isLoading) return <LoadingSpinner />;
 

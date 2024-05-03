@@ -10,6 +10,7 @@ interface ProgramListProps {
   programStatus?: ProgramStatus;
   page?: number;
   setPage: (page: number) => void;
+  isLoggedIn: boolean;
 }
 
 const ProgramList = ({
@@ -17,6 +18,7 @@ const ProgramList = ({
   programStatus = "active",
   page = 1,
   setPage: handleSetPage,
+  isLoggedIn,
 }: ProgramListProps) => {
   const queryClient = useQueryClient();
   const { data: programListData } = useGetProgramList({
@@ -24,6 +26,7 @@ const ProgramList = ({
     programStatus,
     page: page - 1,
     size: PROGRAM.LIST_SIZE,
+    isLoggedIn,
   });
 
   queryClient.setQueryData<number>(["totalPage"], programListData.totalPage);
@@ -33,7 +36,11 @@ const ProgramList = ({
     <>
       <div className="w-full space-y-5">
         {programs.map((program) => (
-          <ProgramListItem key={program.programId} programData={program} />
+          <ProgramListItem
+            key={program.programId}
+            programData={program}
+            isLoggedIn={isLoggedIn}
+          />
         ))}
       </div>
       <Paginataion
