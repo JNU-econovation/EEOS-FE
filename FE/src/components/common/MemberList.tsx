@@ -21,7 +21,7 @@ const MemberList = ({ members, blur = false }: MemberListProps) => {
 
 const MemberListItem = ({ name }: Omit<SimpleMemberInfo, "memberId">) => {
   return (
-    <div className="grid w-fit grid-cols-1 justify-items-center px-4 py-6 text-lg">
+    <div className="grid w-fit cursor-default select-none grid-cols-1 justify-items-center px-4 py-6 text-lg">
       <span>{name}</span>
     </div>
   );
