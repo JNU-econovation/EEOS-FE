@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { PropsWithChildren } from "react";
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="ko">
       <body className="flex flex-col items-center">
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );
