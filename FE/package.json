@@ -13,6 +13,8 @@
     "@tanstack/react-query-devtools": "^5.28.14",
     "@types/qs": "^6.9.10",
     "@types/react-syntax-highlighter": "^15.5.11",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "jotai": "^2.6.0",
