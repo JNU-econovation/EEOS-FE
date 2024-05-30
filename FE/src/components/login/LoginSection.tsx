@@ -1,6 +1,7 @@
+"use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import StyledLoginButton from "./ui/StyledLoginButton";
+import StyledLoginButton from "./ui/StyledLinkButton";
 import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
 interface LoginSectionProps {

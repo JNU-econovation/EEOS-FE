@@ -1,5 +1,5 @@
-import LoginLeftSection from "@/components/login/LeftSection";
-import LoginRightSection from "@/components/login/RightSection";
+import LoginLeftSection from "@/components/login/LoginLeftSection";
+import LoginRightSection from "@/components/login/LoginRightSection";
 
 const LoginPage = () => {
   return (
