@@ -17,6 +17,12 @@ const LoginPage = () => {
             priority
           />
           <LoginForm />
+          <button
+            className="mt-4 w-full rounded-lg bg-gray-20 p-2 font-bold"
+            disabled
+          >
+            id / pw 찾기
+          </button>
         </div>
       </div>
     </div>
