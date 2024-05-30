@@ -27,3 +27,15 @@ export const postTokenReissue = async (): Promise<LoginDto> => {
   });
   return new LoginDto(data?.data);
 };
+
+export const postAdminLogin = async (
+  id: string,
+  password: string,
+): Promise<LoginDto> => {
+  const { data } = await https({
+    url: API.AUTH.ADMIN_LOGIN,
+    method: "POST",
+    data: { id, password },
+  });
+  return new LoginDto(data?.data);
+};

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { postSlackLogin } from "@/apis/auth";
+import { postAdminLogin, postSlackLogin } from "@/apis/auth";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ROUTES from "@/constants/ROUTES";
 import {
@@ -32,6 +32,26 @@ export const useSlackLoginMutation = () => {
       },
     },
   );
+};
+
+export const useAdminLoginMutation = () => {
+  const router = useRouter();
+  return useMutation({
+    mutationFn: ({ id, password }: { id: string; password: string }) =>
+      postAdminLogin(id, password),
+    onSuccess: (data) => {
+      const { accessToken, accessExpiredTime } = data;
+      setAccessToken(accessToken);
+      setTokenExpiration(accessExpiredTime);
+      router.replace(ROUTES.ADMIN_MAIN);
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError: (error: any) => {
+      const errorCode = error?.response?.data?.code;
+      errorCode === ERROR_CODE.AUTH.INVALID_NAME &&
+        router.replace(ROUTES.NAME_ERROR);
+    },
+  });
 };
 
 export const useLogoutMutation = () => {

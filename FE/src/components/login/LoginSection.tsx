@@ -1,4 +1,3 @@
-"use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import StyledLoginButton from "./ui/StyledLinkButton";
@@ -31,7 +30,9 @@ const SlackLoginButton = () => {
   const { mutate: loginSlack } = useSlackLoginMutation();
 
   useEffect(() => {
-    if (code) loginSlack({ code, redirect_uri: redirectUri });
+    if (code) {
+      loginSlack({ code, redirect_uri: redirectUri });
+    }
   }, [code]);
 
   return (
