@@ -38,7 +38,7 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="mt-4 w-full rounded-lg bg-primary p-2 font-bold"
+        className="mt-4 w-full rounded-lg bg-primary p-2 font-semibold"
         disabled={pending}
       >
         로그인

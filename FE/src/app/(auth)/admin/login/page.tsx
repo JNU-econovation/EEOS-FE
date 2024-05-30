@@ -18,7 +18,7 @@ const LoginPage = () => {
           />
           <LoginForm />
           <button
-            className="mt-4 w-full rounded-lg bg-gray-20 p-2 font-bold"
+            className="mt-4 w-full rounded-lg bg-gray-20 p-2 font-semibold"
             disabled
           >
             id / pw 찾기
