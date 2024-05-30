@@ -9,19 +9,19 @@ const colors = {
   guest: "bg-primary text-black text-paragraph",
 };
 
-interface StyledLoginButtonProps {
+interface StyledLinkButtonProps {
   linkUrl: string;
   buttonText: string;
   imageUrl: string;
   color: keyof typeof colors;
 }
 
-export default function StyledLoginButton({
+export default function StyledLinkButton({
   linkUrl,
   buttonText,
   imageUrl,
   color,
-}: StyledLoginButtonProps) {
+}: Readonly<StyledLinkButtonProps>) {
   const buttonStyle = classNames(defaultStyle, colors[color]);
   return (
     <Link className={buttonStyle} href={linkUrl}>

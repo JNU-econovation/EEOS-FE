@@ -1,10 +1,23 @@
-"use client";
-
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import StyledLoginButton from "../ui/StyledLoginButton";
+import StyledLoginButton from "./ui/StyledLinkButton";
 import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
+interface LoginSectionProps {
+  title: string;
+  children: React.ReactNode;
+}
+//Wrapper
+const LoginSection = ({ title, children }: LoginSectionProps) => {
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <p className="font-light">{title}</p>
+      {children}
+    </div>
+  );
+};
+
+//Children_1 SlackLoginButton
 const SlackLoginButton = () => {
   const clientId = process.env.NEXT_PUBLIC_SLACK_CLIENT_ID;
   const redirectUri = process.env.NEXT_PUBLIC_SLACK_REDIRECT_URI;
@@ -32,4 +45,19 @@ const SlackLoginButton = () => {
   );
 };
 
-export default SlackLoginButton;
+//Children_2 GuestLoginButton
+const GuestLoginButton = () => {
+  return (
+    <StyledLoginButton
+      linkUrl="/guest/main"
+      buttonText="Visit to EEOS"
+      imageUrl="/icons/blackCompany.svg"
+      color="guest"
+    />
+  );
+};
+
+LoginSection.SlackLoginButton = SlackLoginButton;
+LoginSection.GuestLoginButton = GuestLoginButton;
+
+export default LoginSection;
