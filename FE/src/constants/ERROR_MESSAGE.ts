@@ -75,6 +75,9 @@ const ERROR_MESSAGE = {
     message:
       "에코노베이션 슬랙의 표시 이름 형식이 올바르지 않습니다. (예: 25기 홍길동)",
   },
+  [ERROR_CODE.AUTH.INCORRECT_LOGIN_INFO]: {
+    message: "아이디 또는 비밀번호가 일치하지 않습니다.",
+  },
 
   // API
   [ERROR_CODE.API.SLACK_CALL_FAILED]: {

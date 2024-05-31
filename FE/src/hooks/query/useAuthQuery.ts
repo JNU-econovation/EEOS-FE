@@ -39,17 +39,12 @@ export const useAdminLoginMutation = () => {
   return useMutation({
     mutationFn: ({ id, password }: { id: string; password: string }) =>
       postAdminLogin(id, password),
+
     onSuccess: (data) => {
       const { accessToken, accessExpiredTime } = data;
       setAccessToken(accessToken);
       setTokenExpiration(accessExpiredTime);
       router.replace(ROUTES.ADMIN_MAIN);
-    },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onError: (error: any) => {
-      const errorCode = error?.response?.data?.code;
-      errorCode === ERROR_CODE.AUTH.INVALID_NAME &&
-        router.replace(ROUTES.NAME_ERROR);
     },
   });
 };
