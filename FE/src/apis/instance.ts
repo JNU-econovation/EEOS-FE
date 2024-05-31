@@ -77,6 +77,7 @@ https.interceptors.response.use(
       });
       deleteTokenInfo();
       setTimeout(() => {
+        if (errorCode === ERROR_CODE.AUTH.INCORRECT_LOGIN_INFO) return;
         window.location.href = "/login";
       }, 3000);
     }

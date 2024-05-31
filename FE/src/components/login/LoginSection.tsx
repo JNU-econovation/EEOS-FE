@@ -50,7 +50,7 @@ const GuestLoginButton = () => {
   return (
     <StyledLoginButton
       linkUrl="/guest/main"
-      buttonText="Visit to EEOS"
+      buttonText="Visit EEOS"
       imageUrl="/icons/blackCompany.svg"
       color="guest"
     />

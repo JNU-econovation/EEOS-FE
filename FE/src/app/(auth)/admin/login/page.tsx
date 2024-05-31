@@ -7,7 +7,7 @@ const LoginPage = () => {
     <div className="grid h-[80vh] sm:h-[44rem] sm:grid-cols-[25rem_1fr] sm:shadow-lg">
       <LoginLeftSection />
       <div className="flex items-center justify-center">
-        <div className="rounded-lg bg-gray-10 p-8">
+        <div className="rounded-lg border bg-gray-10 p-8">
           <Image
             src="/icons/eeosAdminLogo.svg"
             className="mx-auto"
@@ -21,7 +21,7 @@ const LoginPage = () => {
             className="mt-4 w-full rounded-lg bg-gray-20 p-2 font-semibold"
             disabled
           >
-            id / pw 찾기
+            ID / PW 찾기
           </button>
         </div>
       </div>
