@@ -21,7 +21,6 @@ export const useSlackLoginMutation = () => {
         const { accessToken, accessExpiredTime } = data;
         setAccessToken(accessToken);
         setTokenExpiration(accessExpiredTime);
-
         router.replace(ROUTES.MAIN);
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

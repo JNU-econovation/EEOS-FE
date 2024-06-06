@@ -1,18 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import ROUTES from "@/constants/ROUTES";
+import { CheckIsLoggedIn } from "@/utils/authWithStorage";
 
 const INIT_CATEGORY = "all";
 const INIT_STATUS = "active";
 const INIT_PAGE = "1";
 
-interface LogoProps {
-  isLoggedIn: boolean;
-}
-
-const Logo = ({ isLoggedIn }: LogoProps) => {
+const Logo = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+
+  useEffect(() => {
+    const isLoggedIn = CheckIsLoggedIn();
+    setIsLoggedIn(isLoggedIn);
+    return () => setIsLoggedIn(false);
+  }, []);
 
   const mainUrl = isLoggedIn ? ROUTES.MAIN : ROUTES.GUEST_MAIN;
 
