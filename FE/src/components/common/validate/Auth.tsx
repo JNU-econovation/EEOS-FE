@@ -1,9 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import ROUTES from "@/constants/ROUTES";
-import { CheckIsLoggedIn } from "@/utils/authWithStorage";
+import useAuth from "@/hooks/useAuth";
 
 interface AuthValidateProps {
   isHaveToLoggedInRoute?: boolean;
@@ -11,15 +10,11 @@ interface AuthValidateProps {
 
 const AuthValidate = ({ isHaveToLoggedInRoute = true }: AuthValidateProps) => {
   const router = useRouter();
-  useEffect(() => {
-    const isLoggedIn = CheckIsLoggedIn();
+  const { isLoggedIn, isLoading } = useAuth();
 
-    if (isHaveToLoggedInRoute && !isLoggedIn) {
-      router.push(ROUTES.LOGIN);
-    } else if (!isHaveToLoggedInRoute && isLoggedIn) {
-      router.push(ROUTES.MAIN);
-    }
-  }, []);
+  if (isLoading) return null;
+  if (isHaveToLoggedInRoute && !isLoggedIn) router.push(ROUTES.LOGIN);
+  if (!isHaveToLoggedInRoute && isLoggedIn) router.push(ROUTES.MAIN);
 
   return <></>;
 };

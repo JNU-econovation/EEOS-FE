@@ -2,24 +2,17 @@
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import ROUTES from "@/constants/ROUTES";
-import { CheckIsLoggedIn } from "@/utils/authWithStorage";
+import useAuth from "@/hooks/useAuth";
 
 const INIT_CATEGORY = "all";
 const INIT_STATUS = "active";
 const INIT_PAGE = "1";
 
 const Logo = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    const isLoggedIn = CheckIsLoggedIn();
-    setIsLoggedIn(isLoggedIn);
-    return () => setIsLoggedIn(false);
-  }, []);
 
   const mainUrl = isLoggedIn ? ROUTES.MAIN : ROUTES.GUEST_MAIN;
 
