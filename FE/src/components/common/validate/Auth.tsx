@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 import ROUTES from "@/constants/ROUTES";
-import { CheckIsLoggedIn, deleteTokenInfo } from "@/utils/authWithStorage";
+import { CheckIsLoggedIn } from "@/utils/authWithStorage";
 
 interface AuthValidateProps {
   isHaveToLoggedInRoute?: boolean;
@@ -16,13 +16,11 @@ const AuthValidate = ({ isHaveToLoggedInRoute = true }: AuthValidateProps) => {
 
     if (isHaveToLoggedInRoute && !isLoggedIn) {
       router.push(ROUTES.LOGIN);
-      deleteTokenInfo();
-    }
-    if (!isHaveToLoggedInRoute && isLoggedIn) {
+    } else if (!isHaveToLoggedInRoute && isLoggedIn) {
       router.push(ROUTES.MAIN);
     }
   }, []);
 
   return <></>;
 };
-export default memo(AuthValidate);
+export default AuthValidate;
