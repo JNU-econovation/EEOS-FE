@@ -1,3 +1,4 @@
+import ProgressDisplay from "../common/ProgressDisplay";
 import { ProgramSimpleInfoDto } from "@/apis/dtos/program.dto";
 import Link from "@/components/common/Link";
 import ROUTES from "@/constants/ROUTES";
@@ -9,7 +10,7 @@ interface ProgramListItemProps {
 }
 
 const ProgramListItem = ({ programData, isLoggedIn }: ProgramListItemProps) => {
-  const { programId, title, deadLine } = programData;
+  const { programId, title, deadLine, program_attend_mode } = programData;
   const lingUrl = isLoggedIn
     ? ROUTES.DETAIL(programId)
     : ROUTES.GUEST_DETAIL(programId);
@@ -22,7 +23,12 @@ const ProgramListItem = ({ programData, isLoggedIn }: ProgramListItemProps) => {
       <p className="w-full truncate text-center text-lg font-bold sm:text-left">
         {title}
       </p>
-      <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
+      {program_attend_mode === "non_open" ? (
+        <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
+      ) : (
+        // 출석체크중인
+        <ProgressDisplay progressText="출석 진행중" color="success" />
+      )}
     </Link>
   );
 };

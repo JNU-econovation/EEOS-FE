@@ -1,4 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query";
+// import { useQueryClient } from "@tanstack/react-query";
 import Paginataion from "../common/pagination/Pagination";
 import ProgramListItem from "./ProgramListItem";
 import PROGRAM from "@/constants/PROGRAM";
@@ -20,7 +20,7 @@ const ProgramList = ({
   setPage: handleSetPage,
   isLoggedIn,
 }: ProgramListProps) => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const { data: programListData } = useGetProgramList({
     category,
     programStatus,
@@ -29,7 +29,7 @@ const ProgramList = ({
     isLoggedIn,
   });
 
-  queryClient.setQueryData<number>(["totalPage"], programListData.totalPage);
+  // queryClient.setQueryData<number>(["totalPage"], programListData.totalPage);
   const { programs } = programListData;
 
   return (

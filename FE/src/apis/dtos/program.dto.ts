@@ -24,7 +24,7 @@ export class ProgramInfoDto {
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
-  public readonly program_attend_mode: string;
+  public readonly program_attend_mode: "attend" | "late" | "non_open";
 
   constructor(data: ProgramInfo) {
     this.programId = data?.programId;
@@ -46,7 +46,7 @@ export class ProgramSimpleInfoDto {
   public readonly category: ProgramCategory;
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
-  public readonly program_attend_mode: string;
+  public readonly program_attend_mode: "attend" | "late" | "non_open";
 
   constructor(data: ProgramSimpleInfo) {
     this.programId = data?.programId;
