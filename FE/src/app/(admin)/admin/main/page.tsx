@@ -1,5 +1,11 @@
-const page = () => {
-  return <div></div>;
+import Program from "@/components/main/Program";
+
+const AdminMainPage = () => {
+  return (
+    <div className="relative space-y-8">
+      <Program />
+    </div>
+  );
 };
 
-export default page;
+export default AdminMainPage;
