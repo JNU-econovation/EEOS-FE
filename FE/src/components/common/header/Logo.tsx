@@ -9,12 +9,29 @@ const INIT_CATEGORY = "all";
 const INIT_STATUS = "active";
 const INIT_PAGE = "1";
 
-const Logo = () => {
+interface LogoProps {
+  isAdmin?: boolean;
+}
+
+const Logo = ({ isAdmin }: LogoProps) => {
   const { isLoggedIn } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
+  const alt = isAdmin ? "eeosAdminLogo" : "eeosLogo";
+  const src = isAdmin ? "/icons/eeosAdminLogo.svg" : "/eeos_logo.svg";
   const mainUrl = isLoggedIn ? ROUTES.MAIN : ROUTES.GUEST_MAIN;
+  const widdth = isAdmin ? 180 : 80;
+  const height = isAdmin ? 36 : 36;
+  const priority = true;
+
+  const ImageProps = {
+    src,
+    alt,
+    width: widdth,
+    height,
+    priority,
+  };
 
   const handleClick = () => {
     if (pathname === mainUrl) {
@@ -26,14 +43,7 @@ const Logo = () => {
 
   return (
     <button type="button" onClick={handleClick}>
-      <Image
-        src="/eeos_logo.svg"
-        alt="logo"
-        width={80}
-        height={36}
-        className="h-[36px] w-[80px]"
-        priority
-      />
+      <Image {...ImageProps} />
     </button>
   );
 };
