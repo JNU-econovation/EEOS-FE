@@ -89,7 +89,10 @@ export const deleteProgram = async (programId: number) => {
  */
 
 export interface PostProgramRequest
-  extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {
+  extends Omit<
+    ProgramInfo,
+    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+  > {
   members: { memberId: number }[];
 }
 
@@ -148,7 +151,10 @@ export interface PatchProgramMember {
 }
 
 export interface PatchProgramBody
-  extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {
+  extends Omit<
+    ProgramInfo,
+    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+  > {
   members: PatchProgramMember[];
 }
 

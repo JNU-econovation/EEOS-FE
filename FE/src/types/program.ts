@@ -14,6 +14,7 @@ export interface ProgramInfo {
   programStatus: ProgramStatus;
   type: ProgramType;
   accessRight: AccessRight;
+  program_attend_mode: string;
 }
 
 export interface ProgramSimpleInfo extends Omit<ProgramInfo, "content"> {}
