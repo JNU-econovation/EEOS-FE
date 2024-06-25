@@ -16,8 +16,8 @@ import ProgramList from "./ProgramList";
 import ProgramListLoader from "./ProgramList.loader";
 import MAIN from "@/constants/MAIN";
 import PROGRAM from "@/constants/PROGRAM";
-import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
 import { AccessType } from "@/types/access";
+import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
 
 const ProgramContext = createContext(null);
 
