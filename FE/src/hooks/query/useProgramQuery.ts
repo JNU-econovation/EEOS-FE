@@ -96,12 +96,12 @@ export const useGetProgramList = ({
   programStatus,
   size,
   page,
-  isLoggedIn,
+  isAdmin,
 }: GetProgramListRequest) => {
   return useQuery({
     queryKey: [API.PROGRAM.LIST, category, programStatus, size, page],
     queryFn: () =>
-      getProgramList({ category, programStatus, size, page, isLoggedIn }),
+      getProgramList({ category, programStatus, size, page, isAdmin }),
     select: (data) => ({
       totalPage: data?.totalPage,
       programs: data?.programs,

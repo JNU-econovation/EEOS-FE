@@ -17,6 +17,7 @@ import ProgramListLoader from "./ProgramList.loader";
 import MAIN from "@/constants/MAIN";
 import PROGRAM from "@/constants/PROGRAM";
 import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
+import { AccessType } from "@/types/access";
 
 const ProgramContext = createContext(null);
 
@@ -112,7 +113,10 @@ const StatusTab = () => {
   );
 };
 
-const Content = () => {
+interface ContentProps {
+  contentType: AccessType;
+}
+const Content = ({ contentType }: ContentProps) => {
   const { queryValue, handleSetPage } = useContext(ProgramContext);
 
   return (
@@ -123,7 +127,7 @@ const Content = () => {
           programStatus={queryValue.status}
           page={+queryValue.page}
           setPage={handleSetPage}
-          isLoggedIn
+          contentType={contentType}
         />
       </Suspense>
     </ErrorBoundary>

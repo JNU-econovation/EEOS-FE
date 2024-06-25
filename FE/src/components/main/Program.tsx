@@ -1,12 +1,17 @@
 "use client";
 import ProgramWrapper from "./Program.compound";
+import { AccessType } from "@/types/access";
 
-const Program = () => {
+interface ProgramProps {
+  AccessType: AccessType;
+}
+
+const Program = ({ AccessType }: ProgramProps) => {
   return (
     <ProgramWrapper>
       <ProgramWrapper.CategoryTab />
       <ProgramWrapper.StatusTab />
-      <ProgramWrapper.Content />
+      <ProgramWrapper.Content contentType={AccessType} />
     </ProgramWrapper>
   );
 };

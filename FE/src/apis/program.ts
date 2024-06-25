@@ -41,7 +41,7 @@ export interface GetProgramListRequest {
   programStatus: ProgramStatus;
   size: number;
   page: number;
-  isLoggedIn: boolean;
+  isAdmin?: boolean;
 }
 
 export const getProgramList = async ({
@@ -49,9 +49,9 @@ export const getProgramList = async ({
   programStatus,
   size,
   page,
-  isLoggedIn,
+  isAdmin,
 }: GetProgramListRequest): Promise<ProgramListDto> => {
-  const url = isLoggedIn ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
+  const url = isAdmin ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
   const { data } = await https({
     url,
     method: "GET",

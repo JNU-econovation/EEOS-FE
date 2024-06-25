@@ -6,6 +6,7 @@ const ROUTES = {
   MANAGE: "/admin/manage",
   DETAIL: (programId: number) => `/detail/${programId}`,
   GUEST_DETAIL: (programId: number) => `/guest/detail/${programId}`,
+  ADMIN_DETAIL: (programId: number) => `/admin/detail/${programId}`,
   EDIT: (programId: number) => `/edit/${programId}`,
   ERROR: "/error",
   LOGIN: "/login",

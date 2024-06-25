@@ -37,5 +37,6 @@ export const postAdminLogin = async (
     method: "POST",
     data: { id, password },
   });
+
   return new LoginDto(data?.data);
 };
