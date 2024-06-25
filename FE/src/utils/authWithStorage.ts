@@ -31,21 +31,14 @@ export const getTokenExpiration = () => {
 };
 
 export const CheckIsLoggedIn = () => {
-  // if (typeof window !== "undefined") return false;
   const accessToken = getAccessToken();
   const tokenExpiration = getTokenExpiration();
 
-  if (!accessToken || !tokenExpiration) {
-    deleteTokenInfo();
-    return false;
-  }
+  if (!accessToken || !tokenExpiration) return false;
 
   const tokenExpirationDate = new Date(+tokenExpiration);
   const now = new Date();
 
-  if (tokenExpirationDate < now) {
-    deleteTokenInfo();
-    return false;
-  }
+  if (tokenExpirationDate < now) return false;
   return true;
 };

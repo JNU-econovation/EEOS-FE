@@ -48,7 +48,6 @@ const Tab = <T,>({
           rounded={rounded}
         />
       ))}
-      <div className="s"></div>
     </div>
   );
 };

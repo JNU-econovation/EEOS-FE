@@ -1,11 +1,11 @@
 import Program from "@/components/main/Program";
 
-const GuestMainPage = () => {
+const AdminMainPage = () => {
   return (
     <div className="relative space-y-8">
-      <Program AccessType="public" />
+      <Program AccessType="admin" />
     </div>
   );
 };
 
-export default GuestMainPage;
+export default AdminMainPage;

@@ -3,6 +3,7 @@ import Paginataion from "../common/pagination/Pagination";
 import ProgramListItem from "./ProgramListItem";
 import PROGRAM from "@/constants/PROGRAM";
 import { useGetProgramList } from "@/hooks/query/useProgramQuery";
+import { AccessType } from "@/types/access";
 import { ProgramCategoryWithAll, ProgramStatus } from "@/types/program";
 
 interface ProgramListProps {
@@ -10,7 +11,7 @@ interface ProgramListProps {
   programStatus?: ProgramStatus;
   page?: number;
   setPage: (page: number) => void;
-  isLoggedIn: boolean;
+  contentType: AccessType;
 }
 
 const ProgramList = ({
@@ -18,15 +19,16 @@ const ProgramList = ({
   programStatus = "active",
   page = 1,
   setPage: handleSetPage,
-  isLoggedIn,
+  contentType,
 }: ProgramListProps) => {
+  const isAdmin = contentType === "admin";
   const queryClient = useQueryClient();
   const { data: programListData } = useGetProgramList({
     category,
     programStatus,
     page: page - 1,
     size: PROGRAM.LIST_SIZE,
-    isLoggedIn,
+    isAdmin,
   });
 
   queryClient.setQueryData<number>(["totalPage"], programListData.totalPage);
@@ -39,7 +41,7 @@ const ProgramList = ({
           <ProgramListItem
             key={program.programId}
             programData={program}
-            isLoggedIn={isLoggedIn}
+            contentType={contentType}
           />
         ))}
       </div>

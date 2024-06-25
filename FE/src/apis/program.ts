@@ -21,11 +21,11 @@ import MESSAGE from "@/constants/MESSAGE";
 
 export const getProgramById = async (
   programId: number,
-  isLoggedIn: boolean,
+  isAbletoEdit: boolean,
 ): Promise<ProgramInfoDto> => {
-  const url = isLoggedIn
-    ? API.PROGRAM.DETAIL(programId)
-    : API.PROGRAM.GUEST_DETAIL(programId);
+  const url = isAbletoEdit
+    ? API.PROGRAM.Edit_DETAIL(programId)
+    : API.PROGRAM.DETAIL(programId);
   const { data } = await https({
     url,
   });
@@ -41,7 +41,7 @@ export interface GetProgramListRequest {
   programStatus: ProgramStatus;
   size: number;
   page: number;
-  isLoggedIn: boolean;
+  isAdmin?: boolean;
 }
 
 export const getProgramList = async ({
@@ -49,9 +49,9 @@ export const getProgramList = async ({
   programStatus,
   size,
   page,
-  isLoggedIn,
+  isAdmin,
 }: GetProgramListRequest): Promise<ProgramListDto> => {
-  const url = isLoggedIn ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
+  const url = isAdmin ? API.PROGRAM.LIST : API.PROGRAM.GUEST_LIST;
   const { data } = await https({
     url,
     method: "GET",
@@ -89,7 +89,10 @@ export const deleteProgram = async (programId: number) => {
  */
 
 export interface PostProgramRequest
-  extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {
+  extends Omit<
+    ProgramInfo,
+    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+  > {
   members: { memberId: number }[];
 }
 
@@ -148,7 +151,10 @@ export interface PatchProgramMember {
 }
 
 export interface PatchProgramBody
-  extends Omit<ProgramInfo, "programId" | "programStatus" | "accessRight"> {
+  extends Omit<
+    ProgramInfo,
+    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+  > {
   members: PatchProgramMember[];
 }
 

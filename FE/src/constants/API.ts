@@ -4,8 +4,8 @@ const PROGRAM = {
   GUEST_LIST: "/guest/programs",
   UPDATE: (programId: number) => `/programs/${programId}`,
   DELETE: (programId: number) => `/programs/${programId}`,
-  DETAIL: (programId: number) => `/programs/${programId}`,
-  GUEST_DETAIL: (programId: number) => `/guest/programs/${programId}`,
+  DETAIL: (programId: number) => `/guest/programs/${programId}`,
+  Edit_DETAIL: (programId: number) => `/programs/${programId}`,
   ACCESS_RIGHT: (programId: number) => `/programs/${programId}/accessRight`,
   SEND_MESSAGE: (programId: number) =>
     `/programs/${programId}/slack/notification`,

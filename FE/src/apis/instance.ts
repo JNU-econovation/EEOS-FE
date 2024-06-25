@@ -5,6 +5,8 @@ import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
 import {
   deleteTokenInfo,
+  getAccessToken,
+  getTokenExpiration,
   setAccessToken,
   setTokenExpiration,
 } from "@/utils/authWithStorage";
@@ -20,24 +22,24 @@ const https = axios.create({
 https.interceptors.request.use(
   async (config) => {
     if (typeof window === "undefined") return config;
-    const accessToken = localStorage.getItem("accessToken")?.replace(/"/g, "");
-    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    const accessToken = getAccessToken();
+    const tokenExpiration = getTokenExpiration();
 
-    if (accessToken && tokenExpiration) {
-      const currentTime = new Date().getTime();
-      const timeToExpiration = Number(tokenExpiration) - currentTime;
-      const TOKEN_REISSUE_THRESHOLD = Number(
-        process.env.NEXT_PUBLIC_TOKEN_REISSUE_THRESHOLD,
-      );
+    if (!accessToken || !tokenExpiration) return config;
 
-      if (timeToExpiration < TOKEN_REISSUE_THRESHOLD) {
-        const { accessToken, accessExpiredTime } = await postTokenReissue();
-        setAccessToken(accessToken);
-        setTokenExpiration(accessExpiredTime);
-      }
+    const currentTime = new Date().getTime();
+    const timeToExpiration = Number(tokenExpiration) - currentTime;
+    const TOKEN_REISSUE_THRESHOLD = Number(
+      process.env.NEXT_PUBLIC_TOKEN_REISSUE_THRESHOLD,
+    );
 
-      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    if (timeToExpiration < TOKEN_REISSUE_THRESHOLD) {
+      const { accessToken, accessExpiredTime } = await postTokenReissue();
+      setAccessToken(accessToken);
+      setTokenExpiration(accessExpiredTime);
     }
+
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
 
     return config;
   },
