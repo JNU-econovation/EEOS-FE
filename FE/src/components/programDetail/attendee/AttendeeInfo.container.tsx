@@ -27,7 +27,6 @@ const AttendeeInfoContainer = ({
         attendStatuses.map((status) => (
           <BluredAttedee key={status} status={status} />
         ))}
-
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <div className="space-y-16">
           {isLoggedIn &&

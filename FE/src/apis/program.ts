@@ -21,11 +21,11 @@ import MESSAGE from "@/constants/MESSAGE";
 
 export const getProgramById = async (
   programId: number,
-  isLoggedIn: boolean,
+  isAbletoEdit: boolean,
 ): Promise<ProgramInfoDto> => {
-  const url = isLoggedIn
-    ? API.PROGRAM.DETAIL(programId)
-    : API.PROGRAM.GUEST_DETAIL(programId);
+  const url = isAbletoEdit
+    ? API.PROGRAM.Edit_DETAIL(programId)
+    : API.PROGRAM.DETAIL(programId);
   const { data } = await https({
     url,
   });
