@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import StatusToggleItem from "./StatusToggleItem";
+import StatusToggleItem, { StatusToggleItemColor } from "./StatusToggleItem";
 import ATTEND_STATUS, {
   AttendStatusToggleOption,
 } from "@/constants/ATTEND_STATUS";
@@ -40,7 +40,9 @@ const AttendStatusToggle = ({
         <div onClick={() => handleClick(option)} key={option.text}>
           <StatusToggleItem
             text={option.text}
-            color={getItemColor(option.type, option.color)}
+            color={
+              getItemColor(option.type, option.color) as StatusToggleItemColor
+            }
           />
         </div>
       ))}

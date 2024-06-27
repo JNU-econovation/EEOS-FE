@@ -1,8 +1,9 @@
+import { StatusToggleItemColor } from "@/components/common/attendStatusToggle/StatusToggleItem";
 import { TabOption } from "@/types/tab";
 import { InputStatus } from "@/types/teamBuilding";
 
 export interface InputStatusToggleOption extends TabOption<InputStatus> {
-  color: string;
+  color: StatusToggleItemColor;
 }
 
 type InputStatusToggle = {

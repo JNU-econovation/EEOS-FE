@@ -1,8 +1,9 @@
+import { StatusToggleItemColor } from "@/components/common/attendStatusToggle/StatusToggleItem";
 import { AttendStatus } from "@/types/member";
 import { TabOption } from "@/types/tab";
 
 export interface AttendStatusToggleOption extends TabOption<AttendStatus> {
-  color: string;
+  color: StatusToggleItemColor;
 }
 type AttendStatusToggle = {
   [key in Exclude<
@@ -20,7 +21,7 @@ type AttendStatusList = {
 
 type AttendStatusUser = {
   [key in AttendStatus]: TabOption<AttendStatus> & {
-    color: string;
+    color: StatusToggleItemColor;
     demand_text?: string;
   };
 };
