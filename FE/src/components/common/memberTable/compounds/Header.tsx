@@ -1,22 +1,24 @@
 import { useAtom } from "jotai";
-import CheckBox from "../CheckBox";
+import CheckBox from "@/components/common/CheckBox";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
 import { FormType } from "@/types/form";
 
-interface MemberTableHeaderProps {
+interface HeaderProps {
   formType: FormType;
   onClickCheckBox: (selected: boolean) => void;
 }
+/**
+ * 멤버 테이블의 헤더 컴포넌트
+ * fromType에 따라 다른 ui를 출력함. (create, edit)
+ * create: ["활동 상태", "이름"]
+ * edit: ["활동 상태", "이름", "", "출석 상태"]
+ */
+const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
+  const HEADER_TEXT = {
+    create: ["활동 상태", "이름"],
+    edit: ["활동 상태", "이름", "", "출석 상태"],
+  };
 
-const HEADER_TEXT = {
-  create: ["활동 상태", "이름"],
-  edit: ["활동 상태", "이름", "", "출석 상태"],
-};
-
-const MemberTableHeader = ({
-  formType,
-  onClickCheckBox,
-}: MemberTableHeaderProps) => {
   const [checked, setChecked] = useAtom(memberTableCheckedAtom);
 
   const handleClickCheckBox = () => {
@@ -37,4 +39,4 @@ const MemberTableHeader = ({
     </div>
   );
 };
-export default MemberTableHeader;
+export default Header;

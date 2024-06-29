@@ -45,6 +45,8 @@ export const getProgramMembersByActiveStatus = async (
     params: { activeStatus },
   });
 
+  console.log(data);
+
   return data?.data?.members.map(
     (member: MemberInfo) => new MemberInfoDto(member),
   );

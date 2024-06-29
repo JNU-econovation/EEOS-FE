@@ -1,11 +1,54 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { toast } from "react-toastify";
-import AttendStatusToggle from "../common/attendStatusToggle/AttendStatusToggle";
-import CheckBox from "../common/CheckBox";
+import AttendStatusToggle from "../../attendStatusToggle/AttendStatusToggle";
+import CheckBox from "../../CheckBox";
+import MemberTableLoader from "../MemberTable.loader";
+import { MemberContext } from "../MemberTableWrapper";
+import ErrorFallback from "@/components/common/ErrorFallback";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
+import { useGetProgramMembersByActive } from "@/hooks/query/useMemberQuery";
 import { ActiveStatus, AttendStatus } from "@/types/member";
+
+interface ListInEditTypeProps {
+  programId: number;
+  setMembers: (memberId: number, before: string, after: string) => void;
+  isEditable?: boolean;
+}
+const ListInEditType = ({
+  programId,
+  setMembers,
+  isEditable,
+}: ListInEditTypeProps) => {
+  const {
+    tab: { selectedActive },
+  } = useContext(MemberContext);
+
+  const { data: editMemberList, isLoading: isEditListLoading } =
+    useGetProgramMembersByActive({
+      programId,
+      status: selectedActive,
+    });
+
+  if (isEditListLoading) return <MemberTableLoader />;
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      {editMemberList.map(({ memberId, activeStatus, attendStatus, name }) => (
+        <EditMemberTableItem
+          key={memberId}
+          memberId={memberId}
+          name={name}
+          activeStatus={activeStatus}
+          initAttendStatus={attendStatus}
+          setMembers={setMembers}
+          isEditable={isEditable}
+        />
+      ))}
+    </ErrorBoundary>
+  );
+};
 
 interface EditMemberTableItemProps {
   memberId: number;
@@ -84,4 +127,5 @@ const EditMemberTableItem = ({
     </div>
   );
 };
-export default EditMemberTableItem;
+
+export default ListInEditType;

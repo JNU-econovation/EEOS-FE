@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TeamList from "./TeamList";
 import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import Title from "@/components/common/Title";
 import { useCreateTeam, useTeam } from "@/hooks/query/useTeamQuery";
 
 const TeamManageSection = () => {
@@ -18,6 +19,7 @@ const TeamManageSection = () => {
 
   return (
     <section>
+      <Title text="팀 관리하기" />
       <form className="relative mt-6" onSubmit={createTeamWithName}>
         <input
           className="w-full rounded border px-4 py-6 text-lg outline-none"
