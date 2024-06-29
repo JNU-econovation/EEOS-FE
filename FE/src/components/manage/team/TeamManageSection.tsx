@@ -35,8 +35,12 @@ const TeamManageSection = () => {
       <ul className="mt-6 grid grid-cols-2 gap-4">
         {isLoading && <div />}
         {data &&
-          data.teams.map(({ teamId, teamName }) => (
-            <TeamList key={teamId} teamName={teamName} />
+          data.teams.map(({ teamId, teamName }, i) => (
+            <TeamList
+              key={`${teamId}-${teamName}-${i}`}
+              teamId={teamId}
+              teamName={teamName}
+            />
           ))}
       </ul>
     </section>

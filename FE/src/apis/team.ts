@@ -18,3 +18,11 @@ export const getTeamList = async (programId?: number | "none") => {
   });
   return new TeamListDto(data?.data);
 };
+
+export const deleteTeam = async (teamId: number) => {
+  const { data } = await https({
+    url: API.TEAM.DELETE(teamId),
+    method: "DELETE",
+  });
+  return data?.data;
+};

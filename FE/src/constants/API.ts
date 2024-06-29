@@ -42,6 +42,7 @@ const TEAM_BUILDING = {
 
 const TEAM = {
   LIST: "/teams",
+  DELETE: (teamId: number) => `/teams/${teamId}`,
 };
 
 Object.freeze(PROGRAM);
