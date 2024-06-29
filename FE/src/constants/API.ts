@@ -42,6 +42,7 @@ const TEAM_BUILDING = {
 
 const TEAM = {
   LIST: "/teams",
+  CREATE: "/teams",
   DELETE: (teamId: number) => `/teams/${teamId}`,
 };
 

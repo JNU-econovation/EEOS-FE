@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { deleteTeam } from "@/apis/team";
+import { useDeleteTeam } from "@/hooks/query/useTeamQuery";
 
 interface TeamListProps {
   teamId: number;
@@ -7,6 +7,7 @@ interface TeamListProps {
 }
 
 const TeamList = ({ teamId, teamName }: TeamListProps) => {
+  const { mutate: deleteTeam } = useDeleteTeam(teamId);
   const deleteSelectedTeam = (teamId: number) => {
     const ok = confirm("정말로 삭제하시겠습니까?");
     if (ok) deleteTeam(teamId);

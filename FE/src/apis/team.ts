@@ -19,6 +19,16 @@ export const getTeamList = async (programId?: number | "none") => {
   return new TeamListDto(data?.data);
 };
 
+export const createTeam = async (teamName: string) => {
+  if (!teamName) throw new Error("팀 이름을 입력해주세요.");
+  const { data } = await https({
+    url: API.TEAM.CREATE,
+    method: "POST",
+    data: { teamName },
+  });
+  return data?.data;
+};
+
 export const deleteTeam = async (teamId: number) => {
   const { data } = await https({
     url: API.TEAM.DELETE(teamId),
