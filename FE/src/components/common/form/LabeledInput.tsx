@@ -1,3 +1,4 @@
+"use client";
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   prefix?: string;

@@ -1,5 +1,8 @@
+"use client";
+
 import classNames from "classnames";
-import StatusToggleItem from "./StatusToggleItem";
+import { createContext } from "react";
+import StatusToggleItem, { StatusToggleItemColor } from "../StatusToggleItem";
 import ATTEND_STATUS, {
   AttendStatusToggleOption,
 } from "@/constants/ATTEND_STATUS";
@@ -10,6 +13,18 @@ interface AttendStatusToggleProps {
   onSelect: (value: AttendStatus) => void;
   disabled?: boolean;
 }
+
+const toggleContext = createContext<AttendStatusToggleProps>(null);
+
+interface ToggleWrapperProps {
+  children: React.ReactNode;
+}
+export const ToggleWrapper = ({ children }: ToggleWrapperProps) => {
+  return (
+    <toggleContext.Provider value={null}>{children}</toggleContext.Provider>
+  );
+};
+
 const AttendStatusToggle = ({
   selectedValue,
   onSelect,
@@ -40,7 +55,9 @@ const AttendStatusToggle = ({
         <div onClick={() => handleClick(option)} key={option.text}>
           <StatusToggleItem
             text={option.text}
-            color={getItemColor(option.type, option.color)}
+            color={
+              getItemColor(option.type, option.color) as StatusToggleItemColor
+            }
           />
         </div>
       ))}

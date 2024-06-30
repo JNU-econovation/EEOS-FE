@@ -1,5 +1,6 @@
 import API from "../constants/API";
 import {
+  ActiveStatus,
   ActiveStatusWithAll,
   AttendStatus,
   MemberActiveStatusInfo,
@@ -67,4 +68,30 @@ export const getProgramMembersByAttendStatus = async (
   return data?.data?.members.map(
     (member: MemberAttendStatusInfo) => new MemberAttendStatusInfoDto(member),
   );
+};
+
+/**
+ * 회원 활동 상태 변경
+ */
+export const updateMemberActiveStatus = async (
+  memberId: number,
+  activeStatus: ActiveStatus,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.UPDATE(memberId),
+    method: "PUT",
+    data: { activeStatus },
+  });
+  return data?.data;
+};
+
+/**
+ * 회원 삭제
+ */
+export const deleteMember = async (memberId: number) => {
+  const { data } = await https({
+    url: API.MEMBER.DELETE(memberId),
+    method: "DELETE",
+  });
+  return data?.data;
 };

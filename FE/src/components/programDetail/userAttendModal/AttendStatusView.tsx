@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
-import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 import { ProgramType } from "@/types/program";
 

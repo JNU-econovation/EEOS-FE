@@ -13,6 +13,8 @@ const PROGRAM = {
 
 const MEMBER = {
   LIST: "/members",
+  UPDATE: (memberId: number) => `/members/${memberId}`,
+  DELETE: (memberId: number) => `/members/${memberId}`,
   ACTIVE_STATUS: (programId: number) => `/programs/${programId}/members`,
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}/members`,
 };
@@ -40,10 +42,17 @@ const TEAM_BUILDING = {
   DELETE: "/team-building",
 };
 
+const TEAM = {
+  LIST: "/teams",
+  CREATE: "/teams",
+  DELETE: (teamId: number) => `/teams/${teamId}`,
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
 Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
+Object.freeze(TEAM);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING };
+export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM };

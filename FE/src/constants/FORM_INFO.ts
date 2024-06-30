@@ -53,7 +53,7 @@ type SubmitText = {
   [key in FormType]: string;
 };
 
-const SUBMIT_TEXT: SubmitText = {
+const SUBMIT_TEXT: Omit<SubmitText, "manage"> = {
   create: "생성",
   edit: "수정",
 };

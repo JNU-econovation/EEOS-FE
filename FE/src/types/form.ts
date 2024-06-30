@@ -1,1 +1,1 @@
-export type FormType = "create" | "edit";
+export type FormType = "create" | "edit" | "manage";

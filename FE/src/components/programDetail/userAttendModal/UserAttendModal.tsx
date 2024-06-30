@@ -2,7 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import AttendStatusModalLoader from "./AttendStatusModal.loader";
 import AttendStatusView from "./AttendStatusView";
 import AttendToggleLabel from "./AttendToggleLabel";
-import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
+import AttendStatusToggle from "@/components/common/toggle/AttendStatusToggle";
 import MESSAGE from "@/constants/MESSAGE";
 import {
   useGetMyAttendStatus,
