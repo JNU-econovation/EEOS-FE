@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useAtom } from "jotai";
 import CheckBox from "@/components/common/CheckBox";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
@@ -19,6 +20,14 @@ const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
     edit: ["대상", "활동 상태", "이름", "", "출석 상태"],
     manage: ["활동 상태", "이름", "", ""],
   };
+  const HeaderStyle = classNames(
+    "grid w-fit  justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full",
+    {
+      "grid-cols-[7rem_7.25rem_1fr_10rem]": formType === "manage",
+      "grid-cols-[4.75rem_7rem_7.25rem_1fr_20.5rem]":
+        formType === "edit" || formType === "manage",
+    },
+  );
 
   const [checked, setChecked] = useAtom(memberTableCheckedAtom);
 
@@ -28,7 +37,7 @@ const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
   };
 
   return (
-    <div className="grid w-fit grid-cols-[4.75rem_7rem_7.25rem_1fr_20.5rem] justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full">
+    <div className={HeaderStyle}>
       {formType === "create" && (
         <CheckBox checked={checked} onClick={handleClickCheckBox} />
       )}
