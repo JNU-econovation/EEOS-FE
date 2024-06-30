@@ -5,7 +5,7 @@ import { FormType } from "@/types/form";
 
 interface HeaderProps {
   formType: FormType;
-  onClickCheckBox: (selected: boolean) => void;
+  onClickCheckBox?: (selected: boolean) => void;
 }
 /**
  * 멤버 테이블의 헤더 컴포넌트
@@ -16,7 +16,8 @@ interface HeaderProps {
 const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
   const HEADER_TEXT = {
     create: ["활동 상태", "이름"],
-    edit: ["활동 상태", "이름", "", "출석 상태"],
+    edit: ["대상", "활동 상태", "이름", "", "출석 상태"],
+    manage: ["활동 상태", "이름", "", ""],
   };
 
   const [checked, setChecked] = useAtom(memberTableCheckedAtom);
@@ -28,13 +29,11 @@ const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
 
   return (
     <div className="grid w-fit grid-cols-[4.75rem_7rem_7.25rem_1fr_20.5rem] justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full">
-      {formType === "create" ? (
+      {formType === "create" && (
         <CheckBox checked={checked} onClick={handleClickCheckBox} />
-      ) : (
-        <span></span>
       )}
       {HEADER_TEXT[formType].map((text: string, index: number) => (
-        <span key={index}>{text}</span>
+        <span key={`${index}-${text}`}>{text}</span>
       ))}
     </div>
   );

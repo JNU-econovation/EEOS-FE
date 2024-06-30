@@ -1,4 +1,4 @@
-import { StatusToggleItemColor } from "@/components/common/attendStatusToggle/StatusToggleItem";
+import { StatusToggleItemColor } from "@/components/common/StatusToggleItem";
 import { AttendStatus } from "@/types/member";
 import { TabOption } from "@/types/tab";
 

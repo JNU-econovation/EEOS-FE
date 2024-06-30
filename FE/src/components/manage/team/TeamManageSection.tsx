@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import TeamList from "./TeamList";
-import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
 import Title from "@/components/common/Title";
 import { useCreateTeam, useTeam } from "@/hooks/query/useTeamQuery";
 

@@ -1,4 +1,5 @@
 "use client";
+//FIXME: 하위 호환성을 위해 만들어진 컴포넌트로, 타 컴포넌트와의 의존성을 줄이는 방식으로 리팩토링이 필요
 
 import MemberTableWrapper from "./MemberTableWrapper";
 import { Members } from "@/components/programEdit/ProgramEditForm";
@@ -38,14 +39,14 @@ const MemberTable = ({
             setMembers={setMembers as (memberId: number) => void}
           />
         )}
+        {formType === "edit" && (
+          <MemberTableWrapper.EditList
+            programId={programId}
+            setMembers={setMembers}
+            isEditable={isEditable}
+          />
+        )}
       </div>
-      {formType === "edit" && (
-        <MemberTableWrapper.EditList
-          programId={programId}
-          setMembers={setMembers}
-          isEditable={isEditable}
-        />
-      )}
     </MemberTableWrapper>
   );
 };

@@ -1,7 +1,7 @@
 // import AttendToggleLabel from "./AttendToggleLabel";
 import Link from "next/link";
-import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
-import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
+import AttendStatusToggle from "@/components/common/toggle/AttendStatusToggle";
 import ROUTES from "@/constants/ROUTES";
 
 export default function LoginModal() {
