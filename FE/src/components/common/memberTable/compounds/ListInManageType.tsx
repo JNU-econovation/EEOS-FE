@@ -1,4 +1,6 @@
+"use client";
 import { useQueryClient } from "@tanstack/react-query";
+import Image from "next/image";
 import { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "../../ErrorFallback";
@@ -6,7 +8,10 @@ import ActiveStatusToggle from "../../toggle/ActiveStatusToggle";
 import MemberTableLoader from "../MemberTable.loader";
 import { MemberContext } from "../MemberTableWrapper";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
-import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
+import {
+  useDeleteMember,
+  useGetMemberByActive,
+} from "@/hooks/query/useMemberQuery";
 
 const ListInManageType = () => {
   const queryClient = useQueryClient();
@@ -15,7 +20,13 @@ const ListInManageType = () => {
   } = useContext(MemberContext);
 
   const { data: memberList, isLoading } = useGetMemberByActive(selectedActive);
+  const { mutate: deleteMember } = useDeleteMember();
   if (isLoading) return <MemberTableLoader />;
+
+  const handleDeleteMember = (memberId: number) => {
+    const ok = confirm("정말로 삭제하시겠습니까?");
+    ok && deleteMember({ memberId });
+  };
 
   queryClient.setQueryData(
     ["memberIdList"],
@@ -36,7 +47,14 @@ const ListInManageType = () => {
               selectedValue={activeStatus}
             />
           </div>
-          <div />
+          <button onClick={() => handleDeleteMember(memberId)}>
+            <Image
+              src="/icons/trash.svg"
+              width={22}
+              height={22}
+              alt="Delete Btn"
+            />
+          </button>
         </div>
       ))}
     </ErrorBoundary>

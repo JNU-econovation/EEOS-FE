@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  deleteMember,
   getMembersByActiveStatus,
   getProgramMembersByActiveStatus,
   getProgramMembersByAttendStatus,
@@ -63,9 +64,20 @@ export const useUpdateMemberActiveStatus = ({
     mutationFn: (activeStatus: ActiveStatus) =>
       updateMemberActiveStatus(memberId, activeStatus),
 
-    onSettled: (_, __, { activeStatus }) => {
-      queryClient.invalidateQueries([API.MEMBER.LIST, "all"]);
-      queryClient.invalidateQueries([API.MEMBER.LIST, activeStatus]);
+    onSettled: () => {
+      queryClient.invalidateQueries([API.MEMBER.LIST]);
+    },
+  });
+  return data;
+};
+
+export const useDeleteMember = () => {
+  const queryClient = useQueryClient();
+  const data = useMutation<void, Error, { memberId: number }>({
+    mutationFn: ({ memberId }) => deleteMember(memberId),
+
+    onSettled: () => {
+      queryClient.invalidateQueries([API.MEMBER.LIST]);
     },
   });
   return data;

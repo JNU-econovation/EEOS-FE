@@ -40,7 +40,9 @@ const TeamManageSection = () => {
 
       {/*  */}
       <ul className="mt-6 grid grid-cols-2 gap-4">
+        {/* TODO:로더 적용하기 */}
         {isLoading && <></>}
+
         {data &&
           data.teams.map(({ teamId, teamName }, i) => (
             <TeamList
