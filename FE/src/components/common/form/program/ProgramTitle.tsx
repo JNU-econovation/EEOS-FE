@@ -1,3 +1,8 @@
+/**
+ * 이 컴포넌트는 하위 호환성을 위하여 남겨둔 레거시 코드입니다. 추후 삭제될 예정입니다.
+이 컴포넌트는 "LabeldInputFiled" 컴포넌트로 완전히 대체죌 수 있습니다. 해당 컴포넌트를 사용하고자 한다면, "LabeldInputFiled" 컴포넌트를 사용해주세요.
+ */
+
 import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import LabeledInput from "../LabeledInput";
 import FORM_INFO from "@/constants/FORM_INFO";

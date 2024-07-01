@@ -1,15 +1,14 @@
-/**
- * 이 컴포넌트는 하위 호환성을 위하여 남겨둔 레거시 코드입니다. 추후 삭제될 예정입니다.
-이 컴포넌트는 "LabeldInputFiled" 컴포넌트로 완전히 대체죌 수 있습니다. 해당 컴포넌트를 사용하고자 한다면, "LabeldInputFiled" 컴포넌트를 사용해주세요.
- */
-
-"use client";
-interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface LabeldInputFiledProps {
+  id: string;
+  label: string;
+  value: string;
+  onChange?: (title: string) => void;
+  placeholder: string;
+  type: string;
   prefix?: string;
 }
 
-const LabeledInput = ({
+const LabeldInputFiled = ({
   id,
   label,
   value,
@@ -17,7 +16,7 @@ const LabeledInput = ({
   placeholder,
   type,
   prefix,
-}: InputProps) => {
+}: LabeldInputFiledProps) => {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="truncate text-sm">
@@ -28,7 +27,7 @@ const LabeledInput = ({
         <input
           id={id}
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           type={type}
           autoComplete="off"
@@ -39,4 +38,4 @@ const LabeledInput = ({
   );
 };
 
-export default LabeledInput;
+export default LabeldInputFiled;
