@@ -6,6 +6,8 @@ import ProgramTitle from "./ProgramTitle";
 import FormBtn from "@/components/common/form/FormBtn";
 import ProgramDate from "@/components/common/form/program/ProgramDate";
 import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
+import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
+import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useCreateProgramFormData from "@/hooks/useProgramFormData";
 import { ProgramCategory } from "@/types/program";
@@ -15,9 +17,11 @@ const CreateForm = () => {
     title,
     content,
     members,
+    teamList,
     isDemand,
     deadLine,
     category,
+    programGithubUrl,
     setTitle,
     setContent,
     handleReset,
@@ -27,10 +31,12 @@ const CreateForm = () => {
     updateMembers,
     updateAllMembers,
     handleChangeType,
+    handleTeamListChange,
+    handleGithubUrlChange,
   } = useCreateProgramFormData();
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <ProgramTitle
         title={title}
         handleTitleChange={(title) => setTitle(title)}
@@ -56,6 +62,16 @@ const CreateForm = () => {
         value={content}
         onChange={(v) => setContent(v)}
       />
+      <div className="my-4 flex flex-col gap-4">
+        <ProgramGithubLinkInput
+          programGithubUrl={programGithubUrl}
+          handleGithubUrlChange={handleGithubUrlChange}
+        />
+        <ProgramTeamList
+          selectedTeamList={teamList}
+          handleTeamListChange={handleTeamListChange}
+        />
+      </div>
       <Participant
         members={members}
         setMembers={updateMembers}

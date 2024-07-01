@@ -1,3 +1,5 @@
+import Label from "./Label";
+
 interface LabeldInputFiledProps {
   id: string;
   label: string;
@@ -19,9 +21,7 @@ const LabeldInputFiled = ({
 }: LabeldInputFiledProps) => {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="truncate text-sm">
-        {label}
-      </label>
+      <Label id={id} label={label} />
       <div className="flex w-full gap-1 rounded-md border-[1.5px] border-gray-300 px-3 py-2 focus:border-tertiary-10">
         {prefix && <span className="whitespace-nowrap">{prefix}</span>}
         <input

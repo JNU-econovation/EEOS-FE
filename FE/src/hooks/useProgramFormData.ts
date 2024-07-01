@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useCreateProgram } from "./query/useProgramQuery";
 import FORM_INFO from "@/constants/FORM_INFO";
 import { ProgramCategory, ProgramType } from "@/types/program";
+import { TeamInputInfo } from "@/types/team";
 
 export interface ProgramFormDataState {
   title: string;
@@ -45,6 +46,8 @@ const useCreateProgramFormData = () => {
     initialState.category,
   );
   const [content, setContent] = useState<string>(initialState.content);
+  const [programGithubUrl, setProgramGithubUrl] = useState<string>("");
+  const [teamList, setTeamList] = useState<TeamInputInfo[]>([]);
 
   const reset = () => {
     setTitle(initialState.title);
@@ -106,14 +109,22 @@ const useCreateProgramFormData = () => {
     }
     setMembers(newMembers);
   };
+  const handleGithubUrlChange = (url: string) => {
+    setProgramGithubUrl(url);
+  };
+  const handleTeamListChange = (teamList: TeamInputInfo[]) => {
+    setTeamList(teamList);
+  };
 
   return {
     title,
     content,
     members,
+    teamList,
     isDemand,
     deadLine,
     category,
+    programGithubUrl,
     setTitle,
     setContent,
     handleReset,
@@ -123,6 +134,8 @@ const useCreateProgramFormData = () => {
     updateMembers,
     updateAllMembers,
     handleChangeType,
+    handleTeamListChange,
+    handleGithubUrlChange,
   };
 };
 export default useCreateProgramFormData;
