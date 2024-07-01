@@ -1,4 +1,5 @@
 import { ProgramCategory } from "../../../../types/program";
+import Label from "../input/Label";
 import Tab from "@/components/common/tabs/Tab";
 import PROGRAM from "@/constants/PROGRAM";
 
@@ -12,7 +13,7 @@ const CreateCategory = ({
 }: CreateCategoryProps) => {
   return (
     <div className="flex w-full flex-col gap-2 sm:w-fit">
-      <label className="text-sm">행사 카테고리</label>
+      <Label label="카테고리" />
       <Tab<ProgramCategory>
         options={Object.values(PROGRAM.CATEGORY_TAB)}
         selected={selectedCategory}

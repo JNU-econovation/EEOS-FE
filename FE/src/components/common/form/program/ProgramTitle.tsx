@@ -1,4 +1,4 @@
-import LabeldInputFiled from "@/components/common/form/LabeldInputFiled";
+import LabeldInputFiled from "../input/LabeldInputFiled";
 import FORM_INFO from "@/constants/FORM_INFO";
 import { FormType } from "@/types/form";
 import { convertText } from "@/utils/convert";
