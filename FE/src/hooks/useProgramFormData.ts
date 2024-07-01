@@ -55,18 +55,21 @@ const useCreateProgramFormData = () => {
     setType(initialState.type);
     setCategory(initialState.category);
     setContent(initialState.content);
+    setProgramGithubUrl("");
   };
 
   const [members, setMembers] = useState<Set<number>>(new Set<number>());
 
   const { mutate: createProgramMutate } = useCreateProgram({
     programData: {
+      deadLine,
+      content,
+      category,
+      type,
+      programGithubUrl,
+      teamList,
       members: Array.from(members, (memberId) => ({ memberId })),
       title: type === "demand" ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
-      deadLine: deadLine,
-      content: content,
-      category: category,
-      type: type,
     },
     formReset: reset,
   });

@@ -33,6 +33,7 @@ const ProgramTitle = ({
             className="accent-primary"
             checked={isDemand}
             onClick={handleChangeDemandType}
+            onChange={() => {}}
             id="demand"
           />
         </div>

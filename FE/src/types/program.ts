@@ -14,6 +14,8 @@ export interface ProgramInfo {
   programStatus: ProgramStatus;
   type: ProgramType;
   accessRight: AccessRight;
+  programGithubUrl: string;
+  eventStatus: "active" | "end";
   program_attend_mode: "attend" | "late" | "non_open";
 }
 
