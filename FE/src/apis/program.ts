@@ -91,9 +91,14 @@ export const deleteProgram = async (programId: number) => {
 export interface PostProgramRequest
   extends Omit<
     ProgramInfo,
-    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+    | "programId"
+    | "programStatus"
+    | "accessRight"
+    | "program_attend_mode"
+    | "eventStatus"
   > {
   members: { memberId: number }[];
+  teamList: { teamId: number }[];
 }
 
 export const sendSlackMessage = async (
@@ -153,7 +158,12 @@ export interface PatchProgramMember {
 export interface PatchProgramBody
   extends Omit<
     ProgramInfo,
-    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+    | "programId"
+    | "programStatus"
+    | "accessRight"
+    | "program_attend_mode"
+    | "eventStatus"
+    | "programGithubUrl"
   > {
   members: PatchProgramMember[];
 }

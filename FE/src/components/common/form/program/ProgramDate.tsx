@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import Calendar from "../../calendar/Calendar";
 import LabeledInput from "../LabeledInput";
 import FORM_INFO from "@/constants/FORM_INFO";
@@ -9,7 +9,7 @@ import { convertDate } from "@/utils/convert";
 
 interface ProgramDateProps {
   programDate: string;
-  setProgramDate: Dispatch<SetStateAction<string>>;
+  setProgramDate: (date: string) => void;
 }
 
 const ProgramDate = ({ programDate, setProgramDate }: ProgramDateProps) => {

@@ -25,7 +25,7 @@ const Header = ({ formType, onClickCheckBox = () => {} }: HeaderProps) => {
     {
       "grid-cols-[7rem_7.25rem_1fr_10rem]": formType === "manage",
       "grid-cols-[4.75rem_7rem_7.25rem_1fr_20.5rem]":
-        formType === "edit" || formType === "manage",
+        formType === "edit" || formType === "create",
     },
   );
 

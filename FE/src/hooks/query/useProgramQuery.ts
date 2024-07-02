@@ -34,7 +34,7 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
     },
     onSuccess: (programId) => {
       formReset();
-      programId && router.replace(ROUTES.DETAIL(programId));
+      programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
     },
   });
 };

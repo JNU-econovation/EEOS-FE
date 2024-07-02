@@ -1,32 +1,44 @@
-import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
-import LabeledInput from "../LabeledInput";
+import LabeldInputFiled from "../input/LabeldInputFiled";
 import FORM_INFO from "@/constants/FORM_INFO";
+import { FormType } from "@/types/form";
 import { convertText } from "@/utils/convert";
 
 interface ProgramTitleProps {
   title: string;
-  setTitle: Dispatch<SetStateAction<string>>;
+  formType: FormType;
+  handleTitleChange: (title: string) => void;
   prefix?: string;
+  isDemand: boolean;
+  handleChangeDemandType: () => void;
 }
 
 const ProgramTitle = ({
   title,
-  setTitle,
+  handleTitleChange,
   prefix,
-  children,
-}: PropsWithChildren<ProgramTitleProps>) => {
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (title.includes(FORM_INFO.DEMAND_PREFIX)) {
-      const newTitle = convertText(title, FORM_INFO.DEMAND_PREFIX);
-      setTitle(newTitle);
-      return;
-    }
-    setTitle(e.target.value);
-  };
+  isDemand,
+  formType,
+  handleChangeDemandType,
+}: ProgramTitleProps) => {
+  const demandCheckBoxDisabled = formType === "edit";
   return (
     <div className="relative">
-      {children}
-      <LabeledInput
+      {!demandCheckBoxDisabled && (
+        <div className="absolute right-0 top-0 flex gap-2">
+          <label className="select-none text-sm font-bold" htmlFor="demand">
+            수요조사 등록하기
+          </label>
+          <input
+            type="checkbox"
+            className="accent-primary"
+            checked={isDemand}
+            onClick={handleChangeDemandType}
+            onChange={() => {}}
+            id="demand"
+          />
+        </div>
+      )}
+      <LabeldInputFiled
         id={FORM_INFO.PROGRAM.TITLE.id}
         type={FORM_INFO.PROGRAM.TITLE.type}
         label={FORM_INFO.PROGRAM.TITLE.label}
@@ -38,4 +50,5 @@ const ProgramTitle = ({
     </div>
   );
 };
+
 export default ProgramTitle;

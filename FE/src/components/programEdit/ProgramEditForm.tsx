@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import ProgramForm from "../common/form/program/ProgramForm";
+// import ProgramForm from "../common/form/program/ProgramForm";
 import MemberTable from "../common/memberTable/MemberTable";
 import { useUpdateProgram } from "@/hooks/query/useProgramQuery";
 import useProgramFormData from "@/hooks/useProgramFormData";
@@ -20,17 +20,18 @@ export interface Members {
 }
 
 const ProgramEditForm = ({ programId, programInfo }: ProgramEditFormProps) => {
-  const formData = useProgramFormData(programInfo);
+  const { title, deadLine, content, category, type } =
+    useProgramFormData(programInfo);
   const [members, setMembers] = useState<Map<number, Members>>(new Map());
 
   const { mutate: updateProgramMutate } = useUpdateProgram({
     programId: +programId,
     body: {
-      title: formData.title,
-      deadLine: formData.deadLine,
-      content: formData.content,
-      category: formData.category,
-      type: formData.type,
+      title: title,
+      deadLine: deadLine,
+      content: content,
+      category: category,
+      type: type,
       members: Array.from(
         members,
         ([memberId, { beforeAttendStatus, afterAttendStatus }]) => ({
@@ -63,13 +64,7 @@ const ProgramEditForm = ({ programId, programInfo }: ProgramEditFormProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      !formData.title ||
-      !formData.content ||
-      !formData.deadLine ||
-      !formData.category ||
-      !formData.type
-    ) {
+    if (!title || !content || !deadLine || !category || !type) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
