@@ -120,6 +120,7 @@ const useCreateProgramFormData = () => {
   };
 
   return {
+    type,
     title,
     content,
     members,

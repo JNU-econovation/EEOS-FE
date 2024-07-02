@@ -158,7 +158,12 @@ export interface PatchProgramMember {
 export interface PatchProgramBody
   extends Omit<
     ProgramInfo,
-    "programId" | "programStatus" | "accessRight" | "program_attend_mode"
+    | "programId"
+    | "programStatus"
+    | "accessRight"
+    | "program_attend_mode"
+    | "eventStatus"
+    | "programGithubUrl"
   > {
   members: PatchProgramMember[];
 }
