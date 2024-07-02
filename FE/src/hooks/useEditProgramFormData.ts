@@ -1,3 +1,4 @@
+//FIXME: 책임별 분리 필요
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {

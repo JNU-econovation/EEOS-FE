@@ -13,7 +13,7 @@ const ProgramTeamList = ({
 }: ProgramTeamListProps) => {
   const { data, isLoading } = useTeam();
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return <></>;
   }
 

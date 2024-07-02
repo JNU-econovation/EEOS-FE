@@ -14,6 +14,7 @@ import {
 } from "./dtos/program.dto";
 import { https } from "./instance";
 import MESSAGE from "@/constants/MESSAGE";
+import { TeamInputInfo } from "@/types/team";
 
 /**
  * 프로그램 정보 조회
@@ -96,9 +97,10 @@ export interface PostProgramRequest
     | "accessRight"
     | "program_attend_mode"
     | "eventStatus"
+    | "teams"
   > {
   members: { memberId: number }[];
-  teamList: { teamId: number }[];
+  teams: TeamInputInfo[];
 }
 
 export const sendSlackMessage = async (
@@ -164,8 +166,10 @@ export interface PatchProgramBody
     | "program_attend_mode"
     | "eventStatus"
     | "programGithubUrl"
+    | "teams"
   > {
   members: PatchProgramMember[];
+  teams: TeamInputInfo[];
 }
 
 export interface PatchProgramRequest {

@@ -1,3 +1,5 @@
+import { TeamInfo } from "./team";
+
 export type ProgramCategory = "weekly" | "presidentTeam" | "eventTeam" | "etc";
 export type ProgramCategoryWithAll = ProgramCategory | "all";
 
@@ -15,6 +17,7 @@ export interface ProgramInfo {
   type: ProgramType;
   accessRight: AccessRight;
   programGithubUrl: string;
+  teams: TeamInfo[];
   eventStatus: "active" | "end";
   program_attend_mode: "attend" | "late" | "non_open";
 }

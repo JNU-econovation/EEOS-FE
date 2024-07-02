@@ -40,14 +40,15 @@ const TeamList = ({
           />
         </div>
       )}
-      {isSelected ? (
+      {isSelected && type == "select" && (
         <Image
           src="/icons/non_select.svg"
           width={22}
           height={22}
           alt="Delete Btn"
         />
-      ) : (
+      )}
+      {!isSelected && type == "select" && (
         <Image
           src="/icons/select.svg"
           width={22}

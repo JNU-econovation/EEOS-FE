@@ -9,7 +9,7 @@ import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
 import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
 import FORM_INFO from "@/constants/FORM_INFO";
-import useCreateProgramFormData from "@/hooks/useProgramFormData";
+import useCreateProgramFormData from "@/hooks/useCreateProgramFormData";
 import { ProgramCategory } from "@/types/program";
 
 const CreateForm = () => {
@@ -17,7 +17,7 @@ const CreateForm = () => {
     title,
     content,
     members,
-    teamList,
+    teams,
     isDemand,
     deadLine,
     category,
@@ -68,7 +68,7 @@ const CreateForm = () => {
           handleGithubUrlChange={handleGithubUrlChange}
         />
         <ProgramTeamList
-          selectedTeamList={teamList}
+          selectedTeamList={teams}
           handleTeamListChange={handleTeamListChange}
         />
       </div>
