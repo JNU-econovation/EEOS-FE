@@ -70,6 +70,7 @@ const EditForm = ({ programId }: EditFormProps) => {
           handleGithubUrlChange={handleGithubUrlChange}
         />
         <ProgramTeamList
+          programId={+programId}
           selectedTeamList={teams}
           handleTeamListChange={handleTeamListChange}
         />

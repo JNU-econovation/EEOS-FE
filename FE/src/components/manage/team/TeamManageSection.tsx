@@ -4,12 +4,12 @@ import { useState } from "react";
 import TeamList from "./TeamList";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import Title from "@/components/common/Title";
-import { useCreateTeam, useTeam } from "@/hooks/query/useTeamQuery";
+import { useCreateTeam, useTeamQuery } from "@/hooks/query/useTeamQuery";
 
 const TeamManageSection = () => {
   const [inputText, setInputText] = useState("");
   const { mutate: createTeam, isLoading: isCreating } = useCreateTeam();
-  const { data, isLoading } = useTeam();
+  const { data, isLoading } = useTeamQuery();
 
   const createTeamWithName = (e) => {
     e.preventDefault();
