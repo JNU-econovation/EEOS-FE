@@ -18,7 +18,7 @@ const ProgramEditPage = ({ params }: ProgramEditPageProps) => {
       <AccessRightValidate programId={programId} />
       <div className="space-y-12">
         <Title text="행사 수정" />
-        <EditForm programId={programId} />
+        <EditForm programId={+programId} />
       </div>
     </>
   );

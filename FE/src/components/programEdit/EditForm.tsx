@@ -7,12 +7,13 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import MarkdownEditor from "../common/markdown/MarkdownEditor";
 import ProgramGithubLinkInput from "../programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "../programCreate/ProgramTeamList";
+import EditMemberAttendStateTable from "./EditMemberAttendStateTable";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useEditProgramFormData from "@/hooks/useEditProgramFormData";
 import { ProgramCategory } from "@/types/program";
 
 interface EditFormProps {
-  programId: string;
+  programId: number;
 }
 const EditForm = ({ programId }: EditFormProps) => {
   const {
@@ -31,9 +32,10 @@ const EditForm = ({ programId }: EditFormProps) => {
     handleGithubUrlChange,
     setTitle,
     setCategory,
+    updateMembers,
     setDeadLine,
     handleTeamListChange,
-  } = useEditProgramFormData(+programId);
+  } = useEditProgramFormData(programId);
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -70,12 +72,15 @@ const EditForm = ({ programId }: EditFormProps) => {
           handleGithubUrlChange={handleGithubUrlChange}
         />
         <ProgramTeamList
-          programId={+programId}
+          programId={programId}
           selectedTeamList={teams}
           handleTeamListChange={handleTeamListChange}
         />
       </div>
-      {/* 멤버 수정 관련 컴포넌트 들어가야 함 */}
+      <EditMemberAttendStateTable
+        programId={programId}
+        setMembers={updateMembers}
+      />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}
         formReset={handleReset}
