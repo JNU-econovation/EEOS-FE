@@ -1,39 +1,43 @@
 "use client";
-
-import Participant from "../../../programCreate/Participant";
-import CreateCategory from "./CreateCategory";
-import ProgramTitle from "./ProgramTitle";
-import FormBtn from "@/components/common/form/FormBtn";
-import ProgramDate from "@/components/common/form/program/ProgramDate";
-import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
-import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
-import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
+import FormBtn from "../common/form/FormBtn";
+import CreateCategory from "../common/form/program/CreateCategory";
+import ProgramDate from "../common/form/program/ProgramDate";
+import ProgramTitle from "../common/form/program/ProgramTitle";
+import LoadingSpinner from "../common/LoadingSpinner";
+import MarkdownEditor from "../common/markdown/MarkdownEditor";
+import ProgramGithubLinkInput from "../programCreate/ProgramGithubLinkInput";
+import ProgramTeamList from "../programCreate/ProgramTeamList";
+import EditMemberAttendStateTable from "./EditMemberAttendStateTable";
 import FORM_INFO from "@/constants/FORM_INFO";
-import useCreateProgramFormData from "@/hooks/useCreateProgramFormData";
+import useEditProgramFormData from "@/hooks/useEditProgramFormData";
 import { ProgramCategory } from "@/types/program";
 
-const CreateForm = () => {
+interface EditFormProps {
+  programId: number;
+}
+const EditForm = ({ programId }: EditFormProps) => {
   const {
-    title,
-    content,
-    members,
-    teams,
-    isDemand,
-    deadLine,
+    isLoading,
     category,
+    content,
+    deadLine,
+    isDemand,
+    title,
+    teams,
     programGithubUrl,
-    setTitle,
     setContent,
     handleReset,
-    setCategory,
-    setDeadLine,
     handleSubmit,
-    updateMembers,
-    updateAllMembers,
     handleChangeType,
-    handleTeamListChange,
     handleGithubUrlChange,
-  } = useCreateProgramFormData();
+    setTitle,
+    setCategory,
+    updateMembers,
+    setDeadLine,
+    handleTeamListChange,
+  } = useEditProgramFormData(programId);
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -68,14 +72,14 @@ const CreateForm = () => {
           handleGithubUrlChange={handleGithubUrlChange}
         />
         <ProgramTeamList
+          programId={programId}
           selectedTeamList={teams}
           handleTeamListChange={handleTeamListChange}
         />
       </div>
-      <Participant
-        members={members}
+      <EditMemberAttendStateTable
+        programId={programId}
         setMembers={updateMembers}
-        onClickHeaderCheckBox={updateAllMembers}
       />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}
@@ -85,4 +89,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default EditForm;

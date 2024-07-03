@@ -2,10 +2,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createTeam, deleteTeam, getTeamList } from "@/apis/team";
 import { TeamInfo } from "@/types/team";
 
-export const useTeam = () => {
+export const useTeamQuery = (programId?: number) => {
   return useQuery({
-    queryKey: ["teams", "all"],
-    queryFn: () => getTeamList(1),
+    queryKey: ["teams", programId ? programId : "all"],
+    queryFn: () => getTeamList(programId),
     staleTime: 1000 * 60 * 5,
     cacheTime: 1000 * 60 * 5,
   });

@@ -1,9 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "react-toastify";
-import { useCreateProgram } from "./query/useProgramQuery";
-import FORM_INFO from "@/constants/FORM_INFO";
 import { ProgramCategory, ProgramType } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
 
@@ -13,6 +8,7 @@ export interface ProgramFormDataState {
   type: ProgramType;
   category: ProgramCategory;
   content: string;
+  programGithubUrl: string;
 }
 
 export interface ProgramFormDataAction {
@@ -21,6 +17,8 @@ export interface ProgramFormDataAction {
   setType: React.Dispatch<React.SetStateAction<ProgramType>>;
   setCategory: React.Dispatch<React.SetStateAction<ProgramCategory>>;
   setContent: React.Dispatch<React.SetStateAction<string>>;
+  setProgramGithubUrl: React.Dispatch<React.SetStateAction<string>>;
+  setTeamList: React.Dispatch<React.SetStateAction<TeamInputInfo[]>>;
   reset: () => void;
 }
 
@@ -30,24 +28,33 @@ const initialState: ProgramFormDataState = {
   type: "notification",
   category: "weekly",
   content: "",
+  programGithubUrl: "",
 };
 
 export interface ProgramFormData
   extends ProgramFormDataState,
     ProgramFormDataAction {}
 
-const useCreateProgramFormData = () => {
-  const router = useRouter();
-  const queryClient = useQueryClient();
-  const [title, setTitle] = useState<string>(initialState.title);
-  const [deadLine, setDeadLine] = useState<string>(initialState.deadLine);
-  const [type, setType] = useState<ProgramType>(initialState.type);
+const useProgramFormData = (programInfo: ProgramFormDataState) => {
+  const [title, setTitle] = useState<string>(programInfo.title);
+  const [deadLine, setDeadLine] = useState<string>(programInfo.deadLine);
+  const [type, setType] = useState<ProgramType>(programInfo.type);
   const [category, setCategory] = useState<ProgramCategory>(
-    initialState.category,
+    programInfo.category,
   );
-  const [content, setContent] = useState<string>(initialState.content);
+  const [content, setContent] = useState<string>(programInfo.content);
   const [programGithubUrl, setProgramGithubUrl] = useState<string>("");
-  const [teamList, setTeamList] = useState<TeamInputInfo[]>([]);
+  const [teams, setTeams] = useState<TeamInputInfo[]>([]);
+
+  const setData = (data: ProgramFormDataState) => {
+    const { title, deadLine, type, category, content } = data;
+    setTitle(title);
+    setDeadLine(deadLine);
+    setType(type);
+    setCategory(category);
+    setContent(content);
+    setProgramGithubUrl(programGithubUrl);
+  };
 
   const reset = () => {
     setTitle(initialState.title);
@@ -55,91 +62,41 @@ const useCreateProgramFormData = () => {
     setType(initialState.type);
     setCategory(initialState.category);
     setContent(initialState.content);
-    setProgramGithubUrl("");
   };
 
-  const [members, setMembers] = useState<Set<number>>(new Set<number>());
-
-  const { mutate: createProgramMutate } = useCreateProgram({
-    programData: {
-      deadLine,
-      content,
-      category,
-      type,
-      programGithubUrl,
-      teamList,
-      members: Array.from(members, (memberId) => ({ memberId })),
-      title: type === "demand" ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
-    },
-    formReset: reset,
-  });
-
-  const isDemand = type === "demand";
-
-  const handleChangeType = () => {
-    setType(isDemand ? "notification" : "demand");
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!title || !content || !deadLine || !category || !type) {
-      toast.error("모든 항목을 입력해주세요.");
-      return;
-    }
-    createProgramMutate();
-  };
-
-  const handleReset = () => {
-    reset();
-    router.back();
-  };
-
-  const updateMembers = (memberId: number) => {
-    const newMembers = new Set<number>(members);
-    newMembers.has(memberId)
-      ? newMembers.delete(memberId)
-      : newMembers.add(memberId);
-    setMembers(newMembers);
-  };
-  const updateAllMembers = (selected: boolean) => {
-    const newMembers = new Set<number>(members);
-    const memberIdList: number[] = queryClient.getQueryData(["memberIdList"]);
-    if (selected) {
-      memberIdList.forEach((v) => newMembers.add(v));
-    }
-    if (!selected) {
-      memberIdList.forEach((v) => newMembers.delete(v));
-    }
-    setMembers(newMembers);
-  };
   const handleGithubUrlChange = (url: string) => {
     setProgramGithubUrl(url);
   };
   const handleTeamListChange = (teamList: TeamInputInfo[]) => {
-    setTeamList(teamList);
+    setTeams(teamList);
+  };
+
+  const isDemand = type === "demand";
+  const handleChangeType = () => {
+    setType(isDemand ? "notification" : "demand");
   };
 
   return {
-    type,
     title,
-    content,
-    members,
-    teamList,
-    isDemand,
     deadLine,
+    type,
     category,
+    content,
     programGithubUrl,
+    teams,
+    isDemand,
+    setData,
     setTitle,
-    setContent,
-    handleReset,
-    setCategory,
     setDeadLine,
-    handleSubmit,
-    updateMembers,
-    updateAllMembers,
-    handleChangeType,
-    handleTeamListChange,
+    setType,
+    setCategory,
+    setContent,
+    setProgramGithubUrl,
+    setTeams,
+    reset,
     handleGithubUrlChange,
+    handleTeamListChange,
+    handleChangeType,
   };
 };
-export default useCreateProgramFormData;
+export default useProgramFormData;

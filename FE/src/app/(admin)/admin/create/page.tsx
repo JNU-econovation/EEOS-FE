@@ -1,5 +1,5 @@
-import Title from "@/components/common/Title";
 import CreateForm from "@/components/common/form/program/CreateForm";
+import Title from "@/components/common/Title";
 
 const ProgramCreatePage = () => {
   return (

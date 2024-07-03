@@ -5,9 +5,9 @@ import MemberTableLoader from "../MemberTable.loader";
 import { MemberContext } from "../MemberTableWrapper";
 import CheckBox from "@/components/common/CheckBox";
 import ErrorFallback from "@/components/common/ErrorFallback";
-import { Members } from "@/components/programEdit/ProgramEditForm";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
+import { Members } from "@/hooks/useEditProgramFormData";
 
 interface ListInCreateTypeProps {
   members: Set<number> | Map<number, Members>;

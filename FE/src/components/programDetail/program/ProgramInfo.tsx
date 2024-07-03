@@ -3,7 +3,7 @@
 import ProgramDetail from "./ProgramDetail";
 import ProgramHeader from "./ProgramHeader";
 import ProgramInfoLoader from "./ProgramInfo.loader";
-import { useGetProgramById } from "@/hooks/query/useProgramQuery";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { AccessType } from "@/types/access";
 
 interface ProgramInfoProps {
@@ -17,7 +17,7 @@ const ProgramInfo = ({ programId, AccessType }: ProgramInfoProps) => {
     data: programData,
     isLoading,
     isError,
-  } = useGetProgramById(programId, isAbleToEdit);
+  } = useGetProgramByProgramId(programId, isAbleToEdit);
 
   if (isLoading) return <ProgramInfoLoader />;
   if (isError) return <div>에러 발생</div>;

@@ -71,7 +71,10 @@ export const useDeleteProgram = (programId: number) => {
   });
 };
 
-export const useGetProgramById = (programId: number, isAbleToEdit: boolean) => {
+export const useGetProgramByProgramId = (
+  programId: number,
+  isAbleToEdit: boolean,
+) => {
   const queryClient = useQueryClient();
 
   return useQuery({

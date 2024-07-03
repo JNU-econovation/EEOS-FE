@@ -1,10 +1,9 @@
 "use client";
 
 import MemberTableWrapper from "../common/memberTable/MemberTableWrapper";
-import { Members } from "@/components/programEdit/ProgramEditForm";
 
 interface MemberTableProps {
-  members: Set<number> | Map<number, Members>;
+  members: Set<number>;
   setMembers: (memberId: number) => void;
   onClickHeaderCheckBox?: (selected: boolean) => void;
 }
@@ -22,9 +21,8 @@ const Participant = ({
           formType="create"
           onClickCheckBox={onClickHeaderCheckBox}
         />
-
         <MemberTableWrapper.CreateList
-          members={members}
+          members={members as Set<number>}
           setMembers={setMembers as (memberId: number) => void}
         />
       </div>

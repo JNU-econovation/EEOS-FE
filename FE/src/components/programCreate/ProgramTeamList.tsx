@@ -1,17 +1,28 @@
+import { useEffect } from "react";
 import Label from "../common/form/input/Label";
 import TeamList from "../manage/team/TeamList";
-import { useTeam } from "@/hooks/query/useTeamQuery";
+import useTeam from "@/hooks/useTeam";
 import type { TeamInputInfo } from "@/types/team";
 
 interface ProgramTeamListProps {
+  programId?: number;
   selectedTeamList: TeamInputInfo[];
   handleTeamListChange: (teamList: TeamInputInfo[]) => void;
 }
 const ProgramTeamList = ({
+  programId,
   selectedTeamList,
   handleTeamListChange,
 }: ProgramTeamListProps) => {
-  const { data, isLoading } = useTeam();
+  const { allOfTeams, joinedTeams, isLoading } = useTeam(programId);
+
+  useEffect(() => {
+    if (joinedTeams) {
+      handleTeamListChange(
+        joinedTeams.teams.map((team) => ({ teamId: team.teamId })),
+      );
+    }
+  }, [joinedTeams]);
 
   if (isLoading) {
     return <></>;
@@ -35,8 +46,8 @@ const ProgramTeamList = ({
     <div>
       <Label label="팀 불러오기" />
       <ul className="mt-2 grid grid-cols-2 gap-4">
-        {data &&
-          data.teams.map(({ teamId, teamName }, i) => (
+        {allOfTeams &&
+          allOfTeams.teams.map(({ teamId, teamName }, i) => (
             <div
               key={`${teamId}-${teamName}-${i}`}
               onClick={(e) => {
