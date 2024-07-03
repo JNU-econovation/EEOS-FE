@@ -26,7 +26,7 @@ export class ProgramInfoDto {
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
   public readonly program_attend_mode: "attend" | "late" | "non_open";
-  public readonly teamList: TeamInfo[];
+  public readonly teams: TeamInfo[];
   public readonly programGithubUrl: string;
 
   constructor(data: ProgramInfo) {
@@ -40,7 +40,7 @@ export class ProgramInfoDto {
     this.accessRight = data?.accessRight;
     this.program_attend_mode = data?.program_attend_mode;
     this.programGithubUrl = data?.programGithubUrl;
-    this.teamList = data?.teamList;
+    this.teams = data?.teams;
   }
 }
 
