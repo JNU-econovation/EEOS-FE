@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getMyActiveStatus,
   getMyAttendStatus,
+  postMyAttendance,
   putMyActiveStatus,
   putMyAttendStatus,
 } from "@/apis/user";
@@ -53,6 +54,30 @@ export const usePutMyAttendStatus = ({
         beforeAttendStatus,
         afterAttendStatus: afterAttendStatus,
       }),
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: [API.USER.ATTEND_STATUS(programId)],
+      });
+      const statuses: AttendStatus[] = [
+        "attend",
+        "late",
+        "absent",
+        "nonResponse",
+      ];
+      statuses.forEach((status) => {
+        queryClient.invalidateQueries({
+          queryKey: [API.MEMBER.ATTEND_STATUS(programId), status],
+        });
+      });
+    },
+  });
+};
+
+export const usePostMyAttendance = (programId: number) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: [API.USER.ATTEND_STATUS(programId)],
+    mutationFn: () => postMyAttendance(programId),
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
