@@ -89,6 +89,10 @@ export const useGetProgramByProgramId = (
           ["programType", programId],
           res.type,
         );
+        queryClient.setQueryData<string>(
+          ["githubUrl", programId],
+          res.programGithubUrl,
+        );
         return res;
       }),
   });

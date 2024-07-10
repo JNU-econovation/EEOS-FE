@@ -25,7 +25,7 @@ const ProgramInfo = ({ programId, AccessType }: ProgramInfoProps) => {
   return (
     <section className="space-y-8">
       <ProgramHeader data={programData} />
-      <ProgramDetail data={programData} />
+      <ProgramDetail data={programData} programId={programId} />
     </section>
   );
 };

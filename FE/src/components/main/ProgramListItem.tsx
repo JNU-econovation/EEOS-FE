@@ -14,7 +14,7 @@ const ProgramListItem = ({
   programData,
   contentType,
 }: ProgramListItemProps) => {
-  const { programId, title, deadLine, program_attend_mode } = programData;
+  const { programId, title, deadLine, attend_mode } = programData;
 
   const linkUrl =
     contentType === "admin"
@@ -32,7 +32,7 @@ const ProgramListItem = ({
       <p className="w-full truncate text-center text-lg font-bold sm:text-left">
         {title}
       </p>
-      {program_attend_mode === "non_open" ? (
+      {attend_mode === "non_open" ? (
         <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
       ) : (
         // 출석체크중인 경우
