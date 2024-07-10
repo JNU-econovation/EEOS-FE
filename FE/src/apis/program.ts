@@ -30,6 +30,7 @@ export const getProgramById = async (
   const { data } = await https({
     url,
   });
+
   return new ProgramInfoDto(data?.data);
 };
 
@@ -95,7 +96,7 @@ export interface PostProgramRequest
     | "programId"
     | "programStatus"
     | "accessRight"
-    | "program_attend_mode"
+    | "attend_mode"
     | "eventStatus"
     | "teams"
   > {
@@ -163,7 +164,7 @@ export interface PatchProgramBody
     | "programId"
     | "programStatus"
     | "accessRight"
-    | "program_attend_mode"
+    | "attend_mode"
     | "eventStatus"
     | "programGithubUrl"
     | "teams"
