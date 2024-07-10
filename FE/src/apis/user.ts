@@ -50,6 +50,17 @@ export const putMyAttendStatus = async (
   return new UserAttendStatusInfoDto(data?.data);
 };
 
+export const postMyAttendance = async (
+  programId: number,
+): Promise<UserAttendStatusInfoDto> => {
+  const { data } = await https({
+    url: API.USER.ATTEND_STATUS(programId),
+    method: "POST",
+  });
+
+  return new UserAttendStatusInfoDto(data?.data);
+};
+
 /**
  * 본인의 회원 상태 조회
  */
