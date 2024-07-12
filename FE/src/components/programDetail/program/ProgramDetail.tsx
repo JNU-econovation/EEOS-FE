@@ -1,3 +1,4 @@
+import ProgramDashboard from "./ProgramDashboard";
 import ProgramPresentations from "./ProgramPresentations";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
@@ -13,6 +14,7 @@ const ProgramDetail = ({ data, programId }: ProgramDetailProps) => {
     <>
       <MarkdownViewer value={content} />
       <ProgramPresentations programId={programId} />
+      <ProgramDashboard programId={programId} />
     </>
   );
 };
