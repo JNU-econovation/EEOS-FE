@@ -4,7 +4,7 @@ import { TeamInfo } from "@/types/team";
 
 export const useTeamQuery = (programId?: number) => {
   return useQuery({
-    queryKey: ["teams", programId ? programId : "all"],
+    queryKey: ["teams", programId || programId == 0 ? programId : "all"],
     queryFn: () => getTeamList(programId),
     staleTime: 1000 * 60 * 5,
     cacheTime: 1000 * 60 * 5,
