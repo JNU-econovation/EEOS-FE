@@ -51,6 +51,7 @@ const TEAM = {
 const QUESTION = {
   LIST: "comments",
   CREATE: "comments",
+  UPDATE: (commentId: number) => `comments/${commentId}`,
 };
 
 Object.freeze(PROGRAM);

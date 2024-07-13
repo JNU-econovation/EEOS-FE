@@ -5,7 +5,6 @@ import { useTeamQuery } from "../../../../hooks/query/useTeamQuery";
 import Board from "./Board";
 import Input from "./Form";
 import TeamTab from "./TeamTab";
-import Title from "@/components/common/Title";
 
 export const DashboardContext = createContext(null);
 
@@ -18,6 +17,9 @@ const DashboardWrapper = ({ programId, children }: DashboardContextValue) => {
   const { teams } = data || { teams: [] };
   const [selectedTeamId, setSelectedTeamId] = useState<number>();
   const [questionInput, setQuestionInput] = useState<string>("");
+  const [parentsCommentId, setParentsCommentId] = useState<number>(-1);
+  const [selectedCommentContent, setSelectedCommentContent] =
+    useState<string>("");
 
   return (
     <DashboardContext.Provider
@@ -29,10 +31,13 @@ const DashboardWrapper = ({ programId, children }: DashboardContextValue) => {
         setSelectedTeamId,
         questionInput,
         setQuestionInput,
+        parentsCommentId,
+        setParentsCommentId,
+        selectedCommentContent,
+        setSelectedCommentContent,
         // name,
       }}
     >
-      <Title text="질문 게시판" />
       {children}
     </DashboardContext.Provider>
   );

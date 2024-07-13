@@ -30,3 +30,13 @@ export const postQuestion = async ({
     data: { programId, teamId, content: questionContent, parentsCommentId },
   });
 };
+
+export const updateQuestion = async (commentId: number, contents: string) => {
+  return await https({
+    url: API.QUESTION.UPDATE(commentId),
+    method: "PUT",
+    data: {
+      contents,
+    },
+  });
+};

@@ -3,6 +3,7 @@ import {
   getQuestionsByTeam,
   postQuestion,
   PostQuestionParams,
+  updateQuestion,
 } from "@/apis/question";
 
 export const useGetQuestion = (programId: number, teamId: number) => {
@@ -17,5 +18,18 @@ export const usePostQuestion = () => {
     mutationKey: ["question", "post"],
     mutationFn: (postQuestionParams: PostQuestionParams) =>
       postQuestion(postQuestionParams),
+  });
+};
+
+export const useUpdateQuestion = (commentId: number) => {
+  return useMutation({
+    mutationKey: ["question", "update", commentId],
+    mutationFn: ({
+      commentId,
+      contents,
+    }: {
+      commentId: number;
+      contents: string;
+    }) => updateQuestion(commentId, contents),
   });
 };

@@ -1,3 +1,4 @@
+// import Image from "next/image";
 import { useContext } from "react";
 import { DashboardContext } from "./DashboardWrapper";
 import { PostQuestionParams } from "@/apis/question";
@@ -5,9 +6,21 @@ import StatusToggleItem from "@/components/common/StatusToggleItem";
 import { usePostQuestion } from "@/hooks/query/useQuestion";
 
 const Input = () => {
-  const { questionInput, setQuestionInput, name, selectedTeamId, programId } =
-    useContext(DashboardContext);
+  const {
+    teams,
+    questionInput,
+    setQuestionInput,
+    // name,
+    selectedTeamId,
+    programId,
+    parentsCommentId,
+    setParentsCommentId,
+    selectedCommentContent,
+  } = useContext(DashboardContext);
   const { mutate } = usePostQuestion();
+  const isReply = parentsCommentId !== -1;
+  const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
+    ?.teamName;
 
   const handlePostQuestion = () => {
     const questionContent = questionInput.trim();
@@ -18,30 +31,46 @@ const Input = () => {
       programId,
       teamId: selectedTeamId,
       questionContent,
-      parentsCommentId: -1,
+      parentsCommentId,
     };
-
     mutate(postQuestionParams);
     setQuestionInput("");
+    setParentsCommentId(-1);
   };
 
   return (
-    <div className="relative">
-      <div className="absolute z-10 text-xl font-bold">{name}</div>
-      <textarea
-        className="h-40 w-full resize-none rounded-sm border-2 p-4"
-        placeholder="질문을 입력해주세요"
-        value={questionInput}
-        onChange={(e) => setQuestionInput(e.target.value)}
-      />
-      <div
-        className="absolute right-4 top-1/2"
-        onClick={handlePostQuestion}
-        typeof="button"
-      >
-        <StatusToggleItem color="green" text="질문 하기" />
+    <>
+      {/* <div className="absolute z-10 text-xl font-bold">{name}</div> */}
+      {isReply ? (
+        <div className="truncate text-lg font-semibold">
+          {/* <Image src={"/icons/x.svg"} alt="답글 종료" width={20} height={20} /> */}
+          <button className="px-2 " onClick={() => setParentsCommentId(-1)}>
+            x
+          </button>
+          <p className="inline text-xl font-bold">답변하기 :</p>
+          <p className="ml-2 inline opacity-50">{selectedCommentContent}</p>
+        </div>
+      ) : (
+        <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
+      )}
+
+      <div className="mb-2 " />
+      <div className="relative">
+        <textarea
+          className={`h-40 w-full resize-none rounded-sm border-2 p-4 px-8 pr-40 text-lg`}
+          placeholder="질문을 입력해주세요"
+          value={questionInput}
+          onChange={(e) => setQuestionInput(e.target.value)}
+        />
+        <div
+          className="absolute right-4 top-1/2 -translate-y-1/2"
+          onClick={handlePostQuestion}
+          typeof="button"
+        >
+          <StatusToggleItem color="green" text="전송" />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

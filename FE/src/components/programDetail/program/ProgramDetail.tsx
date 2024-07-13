@@ -11,11 +11,13 @@ interface ProgramDetailProps {
 const ProgramDetail = ({ data, programId }: ProgramDetailProps) => {
   const { content } = data;
   return (
-    <>
+    <div>
       <MarkdownViewer value={content} />
       <ProgramPresentations programId={programId} />
-      <ProgramDashboard programId={programId} />
-    </>
+      <div className="mt-12">
+        <ProgramDashboard programId={programId} />
+      </div>
+    </div>
   );
 };
 export default ProgramDetail;
