@@ -5,12 +5,12 @@ import { TabOption } from "@/types/tab";
 import { TeamInfo } from "@/types/team";
 
 const TeamTab = () => {
-  const { teams, isLoading, selectedTeam, setSelectedTeam } =
+  const { teams, isLoading, selectedTeamId, setSelectedTeamId } =
     useContext(DashboardContext);
 
   useEffect(() => {
     if (teams && teams.length > 0) {
-      setSelectedTeam(teams[0].teamId);
+      setSelectedTeamId(teams[0].teamId);
     }
   }, [teams]);
 
@@ -21,7 +21,7 @@ const TeamTab = () => {
     })) || [];
 
   const handleTeamSelect = (selected: number) => {
-    setSelectedTeam(selected);
+    setSelectedTeamId(selected);
   };
 
   return (
@@ -29,7 +29,7 @@ const TeamTab = () => {
       {isLoading && <div>로딩중</div>}
       {teams && teams.length > 0 && (
         <Tab<number>
-          selected={selectedTeam}
+          selected={selectedTeamId}
           baseColor="gray"
           size="md"
           pointColor="navy"

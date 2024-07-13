@@ -50,6 +50,7 @@ const TEAM = {
 
 const QUESTION = {
   LIST: "comments",
+  CREATE: "comments",
 };
 
 Object.freeze(PROGRAM);

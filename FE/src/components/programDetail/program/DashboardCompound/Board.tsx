@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { DashboardContext } from "./DashboardWrapper";
 import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
-import { useGetQuery } from "@/hooks/query/useQuestion";
+import { useGetQuestion } from "@/hooks/query/useQuestion";
 
 const Board = () => {
-  const { selectedTeam, programId } = useContext(DashboardContext);
-  const { data, isLoading } = useGetQuery(programId, selectedTeam);
+  const { selectedTeamId, programId } = useContext(DashboardContext);
+  const { data, isLoading } = useGetQuestion(programId, selectedTeamId);
 
   if (isLoading) return <div>Loading...</div>;
 

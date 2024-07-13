@@ -9,7 +9,7 @@ const ProgramDashboard = ({ programId }: ProgramDashboardProps) => {
     <DashboardWrapper programId={programId}>
       <DashboardWrapper.TeamTab />
       <DashboardWrapper.Board />
-      <DashboardWrapper.Form />
+      <DashboardWrapper.Input />
     </DashboardWrapper>
   );
 };
