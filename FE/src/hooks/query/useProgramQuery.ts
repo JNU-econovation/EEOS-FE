@@ -11,11 +11,16 @@ import {
   patchProgram,
   postProgram,
   sendSlackMessage,
+  updateProgramAttendMode,
 } from "@/apis/program";
 import API from "@/constants/API";
 import ROUTES from "@/constants/ROUTES";
 import { ActiveStatusWithAll } from "@/types/member";
-import { ProgramStatus, ProgramType } from "@/types/program";
+import {
+  ProgramAttendStatus,
+  ProgramStatus,
+  ProgramType,
+} from "@/types/program";
 
 interface CreateProgram {
   programData: PostProgramRequest;
@@ -121,5 +126,13 @@ export const useGetProgramAccessRight = (programId: number) => {
   return useQuery({
     queryKey: [API.PROGRAM.ACCESS_RIGHT(programId)],
     queryFn: () => getProgramAccessRight(programId),
+  });
+};
+
+export const useUpdateProgramAttendMode = (programId: number) => {
+  return useMutation({
+    mutationKey: [API.PROGRAM.UPDATE_ATTEND_MODE(programId)],
+    mutationFn: (attendMode: ProgramAttendStatus) =>
+      updateProgramAttendMode(programId, attendMode),
   });
 };

@@ -9,6 +9,7 @@ const PROGRAM = {
   ACCESS_RIGHT: (programId: number) => `/programs/${programId}/accessRight`,
   SEND_MESSAGE: (programId: number) =>
     `/programs/${programId}/slack/notification`,
+  UPDATE_ATTEND_MODE: (programId: number) => `/programs/${programId}`,
 };
 
 const MEMBER = {
