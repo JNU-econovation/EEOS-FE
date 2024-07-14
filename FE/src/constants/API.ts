@@ -48,11 +48,19 @@ const TEAM = {
   DELETE: (teamId: number) => `/teams/${teamId}`,
 };
 
+const QUESTION = {
+  LIST: "comments",
+  CREATE: "comments",
+  UPDATE: (commentId: number) => `comments/${commentId}`,
+  DELETE: (commentId: number) => `comments/${commentId}`,
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
 Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
 Object.freeze(TEAM);
+Object.freeze(QUESTION);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM };
+export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM, QUESTION };

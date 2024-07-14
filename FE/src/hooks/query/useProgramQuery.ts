@@ -78,7 +78,7 @@ export const useGetProgramByProgramId = (
   const queryClient = useQueryClient();
 
   return useQuery({
-    queryKey: [API.PROGRAM.DETAIL(programId)],
+    queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
       getProgramById(programId, isAbleToEdit).then((res) => {
         queryClient.setQueryData<ProgramStatus>(

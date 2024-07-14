@@ -6,7 +6,6 @@ import {
   ProgramCategory,
   AccessRight,
 } from "@/types/program";
-import { TeamInfo } from "@/types/team";
 
 export class ProgramIdDto {
   public readonly programId: number;
@@ -26,7 +25,6 @@ export class ProgramInfoDto {
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
   public readonly attend_mode: "attend" | "late" | "non_open";
-  public readonly teams: TeamInfo[];
   public readonly programGithubUrl: string;
 
   constructor(data: ProgramInfo) {
@@ -40,7 +38,6 @@ export class ProgramInfoDto {
     this.accessRight = data?.accessRight;
     this.attend_mode = data?.attend_mode;
     this.programGithubUrl = data?.programGithubUrl;
-    this.teams = data?.teams;
   }
 }
 
