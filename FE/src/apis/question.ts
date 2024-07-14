@@ -40,3 +40,10 @@ export const updateQuestion = async (commentId: number, contents: string) => {
     },
   });
 };
+
+export const deleteQuestion = async (commentId: number) => {
+  return await https({
+    url: API.QUESTION.DELETE(commentId),
+    method: "DELETE",
+  });
+};

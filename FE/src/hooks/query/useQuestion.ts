@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
+  deleteQuestion,
   getQuestionsByTeam,
   postQuestion,
   PostQuestionParams,
@@ -31,5 +32,12 @@ export const useUpdateQuestion = () => {
       commentId: number;
       contents: string;
     }) => updateQuestion(commentId, contents),
+  });
+};
+
+export const useDeleteQuestion = () => {
+  return useMutation({
+    mutationKey: ["question", "delete"],
+    mutationFn: (commentId: number) => deleteQuestion(commentId),
   });
 };

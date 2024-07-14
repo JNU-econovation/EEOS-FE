@@ -1,4 +1,5 @@
-// import Image from "next/image";
+//TODO: 답변 취소 아이콘 추가하기
+
 import { useContext, useState } from "react";
 import { DashboardContext } from "./DashboardWrapper";
 import { PostQuestionParams } from "@/apis/question";
@@ -38,7 +39,7 @@ const Input = () => {
   };
 
   return (
-    <>
+    <div>
       {/* <div className="absolute z-10 text-xl font-bold">{name}</div> */}
       {isReply ? (
         <div className="truncate text-lg font-semibold">
@@ -68,7 +69,7 @@ const Input = () => {
           <StatusToggleItem color="green" text="전송" />
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

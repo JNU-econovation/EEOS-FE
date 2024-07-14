@@ -4,7 +4,10 @@ import { createContext, useMemo, useState } from "react";
 import Board from "./Board/Board";
 import Input from "./Form";
 import TeamTab from "./TeamTab";
-import { useUpdateQuestion } from "@/hooks/query/useQuestion";
+import {
+  useDeleteQuestion,
+  useUpdateQuestion,
+} from "@/hooks/query/useQuestion";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
 import { TeamInfo } from "@/types/team";
 
@@ -26,8 +29,12 @@ interface DashboardContextValue {
       readonly changeSelectedCommentContent: (content: string) => void;
     };
     update: {
-      readonly updateComment: (question: unknown) => void; // useUpdateQuestion의 반환 타입에 따라 any 대신 구체적인 타입 사용 권장
-      readonly isSuccess: boolean;
+      readonly updateComment: (question: unknown) => void;
+      readonly isUpdateSuccess: boolean;
+    };
+    delete: {
+      readonly deleteComment: (question: unknown) => void;
+      readonly isDeleteSuccess: boolean;
     };
   };
   programId: number;
@@ -53,7 +60,10 @@ const DashboardWrapper = ({ programId, children }: DashboardWrapperProps) => {
   const [parentsCommentId, setParentsCommentId] = useState<number>(-1);
   const [selectedCommentContent, setSelectedCommentContent] =
     useState<string>("");
-  const { mutate: updateComment, isSuccess } = useUpdateQuestion();
+  const { mutate: updateComment, isSuccess: isUpdateSuccess } =
+    useUpdateQuestion();
+  const { mutate: deleteComment, isSuccess: isDeleteSuccess } =
+    useDeleteQuestion();
   const changeSelectedCommentContent = (content: string) => {
     setSelectedCommentContent(content);
   };
@@ -78,7 +88,11 @@ const DashboardWrapper = ({ programId, children }: DashboardWrapperProps) => {
     },
     update: {
       updateComment,
-      isSuccess,
+      isUpdateSuccess,
+    },
+    delete: {
+      deleteComment,
+      isDeleteSuccess,
     },
   };
 

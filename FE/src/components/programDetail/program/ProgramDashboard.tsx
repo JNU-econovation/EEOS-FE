@@ -10,13 +10,9 @@ const ProgramDashboard = ({ programId }: ProgramDashboardProps) => {
   return (
     <DashboardWrapper programId={programId}>
       <Title text="질문 게시판" />
-      <div className="mt-8">
+      <div className="mt-8 flex flex-col gap-8">
         <DashboardWrapper.TeamTab />
-      </div>
-      <div className="mt-8">
         <DashboardWrapper.Board />
-      </div>
-      <div className="mt-8">
         <DashboardWrapper.Input />
       </div>
     </DashboardWrapper>

@@ -52,6 +52,7 @@ const QUESTION = {
   LIST: "comments",
   CREATE: "comments",
   UPDATE: (commentId: number) => `comments/${commentId}`,
+  DELETE: (commentId: number) => `comments/${commentId}`,
 };
 
 Object.freeze(PROGRAM);
