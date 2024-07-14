@@ -1,13 +1,17 @@
 import ChatList from "./common/ChatList";
 import { Answer } from "@/apis/dtos/question.dto";
 
+interface ReplyChatProps extends Answer {
+  isGuest: boolean;
+}
 const ReplyChat = ({
   writer,
   content,
   time,
   commentId,
   accessRight,
-}: Answer) => {
+  isGuest,
+}: ReplyChatProps) => {
   return (
     <div className="border bg-gray-10 p-4">
       <ChatList
@@ -17,6 +21,7 @@ const ReplyChat = ({
         commentId={commentId}
         accessRight={accessRight}
         markdownStyle="!bg-inherit"
+        isGuest={isGuest}
       />
     </div>
   );

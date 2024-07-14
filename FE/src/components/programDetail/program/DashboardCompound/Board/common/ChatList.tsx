@@ -9,6 +9,7 @@ interface ChatListProps {
   time: string;
   content: string;
   markdownStyle?: string;
+  isGuest: boolean;
 }
 const ChatList = ({
   writer,
@@ -17,6 +18,7 @@ const ChatList = ({
   content,
   time,
   markdownStyle,
+  isGuest,
 }: ChatListProps) => {
   const {
     commentValues: {
@@ -29,12 +31,15 @@ const ChatList = ({
   const [userInputToModify, setUserInputToModify] = useState(content);
   const [isModify, setIsModify] = useState(false);
 
+  const isHasUpdateright = accessRight === "edit" && !isGuest;
+
   const handleReply = () => {
     setParentsCommentId(commentId);
     changeSelectedCommentContent(content);
   };
 
   const toggleIsModify = () => {
+    if (!isHasUpdateright) return;
     setIsModify((prev) => !prev);
     setUserInputToModify(content);
   };
@@ -57,6 +62,8 @@ const ChatList = ({
   };
 
   const handleDeleteComment = () => {
+    if (!isHasUpdateright) return;
+
     const isOkToDelete = confirm("정말 삭제하시겠습니까?");
     if (!isOkToDelete) return;
     deleteComment(commentId);
@@ -89,7 +96,7 @@ const ChatList = ({
             >
               답변하기
             </button>
-            {accessRight === "edit" && (
+            {isHasUpdateright && (
               <button
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={toggleIsModify}
@@ -97,7 +104,7 @@ const ChatList = ({
                 수정하기
               </button>
             )}
-            {accessRight === "edit" && (
+            {isHasUpdateright && (
               <button
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={handleDeleteComment}
