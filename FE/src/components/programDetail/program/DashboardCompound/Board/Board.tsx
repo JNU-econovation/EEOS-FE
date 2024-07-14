@@ -3,7 +3,10 @@ import { DashboardContext } from "../DashboardWrapper";
 import Chat from "./Chat";
 import { useGetQuestion } from "@/hooks/query/useQuestion";
 
-const Board = () => {
+interface BoardProps {
+  isGuest?: boolean;
+}
+const Board = ({ isGuest = false }: BoardProps) => {
   const {
     teamValues: { selectedTeamId },
     programValue: { programId },
@@ -18,7 +21,7 @@ const Board = () => {
   return (
     <div className="flex max-h-[36rem] w-full flex-col overflow-hidden overflow-y-auto rounded-sm border">
       {comments.map((props) => (
-        <Chat key={props.commentId} {...props} />
+        <Chat key={props.commentId} isGuest={isGuest} {...props} />
       ))}
     </div>
   );
