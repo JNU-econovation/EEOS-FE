@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DashboardContext } from "./DashboardWrapper";
 import { PostQuestionParams } from "@/apis/question";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
@@ -7,16 +7,15 @@ import { usePostQuestion } from "@/hooks/query/useQuestion";
 
 const Input = () => {
   const {
-    teams,
-    questionInput,
-    setQuestionInput,
-    // name,
-    selectedTeamId,
-    programId,
-    parentsCommentId,
-    setParentsCommentId,
-    selectedCommentContent,
+    programValue: { programId },
+    teamValues: { teams, selectedTeamId },
+    commentValues: {
+      create: { parentsCommentId, setParentsCommentId, selectedCommentContent },
+    },
   } = useContext(DashboardContext);
+
+  const [questionInput, setQuestionInput] = useState<string>("");
+
   const { mutate } = usePostQuestion();
   const isReply = parentsCommentId !== -1;
   const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
@@ -62,13 +61,12 @@ const Input = () => {
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
         />
-        <div
+        <button
           className="absolute right-4 top-1/2 -translate-y-1/2"
           onClick={handlePostQuestion}
-          typeof="button"
         >
           <StatusToggleItem color="green" text="전송" />
-        </div>
+        </button>
       </div>
     </>
   );

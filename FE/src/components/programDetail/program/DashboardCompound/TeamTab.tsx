@@ -5,12 +5,13 @@ import { TabOption } from "@/types/tab";
 import { TeamInfo } from "@/types/team";
 
 const TeamTab = () => {
-  const { teams, isLoading, selectedTeamId, setSelectedTeamId } =
-    useContext(DashboardContext);
+  const {
+    teamValues: { teams, isLoading, selectedTeamId, changeSelectedTeamId },
+  } = useContext(DashboardContext);
 
   useEffect(() => {
     if (teams && teams.length > 0) {
-      setSelectedTeamId(teams[0].teamId);
+      changeSelectedTeamId(teams[0].teamId);
     }
   }, [teams]);
 
@@ -21,7 +22,7 @@ const TeamTab = () => {
     })) || [];
 
   const handleTeamSelect = (selected: number) => {
-    setSelectedTeamId(selected);
+    changeSelectedTeamId(selected);
   };
 
   return (

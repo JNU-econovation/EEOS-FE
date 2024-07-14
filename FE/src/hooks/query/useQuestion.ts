@@ -21,9 +21,9 @@ export const usePostQuestion = () => {
   });
 };
 
-export const useUpdateQuestion = (commentId: number) => {
+export const useUpdateQuestion = () => {
   return useMutation({
-    mutationKey: ["question", "update", commentId],
+    mutationKey: ["question", "update"],
     mutationFn: ({
       commentId,
       contents,
