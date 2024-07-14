@@ -130,9 +130,12 @@ export const useGetProgramAccessRight = (programId: number) => {
 };
 
 export const useUpdateProgramAttendMode = (programId: number) => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE_ATTEND_MODE(programId)],
-    mutationFn: (attendMode: ProgramAttendStatus) =>
-      updateProgramAttendMode(programId, attendMode),
+    mutationFn: (attendMode: ProgramAttendStatus) => {
+      queryClient.invalidateQueries([API.PROGRAM.Edit_DETAIL(programId)]);
+      return updateProgramAttendMode(programId, attendMode);
+    },
   });
 };
