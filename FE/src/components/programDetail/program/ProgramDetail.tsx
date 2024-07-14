@@ -12,6 +12,10 @@ interface ProgramDetailProps {
 
 const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
   const isGuest = accessType === "public";
+  const isAdmin = accessType === "admin";
+
+  console.log(accessType);
+
   const { content } = data;
   return (
     <div>
@@ -19,6 +23,7 @@ const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
       <ProgramPresentations programId={programId} />
       <div className="mt-12">
         <ProgramDashboard programId={programId} isGuest={isGuest} />
+        {isAdmin && <div className="mt-8">hihihihi</div>}
       </div>
     </div>
   );

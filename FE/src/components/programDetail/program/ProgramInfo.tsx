@@ -8,11 +8,11 @@ import { AccessType } from "@/types/access";
 
 interface ProgramInfoProps {
   programId: number;
-  AccessType?: AccessType;
+  accessType?: AccessType;
 }
 
-const ProgramInfo = ({ programId, AccessType }: ProgramInfoProps) => {
-  const isAbleToEdit = AccessType === "admin";
+const ProgramInfo = ({ programId, accessType }: ProgramInfoProps) => {
+  const isAbleToEdit = accessType === "admin";
   const {
     data: programData,
     isLoading,
@@ -28,7 +28,7 @@ const ProgramInfo = ({ programId, AccessType }: ProgramInfoProps) => {
       <ProgramDetail
         data={programData}
         programId={programId}
-        accessType={AccessType}
+        accessType={accessType}
       />
     </section>
   );
