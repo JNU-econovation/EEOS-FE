@@ -1,3 +1,4 @@
+import ProgramAttendStatusManageSection from "./ProgramAttendStatusManageSection";
 import ProgramDashboard from "./ProgramDashboard";
 import ProgramPresentations from "./ProgramPresentations";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
@@ -12,10 +13,13 @@ interface ProgramDetailProps {
 
 const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
   const isGuest = accessType === "public";
+  const isAdmin = accessType === "admin";
+
   const { content } = data;
   return (
     <div>
       <MarkdownViewer value={content} />
+      {isAdmin && <ProgramAttendStatusManageSection programId={programId} />}
       <ProgramPresentations programId={programId} />
       <div className="mt-12">
         <ProgramDashboard programId={programId} isGuest={isGuest} />

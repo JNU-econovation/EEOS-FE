@@ -5,6 +5,7 @@ import {
   ProgramStatus,
   ProgramCategory,
   AccessRight,
+  ProgramAttendStatus,
 } from "@/types/program";
 
 export class ProgramIdDto {
@@ -24,7 +25,7 @@ export class ProgramInfoDto {
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
-  public readonly attend_mode: "attend" | "late" | "non_open";
+  public readonly attend_mode: ProgramAttendStatus;
   public readonly programGithubUrl: string;
 
   constructor(data: ProgramInfo) {
@@ -48,7 +49,7 @@ export class ProgramSimpleInfoDto {
   public readonly category: ProgramCategory;
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
-  public readonly attend_mode: "attend" | "late" | "non_open";
+  public readonly attend_mode: ProgramAttendStatus;
 
   constructor(data: ProgramSimpleInfo) {
     this.programId = data?.programId;

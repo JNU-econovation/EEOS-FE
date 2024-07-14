@@ -6,6 +6,7 @@ export type ProgramCategoryWithAll = ProgramCategory | "all";
 export type ProgramStatus = "active" | "end";
 export type ProgramType = "demand" | "notification";
 export type AccessRight = "edit" | "read_only";
+export type ProgramAttendStatus = "attend" | "late" | "non_open";
 
 export interface ProgramInfo {
   programId: number;
@@ -19,7 +20,7 @@ export interface ProgramInfo {
   programGithubUrl: string;
   teams: TeamInfo[];
   eventStatus: "active" | "end";
-  attend_mode: "attend" | "late" | "non_open";
+  attend_mode: ProgramAttendStatus;
 }
 
 export interface ProgramSimpleInfo extends Omit<ProgramInfo, "content"> {}

@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import API from "../constants/API";
 import { AttendStatus } from "../types/member";
 import {
+  ProgramAttendStatus,
   ProgramCategoryWithAll,
   ProgramInfo,
   ProgramStatus,
@@ -208,5 +209,20 @@ export const getProgramAccessRight = async (
     url: API.PROGRAM.ACCESS_RIGHT(programId),
     method: "GET",
   });
+  return data?.data;
+};
+
+export const updateProgramAttendMode = async (
+  programId: number,
+  attendMode: ProgramAttendStatus,
+) => {
+  const { data } = await https({
+    url: API.PROGRAM.UPDATE_ATTEND_MODE(programId),
+    method: "POST",
+    params: {
+      mode: attendMode,
+    },
+  });
+
   return data?.data;
 };
