@@ -11,10 +11,11 @@ const Board = ({ isGuest = false }: BoardProps) => {
     teamValues: { selectedTeamId },
     programValue: { programId },
   } = useContext(DashboardContext);
-  const { data, isLoading } = useGetQuestion(programId, selectedTeamId);
+  const { data, isLoading, error } = useGetQuestion(programId, selectedTeamId);
 
   // TODO: Loader 적용, 에러 처리
   if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
 
   const { comments } = data;
 
