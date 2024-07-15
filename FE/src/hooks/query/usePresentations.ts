@@ -3,7 +3,13 @@ import { getPresentations } from "@/apis/proxy/github";
 
 const usePresentations = (programId: number) => {
   const queryClient = useQueryClient();
-  const githubUrl = queryClient.getQueryData(["githubUrl", programId]);
+  const githubUrl: string = queryClient.getQueryData(["githubUrl", programId]);
+  return useGetPresentation(programId, githubUrl);
+};
+
+export default usePresentations;
+
+const useGetPresentation = (programId: number, githubUrl: string) => {
   return useQuery({
     queryKey: ["presentations", programId],
     queryFn: () => {
@@ -14,5 +20,3 @@ const usePresentations = (programId: number) => {
     enabled: !!githubUrl,
   });
 };
-
-export default usePresentations;
