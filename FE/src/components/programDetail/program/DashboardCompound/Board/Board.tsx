@@ -21,6 +21,11 @@ const Board = ({ isGuest = false }: BoardProps) => {
 
   return (
     <div className="flex max-h-[36rem] w-full flex-col overflow-hidden overflow-y-auto rounded-sm border">
+      {comments.length === 0 && (
+        <div className="flex h-full items-center justify-center py-20 text-xl text-gray-30">
+          아직 질문이 없습니다. 🥲
+        </div>
+      )}
       {comments.map((props) => (
         <Chat key={props.commentId} isGuest={isGuest} {...props} />
       ))}
