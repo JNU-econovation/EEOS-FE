@@ -1,4 +1,5 @@
 export const checkIsValidateGithubUrl = (githubUrl: string) => {
+  if (!githubUrl || githubUrl == "") return false;
   const parsedUrl = new URL(githubUrl);
 
   const isGithubUrl = parsedUrl.hostname === "github.com";
