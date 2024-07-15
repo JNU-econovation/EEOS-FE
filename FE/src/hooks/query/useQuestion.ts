@@ -11,6 +11,7 @@ export const useGetQuestion = (programId: number, teamId: number) => {
   return useQuery({
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
+    enabled: !!programId && (!!teamId || teamId === 0),
   });
 };
 
