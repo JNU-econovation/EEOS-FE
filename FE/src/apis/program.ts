@@ -97,7 +97,7 @@ export interface PostProgramRequest
     | "programId"
     | "programStatus"
     | "accessRight"
-    | "attend_mode"
+    | "attendMode"
     | "eventStatus"
     | "teams"
   > {
@@ -165,7 +165,7 @@ export interface PatchProgramBody
     | "programId"
     | "programStatus"
     | "accessRight"
-    | "attend_mode"
+    | "attendMode"
     | "eventStatus"
     | "programGithubUrl"
     | "teams"

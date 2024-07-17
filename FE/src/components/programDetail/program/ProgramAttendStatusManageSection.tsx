@@ -27,7 +27,7 @@ const ProgramAttendStatusManageSection = ({
   useEffect(() => {
     const currentProgramAttendStatus = queryClient.getQueryData<ProgramInfoDto>(
       [API.PROGRAM.Edit_DETAIL(programId)],
-    )?.attend_mode;
+    )?.attendMode;
     setAttendStatus(currentProgramAttendStatus);
   }, [queryClient, programId, setAttendStatus, isLoading]);
 
