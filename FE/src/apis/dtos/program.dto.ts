@@ -25,7 +25,7 @@ export class ProgramInfoDto {
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
-  public readonly attend_mode: ProgramAttendStatus;
+  public readonly attendMode: ProgramAttendStatus;
   public readonly programGithubUrl: string;
 
   constructor(data: ProgramInfo) {
@@ -37,7 +37,7 @@ export class ProgramInfoDto {
     this.programStatus = data?.programStatus;
     this.type = data?.type;
     this.accessRight = data?.accessRight;
-    this.attend_mode = data?.attend_mode;
+    this.attendMode = data?.attendMode;
     this.programGithubUrl = data?.programGithubUrl;
   }
 }
@@ -49,7 +49,7 @@ export class ProgramSimpleInfoDto {
   public readonly category: ProgramCategory;
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
-  public readonly attend_mode: ProgramAttendStatus;
+  public readonly attendMode: ProgramAttendStatus;
 
   constructor(data: ProgramSimpleInfo) {
     this.programId = data?.programId;
@@ -58,7 +58,7 @@ export class ProgramSimpleInfoDto {
     this.category = data?.category;
     this.programStatus = data?.programStatus;
     this.type = data?.type;
-    this.attend_mode = data?.attend_mode;
+    this.attendMode = data?.attendMode;
   }
 }
 

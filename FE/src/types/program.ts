@@ -20,7 +20,7 @@ export interface ProgramInfo {
   programGithubUrl: string;
   teams: TeamInfo[];
   eventStatus: "active" | "end";
-  attend_mode: ProgramAttendStatus;
+  attendMode: ProgramAttendStatus;
 }
 
 export interface ProgramSimpleInfo extends Omit<ProgramInfo, "content"> {}
