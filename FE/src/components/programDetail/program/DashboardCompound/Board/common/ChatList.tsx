@@ -9,7 +9,6 @@ interface ChatListProps {
   time: string;
   content: string;
   markdownStyle?: string;
-  isGuest: boolean;
 }
 const ChatList = ({
   writer,
@@ -18,9 +17,9 @@ const ChatList = ({
   content,
   time,
   markdownStyle,
-  isGuest,
 }: ChatListProps) => {
   const {
+    accessType,
     commentValues: {
       create: { setParentsCommentId, changeSelectedCommentContent },
       update: { updateComment, isUpdateSuccess },
@@ -31,7 +30,8 @@ const ChatList = ({
   const [userInputToModify, setUserInputToModify] = useState(content);
   const [isModify, setIsModify] = useState(false);
 
-  const isHasUpdateright = accessRight === "edit" && !isGuest;
+  const isGuest = accessType === "public";
+  const isHasUpdateRight = accessRight === "edit" && !isGuest;
 
   const handleReply = () => {
     setParentsCommentId(commentId);
@@ -39,7 +39,7 @@ const ChatList = ({
   };
 
   const toggleIsModify = () => {
-    if (!isHasUpdateright) return;
+    if (!isHasUpdateRight) return;
     setIsModify((prev) => !prev);
     setUserInputToModify(content);
   };
@@ -62,7 +62,7 @@ const ChatList = ({
   };
 
   const handleDeleteComment = () => {
-    if (!isHasUpdateright) return;
+    if (!isHasUpdateRight) return;
 
     const isOkToDelete = confirm("정말 삭제하시겠습니까?");
     if (!isOkToDelete) return;
@@ -90,13 +90,15 @@ const ChatList = ({
         <span className="opacity-60">{time}</span>
         {!isModify && (
           <>
-            <button
-              className="opacity-60 transition-all hover:opacity-100"
-              onClick={handleReply}
-            >
-              답변하기
-            </button>
-            {isHasUpdateright && (
+            {!isGuest && (
+              <button
+                className="opacity-60 transition-all hover:opacity-100"
+                onClick={handleReply}
+              >
+                답변하기
+              </button>
+            )}
+            {isHasUpdateRight && (
               <button
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={toggleIsModify}
@@ -104,7 +106,7 @@ const ChatList = ({
                 수정하기
               </button>
             )}
-            {isHasUpdateright && (
+            {isHasUpdateRight && (
               <button
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={handleDeleteComment}

@@ -3,10 +3,7 @@ import { DashboardContext } from "../DashboardWrapper";
 import Chat from "./Chat";
 import { useGetQuestion } from "@/hooks/query/useQuestionQuery";
 
-interface BoardProps {
-  isGuest?: boolean;
-}
-const Board = ({ isGuest = false }: BoardProps) => {
+const Board = () => {
   const {
     teamValues: { selectedTeamId },
     programValue: { programId },
@@ -27,7 +24,7 @@ const Board = ({ isGuest = false }: BoardProps) => {
         </div>
       )}
       {comments.map((props) => (
-        <Chat key={props.commentId} isGuest={isGuest} {...props} />
+        <Chat key={props.commentId} {...props} />
       ))}
     </div>
   );
