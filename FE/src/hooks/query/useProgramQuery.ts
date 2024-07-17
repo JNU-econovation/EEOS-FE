@@ -28,6 +28,7 @@ interface CreateProgram {
 }
 
 export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
+  const useClient = useQueryClient();
   const router = useRouter();
 
   return useMutation({
@@ -40,6 +41,7 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
     onSuccess: (programId) => {
       formReset();
       programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
+      useClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
 };
@@ -65,11 +67,16 @@ export const useUpdateProgram = ({ programId, body }: PatchProgramRequest) => {
 };
 
 export const useDeleteProgram = (programId: number) => {
+  const useClient = useQueryClient();
   const router = useRouter();
 
   return useMutation({
     mutationKey: [API.PROGRAM.DELETE(programId)],
-    mutationFn: () => deleteProgram(programId),
+    mutationFn: async () => {
+      const res = await deleteProgram(programId);
+      useClient.invalidateQueries([API.PROGRAM.LIST]);
+      return res;
+    },
     onSettled: () => {
       router.replace(ROUTES.MAIN);
     },
@@ -100,6 +107,7 @@ export const useGetProgramByProgramId = (
         );
         return res;
       }),
+    staleTime: 1000 * 60 * 60,
   });
 };
 
@@ -119,6 +127,7 @@ export const useGetProgramList = ({
       programs: data?.programs,
     }),
     suspense: true,
+    staleTime: 1000 * 60 * 60,
   });
 };
 
