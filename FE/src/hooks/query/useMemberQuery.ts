@@ -18,7 +18,6 @@ export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
     queryKey: [API.MEMBER.LIST, activeStatus],
     queryFn: () => getMembersByActiveStatus(activeStatus),
     staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 5,
   });
 };
 
