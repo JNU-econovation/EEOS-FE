@@ -7,7 +7,7 @@ import TeamTab from "./TeamTab";
 import {
   useDeleteQuestion,
   useUpdateQuestion,
-} from "@/hooks/query/useQuestion";
+} from "@/hooks/query/useQuestionQuery";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
 import { TeamInfo } from "@/types/team";
 

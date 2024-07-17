@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DashboardContext } from "../DashboardWrapper";
 import Chat from "./Chat";
-import { useGetQuestion } from "@/hooks/query/useQuestion";
+import { useGetQuestion } from "@/hooks/query/useQuestionQuery";
 
 interface BoardProps {
   isGuest?: boolean;
