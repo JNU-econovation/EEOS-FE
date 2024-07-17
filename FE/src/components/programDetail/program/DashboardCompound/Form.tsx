@@ -8,6 +8,7 @@ import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 
 const Input = () => {
   const {
+    accessType,
     programValue: { programId },
     teamValues: { teams, selectedTeamId },
     commentValues: {
@@ -22,10 +23,13 @@ const Input = () => {
   const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
     ?.teamName;
 
+  const isAbleToPost = accessType === "private";
+
   const handlePostQuestion = () => {
     const questionContent = questionInput.trim();
 
     if (!questionContent) return;
+    if (!isAbleToPost) return;
 
     const postQuestionParams: PostQuestionParams = {
       programId,
@@ -66,7 +70,10 @@ const Input = () => {
           className="absolute right-4 top-1/2 -translate-y-1/2"
           onClick={handlePostQuestion}
         >
-          <StatusToggleItem color="green" text="전송" />
+          <StatusToggleItem
+            color={isAbleToPost ? "green" : "gray"}
+            text="전송"
+          />
         </button>
       </div>
     </div>

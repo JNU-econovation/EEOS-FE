@@ -14,7 +14,6 @@ interface ProgramDetailProps {
 }
 
 const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
-  const isGuest = accessType === "public";
   const isAdmin = accessType === "admin";
 
   const { content } = data;
@@ -28,7 +27,7 @@ const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
       {isAdmin && <ProgramAttendStatusManageSection programId={programId} />}
       {githubUrl && <ProgramPresentations programId={programId} />}
       <div className="mt-12">
-        <ProgramDashboard programId={programId} isGuest={isGuest} />
+        <ProgramDashboard programId={programId} accessType={accessType} />
       </div>
     </div>
   );

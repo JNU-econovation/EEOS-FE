@@ -1,3 +1,4 @@
+//TODO: 서버 컴포넌트로 변경
 "use client";
 
 import Title from "@/components/common/Title";

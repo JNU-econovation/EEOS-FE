@@ -9,9 +9,11 @@ import {
   useUpdateQuestion,
 } from "@/hooks/query/useQuestionQuery";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
+import { AccessType } from "@/types/access";
 import { TeamInfo } from "@/types/team";
 
 interface DashboardContextValue {
+  accessType: AccessType;
   programValue: {
     readonly programId: number;
   };
@@ -45,9 +47,14 @@ export const DashboardContext = createContext<DashboardContextValue>(null);
 
 interface DashboardWrapperProps {
   programId: number;
+  accessType: AccessType; //TODO: 현재 accessType에 의존하는 중임. 이는 알지 않아도 되는 정보이므로 추후 수정 필요
   children: React.ReactNode;
 }
-const DashboardWrapper = ({ programId, children }: DashboardWrapperProps) => {
+const DashboardWrapper = ({
+  programId,
+  accessType,
+  children,
+}: DashboardWrapperProps) => {
   // teamValues
   const { data, isLoading } = useTeamQuery(programId);
   const { teams } = data || { teams: [] };
@@ -98,6 +105,7 @@ const DashboardWrapper = ({ programId, children }: DashboardWrapperProps) => {
 
   const DashBoardValue = useMemo(() => {
     return {
+      accessType,
       programValue,
       teamValues,
       commentValues,
