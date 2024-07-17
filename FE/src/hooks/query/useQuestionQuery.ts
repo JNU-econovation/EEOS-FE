@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   deleteQuestion,
   getQuestionsByTeam,
@@ -12,14 +12,23 @@ export const useGetQuestion = (programId: number, teamId: number) => {
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
     enabled: !!programId && (!!teamId || teamId === 0),
+    refetchInterval: 10 * 1000,
+    staleTime: 10 * 1000,
   });
 };
 
 export const usePostQuestion = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ["question", "post"],
-    mutationFn: (postQuestionParams: PostQuestionParams) =>
-      postQuestion(postQuestionParams),
+    mutationFn: async (postQuestionParams: PostQuestionParams) => {
+      const res = await postQuestion(postQuestionParams);
+
+      const { programId, teamId } = postQuestionParams;
+      queryClient.invalidateQueries(["question", programId, teamId]);
+
+      return res;
+    },
   });
 };
 
@@ -37,8 +46,13 @@ export const useUpdateQuestion = () => {
 };
 
 export const useDeleteQuestion = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ["question", "delete"],
-    mutationFn: (commentId: number) => deleteQuestion(commentId),
+    mutationFn: async (commentId: number) => {
+      const res = await deleteQuestion(commentId);
+      queryClient.invalidateQueries(["question", "get"]);
+      return res;
+    },
   });
 };

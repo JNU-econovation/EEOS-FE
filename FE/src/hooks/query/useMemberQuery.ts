@@ -18,7 +18,6 @@ export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
     queryKey: [API.MEMBER.LIST, activeStatus],
     queryFn: () => getMembersByActiveStatus(activeStatus),
     staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 5,
   });
 };
 
@@ -41,6 +40,7 @@ export const useGetProgramMembersByActive = ({
   return useQuery({
     queryKey: [API.MEMBER.ACTIVE_STATUS(programId), status],
     queryFn: () => getProgramMembersByActiveStatus(programId, status),
+    staleTime: 1000 * 60 * 5,
   });
 };
 
@@ -51,6 +51,7 @@ export const useGetProgramMembersByAttend = ({
   return useQuery({
     queryKey: [API.MEMBER.ATTEND_STATUS(programId), status],
     queryFn: () => getProgramMembersByAttendStatus(programId, status),
+    staleTime: 1000 * 60 * 5,
   });
 };
 

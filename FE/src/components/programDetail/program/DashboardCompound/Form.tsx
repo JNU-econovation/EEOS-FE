@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { DashboardContext } from "./DashboardWrapper";
 import { PostQuestionParams } from "@/apis/question";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
-import { usePostQuestion } from "@/hooks/query/useQuestion";
+import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 
 const Input = () => {
   const {

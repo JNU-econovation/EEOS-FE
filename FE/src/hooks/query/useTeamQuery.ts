@@ -28,6 +28,9 @@ export const useCreateTeam = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["teams", "all"]);
     },
+    onError: () => {
+      queryClient.invalidateQueries(["teams", "all"]);
+    },
   });
 };
 
@@ -45,6 +48,9 @@ export const useDeleteTeam = (teamId: number) => {
       queryClient.setQueryData(["teams", "all"], { teams: newTeams });
     },
     onSuccess: () => {
+      queryClient.invalidateQueries(["teams", "all"]);
+    },
+    onError: () => {
       queryClient.invalidateQueries(["teams", "all"]);
     },
   });
