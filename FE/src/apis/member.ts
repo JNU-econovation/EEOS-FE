@@ -80,7 +80,7 @@ export const updateMemberActiveStatus = async (
   const { data } = await https({
     url: API.MEMBER.UPDATE(memberId),
     method: "PUT",
-    data: { activeStatus },
+    data: activeStatus,
   });
   return data?.data;
 };
