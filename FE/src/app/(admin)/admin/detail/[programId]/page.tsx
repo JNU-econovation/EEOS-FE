@@ -1,6 +1,5 @@
 import AttendeeInfoContainer from "@/components/programDetail/attendee/AttendeeInfo.container";
 import ProgramInfo from "@/components/programDetail/program/ProgramInfo";
-import UserAttendModalContainer from "@/components/programDetail/userAttendModal/UserAttendModal.container";
 
 interface ProgramDetailPageProps {
   params: {
@@ -15,7 +14,6 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
     <div className="mb-16 space-y-16">
       <ProgramInfo programId={+programId} accessType="admin" />
       <AttendeeInfoContainer programId={+programId} isLoggedIn />
-      <UserAttendModalContainer programId={+programId} isLoggedIn />
     </div>
   );
 };
