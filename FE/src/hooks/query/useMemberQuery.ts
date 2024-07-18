@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { MemberActiveStatusInfoDto } from "@/apis/dtos/member.dto";
 import {
   deleteMember,
   getMembersByActiveStatus,
@@ -60,12 +61,27 @@ export const useUpdateMemberActiveStatus = ({
 }: UpdateMemberActiveStatus) => {
   const queryClient = useQueryClient();
   const data = useMutation<void, Error, { activeStatus: ActiveStatus }>({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    mutationFn: (activeStatus: ActiveStatus) =>
+    mutationFn: ({ activeStatus }: { activeStatus: ActiveStatus }) =>
       updateMemberActiveStatus(memberId, activeStatus),
 
-    onSettled: () => {
+    onMutate: ({ activeStatus: newActiveStatus }) => {
+      const prevMemberActiveData = queryClient.getQueryData<
+        MemberActiveStatusInfoDto[]
+      >([API.MEMBER.LIST, "all"]);
+
+      const newMemberActiveData = prevMemberActiveData.map((v) =>
+        memberId === v.memberId
+          ? {
+              activeStatus: newActiveStatus,
+              memberId: v.memberId,
+              name: v.name,
+            }
+          : v,
+      );
+
+      queryClient.setQueryData([API.MEMBER.LIST, "all"], newMemberActiveData);
+    },
+    onError: () => {
       queryClient.invalidateQueries([API.MEMBER.LIST]);
     },
   });
