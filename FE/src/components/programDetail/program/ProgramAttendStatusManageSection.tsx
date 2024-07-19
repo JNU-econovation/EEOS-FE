@@ -44,8 +44,8 @@ const ProgramAttendStatusManageSection = ({
   };
 
   const closeAttend = () => {
-    updateProgramAttendMode("non_open");
-    isSuccess && setAttendStatus("non_open");
+    updateProgramAttendMode("end");
+    isSuccess && setAttendStatus("end");
   };
 
   const startAttend = () => {
