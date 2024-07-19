@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import Participant from "../../../programCreate/Participant";
 import CreateCategory from "./CreateCategory";
 import ProgramTitle from "./ProgramTitle";
@@ -9,31 +11,90 @@ import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
 import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
 import FORM_INFO from "@/constants/FORM_INFO";
-import useCreateProgramFormData from "@/hooks/useCreateProgramFormData";
-import { ProgramCategory } from "@/types/program";
+import { useCreateProgram } from "@/hooks/query/useProgramQuery";
+import { useMemberSet } from "@/hooks/useMemberForm";
+import useProgramFormData from "@/hooks/useProgramFormData";
+import { ProgramCategory, ProgramType } from "@/types/program";
+import { TeamInputInfo } from "@/types/team";
+
+export interface ProgramFormDataState {
+  title: string;
+  deadLine: string;
+  type: ProgramType;
+  category: ProgramCategory;
+  content: string;
+  programGithubUrl: string;
+  teamList: TeamInputInfo[];
+}
+
+const initialState: ProgramFormDataState = {
+  title: "",
+  deadLine: new Date().getTime().toString(),
+  type: "notification",
+  category: "weekly",
+  content: "",
+  programGithubUrl: "",
+  teamList: [],
+};
 
 const CreateForm = () => {
+  const router = useRouter();
+
   const {
     title,
-    content,
-    members,
-    teams,
-    isDemand,
     deadLine,
+    type,
     category,
+    content,
+    isDemand,
     programGithubUrl,
+    teams,
     setTitle,
-    setContent,
-    handleReset,
-    setCategory,
     setDeadLine,
-    handleSubmit,
-    updateMembers,
-    updateAllMembers,
+    setCategory,
+    setContent,
+    setProgramGithubUrl,
+    setTeams,
+    reset,
     handleChangeType,
-    handleTeamListChange,
-    handleGithubUrlChange,
-  } = useCreateProgramFormData();
+  } = useProgramFormData(initialState);
+
+  const { members, updateAllMembers, updateMembers } = useMemberSet();
+
+  const { mutate: createProgramMutate } = useCreateProgram({
+    programData: {
+      deadLine,
+      content,
+      category,
+      type,
+      programGithubUrl,
+      teams,
+      members: Array.from(members, (memberId) => ({ memberId })),
+      title: type === "demand" ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
+    },
+    formReset: reset,
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!title || !content || !deadLine || !category || !type) {
+      toast.error("모든 항목을 입력해주세요.");
+      return;
+    }
+    createProgramMutate();
+  };
+
+  const handleReset = () => {
+    reset();
+    router.back();
+  };
+
+  const handleGithubUrlChange = (url: string) => {
+    setProgramGithubUrl(url);
+  };
+  const handleTeamListChange = (teamList: TeamInputInfo[]) => {
+    setTeams(teamList);
+  };
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
