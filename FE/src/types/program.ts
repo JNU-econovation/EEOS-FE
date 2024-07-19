@@ -6,7 +6,7 @@ export type ProgramCategoryWithAll = ProgramCategory | "all";
 export type ProgramStatus = "active" | "end";
 export type ProgramType = "demand" | "notification";
 export type AccessRight = "edit" | "read_only";
-export type ProgramAttendStatus = "attend" | "late" | "non_open";
+export type ProgramAttendStatus = "attend" | "late" | "non_open" | "end";
 
 export interface ProgramInfo {
   programId: number;
