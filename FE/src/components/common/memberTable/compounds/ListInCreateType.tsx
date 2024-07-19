@@ -7,7 +7,7 @@ import CheckBox from "@/components/common/CheckBox";
 import ErrorFallback from "@/components/common/ErrorFallback";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
-import { Members } from "@/hooks/useEditProgramFormData";
+import { Members } from "@/hooks/useMemberForm";
 
 interface ListInCreateTypeProps {
   members: Set<number> | Map<number, Members>;
