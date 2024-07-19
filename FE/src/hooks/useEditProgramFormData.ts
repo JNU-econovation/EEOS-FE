@@ -1,17 +1,11 @@
-//FIXME: 책임별 분리 필요
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import {
   useGetProgramByProgramId,
   useUpdateProgram,
 } from "./query/useProgramQuery";
+import { useMemberMap } from "./useMemberForm";
 import useProgramFormData, { ProgramFormDataState } from "./useProgramFormData";
-import { AttendStatus } from "@/types/member";
-
-export interface Members {
-  beforeAttendStatus: AttendStatus;
-  afterAttendStatus: AttendStatus;
-}
 
 const initialState: ProgramFormDataState = {
   title: "",
@@ -23,6 +17,8 @@ const initialState: ProgramFormDataState = {
 };
 
 const useEditProgramFormData = (programId: number) => {
+  const { members, updateMembers } = useMemberMap();
+
   const { data: programInfo, isLoading } = useGetProgramByProgramId(
     +programId,
     true,
@@ -52,8 +48,6 @@ const useEditProgramFormData = (programId: number) => {
     setData(programInfo);
   }, [programInfo]);
 
-  const [members, setMembers] = useState<Map<number, Members>>(new Map());
-
   const { mutate: updateProgramMutate } = useUpdateProgram({
     programId: +programId,
     body: {
@@ -73,25 +67,6 @@ const useEditProgramFormData = (programId: number) => {
       ),
     },
   });
-
-  const updateMembers = (
-    memberId: number,
-    before: AttendStatus,
-    after: AttendStatus,
-  ) => {
-    const newMembers = new Map<number, Members>(members);
-
-    if (before === after) {
-      newMembers.delete(memberId);
-    }
-    if (before !== after) {
-      newMembers.set(memberId, {
-        beforeAttendStatus: before,
-        afterAttendStatus: after,
-      });
-    }
-    setMembers(newMembers);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

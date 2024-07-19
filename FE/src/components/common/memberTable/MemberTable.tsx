@@ -1,7 +1,7 @@
 "use client";
-//FIXME: 하위 호환성을 위해 만들어진 컴포넌트로, 타 컴포넌트와의 의존성을 줄이는 방식으로 리팩토링이 필요
 import MemberTableWrapper from "./MemberTableWrapper";
-import { Members } from "@/hooks/useEditProgramFormData";
+import { Members } from "@/hooks/useMemberForm";
+//FIXME: 하위 호환성을 위해 만들어진 컴포넌트로, 타 컴포넌트와의 의존성을 줄이는 방식으로 리팩토링이 필요
 import { FormType } from "@/types/form";
 import { AttendStatus } from "@/types/member";
 
