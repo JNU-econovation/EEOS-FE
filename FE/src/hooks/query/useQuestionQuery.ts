@@ -11,7 +11,7 @@ export const useGetQuestion = (programId: number, teamId: number) => {
   return useQuery({
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
-    enabled: !!programId && (!!teamId || teamId === 0),
+    enabled: (!!programId || programId === 0) && (!!teamId || teamId === 0),
     refetchInterval: 10 * 1000,
     staleTime: 10 * 1000,
   });
