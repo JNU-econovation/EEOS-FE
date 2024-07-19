@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import FormBtn from "../common/form/FormBtn";
 import CreateCategory from "../common/form/program/CreateCategory";
 import ProgramDate from "../common/form/program/ProgramDate";
@@ -9,33 +12,88 @@ import ProgramGithubLinkInput from "../programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "../programCreate/ProgramTeamList";
 import EditMemberAttendStateTable from "./EditMemberAttendStateTable";
 import FORM_INFO from "@/constants/FORM_INFO";
-import useEditProgramFormData from "@/hooks/useEditProgramFormData";
+import {
+  useGetProgramByProgramId,
+  useUpdateProgram,
+} from "@/hooks/query/useProgramQuery";
+import { useMemberMap } from "@/hooks/useMemberForm";
+import useProgramFormData, {
+  ProgramFormDataState,
+} from "@/hooks/useProgramFormData";
 import { ProgramCategory } from "@/types/program";
+
+const initialState: ProgramFormDataState = {
+  title: "",
+  deadLine: new Date().getTime().toString(),
+  type: "notification",
+  category: "weekly",
+  content: "",
+  programGithubUrl: "",
+};
 
 interface EditFormProps {
   programId: number;
 }
 const EditForm = ({ programId }: EditFormProps) => {
+  const { members, updateMembers } = useMemberMap();
+
+  const { data: programInfo, isLoading: isProgrmaLoading } =
+    useGetProgramByProgramId(+programId, true);
   const {
-    isLoading,
-    category,
-    content,
-    deadLine,
-    isDemand,
     title,
-    teams,
-    programGithubUrl,
+    deadLine,
+    content,
+    category,
+    setCategory,
     setContent,
-    handleReset,
-    handleSubmit,
-    handleChangeType,
+    type,
+    reset: handleReset,
+    programGithubUrl,
     handleGithubUrlChange,
     setTitle,
-    setCategory,
-    updateMembers,
-    setDeadLine,
+    isDemand,
+    handleChangeType,
     handleTeamListChange,
-  } = useEditProgramFormData(programId);
+    setDeadLine,
+    setData,
+    teams,
+  } = useProgramFormData(initialState);
+
+  useEffect(() => {
+    if (isLoading) return;
+    setData(programInfo);
+  }, [programInfo]);
+
+  const { mutate: updateProgramMutate } = useUpdateProgram({
+    programId: +programId,
+    body: {
+      title,
+      deadLine,
+      content,
+      category,
+      type,
+      teams,
+      members: Array.from(
+        members,
+        ([memberId, { beforeAttendStatus, afterAttendStatus }]) => ({
+          memberId,
+          beforeAttendStatus,
+          afterAttendStatus,
+        }),
+      ),
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!title || !content || !deadLine || !category || !type) {
+      toast.error("모든 항목을 입력해주세요.");
+      return;
+    }
+    updateProgramMutate();
+  };
+
+  const isLoading = isProgrmaLoading || !programInfo;
 
   if (isLoading) return <LoadingSpinner />;
 
