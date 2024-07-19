@@ -14,7 +14,7 @@ const PROGRAM = {
 
 const MEMBER = {
   LIST: "/members",
-  UPDATE: (memberId: number) => `/members/activestatus/${memberId}`,
+  UPDATE: (memberId: number) => `/members/activeStatus/${memberId}`,
   DELETE: (memberId: number) => `/members/${memberId}`,
   ACTIVE_STATUS: (programId: number) => `/programs/${programId}/members`,
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}/members`,
