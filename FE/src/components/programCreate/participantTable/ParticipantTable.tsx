@@ -3,22 +3,32 @@ import TableWrapper from "@/components/common/Table/TableWrapper";
 import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
 import { ActiveStatusWithAll } from "@/types/member";
 
-interface TableProps {
+interface ParticipantTableProps {
   selectedItem: ActiveStatusWithAll;
+  members: Set<number>;
+  setMembers: (memberId: number) => void;
+  selectedActive: ActiveStatusWithAll;
+  onClickHeaderCheckBox: (selected: boolean) => void;
 }
-const ManageTable = ({ selectedItem }: TableProps) => {
+const ParticipantTable = ({
+  members,
+  onClickHeaderCheckBox,
+  selectedActive,
+  selectedItem,
+  setMembers,
+}: ParticipantTableProps) => {
   const { data: memberList, isLoading } = useGetMemberByActive(selectedItem);
 
-  const columnWidths = ["7rem", "7.25rem", "1fr", "10rem"];
-  const headerItems = ["활동 상태", "이름", "", ""];
+  const columnWidths = ["4.75rem", "7rem", "7.25rem", "1fr", "20.5rem"];
+  const headerItems = ["활동 상태", "이름"];
 
   return (
     <TableWrapper columnWidths={columnWidths} headerItems={headerItems}>
       <TableWrapper.Header />
       {isLoading && <MemberTableLoader />}
-      {memberList && <TableWrapper.MemberManageList memberList={memberList} />}
+      {memberList && <MemberTableWrapper.CreateList />}
     </TableWrapper>
   );
 };
 
-export default ManageTable;
+export default ParticipantTable;

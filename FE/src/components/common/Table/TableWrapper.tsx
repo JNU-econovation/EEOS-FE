@@ -12,6 +12,7 @@ import CheckBox from "@/components/common/CheckBox";
 import ActiveStatusToggle from "@/components/common/toggle/ActiveStatusToggle";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { useDeleteMember } from "@/hooks/query/useMemberQuery";
+import { Members } from "@/hooks/useMemberForm";
 
 interface TableContextType {
   checkboxState: {
@@ -19,7 +20,7 @@ interface TableContextType {
     checked: boolean;
     setChecked: (checked: boolean) => void;
   };
-  headerStyle: string;
+  columnWidths: string;
   headerItems: string[];
 }
 
@@ -45,7 +46,6 @@ const TableWrapper = ({
   children,
 }: TabWrapperProps) => {
   const [checked, setChecked] = useState(false);
-  const headerStyle = columnWidths.join("_");
 
   const checkboxState = {
     hasCheckBox,
@@ -56,10 +56,10 @@ const TableWrapper = ({
   const providerValue: TableContextType = useMemo(
     () => ({
       checkboxState,
-      headerStyle,
+      columnWidths: columnWidths.join("_"),
       headerItems,
     }),
-    [checkboxState, headerStyle, headerItems],
+    [checkboxState, columnWidths, headerItems],
   );
 
   return (
@@ -72,12 +72,12 @@ const TableWrapper = ({
 const Header = () => {
   const {
     headerItems,
-    headerStyle,
+    columnWidths,
     checkboxState: { hasCheckBox, checked, setChecked },
   } = useTableContext();
 
-  const headerGridStyle = `grid-cols-[${headerStyle}]`;
-  const HeaderStyle = classNames(
+  const headerGridStyle = `grid-cols-[${columnWidths}]`;
+  const headerStyle = classNames(
     "grid w-fit  justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full",
     headerGridStyle,
   );
@@ -88,7 +88,7 @@ const Header = () => {
   };
 
   return (
-    <div className={HeaderStyle}>
+    <div className={headerStyle}>
       {hasCheckBox && (
         <CheckBox checked={checked} onClick={handleClickCheckBox} />
       )}
@@ -99,16 +99,23 @@ const Header = () => {
   );
 };
 
-interface ListProps {
+interface MemberManageListProps {
   memberList: MemberActiveStatusInfoDto[];
 }
-const List = ({ memberList }: ListProps) => {
+const MemberManageList = ({ memberList }: MemberManageListProps) => {
+  const { columnWidths } = useTableContext();
   const { mutate: deleteMember } = useDeleteMember();
 
   const handleDeleteMember = (memberId: number) => {
     const ok = confirm("정말로 삭제하시겠습니까?");
     ok && deleteMember({ memberId });
   };
+
+  const listGridStyle = `grid-cols-[${columnWidths}]`;
+  const listColumnStyle = classNames(
+    "grid h-20 w-fit items-center justify-items-center gap-4 border-b-2 border-stroke-10 bg-background px-10 sm:w-full",
+    listGridStyle,
+  );
 
   //TODO: queryClient로직은 훅에서 처리하도록 변경
   // queryClient.setQueryData(
@@ -119,10 +126,7 @@ const List = ({ memberList }: ListProps) => {
   return (
     <>
       {memberList.map(({ activeStatus, memberId, name }) => (
-        <div
-          className="grid h-20 w-fit grid-cols-[7rem_7.25rem_1fr_10rem] items-center justify-items-center gap-4 border-b-2 border-stroke-10 bg-background px-10 sm:w-full"
-          key={memberId}
-        >
+        <div className={listColumnStyle} key={memberId}>
           <span>{ACTIVE_STATUS.TAB[activeStatus]?.text ?? "."}</span>
           <span className="font-bold">{name}</span>
           <div className="flex w-full items-center justify-end">
@@ -145,6 +149,49 @@ const List = ({ memberList }: ListProps) => {
   );
 };
 
+interface ListInCreateTypeProps {
+  members: Set<number> | Map<number, Members>;
+  setMembers: (memberId: number) => void;
+  memberList: MemberActiveStatusInfoDto[];
+}
+const SelectMemberList = ({
+  members,
+  setMembers,
+  memberList,
+}: ListInCreateTypeProps) => {
+  const {
+    checkboxState: { setChecked },
+  } = useTableContext();
+
+  const isCheckedAll = memberList
+    .map((v) => v.memberId)
+    .every((v) => members.has(v));
+  setChecked(isCheckedAll);
+
+  const handleCheck = (memberId) => {
+    setMembers(memberId);
+  };
+
+  return (
+    <>
+      {memberList.map(({ activeStatus, memberId, name }) => (
+        <div
+          className="grid h-20 w-fit grid-cols-[4.75rem_7rem_7.25rem_1fr_20.5rem] items-center justify-items-center gap-4 border-b-2 border-stroke-10 bg-background px-10 sm:w-full"
+          key={memberId}
+        >
+          <CheckBox
+            checked={members.has(memberId)}
+            onClick={() => handleCheck(memberId)}
+          />
+          <span>{ACTIVE_STATUS.TAB[activeStatus]?.text ?? "."}</span>
+          <span className="font-bold">{name}</span>
+        </div>
+      ))}
+    </>
+  );
+};
+
 TableWrapper.Header = Header;
-TableWrapper.List = List;
+TableWrapper.MemberManageList = MemberManageList;
+TableWrapper.SelectMemberList = SelectMemberList;
 export default TableWrapper;
