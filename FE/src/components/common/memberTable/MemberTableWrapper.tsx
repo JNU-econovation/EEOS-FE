@@ -2,11 +2,11 @@
 
 import { useSetAtom } from "jotai";
 import { createContext, useState } from "react";
-import Header from "./\bcompounds/Header";
-import ListInCreateType from "./\bcompounds/ListInCreateType";
-import ListInEditType from "./\bcompounds/ListInEditTypeProps";
-import ListInManageType from "./compounds/ListInManageType";
-import StatusTab from "./\bcompounds/StatusTab";
+import Header from "./compounds/Header";
+import ListInCreateType from "./compounds/ListInCreateType";
+import ListInEditType from "./compounds/ListInEditTypeProps";
+import ListInManageType from "./compounds/ListInManageType.tsx";
+import StatusTab from "./compounds/StatusTab";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
 import { ActiveStatusWithAll } from "@/types/member";
 

@@ -1,7 +1,7 @@
 "use client";
 import { useState, ReactNode } from "react";
 import Tab, { TabProps } from "../Tab";
-
+//TODO: Tab 컴포넌트까지 새롭게 만들어야 함.
 interface TabAsChildProps<ListType>
   extends Omit<
     TabProps<ListType>,
