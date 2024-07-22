@@ -5,7 +5,7 @@ import { createContext, useState } from "react";
 import Header from "./compounds/Header";
 import ListInCreateType from "./compounds/ListInCreateType";
 import ListInEditType from "./compounds/ListInEditTypeProps";
-import ListInManageType from "./compounds/ListInManageType.tsx";
+import ListInManageType from "./compounds/ListInManageType";
 import StatusTab from "./compounds/StatusTab";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
 import { ActiveStatusWithAll } from "@/types/member";
