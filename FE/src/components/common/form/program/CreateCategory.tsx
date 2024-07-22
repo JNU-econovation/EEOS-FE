@@ -1,6 +1,6 @@
 import { ProgramCategory } from "../../../../types/program";
 import Label from "../input/Label";
-import Tab from "@/components/common/tabs/Tab";
+import Tab from "@/components/common/tabs/tab/Tab";
 import PROGRAM from "@/constants/PROGRAM";
 
 interface CreateCategoryProps {

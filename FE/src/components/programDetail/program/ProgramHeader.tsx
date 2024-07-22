@@ -1,6 +1,6 @@
 import EditAndDeleteButton from "./EditAndDeleteButton";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
-import TabItem from "@/components/common/tabs/TabItem";
+import TabItem from "@/components/common/tabs/tab/TabItem";
 import Title from "@/components/common/Title";
 import PROGRAM from "@/constants/PROGRAM";
 import { convertDate } from "@/utils/convert";

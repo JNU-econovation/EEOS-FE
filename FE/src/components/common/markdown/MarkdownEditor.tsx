@@ -3,7 +3,7 @@
 import "./markdown-editor.styles.css";
 import { useState } from "react";
 import Label from "../form/input/Label";
-import Tab from "../tabs/Tab";
+import Tab from "../tabs/tab/Tab";
 import MarkdownViewer from "./MarkdownViewer";
 import { TabOption } from "@/types/tab";
 import { handleKeydown } from "@/utils/handleKeydown";
