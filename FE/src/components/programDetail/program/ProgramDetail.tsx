@@ -20,6 +20,7 @@ const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
 
   const queryClient = useQueryClient();
   const githubUrl = queryClient.getQueryData(["githubUrl", programId]);
+  console.log(githubUrl);
 
   return (
     <div>

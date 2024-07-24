@@ -14,5 +14,7 @@ export const getPresentations = async (githubUrl: string) => {
       },
     })
     .then((res) => res.data.data);
+
+  console.log(data);
   return data;
 };

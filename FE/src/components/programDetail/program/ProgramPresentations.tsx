@@ -10,6 +10,7 @@ interface ProgramPresentationsProps {
 }
 const ProgramPresentations = ({ programId }: ProgramPresentationsProps) => {
   const { data: presentations, isLoading } = usePresentations(programId);
+  console.log(presentations);
 
   return (
     <section>
