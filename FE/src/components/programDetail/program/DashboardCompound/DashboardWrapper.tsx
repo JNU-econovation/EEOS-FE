@@ -107,6 +107,7 @@ const DashboardWrapper = ({
     },
   };
 
+  //TODO: useMemo 사용해야함 _ 급하게 임의로 수정함. 이는 의존성 문제 존재하므로 이부분 보기
   // const DashBoardValue = useMemo(() => {
   //   return {
   //     accessType,
