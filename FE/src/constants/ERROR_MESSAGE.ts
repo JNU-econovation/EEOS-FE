@@ -26,6 +26,9 @@ const ERROR_MESSAGE = {
   [ERROR_CODE.PROGRAM.CANNOT_MODIFY_ACTIVE]: {
     message: "진행 중인 행사의 경우, 참석 정보를 수정할 수 없습니다.",
   },
+  [ERROR_CODE.PROGRAM.UNFORMATTED_GITHUB_URL]: {
+    message: "올바른 GitHub URL 형식이 아닙니다.",
+  },
 
   // 참석
   [ERROR_CODE.ATTEND.NOT_EXIST_ATTEND_STATUS]: {
