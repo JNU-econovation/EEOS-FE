@@ -14,9 +14,7 @@ const ProgramPresentations = ({ programId }: ProgramPresentationsProps) => {
     isLoading,
     isError,
   } = usePresentations(programId);
-  console.log(presentations);
 
-  console.log("isError", isError);
   if (isError) return null;
 
   if (isLoading) return null;
