@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useMemo, useState } from "react";
+import { createContext, useState } from "react";
 import Board from "./Board/Board";
 import Input from "./Form";
 import TeamTab from "./TeamTab";
@@ -71,6 +71,7 @@ const DashboardWrapper = ({
     useUpdateQuestion();
   const { mutate: deleteComment, isSuccess: isDeleteSuccess } =
     useDeleteQuestion();
+
   const changeSelectedCommentContent = (content: string) => {
     setSelectedCommentContent(content);
   };
@@ -106,16 +107,25 @@ const DashboardWrapper = ({
     },
   };
 
-  const DashBoardValue = useMemo(() => {
-    return {
-      accessType,
-      programValue,
-      teamValues,
-      commentValues,
-      programId,
-      children,
-    };
-  }, [programValue, teamValues, commentValues, programId, children]);
+  // const DashBoardValue = useMemo(() => {
+  //   return {
+  //     accessType,
+  //     programValue,
+  //     teamValues,
+  //     commentValues,
+  //     programId,
+  //     children,
+  //   };
+  // }, [programValue, teamValues, commentValues, programId, children]);
+
+  const DashBoardValue = {
+    accessType,
+    programValue,
+    teamValues,
+    commentValues,
+    programId,
+    children,
+  };
 
   return (
     <DashboardContext.Provider value={DashBoardValue}>

@@ -39,9 +39,17 @@ export async function GET(req: NextRequest) {
     );
   } catch (error) {
     console.error(error);
+    // return NextResponse.json(
+    //   { error: "깃허브 요청 중 문제가 발생했습니다. 다시 시도해주세요." },
+    //   { status: 500 },
+    // );
     return NextResponse.json(
-      { error: "깃허브 요청 중 문제가 발생했습니다. 다시 시도해주세요." },
-      { status: 500 },
+      {
+        data: [],
+      },
+      {
+        status: 200,
+      },
     );
   }
 }
