@@ -75,6 +75,9 @@ const DashboardWrapper = ({
     setSelectedCommentContent(content);
   };
 
+  if (isLoading) return null;
+  if (!data || data.teams.length === 0) return null;
+
   const programValue = {
     programId,
   };
