@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { DashboardContext } from "../../DashboardWrapper";
 import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
 
+//TODO: headless 하게 변경해야함
 interface ChatListProps {
   commentId: number;
   writer: string;
@@ -9,6 +10,7 @@ interface ChatListProps {
   time: string;
   content: string;
   markdownStyle?: string;
+  showReplyButton?: boolean;
 }
 const ChatList = ({
   writer,
@@ -17,6 +19,7 @@ const ChatList = ({
   content,
   time,
   markdownStyle,
+  showReplyButton = true,
 }: ChatListProps) => {
   const {
     accessType,
@@ -88,7 +91,7 @@ const ChatList = ({
       )}
       <div className="mt-4 flex items-center gap-4">
         <span className="opacity-60">{time}</span>
-        {!isModify && (
+        {!isModify && showReplyButton && (
           <>
             {!isGuest && (
               <button
