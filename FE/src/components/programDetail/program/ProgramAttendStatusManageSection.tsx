@@ -32,20 +32,24 @@ const ProgramattendModeManageSection = ({
   });
 
   const setattendModeToAttend = () => {
+    if (programStatus === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("attend");
   };
 
   const setattendModeToLate = () => {
+    if (programStatus === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("late");
   };
 
   const closeAttend = () => {
+    if (programStatus === "end") return;
     updateProgramAttendMode("end");
   };
 
   const startAttend = () => {
+    if (programStatus === "end") return;
     updateProgramAttendMode("attend");
   };
 
@@ -90,10 +94,7 @@ const ProgramattendModeManageSection = ({
             </div>
             {/* TODO: 아에 프로젝트가 끝났을 때 다시 시작 안되도록 수정 필요 */}
             {attendMode === "non_open" || attendMode === "end" ? (
-              <button
-                onClick={programStatus === "active" ? startAttend : () => {}}
-                disabled={isLoading}
-              >
+              <button onClick={startAttend} disabled={isLoading}>
                 <StatusToggleItem color="teal" text="출석체크 시작하기" />
               </button>
             ) : (
