@@ -9,7 +9,7 @@ const PROGRAM = {
   DATE: {
     id: "program_date",
     type: "text",
-    label: "마감기한",
+    label: "행사일정",
     placeholder: "XXXX-XX-XX",
   },
   CONTENT: {
