@@ -1,4 +1,5 @@
-// TODO: 리팩토링 필요
+// TODO: 리팩토링 필요 : 중복되는 코드 줄이기
+// 출석 상태값만 받아오는 API 필요
 
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
