@@ -36,6 +36,7 @@ const ProgramWrapper = ({ children }: ProgramWrapperProps) => {
   const searchParams = useSearchParams();
   const [queryValue, setQueryValue] = useState(MAIN.DEFAULT_QUERY);
 
+  //TODO: 린트 버그 수정 필요
   useEffect(() => {
     setQueryValue({
       ...MAIN.DEFAULT_QUERY,
