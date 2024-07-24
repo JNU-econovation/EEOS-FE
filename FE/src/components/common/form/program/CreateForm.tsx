@@ -77,7 +77,14 @@ const CreateForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!title || !content || !deadLine || !category || !type) {
+    if (
+      !title ||
+      !content ||
+      !deadLine ||
+      !category ||
+      !type ||
+      !programGithubUrl
+    ) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
