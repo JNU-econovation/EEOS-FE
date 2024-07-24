@@ -23,6 +23,8 @@ const ProgramListItem = ({
       ? ROUTES.GUEST_DETAIL(programId)
       : ROUTES.DETAIL(programId);
 
+  const isOnChecking = attendMode === "attend" || attendMode === "late";
+
   return (
     <Link
       className="flex w-full flex-col items-center justify-between gap-4 rounded-lg bg-gray-10 px-8 py-6 transition-all hover:bg-secondary-20 sm:flex-row"
@@ -32,11 +34,10 @@ const ProgramListItem = ({
       <p className="w-full truncate text-center text-lg font-bold sm:text-left">
         {title}
       </p>
-      {attendMode === "non_open" ? (
-        <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
-      ) : (
-        // 출석체크중인 경우
+      {isOnChecking ? (
         <ProgressDisplay progressText="출석 진행중" color="success" />
+      ) : (
+        <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
       )}
     </Link>
   );
