@@ -34,8 +34,9 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     programStatus: ProgramStatus,
   ): EditableStatus => {
     if (attendStatus === "nonRelated") return "NON_RELATED";
-    if (programStatus !== "active" || attendStatus === "absent")
+    if (programStatus === "end" || attendStatus === "absent") {
       return "INACTIVE";
+    }
     if (attendStatus === "attend" || attendStatus === "late")
       return "ALREADY_ATTENDED";
     return "EDITABLE";

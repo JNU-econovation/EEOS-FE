@@ -1,3 +1,4 @@
+//TODO: 스크립트 작성 후 삭제할 파일
 "use client";
 import classNames from "classnames";
 import { useState, ReactNode } from "react";

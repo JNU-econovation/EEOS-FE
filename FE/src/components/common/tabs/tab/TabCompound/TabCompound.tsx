@@ -41,7 +41,7 @@ interface TabContextType<T extends string> {
 
 const TabContext = createContext<TabContextType<string> | null>(null);
 
-function useTab<T extends string>(): TabContextType<T> {
+export function useTab<T extends string>(): TabContextType<T> {
   const context = useContext(TabContext);
   if (!context)
     throw new Error("해당 컴포넌트는 Tab 컴포넌트 내부에서 사용되어야 합니다.");

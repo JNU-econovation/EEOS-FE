@@ -60,7 +60,24 @@ const LIST: AttendStatusList = {
 };
 
 const USER: AttendStatusUser = {
-  ...TOGGLE,
+  attend: {
+    type: "attend",
+    text: "참석",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "green",
+  },
+  absent: {
+    type: "absent",
+    text: "불참",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "red",
+  },
+  late: {
+    type: "late",
+    text: "지각",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "yellow",
+  },
   nonResponse: {
     type: "nonResponse",
     text: "출석체크 해주세요!",
