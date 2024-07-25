@@ -44,6 +44,10 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
       programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
       useClient.invalidateQueries([API.PROGRAM.LIST]);
     },
+    onError: (e: Error) => {
+      //TODO: 추상화 필요
+      toast.error(e.message);
+    },
   });
 };
 

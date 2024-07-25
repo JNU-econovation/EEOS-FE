@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import FormBtn from "../common/form/FormBtn";
@@ -21,6 +22,7 @@ import useProgramFormData, {
   ProgramFormDataState,
 } from "@/hooks/useProgramFormData";
 import { ProgramCategory } from "@/types/program";
+import { checkIsValidateGithubUrl } from "@/utils/github";
 
 const initialState: ProgramFormDataState = {
   title: "",
@@ -35,6 +37,7 @@ interface EditFormProps {
   programId: number;
 }
 const EditForm = ({ programId }: EditFormProps) => {
+  const route = useRouter();
   const { members, updateMembers } = useMemberMap();
 
   const { data: programInfo, isLoading: isProgrmaLoading } =
@@ -86,10 +89,25 @@ const EditForm = ({ programId }: EditFormProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!title || !content || !deadLine || !category || !type) {
+    if (
+      !title ||
+      !content ||
+      !deadLine ||
+      !category ||
+      !type ||
+      !programGithubUrl
+    ) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
+
+    const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+
+    if (!isValidGithubUrl) {
+      toast.error("올바른 Github URL을 입력해주세요.");
+      return;
+    }
+
     updateProgramMutate();
   };
 
@@ -141,7 +159,10 @@ const EditForm = ({ programId }: EditFormProps) => {
       />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}
-        formReset={handleReset}
+        formReset={() => {
+          route.back();
+          handleReset;
+        }}
       />
     </form>
   );

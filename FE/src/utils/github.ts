@@ -1,15 +1,11 @@
 export const checkIsValidateGithubUrl = (githubUrl: string) => {
-  if (!githubUrl || githubUrl == "") return false;
-  const parsedUrl = new URL(githubUrl);
+  const urlPattern =
+    /^https:\/\/github\.com\/JNU-econovation\/weekly_presentation\/tree\/(\d{4}-[12])\/(\d{4}-[12])\/(A_team|B_team)\/([1-9](st|nd|rd|th))$/;
 
-  const isGithubUrl = parsedUrl.hostname === "github.com";
-  if (!isGithubUrl) return false;
+  if (!urlPattern.test(githubUrl)) {
+    return false;
+  }
 
-  const parts = parsedUrl.pathname.split("/").filter(Boolean);
-  if (parts.length < 2) return false;
-
-  const treeIndex = parts.indexOf("tree");
-  if (treeIndex !== -1 && parts.length <= treeIndex + 1) return false;
-
+  return true;
   return true;
 };
