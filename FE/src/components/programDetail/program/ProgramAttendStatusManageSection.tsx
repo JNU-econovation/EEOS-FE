@@ -1,13 +1,12 @@
 // TODO: 리팩토링 필요 : 중복되는 코드 줄이기
 // 출석 상태값만 받아오는 API 필요
 
-import { useQueryClient } from "@tanstack/react-query";
 import classNames from "classnames";
-import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import Title from "@/components/common/Title";
-import API from "@/constants/API";
 import {
+  useGetProgramByProgramId,
+  // useGetProgramAttendModeAndStatus,
   // useGetProgramByProgramId,
   useUpdateProgramAttendMode,
 } from "@/hooks/query/useProgramQuery";
@@ -18,33 +17,36 @@ interface ProgramattendModeManageSectionProps {
 const ProgramattendModeManageSection = ({
   programId,
 }: ProgramattendModeManageSectionProps) => {
-  const queryClient = useQueryClient();
   const { mutate: updateProgramAttendMode, isLoading } =
     useUpdateProgramAttendMode(programId);
 
-  const { attendMode, programStatus } =
-    queryClient.getQueryData<ProgramInfoDto>([
-      API.PROGRAM.Edit_DETAIL(programId),
-    ]);
+  const { data, isLoading: isProgramLoading } = useGetProgramByProgramId(
+    programId,
+    true,
+  );
+
+  if (isProgramLoading) return <div>Loading...</div>;
+
+  const { attendMode, programStatus } = data;
 
   const toggleBarStyle = classNames("flex gap-8", {
-    "cursor-wait opacity-50": isLoading,
+    "cursor-wait opacity-50": isLoading || programStatus === "end",
   });
 
   const setattendModeToAttend = () => {
-    if (programStatus === "end") return;
+    if (programStatus === "end" || attendMode === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("attend");
   };
 
   const setattendModeToLate = () => {
-    if (programStatus === "end") return;
+    if (programStatus === "end" || attendMode === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("late");
   };
 
   const closeAttend = () => {
-    if (programStatus === "end") return;
+    if (programStatus === "end" || attendMode === "end") return;
     updateProgramAttendMode("end");
   };
 
