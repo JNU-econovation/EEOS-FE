@@ -88,6 +88,14 @@ const CreateForm = () => {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
+    const urlPattern =
+      /^https:\/\/github\.com\/JNU-econovation\/weekly_presentation\/tree\/(\d{4}-[12])\/(\d{4}-[12])\/(A_team|B_team)\/([1-9](st|nd|rd|th))$/;
+
+    if (!urlPattern.test(programGithubUrl)) {
+      toast.error("올바른 Github 링크를 입력해주세요.");
+      return;
+    }
+
     createProgramMutate();
   };
 

@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import {
   GetProgramListRequest,
   PatchProgramRequest,
@@ -42,6 +43,10 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
       formReset();
       programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
       useClient.invalidateQueries([API.PROGRAM.LIST]);
+    },
+    onError: (e: Error) => {
+      //TODO: 추상화 필요
+      toast.error(e.message);
     },
   });
 };
