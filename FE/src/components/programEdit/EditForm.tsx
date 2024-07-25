@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import FormBtn from "../common/form/FormBtn";
@@ -36,6 +37,7 @@ interface EditFormProps {
   programId: number;
 }
 const EditForm = ({ programId }: EditFormProps) => {
+  const route = useRouter();
   const { members, updateMembers } = useMemberMap();
 
   const { data: programInfo, isLoading: isProgrmaLoading } =
@@ -157,7 +159,10 @@ const EditForm = ({ programId }: EditFormProps) => {
       />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}
-        formReset={handleReset}
+        formReset={() => {
+          route.back();
+          handleReset;
+        }}
       />
     </form>
   );
