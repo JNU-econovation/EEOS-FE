@@ -47,7 +47,7 @@ const useProgramFormData = (programInfo: ProgramFormDataState) => {
   const [teams, setTeams] = useState<TeamInputInfo[]>([]);
 
   const setData = (data: ProgramFormDataState) => {
-    const { title, deadLine, type, category, content } = data;
+    const { title, deadLine, type, category, content, programGithubUrl } = data;
     setTitle(title);
     setDeadLine(deadLine);
     setType(type);
