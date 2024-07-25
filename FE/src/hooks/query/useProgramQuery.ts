@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
   GetProgramListRequest,
   PatchProgramRequest,
@@ -43,10 +43,6 @@ export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
       formReset();
       programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
       useClient.invalidateQueries([API.PROGRAM.LIST]);
-    },
-    onError: (e: Error) => {
-      //TODO: 추상화 필요
-      toast.error(e.message);
     },
   });
 };
@@ -150,6 +146,21 @@ export const useUpdateProgramAttendMode = (programId: number) => {
     mutationFn: (attendMode: ProgramAttendStatus) => {
       queryClient.invalidateQueries([API.PROGRAM.Edit_DETAIL(programId)]);
       return updateProgramAttendMode(programId, attendMode);
+    },
+    onSuccess: (_, targetAttendMode) => {
+      const prevProgram = queryClient.getQueryData<ProgramInfoDto>([
+        API.PROGRAM.Edit_DETAIL(programId),
+      ]);
+
+      const newProgram: ProgramInfoDto = {
+        ...prevProgram,
+        attendMode: targetAttendMode,
+      };
+
+      queryClient.setQueryData<ProgramInfoDto>(
+        [API.PROGRAM.Edit_DETAIL(programId)],
+        newProgram,
+      );
     },
   });
 };
