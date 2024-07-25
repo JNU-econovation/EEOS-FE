@@ -16,6 +16,7 @@ import { useMemberSet } from "@/hooks/useMemberForm";
 import useProgramFormData from "@/hooks/useProgramFormData";
 import { ProgramCategory, ProgramType } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
+import { checkIsValidateGithubUrl } from "@/utils/github";
 
 export interface ProgramFormDataState {
   title: string;
@@ -88,11 +89,11 @@ const CreateForm = () => {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
-    const urlPattern =
-      /^https:\/\/github\.com\/JNU-econovation\/weekly_presentation\/tree\/(\d{4}-[12])\/(\d{4}-[12])\/(A_team|B_team)\/([1-9](st|nd|rd|th))$/;
 
-    if (!urlPattern.test(programGithubUrl)) {
-      toast.error("올바른 Github 링크를 입력해주세요.");
+    const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+
+    if (!isValidGithubUrl) {
+      toast.error("올바른 Github URL을 입력해주세요.");
       return;
     }
 
