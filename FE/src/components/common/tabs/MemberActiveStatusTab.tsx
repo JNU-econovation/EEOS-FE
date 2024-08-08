@@ -1,14 +1,20 @@
 import Tab from "./tab/TabCompound/TabCompound";
+import { ActiveStatusWithAll } from "@/types/member";
 
-type MemberTabItem = "all" | "am" | "rm" | "cm" | "ob";
-const memberTabItemList: MemberTabItem[] = ["all", "am", "rm", "cm", "ob"];
+const memberTabItemList: ActiveStatusWithAll[] = [
+  "all",
+  "am",
+  "rm",
+  "cm",
+  "ob",
+];
 
 interface MemberActiveStatusTabProps {
-  children: (selectedItem: MemberTabItem) => JSX.Element;
+  children: (selectedItem: ActiveStatusWithAll) => JSX.Element;
 }
 const MemberActiveStatusTab = ({ children }: MemberActiveStatusTabProps) => {
   return (
-    <Tab<MemberTabItem>
+    <Tab<ActiveStatusWithAll>
       align="line"
       defaultSelected={memberTabItemList[0]}
       nonPickedColor="gray"
@@ -21,7 +27,7 @@ const MemberActiveStatusTab = ({ children }: MemberActiveStatusTabProps) => {
           <Tab.Item key={tabItem} text={tabItem} />
         ))}
       </Tab.List>
-      <Tab.Content<MemberTabItem>>
+      <Tab.Content<ActiveStatusWithAll>>
         {({ selectedItem }) => children(selectedItem)}
       </Tab.Content>
     </Tab>

@@ -18,6 +18,7 @@ export const convertDate = (
 };
 
 // text에서 문자열 제거
+//TODO: 이름 명확하게 수정
 export const convertText = (text: string, str: string) => {
   return text.replace(str, "");
 };
