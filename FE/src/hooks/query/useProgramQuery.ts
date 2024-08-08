@@ -22,25 +22,21 @@ import {
   ProgramType,
 } from "@/types/program";
 
-interface CreateProgram {
-  programData: PostProgramRequest;
-  formReset: () => void;
-}
+// interface CreateProgram {
+//   programData: PostProgramRequest;
+// }
 
-export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
+export const useCreateProgram = () => {
   const useClient = useQueryClient();
-  const router = useRouter();
 
   return useMutation({
     mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: async () => {
+    mutationFn: async (programData: PostProgramRequest) => {
       const { programId } = await postProgram(programData);
       await sendSlackMessage(programId);
       return programId;
     },
-    onSuccess: (programId) => {
-      formReset();
-      programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
+    onSuccess: () => {
       useClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
