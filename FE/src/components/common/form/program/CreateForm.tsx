@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Participant from "../../../programCreate/Participant";
 import CreateCategory from "./CreateCategory";
@@ -12,17 +12,15 @@ import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
 import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
 import FORM_INFO from "@/constants/FORM_INFO";
+import ROUTES from "@/constants/ROUTES";
 import { useCreateProgram } from "@/hooks/query/useProgramQuery";
 import { useMemberSet } from "@/hooks/useMemberForm";
-// import useProgramFormData from "@/hooks/useProgramFormData";
-import { ProgramCategory, ProgramType } from "@/types/program";
+import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
-import ROUTES from "@/constants/ROUTES";
 
 export interface ProgramFormDataState {
   title: string;
   deadLine: string;
-  // type: ProgramType;
   isDemand: boolean;
   category: ProgramCategory;
   content: string;
@@ -33,7 +31,6 @@ export interface ProgramFormDataState {
 const initialState: ProgramFormDataState = {
   title: "",
   deadLine: new Date().getTime().toString(),
-  // type: "notification",
   isDemand: false,
   category: "weekly",
   content: "",
@@ -44,26 +41,7 @@ const initialState: ProgramFormDataState = {
 const CreateForm = () => {
   const router = useRouter();
 
-  // const {
-  //   title,
-  //   deadLine,
-  //   type,
-  //   category,
-  //   content,
-  //   isDemand,
-  //   programGithubUrl,
-  //   teams,
-  //   setTitle,
-  //   setDeadLine,
-  //   setCategory,
-  //   setContent,
-  //   setProgramGithubUrl,
-  //   setTeams,
-  //   reset,
-  //   handleChangeType,
-  // } = useProgramFormData(initialState);
-
-  const { register, handleSubmit, getValues, reset, watch } =
+  const { register, handleSubmit, getValues, reset, watch, setValue } =
     useForm<ProgramFormDataState>({
       defaultValues: initialState,
     });
@@ -74,10 +52,21 @@ const CreateForm = () => {
 
   const isDemand = watch("isDemand");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const { title, content, deadLine, category, isDemand } = getValues();
-    if (!title || !content || !deadLine || !category) {
+  const onSubmit: SubmitHandler<ProgramFormDataState> = (data) => {
+    const {
+      title,
+      content,
+      deadLine,
+      category,
+      isDemand,
+      programGithubUrl,
+      teamList,
+    } = data;
+
+    console.log(data);
+    console.log(!title, !content, !deadLine, !category, !programGithubUrl);
+
+    if (!title || !content || !deadLine || !category || !programGithubUrl) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
@@ -88,8 +77,8 @@ const CreateForm = () => {
         content,
         category,
         type: isDemand ? "demand" : "notification",
-        programGithubUrl: getValues("programGithubUrl"),
-        teams: getValues("teamList"),
+        programGithubUrl: programGithubUrl,
+        teams: teamList,
         members: Array.from(members, (memberId) => ({ memberId })),
         title: isDemand ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
       },
@@ -107,13 +96,6 @@ const CreateForm = () => {
     router.back();
   };
 
-  // const handleGithubUrlChange = (url: string) => {
-  //   setProgramGithubUrl(url);
-  // };
-  // const handleTeamListChange = (teamList: TeamInputInfo[]) => {
-  //   setTeams(teamList);
-  // };
-
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <ProgramTitle
@@ -121,35 +103,32 @@ const CreateForm = () => {
         prefix={isDemand && FORM_INFO.DEMAND_PREFIX}
         formType="create"
         isDemand={isDemand}
-        // handleChangeDemandType={handleChangeType}
       />
-      {/* <div className="flex flex-col items-end gap-8 sm:flex-row"> */}
-      {/* <ProgramDate
-        programDate={deadLine}
-        setProgramDate={(date: string) => setDeadLine(date)}
-      />
-      <CreateCategory
-        selectedCategory={category}
-        setCategory={(category: ProgramCategory) => setCategory(category)}
-      /> */}
-      {/* </div> */}
-      {/* <MarkdownEditor
+      <div className="flex flex-col items-end gap-8 sm:flex-row">
+        <ProgramDate setValue={setValue} getValues={getValues} />
+        <CreateCategory
+          selectedCategory={watch("category")}
+          setCategory={(category: ProgramCategory) =>
+            setValue("category", category)
+          }
+        />
+      </div>
+      <MarkdownEditor
         id={FORM_INFO.PROGRAM.CONTENT.id}
         label={FORM_INFO.PROGRAM.CONTENT.label}
         placeholder={FORM_INFO.PROGRAM.CONTENT.placeholder}
-        value={content}
-        onChange={(v) => setContent(v)}
+        value={watch("content")}
+        onChange={(v) => setValue("content", v)}
       />
       <div className="my-4 flex flex-col gap-4">
-        <ProgramGithubLinkInput
-          programGithubUrl={programGithubUrl}
-          handleGithubUrlChange={handleGithubUrlChange}
-        />
+        <ProgramGithubLinkInput register={register} />
         <ProgramTeamList
-          selectedTeamList={teams}
-          handleTeamListChange={handleTeamListChange}
+          selectedTeamList={watch("teamList")}
+          handleTeamListChange={(teamList: TeamInputInfo[]) =>
+            setValue("teamList", teamList)
+          }
         />
-      </div> */}
+      </div>
       <Participant
         members={members}
         setMembers={updateMembers}

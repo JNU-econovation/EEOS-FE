@@ -1,3 +1,5 @@
+// TODO: react-hook-form 으로 마이그레이션 후 삭제
+
 import { useState } from "react";
 import { ProgramCategory, ProgramType } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";

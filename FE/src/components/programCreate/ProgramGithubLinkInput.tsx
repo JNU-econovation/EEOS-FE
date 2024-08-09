@@ -1,22 +1,19 @@
+import { UseFormRegister } from "react-hook-form";
 import LabeldInputFiled from "../common/form/input/LabeldInputFiled";
+import { ProgramFormDataState } from "../common/form/program/CreateForm";
 
 interface ProgramGithubLinkInputProps {
-  programGithubUrl: string;
-  handleGithubUrlChange: (url: string) => void;
+  register: UseFormRegister<ProgramFormDataState>;
 }
-const ProgramGithubLinkInput = ({
-  programGithubUrl,
-  handleGithubUrlChange,
-}: ProgramGithubLinkInputProps) => {
+const ProgramGithubLinkInput = ({ register }: ProgramGithubLinkInputProps) => {
   return (
     <div>
-      <LabeldInputFiled
-        id="githubLink"
+      <LabeldInputFiled<ProgramFormDataState>
+        register={register}
+        id="programGithubUrl"
         label="Github Link"
         placeholder="주간 발표 링크 입력하기 (학기/팀/순서 까지의 폴더의 링크를 추가해주세요!)"
         type="text"
-        value={programGithubUrl}
-        onChange={handleGithubUrlChange}
         prefix=""
       />
     </div>
