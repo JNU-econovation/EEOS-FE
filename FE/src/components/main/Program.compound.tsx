@@ -1,5 +1,6 @@
 "use client";
 
+import { URLSearchParams } from "url";
 import { useSearchParams } from "next/navigation";
 import {
   Suspense,
@@ -39,7 +40,7 @@ const ProgramWrapper = ({ children }: ProgramWrapperProps) => {
   useEffect(() => {
     setQueryValue({
       ...MAIN.DEFAULT_QUERY,
-      category: parseQuery(searchParams).category,
+      category: parseQuery(searchParams as URLSearchParams).category,
     });
   }, [searchParams]);
 

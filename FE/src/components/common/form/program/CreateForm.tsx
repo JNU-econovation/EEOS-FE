@@ -64,9 +64,6 @@ const CreateForm = () => {
       teamList,
     } = data;
 
-    console.log(data);
-    console.log(!title, !content, !deadLine, !category, !programGithubUrl);
-
     if (!title || !content || !deadLine || !category || !programGithubUrl) {
       toast.error("모든 항목을 입력해주세요.");
       return;

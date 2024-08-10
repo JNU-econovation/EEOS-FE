@@ -1,5 +1,12 @@
 "use client";
 
+//TODO: TableWrapper로 변경하기
+
+/**
+ * 해당 컴포넌트는 회원 테이블을 관리하는 컴포넌트입니다.
+ * 현재 호환성을 위하여 두고 있으며, 추후 TableWrapper로 변경할 예정입니다.
+ */
+
 import { useSetAtom } from "jotai";
 import { createContext, useState } from "react";
 import Header from "./compounds/Header";

@@ -5,6 +5,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import EditMemberList from "./TableCompounds/EditMemberList";
 import Header from "./TableCompounds/Header";
 import MemberManageList from "./TableCompounds/MemberManageList";
 import SelectMemberList from "./TableCompounds/SelectedMemberList";
@@ -67,5 +68,6 @@ const TableWrapper = ({
 TableWrapper.Header = Header;
 TableWrapper.MemberManageList = MemberManageList;
 TableWrapper.SelectMemberList = SelectMemberList;
+TableWrapper.EditMemberList = EditMemberList;
 
 export default TableWrapper;

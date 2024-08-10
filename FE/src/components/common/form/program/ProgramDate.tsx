@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetValue,
-} from "react-hook-form";
+import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import Calendar from "../../calendar/Calendar";
 import LabeledInput from "../LabeledInput";
 import { ProgramFormDataState } from "./CreateForm";

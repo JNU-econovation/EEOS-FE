@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import {
   GetProgramListRequest,
-  PatchProgramRequest,
+  PatchProgramBody,
   PostProgramRequest,
   deleteProgram,
   getProgramAccessRight,
@@ -42,13 +42,16 @@ export const useCreateProgram = () => {
   });
 };
 
-export const useUpdateProgram = ({ programId, body }: PatchProgramRequest) => {
+interface useUpdateProgramProps {
+  programId: number;
+}
+export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
-    mutationFn: () => patchProgram({ programId, body }),
+    mutationFn: (body: PatchProgramBody) => patchProgram({ programId, body }),
     onSettled: (data) => {
       data && router.replace(ROUTES.DETAIL(data?.programId));
       const statuses: ActiveStatusWithAll[] = ["all", "am", "cm", "rm", "ob"];
@@ -89,6 +92,7 @@ export const useGetProgramByProgramId = (
     queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
       getProgramById(programId, isAbleToEdit).then((res) => {
+        //TODO: setquery 지양하기
         queryClient.setQueryData<ProgramStatus>(
           ["programStatus", programId],
           res.programStatus,

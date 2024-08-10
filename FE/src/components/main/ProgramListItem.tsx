@@ -3,7 +3,7 @@ import { ProgramSimpleInfoDto } from "@/apis/dtos/program.dto";
 import Link from "@/components/common/Link";
 import ROUTES from "@/constants/ROUTES";
 import { AccessType } from "@/types/access";
-import { convertDate } from "@/utils/convert";
+import { formatTimestamp } from "@/utils/convert";
 
 interface ProgramListItemProps {
   programData: ProgramSimpleInfoDto;
@@ -33,7 +33,9 @@ const ProgramListItem = ({
         {title}
       </p>
       {attendMode === "non_open" ? (
-        <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
+        <p className="text-base font-normal sm:w-52">
+          {formatTimestamp(deadLine)}
+        </p>
       ) : (
         // 출석체크중인 경우
         <ProgressDisplay progressText="출석 진행중" color="success" />
