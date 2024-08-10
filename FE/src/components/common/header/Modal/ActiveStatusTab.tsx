@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import Tab from "../../tabs/Tab";
+import Tab from "../../tabs/tab/Tab";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import API from "@/constants/API";
 import MESSAGE from "@/constants/MESSAGE";

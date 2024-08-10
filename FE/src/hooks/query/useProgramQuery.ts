@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
   GetProgramListRequest,
-  PatchProgramRequest,
+  PatchProgramBody,
   PostProgramRequest,
   deleteProgram,
   getProgramAccessRight,
@@ -23,37 +23,36 @@ import {
   ProgramType,
 } from "@/types/program";
 
-interface CreateProgram {
-  programData: PostProgramRequest;
-  formReset: () => void;
-}
+// interface CreateProgram {
+//   programData: PostProgramRequest;
+// }
 
-export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
+export const useCreateProgram = () => {
   const useClient = useQueryClient();
-  const router = useRouter();
 
   return useMutation({
     mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: async () => {
+    mutationFn: async (programData: PostProgramRequest) => {
       const { programId } = await postProgram(programData);
       await sendSlackMessage(programId);
       return programId;
     },
-    onSuccess: (programId) => {
-      formReset();
-      programId && router.replace(ROUTES.ADMIN_DETAIL(programId));
+    onSuccess: () => {
       useClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
 };
 
-export const useUpdateProgram = ({ programId, body }: PatchProgramRequest) => {
+interface useUpdateProgramProps {
+  programId: number;
+}
+export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
-    mutationFn: () => patchProgram({ programId, body }),
+    mutationFn: (body: PatchProgramBody) => patchProgram({ programId, body }),
     onSettled: (data) => {
       data && router.replace(ROUTES.DETAIL(data?.programId));
       const statuses: ActiveStatusWithAll[] = ["all", "am", "cm", "rm", "ob"];
@@ -94,6 +93,7 @@ export const useGetProgramByProgramId = (
     queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
       getProgramById(programId, isAbleToEdit).then((res) => {
+        //TODO: setquery 지양하기
         queryClient.setQueryData<ProgramStatus>(
           ["programStatus", programId],
           res.programStatus,

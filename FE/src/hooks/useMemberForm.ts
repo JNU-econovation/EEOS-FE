@@ -1,7 +1,8 @@
 "use client";
-import { useQueryClient } from "@tanstack/react-query";
+
 import { useState } from "react";
 import type { AttendStatus } from "@/types/member";
+import { updateSet } from "@/utils/set";
 
 export interface Members {
   beforeAttendStatus: AttendStatus;
@@ -9,33 +10,24 @@ export interface Members {
 }
 
 export const useMemberSet = () => {
-  const queryClient = useQueryClient();
   const [members, setMembers] = useState<Set<number>>(new Set<number>());
 
   const updateMembers = (memberId: number) => {
-    const newMembers = new Set<number>(members);
-    newMembers.has(memberId)
-      ? newMembers.delete(memberId)
-      : newMembers.add(memberId);
-    setMembers(newMembers);
+    setMembers(updateSet<number>(members, memberId));
   };
 
-  const updateAllMembers = (selected: boolean) => {
-    const newMembers = new Set<number>(members);
-    const memberIdList: number[] = queryClient.getQueryData(["memberIdList"]);
-    if (selected) {
-      memberIdList.forEach((v) => newMembers.add(v));
-    }
-    if (!selected) {
-      memberIdList.forEach((v) => newMembers.delete(v));
-    }
-    setMembers(newMembers);
+  const clearMembers = () => {
+    setMembers(new Set<number>());
+  };
+  const setAllMembers = (memberList: number[]) => {
+    setMembers(new Set<number>(memberList));
   };
 
   return {
     members,
     updateMembers,
-    updateAllMembers,
+    clearMembers,
+    setAllMembers,
   };
 };
 

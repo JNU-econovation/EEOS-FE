@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { DashboardContext } from "./DashboardWrapper";
-import Tab from "@/components/common/tabs/Tab";
+import Tab from "@/components/common/tabs/tab/Tab";
 import { TabOption } from "@/types/tab";
 import { TeamInfo } from "@/types/team";
 

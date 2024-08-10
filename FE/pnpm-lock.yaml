@@ -53,6 +53,9 @@ dependencies:
   react-error-boundary:
     specifier: ^4.0.12
     version: 4.0.12(react@18.2.0)
+  react-hook-form:
+    specifier: ^7.52.2
+    version: 7.52.2(react@18.2.0)
   react-markdown:
     specifier: ^9.0.1
     version: 9.0.1(@types/react@18.2.58)(react@18.2.0)
@@ -3400,6 +3403,15 @@ packages:
       react: '>=16.13.1'
     dependencies:
       '@babel/runtime': 7.23.9
+      react: 18.2.0
+    dev: false
+
+  /react-hook-form@7.52.2(react@18.2.0):
+    resolution: {integrity: sha512-pqfPEbERnxxiNMPd0bzmt1tuaPcVccywFDpyk2uV5xCIBphHV5T8SVnX9/o3kplPE1zzKt77+YIoq+EMwJp56A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
       react: 18.2.0
     dev: false
 

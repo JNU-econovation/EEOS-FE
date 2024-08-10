@@ -1,32 +1,37 @@
 "use client";
 
-import MemberTableWrapper from "../common/memberTable/MemberTableWrapper";
+import MemberActiveStatusTab from "../common/tabs/MemberActiveStatusTab";
+import ParticipantTable from "./participantTable/ParticipantTable";
 
 interface MemberTableProps {
   members: Set<number>;
   setMembers: (memberId: number) => void;
-  onClickHeaderCheckBox?: (selected: boolean) => void;
+  clearMembers: () => void;
+  setAllMembers: (memberList: number[]) => void;
 }
 
 const Participant = ({
   members,
   setMembers,
-  onClickHeaderCheckBox,
+  clearMembers,
+  setAllMembers,
 }: MemberTableProps) => {
   return (
-    <MemberTableWrapper applyLayout>
-      <MemberTableWrapper.StatusTab />
-      <div className="overflow-x-scroll scrollbar-hide">
-        <MemberTableWrapper.Header
-          formType="create"
-          onClickCheckBox={onClickHeaderCheckBox}
-        />
-        <MemberTableWrapper.CreateList
-          members={members as Set<number>}
-          setMembers={setMembers as (memberId: number) => void}
-        />
-      </div>
-    </MemberTableWrapper>
+    <section>
+      <MemberActiveStatusTab>
+        {(selectedItem) => (
+          <div className="mt-6">
+            <ParticipantTable
+              members={members}
+              setMembers={setMembers}
+              selectedActive={selectedItem}
+              clearMembers={clearMembers}
+              setAllMembers={setAllMembers}
+            />
+          </div>
+        )}
+      </MemberActiveStatusTab>
+    </section>
   );
 };
 

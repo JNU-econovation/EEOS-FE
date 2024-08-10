@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MemberContext } from "../MemberTableWrapper";
-import Tab from "@/components/common/tabs/Tab";
+import Tab from "@/components/common/tabs/tab/Tab";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { ActiveStatusWithAll } from "@/types/member";
 

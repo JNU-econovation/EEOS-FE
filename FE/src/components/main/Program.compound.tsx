@@ -1,5 +1,6 @@
 "use client";
 
+import { URLSearchParams } from "url";
 import { useSearchParams } from "next/navigation";
 import {
   Suspense,
@@ -10,8 +11,8 @@ import {
 } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "../common/ErrorFallback";
-import Tab from "../common/tabs/Tab";
-import TextTab from "../common/tabs/TextTab";
+import Tab from "../common/tabs/tab/Tab";
+import TextTab from "../common/tabs/tab/TextTab";
 import ProgramList from "./ProgramList";
 import ProgramListLoader from "./ProgramList.loader";
 import MAIN from "@/constants/MAIN";
@@ -40,7 +41,7 @@ const ProgramWrapper = ({ children }: ProgramWrapperProps) => {
   useEffect(() => {
     setQueryValue({
       ...MAIN.DEFAULT_QUERY,
-      category: parseQuery(searchParams).category,
+      category: parseQuery(searchParams as URLSearchParams).category,
     });
   }, [searchParams]);
 

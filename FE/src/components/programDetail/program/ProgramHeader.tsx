@@ -1,9 +1,9 @@
 import EditAndDeleteButton from "./EditAndDeleteButton";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
-import TabItem from "@/components/common/tabs/TabItem";
+import TabItem from "@/components/common/tabs/tab/TabItem";
 import Title from "@/components/common/Title";
 import PROGRAM from "@/constants/PROGRAM";
-import { convertDate } from "@/utils/convert";
+import { formatTimestamp } from "@/utils/convert";
 
 interface ProgramHeaderProps {
   data: ProgramInfoDto;
@@ -21,7 +21,9 @@ const ProgramHeader = ({ data }: ProgramHeaderProps) => {
       <TabItem color="yellow" size="sm" text={categoryText} rounded />
       <Title text={title} />
       <div className="flex justify-between">
-        <p className="sm:text-lg">{DEADLINE_TEXT + convertDate(deadLine)}</p>
+        <p className="sm:text-lg">
+          {DEADLINE_TEXT + formatTimestamp(deadLine)}
+        </p>
         {accessRight === "edit" && (
           <EditAndDeleteButton programId={programId} />
         )}

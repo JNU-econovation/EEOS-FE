@@ -2,7 +2,7 @@ import { checkIsValidateGithubUrl } from "./github";
 
 const WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-export const convertDate = (
+export const formatTimestamp = (
   timestamp: string,
   type: "default" | "short" = "default",
 ) => {
@@ -18,6 +18,7 @@ export const convertDate = (
 };
 
 // text에서 문자열 제거
+//TODO: 이름 명확하게 수정
 export const convertText = (text: string, str: string) => {
   return text.replace(str, "");
 };
