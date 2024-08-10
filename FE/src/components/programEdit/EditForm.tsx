@@ -23,6 +23,7 @@ import {
 import { useMemberMap } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
+import { checkIsValidateGithubUrl } from "@/utils/github";
 
 const initialState: ProgramFormDataState = {
   title: "",
@@ -71,6 +72,7 @@ const EditForm = ({ programId }: EditFormProps) => {
   });
 
   const onSubmit: SubmitHandler<ProgramFormDataState> = (data) => {
+    // TODO: 함수로 분리하기
     const {
       title,
       content,
@@ -85,6 +87,14 @@ const EditForm = ({ programId }: EditFormProps) => {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
+
+    const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+
+    if (!isValidGithubUrl) {
+      toast.error("올바른 Github URL을 입력해주세요.");
+      return;
+    }
+
     updateProgramMutate({
       title,
       deadLine,
