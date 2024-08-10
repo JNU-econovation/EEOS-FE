@@ -18,6 +18,12 @@ const ProgramTitle = ({
   formType,
 }: ProgramTitleProps) => {
   const demandCheckBoxDisabled = formType === "edit";
+
+  // 현재 정책상 수요조사는 수정이 불가능하므로 체크박스 클릭시 경고창을 띄워준다.
+  const handleNonAllowDemand = () => {
+    alert("현재는 사용할 수 없는 기능입니다.");
+  };
+
   return (
     <div className="relative">
       {!demandCheckBoxDisabled && (
@@ -26,10 +32,11 @@ const ProgramTitle = ({
             수요조사 등록하기
           </label>
           <input
-            {...register("isDemand")}
+            // {...register("isDemand")} // 현재 정책상 수요조사는 수정이 불가능하므로 체크박스 클릭시 경고창을 띄워준다.
             type="checkbox"
             className="accent-primary"
             checked={isDemand}
+            onChange={handleNonAllowDemand}
             id="demand"
           />
         </div>

@@ -9,8 +9,17 @@ interface ProgramPresentationsProps {
   programId: number;
 }
 const ProgramPresentations = ({ programId }: ProgramPresentationsProps) => {
-  const { data: presentations, isLoading } = usePresentations(programId);
+  const {
+    data: presentations,
+    isLoading,
+    isError,
+  } = usePresentations(programId);
 
+  if (isError) return null;
+
+  if (isLoading) return null;
+  if (!presentations) return null;
+  if (presentations.length === 0) return null;
   return (
     <section>
       <Title text="발표자료 " />

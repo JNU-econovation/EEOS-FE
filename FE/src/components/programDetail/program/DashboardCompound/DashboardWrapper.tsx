@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useMemo, useState } from "react";
+import { createContext, useState } from "react";
 import Board from "./Board/Board";
 import Input from "./Form";
 import TeamTab from "./TeamTab";
@@ -71,9 +71,13 @@ const DashboardWrapper = ({
     useUpdateQuestion();
   const { mutate: deleteComment, isSuccess: isDeleteSuccess } =
     useDeleteQuestion();
+
   const changeSelectedCommentContent = (content: string) => {
     setSelectedCommentContent(content);
   };
+
+  if (isLoading) return null;
+  if (!data || data.teams.length === 0) return null;
 
   const programValue = {
     programId,
@@ -103,16 +107,26 @@ const DashboardWrapper = ({
     },
   };
 
-  const DashBoardValue = useMemo(() => {
-    return {
-      accessType,
-      programValue,
-      teamValues,
-      commentValues,
-      programId,
-      children,
-    };
-  }, [programValue, teamValues, commentValues, programId, children]);
+  //TODO: useMemo 사용해야함 _ 급하게 임의로 수정함. 이는 의존성 문제 존재하므로 이부분 보기
+  // const DashBoardValue = useMemo(() => {
+  //   return {
+  //     accessType,
+  //     programValue,
+  //     teamValues,
+  //     commentValues,
+  //     programId,
+  //     children,
+  //   };
+  // }, [programValue, teamValues, commentValues, programId, children]);
+
+  const DashBoardValue = {
+    accessType,
+    programValue,
+    teamValues,
+    commentValues,
+    programId,
+    children,
+  };
 
   return (
     <DashboardContext.Provider value={DashBoardValue}>

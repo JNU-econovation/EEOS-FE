@@ -62,7 +62,7 @@ const EditForm = ({ programId }: EditFormProps) => {
   };
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isProgrmaLoading) return;
     setData(programInfo);
   }, [programInfo]);
 
@@ -150,7 +150,10 @@ const EditForm = ({ programId }: EditFormProps) => {
       />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}
-        formReset={handleReset}
+        formReset={() => {
+          route.back();
+          handleReset;
+        }}
       />
     </form>
   );

@@ -17,6 +17,7 @@ import { useCreateProgram } from "@/hooks/query/useProgramQuery";
 import { useMemberSet } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
+import { checkIsValidateGithubUrl } from "@/utils/github";
 
 export interface ProgramFormDataState {
   title: string;
@@ -66,6 +67,13 @@ const CreateForm = () => {
 
     if (!title || !content || !deadLine || !category || !programGithubUrl) {
       toast.error("모든 항목을 입력해주세요.");
+      return;
+    }
+
+    const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+
+    if (!isValidGithubUrl) {
+      toast.error("올바른 Github URL을 입력해주세요.");
       return;
     }
 

@@ -9,7 +9,7 @@ interface ProgramHeaderProps {
   data: ProgramInfoDto;
 }
 
-const DEADLINE_TEXT = "마감기한 : ";
+const DEADLINE_TEXT = "행사일정 : ";
 
 const ProgramHeader = ({ data }: ProgramHeaderProps) => {
   const { category, title, deadLine, programId, accessRight } = data;

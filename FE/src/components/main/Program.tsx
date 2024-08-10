@@ -7,6 +7,7 @@ interface ProgramProps {
 }
 
 const Program = ({ AccessType }: ProgramProps) => {
+  //TODO: headless 하도록 변경하기
   return (
     <ProgramWrapper>
       <ProgramWrapper.CategoryTab />
