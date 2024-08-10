@@ -7,12 +7,15 @@ interface ParticipantTableProps {
   members: Set<number>;
   setMembers: (memberId: number) => void;
   selectedActive: ActiveStatusWithAll;
-  // onClickHeaderCheckBox: (selected: boolean) => void;
+  clearMembers: () => void;
+  setAllMembers: (memberList: number[]) => void;
 }
 const ParticipantTable = ({
   members,
   setMembers,
-  selectedActive, // onClickHeaderCheckBox,
+  selectedActive,
+  clearMembers,
+  setAllMembers,
 }: ParticipantTableProps) => {
   const { data: memberList, isLoading } = useGetMemberByActive(selectedActive);
 
@@ -25,14 +28,27 @@ const ParticipantTable = ({
       headerItems={headerItems}
       hasCheckBox
     >
-      <TableWrapper.Header />
+      <TableWrapper.Header
+        isChecked={members.size === memberList?.length}
+        handleResetCheckBox={clearMembers}
+        handleSetCheckBox={() =>
+          setAllMembers(memberList.map(({ memberId }) => memberId))
+        }
+      />
       {isLoading && <MemberTableLoader />}
       {memberList && (
-        <TableWrapper.SelectMemberList
-          memberList={memberList}
-          selectedMember={members}
-          setSelectedMember={setMembers}
-        />
+        <>
+          {memberList.map(({ activeStatus, memberId, name }) => (
+            <TableWrapper.SelectMemberList
+              key={memberId}
+              activeStatus={activeStatus}
+              handleCheck={setMembers}
+              isChecked={members.has(memberId)}
+              memberId={memberId}
+              name={name}
+            />
+          ))}
+        </>
       )}
     </TableWrapper>
   );

@@ -46,7 +46,8 @@ const CreateForm = () => {
       defaultValues: initialState,
     });
 
-  const { members, updateAllMembers, updateMembers } = useMemberSet();
+  const { members, clearMembers, setAllMembers, updateMembers } =
+    useMemberSet();
 
   const { mutate: createProgramMutate } = useCreateProgram();
 
@@ -132,7 +133,8 @@ const CreateForm = () => {
       <Participant
         members={members}
         setMembers={updateMembers}
-        onClickHeaderCheckBox={updateAllMembers}
+        clearMembers={clearMembers}
+        setAllMembers={setAllMembers}
       />
       <FormBtn
         submitText={FORM_INFO.SUBMIT_TEXT["create"]}

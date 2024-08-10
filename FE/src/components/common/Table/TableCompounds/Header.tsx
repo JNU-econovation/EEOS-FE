@@ -1,12 +1,22 @@
 import classNames from "classnames";
+import { useEffect } from "react";
 import CheckBox from "../../CheckBox";
 import { useTableContext } from "../TableWrapper";
 
-const Header = () => {
+interface HeaderProps {
+  handleSetCheckBox?: () => void;
+  handleResetCheckBox?: () => void;
+  isChecked?: boolean;
+}
+const Header = ({
+  isChecked,
+  handleSetCheckBox,
+  handleResetCheckBox,
+}: HeaderProps) => {
   const {
     headerItems,
     columnWidths,
-    checkboxState: { hasCheckBox, checked, setChecked },
+    checkboxState: { hasCheckBox, isCheckedAll, setIsCheckedAll },
   } = useTableContext();
 
   const headerGridStyle = `grid-cols-[${columnWidths}]`;
@@ -15,17 +25,24 @@ const Header = () => {
     headerGridStyle,
   );
 
-  const handleClickCheckBox = () => {
-    if (checked) {
+  useEffect(() => {
+    setIsCheckedAll(isChecked);
+  }, [isChecked]);
 
-    }
-    setChecked(!checked);
+  const handleClickCheckBox = () => {
+    if (isCheckedAll) handleResetCheckBox();
+    else handleSetCheckBox();
+
+    setIsCheckedAll(!isCheckedAll);
   };
 
   return (
     <div className={headerStyle}>
       {hasCheckBox && (
-        <CheckBox checked={checked} onClick={handleClickCheckBox} />
+        <CheckBox
+          checked={isCheckedAll || isChecked}
+          onClick={handleClickCheckBox}
+        />
       )}
       {headerItems.map((text: string, index: number) => (
         <span key={`${index}-${text}`}>{text}</span>

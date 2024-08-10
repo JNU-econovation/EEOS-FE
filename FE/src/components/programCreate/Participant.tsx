@@ -6,13 +6,15 @@ import ParticipantTable from "./participantTable/ParticipantTable";
 interface MemberTableProps {
   members: Set<number>;
   setMembers: (memberId: number) => void;
-  onClickHeaderCheckBox?: (selected: boolean) => void;
+  clearMembers: () => void;
+  setAllMembers: (memberList: number[]) => void;
 }
 
 const Participant = ({
   members,
   setMembers,
-  onClickHeaderCheckBox,
+  clearMembers,
+  setAllMembers,
 }: MemberTableProps) => {
   return (
     <section>
@@ -23,7 +25,8 @@ const Participant = ({
               members={members}
               setMembers={setMembers}
               selectedActive={selectedItem}
-              onClickHeaderCheckBox={onClickHeaderCheckBox}
+              clearMembers={clearMembers}
+              setAllMembers={setAllMembers}
             />
           </div>
         )}
@@ -33,20 +36,3 @@ const Participant = ({
 };
 
 export default Participant;
-
-{
-  /* 
-<MemberTableWrapper applyLayout>
-<MemberTableWrapper.StatusTab />
-<div className="overflow-x-scroll scrollbar-hide">
-  <MemberTableWrapper.Header
-    formType="create"
-    onClickCheckBox={onClickHeaderCheckBox}
-  />
-  <MemberTableWrapper.CreateList
-    members={members as Set<number>}
-    setMembers={setMembers as (memberId: number) => void}
-  />
-</div>
-</MemberTableWrapper> */
-}

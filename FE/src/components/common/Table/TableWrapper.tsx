@@ -12,8 +12,8 @@ import SelectMemberList from "./TableCompounds/SelectedMemberList";
 interface TableContextType {
   checkboxState: {
     hasCheckBox: boolean;
-    checked: boolean;
-    setChecked: (checked: boolean) => void;
+    isCheckedAll: boolean;
+    setIsCheckedAll: (checked: boolean) => void;
   };
   columnWidths: string;
   headerItems: string[];
@@ -40,12 +40,12 @@ const TableWrapper = ({
   headerItems,
   children,
 }: TabWrapperProps) => {
-  const [checked, setChecked] = useState(false);
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
 
   const checkboxState = {
     hasCheckBox,
-    checked,
-    setChecked,
+    isCheckedAll,
+    setIsCheckedAll,
   };
 
   const providerValue: TableContextType = useMemo(
