@@ -2,7 +2,7 @@ import { ProgramCategory } from "../../../../types/program";
 import Label from "../input/Label";
 import Tab from "@/components/common/tabs/tab/Tab";
 import PROGRAM from "@/constants/PROGRAM";
-import { notAllowDecorator } from "@/utils/test";
+import { notAllowDecorator } from "@/utils/demo";
 
 interface CreateCategoryProps {
   selectedCategory: ProgramCategory;

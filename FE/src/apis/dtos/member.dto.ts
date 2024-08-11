@@ -43,11 +43,3 @@ export class MemberActiveStatusInfoDto {
     this.activeStatus = data?.activeStatus;
   }
 }
-
-export class MemberListDto {
-  public readonly members: MemberInfoDto[];
-
-  constructor(data: { members: MemberInfo[] }) {
-    this.members = data?.members.map((member) => new MemberInfoDto(member));
-  }
-}
