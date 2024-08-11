@@ -82,6 +82,7 @@ export const updateMemberActiveStatus = async (
     method: "PUT",
     data: activeStatus,
   });
+
   return data?.data;
 };
 
