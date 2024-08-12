@@ -1,6 +1,7 @@
 import {
   // ableProgramAccess,
   attendMembers,
+  deleteProgram,
   guestProgram,
   guestPrograms,
   nonAbleProgramAccess,
@@ -8,17 +9,23 @@ import {
   programAttend,
   programMembers,
   programs,
-} from "./data/program";
+  sendSlackMessage,
+  postProgram,
+  patchProgram,
+  changeProgramAttendMode,
+} from "./mockData/program";
 import { createResponseStub } from "./utils/responseStubWrapper";
-import { deleteProgram } from "@/apis/program";
 
 const programResponse = {
   "/programs": {
     GET: createResponseStub({ data: programs }),
+    POST: createResponseStub({ data: postProgram }),
   },
   "/programs/:programId": {
     GET: createResponseStub({ data: program }),
     DELETE: createResponseStub({ data: deleteProgram }),
+    PATCH: createResponseStub({ data: patchProgram }),
+    POST: createResponseStub({ data: changeProgramAttendMode }),
   },
   "/guest/programs/:programId": {
     GET: createResponseStub({ data: guestProgram }),
@@ -41,6 +48,9 @@ const programResponse = {
   "/attend/programs/:programId/members": {
     GET: createResponseStub({ data: attendMembers }),
   },
-};
+  "/programs/:programId/slack/notification": {
+    POST: createResponseStub({ data: sendSlackMessage }),
+  },
+} as const;
 
 export default programResponse;

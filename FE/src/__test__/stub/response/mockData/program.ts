@@ -101,6 +101,14 @@ export const programs = {
 };
 
 /**
+ * @url /programs
+ * @method POST
+ */
+export const postProgram = {
+  programId: 1,
+};
+
+/**
  * @url programs/:programId/members
  * @method GET
  * @description 프로그램에 참여한 멤버 리스트
@@ -315,6 +323,15 @@ export const program = {
     "https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st",
   eventStatus: "active",
   attendMode: "attend",
+};
+
+/**
+ * @url programs/:programId
+ * @method POST
+ * @description 프로그램 출석 상태 변경
+ */
+export const changeProgramAttendMode = {
+  programId: 1,
 };
 
 /**
@@ -599,3 +616,21 @@ export const attendMembers = {
  * @description 프로그램 삭제
  */
 export const deleteProgram = null;
+
+/**
+ * @url programs/:programId/slack/notification
+ * @method POST
+ * @description slack 메시지 전송
+ */
+export const sendSlackMessage = {
+  programId: 1,
+};
+
+/**
+ * @url programs/:programId
+ * @method PATCH
+ * @description 프로그램 수정
+ */
+export const patchProgram = {
+  programId: 1,
+};
