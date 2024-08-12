@@ -81,6 +81,7 @@ const CreateForm = () => {
       toast.error("올바른 Github URL을 입력해주세요.");
       return;
     }
+    const toastId = toast.loading(MESSAGE.CREATE.PENDING);
 
     createProgramMutate(
       {
@@ -112,6 +113,23 @@ const CreateForm = () => {
           sendMessage();
           reset();
           router.replace(ROUTES.ADMIN_DETAIL(programId));
+          toast.update(toastId, {
+            render: MESSAGE.CREATE.SUCCESS,
+            type: "success",
+            isLoading: false,
+            closeOnClick: true,
+            autoClose: 3000,
+          });
+        },
+        onError: () => {
+          toast.error(MESSAGE.CREATE.FAILED);
+          toast.update(toastId, {
+            render: MESSAGE.CREATE.FAILED,
+            type: "error",
+            isLoading: false,
+            closeOnClick: true,
+            autoClose: 3000,
+          });
         },
       },
     );

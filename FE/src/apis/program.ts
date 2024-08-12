@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import API from "../constants/API";
 import { AttendStatus } from "../types/member";
 import {
@@ -14,7 +13,6 @@ import {
   ProgramListDto,
 } from "./dtos/program.dto";
 import { https } from "./instance";
-import MESSAGE from "@/constants/MESSAGE";
 import { TeamInputInfo } from "@/types/team";
 
 /**
@@ -113,18 +111,12 @@ export const sendSlackMessage = async (programId: number) => {
 export const postProgram = async (
   body: PostProgramRequest,
 ): Promise<ProgramIdDto> => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.CREATE,
-      method: "POST",
-      data: body,
-    }),
-    {
-      pending: MESSAGE.CREATE.PENDING,
-      success: MESSAGE.CREATE.SUCCESS,
-      error: MESSAGE.CREATE.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.CREATE,
+    method: "POST",
+    data: body,
+  });
+
   return new ProgramIdDto(data?.data);
 };
 
@@ -157,23 +149,15 @@ export interface PatchProgramRequest {
   programId: number;
   body: PatchProgramBody;
 }
-
 export const patchProgram = async ({
   programId,
   body,
 }: PatchProgramRequest): Promise<ProgramIdDto> => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.UPDATE(programId),
-      method: "PATCH",
-      data: body,
-    }),
-    {
-      pending: MESSAGE.EDIT.PENDING,
-      success: MESSAGE.EDIT.SUCCESS,
-      error: MESSAGE.EDIT.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.UPDATE(programId),
+    method: "PATCH",
+    data: body,
+  });
 
   return new ProgramIdDto(data?.data);
 };

@@ -47,8 +47,9 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
     mutationFn: (body: PatchProgramBody) => patchProgram({ programId, body }),
-    onSettled: (data) => {
-      data && router.replace(ROUTES.DETAIL(data?.programId));
+    onSettled: ({ programId }) => {
+      router.replace(ROUTES.DETAIL(programId));
+
       const statuses: ActiveStatusWithAll[] = ["all", "am", "cm", "rm", "ob"];
       statuses.forEach((status) => {
         queryClient.invalidateQueries([
