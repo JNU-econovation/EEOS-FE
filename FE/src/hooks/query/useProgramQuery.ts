@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
   GetProgramListRequest,
@@ -16,7 +15,6 @@ import {
   updateProgramAttendMode,
 } from "@/apis/program";
 import API from "@/constants/API";
-import MESSAGE from "@/constants/MESSAGE";
 import ROUTES from "@/constants/ROUTES";
 import { ActiveStatusWithAll } from "@/types/member";
 import {
@@ -25,23 +23,17 @@ import {
   ProgramType,
 } from "@/types/program";
 
-// interface CreateProgram {
-//   programData: PostProgramRequest;
-// }
-
 export const useCreateProgram = () => {
-  const useClient = useQueryClient();
-
+  const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: async (programData: PostProgramRequest) => {
-      const { programId } = await postProgram(programData);
-      await sendSlackMessage(programId);
-      return programId;
-    },
-    onSuccess: () => {
-      useClient.invalidateQueries([API.PROGRAM.LIST]);
-    },
+    mutationFn: (programData: PostProgramRequest) => postProgram(programData),
+    onSuccess: () => queryClient.invalidateQueries([API.PROGRAM.LIST]),
+  });
+};
+
+export const useSendSlackMessage = () => {
+  return useMutation({
+    mutationFn: (programId: number) => sendSlackMessage(programId),
   });
 };
 

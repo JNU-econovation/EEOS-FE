@@ -98,30 +98,16 @@ export interface PostProgramRequest
   teams: TeamInputInfo[];
 }
 
-export const sendSlackMessage = async (
-  programId: number,
-  isRetry: boolean = false,
-) => {
-  if (!window) return;
-
-  if (!isRetry) {
-    const isConfirmed = confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
-    if (!isConfirmed) return;
-  }
-
-  return await https({
+export const sendSlackMessage = async (programId: number) => {
+  const { data } = await https({
     url: API.PROGRAM.SEND_MESSAGE(programId),
     method: "POST",
     data: {
       programUrl:
         process.env.NEXT_PUBLIC_SLACK_MESSAGE_REQUEST_URL_PREFIX + programId,
     },
-  })
-    .then(() => alert(MESSAGE.SLACK_MESSAGE.SUCCESS))
-    .catch(() => {
-      const retry = confirm(MESSAGE.SLACK_MESSAGE.FAIL);
-      if (retry) sendSlackMessage(programId);
-    });
+  });
+  return data?.data;
 };
 
 export const postProgram = async (
