@@ -73,17 +73,10 @@ export const getProgramList = async ({
  */
 
 export const deleteProgram = async (programId: number) => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.DELETE(programId),
-      method: "DELETE",
-    }),
-    {
-      pending: MESSAGE.DELETE.PENDING,
-      success: MESSAGE.DELETE.SUCCESS,
-      error: MESSAGE.DELETE.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.DELETE(programId),
+    method: "DELETE",
+  });
   return data?.data;
 };
 

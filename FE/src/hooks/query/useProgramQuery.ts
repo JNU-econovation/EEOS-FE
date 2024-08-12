@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
   GetProgramListRequest,
@@ -15,6 +16,7 @@ import {
   updateProgramAttendMode,
 } from "@/apis/program";
 import API from "@/constants/API";
+import MESSAGE from "@/constants/MESSAGE";
 import ROUTES from "@/constants/ROUTES";
 import { ActiveStatusWithAll } from "@/types/member";
 import {
@@ -66,19 +68,14 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   });
 };
 
-export const useDeleteProgram = (programId: number) => {
-  const useClient = useQueryClient();
-  const router = useRouter();
+export const useDeleteProgram = () => {
+  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: [API.PROGRAM.DELETE(programId)],
-    mutationFn: async () => {
-      const res = await deleteProgram(programId);
-      useClient.invalidateQueries([API.PROGRAM.LIST]);
-      return res;
-    },
-    onSettled: () => {
-      router.replace(ROUTES.MAIN);
+    mutationFn: async ({ programId }: { programId: number }) =>
+      await deleteProgram(programId),
+    onSuccess: () => {
+      queryClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
 };
