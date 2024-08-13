@@ -13,10 +13,11 @@ import {
   sendSlackMessage,
   updateProgramAttendMode,
 } from "../program";
-import getResponse from "@/__test__/stub/response/indes";
+import getResponse from "@/__test__/__stub__/response/indes";
 import { ProgramAttendStatus } from "@/types/program";
 
 jest.mock("../instance");
+const mockHttps = https as jest.MockedFunction<typeof https>;
 
 // 프로그램 정보 조회 api
 describe("getProgramById", () => {
@@ -26,7 +27,7 @@ describe("getProgramById", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -61,7 +62,7 @@ describe("getProgramList", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -216,7 +217,7 @@ describe("deleteProgram", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -241,7 +242,7 @@ describe("sendSlackMessage", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -273,7 +274,7 @@ describe("postProgram", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -312,7 +313,7 @@ describe("patchProgram", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -356,7 +357,7 @@ describe("getProgramAccessRight", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -384,7 +385,7 @@ describe("updateProgramAttendMode", () => {
   });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
