@@ -2,13 +2,6 @@ import { QuestionListDto } from "./dtos/question.dto";
 import { https } from "./instance";
 import API from "@/constants/API";
 
-export interface PostQuestionParams {
-  programId: number;
-  teamId: number;
-  questionContent: string;
-  parentsCommentId: number;
-}
-
 export const getQuestionsByTeam = async (programId: number, teamId: number) => {
   const { data } = await https({
     url: API.QUESTION.LIST,
@@ -18,6 +11,12 @@ export const getQuestionsByTeam = async (programId: number, teamId: number) => {
   return new QuestionListDto(data?.data);
 };
 
+export interface PostQuestionParams {
+  programId: number;
+  teamId: number;
+  questionContent: string;
+  parentsCommentId?: number;
+}
 export const postQuestion = async ({
   programId,
   teamId,
