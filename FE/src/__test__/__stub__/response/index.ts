@@ -1,15 +1,16 @@
 import memberResponse from "./member";
 import programResponse from "./program";
+import questionResponse from "./question";
 
 interface GetResponseParams {
   url: string;
   method: string;
 }
 const getResponse = ({ url, method }: GetResponseParams) => {
-  // 만약 데이터를 추가하고 싶다면, 아래와 같이 추가하면 된다.
   const responseData = {
     ...programResponse,
     ...memberResponse,
+    ...questionResponse,
   };
 
   return responseData[url][method];
