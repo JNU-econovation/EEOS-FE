@@ -1,4 +1,3 @@
-//TODO: 서버 반환값 모킹하기
 import {
   MemberActiveStatusInfoDto,
   MemberAttendStatusInfoDto,
@@ -12,29 +11,20 @@ import {
   getProgramMembersByAttendStatus,
   updateMemberActiveStatus,
 } from "../member";
+import getResponse from "@/__test__/__stub__/response";
 
 jest.mock("../instance");
+const mockHttps = https as jest.MockedFunction<typeof https>;
 
 // 활동 상태별 회원 정보 조회 api
 describe("getMembersByActiveStatus", () => {
-  const mockReturnData = {
-    status: 200,
-    message: "정보 조회 성공",
-    data: {
-      data: {
-        members: [
-          {
-            memeberId: 1,
-            name: "00기 홍길동",
-            activeStatus: "active",
-          },
-        ],
-      },
-    },
-  };
+  const mockReturnData = getResponse({
+    url: "/members",
+    method: "GET",
+  });
 
   beforeEach(() => {
-    https.mockReturnValue(mockReturnData);
+    mockHttps.mockReturnValue(mockReturnData);
   });
 
   afterEach(() => {
@@ -81,24 +71,13 @@ describe("getProgramMembersByActiveStatus", () => {
   });
 
   describe("response", () => {
-    const mockReturnData = {
-      status: 200,
-      message: "정보 조회 성공",
-      data: {
-        data: {
-          members: [
-            {
-              memeberId: 1,
-              name: "00기 홍길동",
-              activeStatus: "active",
-            },
-          ],
-        },
-      },
-    };
+    const mockReturnData = getResponse({
+      url: "/programs/:programId/members",
+      method: "GET",
+    });
 
     beforeEach(() => {
-      https.mockReturnValue(mockReturnData);
+      mockHttps.mockReturnValue(mockReturnData);
     });
 
     afterEach(() => {
@@ -130,24 +109,13 @@ describe("getProgramMembersByAttendStatus", () => {
   });
 
   describe("response", () => {
-    const mockReturnData = {
-      status: 200,
-      message: "정보 조회 성공",
-      data: {
-        data: {
-          members: [
-            {
-              memeberId: 1,
-              name: "00기 홍길동",
-              attendStatus: "attend",
-            },
-          ],
-        },
-      },
-    };
+    const mockReturnData = getResponse({
+      url: "/attend/programs/:programId/members",
+      method: "GET",
+    });
 
     beforeEach(() => {
-      https.mockReturnValue(mockReturnData);
+      mockHttps.mockReturnValue(mockReturnData);
     });
 
     afterEach(() => {
@@ -180,18 +148,13 @@ describe("updateMemberActiveStatus", () => {
   });
 
   describe("response", () => {
-    const mockReturnData = {
-      data: {
-        status: 200,
-        message: "응답 성공",
-        data: {
-          name: "00기 홍길동",
-          activeStatus: "am",
-        },
-      },
-    };
+    const mockReturnData = getResponse({
+      url: "/members/activeStatus/:memberId",
+      method: "PUT",
+    });
+
     beforeEach(() => {
-      https.mockReturnValue(mockReturnData);
+      mockHttps.mockReturnValue(mockReturnData);
     });
 
     afterEach(() => {
@@ -202,7 +165,7 @@ describe("updateMemberActiveStatus", () => {
       const result = await updateMemberActiveStatus(1, "am");
 
       expect(result).toEqual({
-        name: "00기 홍길동",
+        name: "22기 홍길동",
         activeStatus: "am",
       });
     });
@@ -225,30 +188,23 @@ describe("deleteMember", () => {
   });
 
   describe("response", () => {
-    const mockReturnData = {
-      data: {
-        data: {
-          status: 200,
-          message: "삭제 성공",
-        },
-      },
-    };
+    const mockReturnData = getResponse({
+      url: "/members/:memberId",
+      method: "DELETE",
+    });
 
     beforeEach(() => {
-      https.mockReturnValue(mockReturnData);
+      mockHttps.mockReturnValue(mockReturnData);
     });
 
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("삭제 성공 메시지를 반환한다", async () => {
+    it("유저를 삭제한다", async () => {
       const result = await deleteMember(1);
 
-      expect(result).toEqual({
-        status: 200,
-        message: "삭제 성공",
-      });
+      expect(result).toBeNull();
     });
   });
 });

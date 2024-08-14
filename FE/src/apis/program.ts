@@ -28,6 +28,7 @@ export const getProgramById = async (
     : API.PROGRAM.DETAIL(programId);
   const { data } = await https({
     url,
+    method: "GET",
   });
 
   return new ProgramInfoDto(data?.data);

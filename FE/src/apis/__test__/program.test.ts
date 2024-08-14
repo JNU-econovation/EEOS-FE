@@ -13,7 +13,7 @@ import {
   sendSlackMessage,
   updateProgramAttendMode,
 } from "../program";
-import getResponse from "@/__test__/__stub__/response/indes";
+import getResponse from "@/__test__/__stub__/response";
 import { ProgramAttendStatus } from "@/types/program";
 
 jest.mock("../instance");
@@ -34,10 +34,44 @@ describe("getProgramById", () => {
     jest.clearAllMocks();
   });
 
-  it("프로그램 정보를 조회한다", async () => {
-    const result = await getProgramById(1, false);
+  it("isAbleToEdit이 false인 경우 게스트 프로그램 정보를 조회한다", async () => {
+    const programId = 1;
+    const isAbleToEdit = false;
+
+    const result = await getProgramById(programId, isAbleToEdit);
 
     expect(result).toBeInstanceOf(ProgramInfoDto);
+    expect(https).toBeCalledWith({
+      url: "/guest/programs/1",
+      method: "GET",
+    });
+    expect(result).toEqual({
+      accessRight: "edit",
+      attendMode: "attend",
+      category: "weekly",
+      content:
+        "[주간발표 공지]\n금일 B팀의 주간발표가 있습니다.\n\n - 일시: 10월 13일 (금) 17시~\n - 장소: 정보화본부 109호\n - 발표팀\n     - 발표자료 업로드\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\n - 발표 순서는 추후 공지합니다.[주간발표 공지]\n금일 B팀의 주간발표가 있습니다.\n\n - 일시: 10월 13일 (금) 17시~\n - 장소: 정보화본부 109호\n - 발표팀\n     \n- 발표자료 업로드\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\n - 발표 순서는 추후 공지합니다.",
+      deadLine: "1795691732000",
+      programGithubUrl:
+        "https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st",
+      programId: 1,
+      programStatus: "active",
+      title: "주간 발표 B팀",
+      type: "demand",
+    });
+  });
+
+  it("isAbleToEdit이 true인 경우 프로그램 정보를 조회한다", async () => {
+    const programId = 1;
+    const isAbleToEdit = true;
+
+    const result = await getProgramById(programId, isAbleToEdit);
+
+    expect(result).toBeInstanceOf(ProgramInfoDto);
+    expect(https).toBeCalledWith({
+      url: "/programs/1",
+      method: "GET",
+    });
     expect(result).toEqual({
       accessRight: "edit",
       attendMode: "attend",
@@ -69,23 +103,47 @@ describe("getProgramList", () => {
     jest.clearAllMocks();
   });
 
-  it("프로그램 리스트를 조회한다", async () => {
-    const guestResult = await getProgramList({
-      category: "weekly",
-      programStatus: "active",
-      size: 10,
-      page: 1,
-      isAdmin: false,
-    });
+  it("어드민 계정인 경우 프로그램 리스트를 조회한다", async () => {
+    const category = "weekly";
+    const programStatus = "active";
+    const size = 10;
+    const page = 1;
+    const isAdmin = true;
+
     await getProgramList({
-      category: "weekly",
-      programStatus: "active",
-      size: 10,
-      page: 1,
-      isAdmin: true,
+      category,
+      programStatus,
+      size,
+      page,
+      isAdmin,
     });
 
-    // guest
+    expect(https).toBeCalledWith({
+      method: "GET",
+      params: {
+        category: "weekly",
+        page: 1,
+        programStatus: "active",
+        size: 10,
+      },
+      url: "/programs",
+    });
+  });
+  it("게스트 계정인 경우 `/guest/programs`로 게스트 프로그램 리스트를 조회한다", async () => {
+    const category = "weekly";
+    const programStatus = "active";
+    const size = 10;
+    const page = 1;
+    const isAdmin = false;
+
+    const guestResult = await getProgramList({
+      category,
+      programStatus,
+      size,
+      page,
+      isAdmin,
+    });
+
     expect(guestResult).toBeInstanceOf(ProgramListDto);
     expect(https).toBeCalledWith({
       method: "GET",
@@ -193,18 +251,6 @@ describe("getProgramList", () => {
       ],
       size: 10,
       totalPage: 5,
-    });
-
-    // admin
-    expect(https).toBeCalledWith({
-      method: "GET",
-      params: {
-        category: "weekly",
-        page: 1,
-        programStatus: "active",
-        size: 10,
-      },
-      url: "/programs",
     });
   });
 });
