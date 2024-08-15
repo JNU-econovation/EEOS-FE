@@ -31,6 +31,7 @@ const ProgramList = ({
     isAdmin,
   });
 
+  // TODO: 전역 상태로 관리
   queryClient.setQueryData<number>(["totalPage"], programListData.totalPage);
   const { programs } = programListData;
 

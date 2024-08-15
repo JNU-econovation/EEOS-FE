@@ -12,8 +12,12 @@ import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
 import ProgramGithubLinkInput from "@/components/programCreate/ProgramGithubLinkInput";
 import ProgramTeamList from "@/components/programCreate/ProgramTeamList";
 import FORM_INFO from "@/constants/FORM_INFO";
+import MESSAGE from "@/constants/MESSAGE";
 import ROUTES from "@/constants/ROUTES";
-import { useCreateProgram } from "@/hooks/query/useProgramQuery";
+import {
+  useCreateProgram,
+  useSendSlackMessage,
+} from "@/hooks/query/useProgramQuery";
 import { useMemberSet } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
@@ -51,6 +55,7 @@ const CreateForm = () => {
     useMemberSet();
 
   const { mutate: createProgramMutate } = useCreateProgram();
+  const { mutate: sendSlackMessage } = useSendSlackMessage();
 
   const isDemand = watch("isDemand");
 
@@ -76,6 +81,7 @@ const CreateForm = () => {
       toast.error("올바른 Github URL을 입력해주세요.");
       return;
     }
+    const toastId = toast.loading(MESSAGE.CREATE.PENDING);
 
     createProgramMutate(
       {
@@ -89,9 +95,41 @@ const CreateForm = () => {
         title: isDemand ? `${FORM_INFO.DEMAND_PREFIX} ${title}` : title,
       },
       {
-        onSuccess: (programId) => {
+        onSuccess: ({ programId }) => {
+          const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
+          const sendMessage = () => {
+            if (!confirm) return;
+            sendSlackMessage(programId, {
+              onSuccess: () => {
+                alert(MESSAGE.SLACK_MESSAGE.SUCCESS);
+              },
+              onError: () => {
+                const retry = window.confirm(MESSAGE.SLACK_MESSAGE.FAIL);
+                if (retry) sendMessage();
+              },
+            });
+          };
+
+          sendMessage();
           reset();
           router.replace(ROUTES.ADMIN_DETAIL(programId));
+          toast.update(toastId, {
+            render: MESSAGE.CREATE.SUCCESS,
+            type: "success",
+            isLoading: false,
+            closeOnClick: true,
+            autoClose: 3000,
+          });
+        },
+        onError: () => {
+          toast.error(MESSAGE.CREATE.FAILED);
+          toast.update(toastId, {
+            render: MESSAGE.CREATE.FAILED,
+            type: "error",
+            isLoading: false,
+            closeOnClick: true,
+            autoClose: 3000,
+          });
         },
       },
     );

@@ -23,23 +23,17 @@ import {
   ProgramType,
 } from "@/types/program";
 
-// interface CreateProgram {
-//   programData: PostProgramRequest;
-// }
-
 export const useCreateProgram = () => {
-  const useClient = useQueryClient();
-
+  const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: async (programData: PostProgramRequest) => {
-      const { programId } = await postProgram(programData);
-      await sendSlackMessage(programId);
-      return programId;
-    },
-    onSuccess: () => {
-      useClient.invalidateQueries([API.PROGRAM.LIST]);
-    },
+    mutationFn: (programData: PostProgramRequest) => postProgram(programData),
+    onSuccess: () => queryClient.invalidateQueries([API.PROGRAM.LIST]),
+  });
+};
+
+export const useSendSlackMessage = () => {
+  return useMutation({
+    mutationFn: (programId: number) => sendSlackMessage(programId),
   });
 };
 
@@ -53,8 +47,9 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
     mutationFn: (body: PatchProgramBody) => patchProgram({ programId, body }),
-    onSettled: (data) => {
-      data && router.replace(ROUTES.DETAIL(data?.programId));
+    onSettled: ({ programId }) => {
+      router.replace(ROUTES.DETAIL(programId));
+
       const statuses: ActiveStatusWithAll[] = ["all", "am", "cm", "rm", "ob"];
       statuses.forEach((status) => {
         queryClient.invalidateQueries([
@@ -66,19 +61,14 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   });
 };
 
-export const useDeleteProgram = (programId: number) => {
-  const useClient = useQueryClient();
-  const router = useRouter();
+export const useDeleteProgram = () => {
+  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: [API.PROGRAM.DELETE(programId)],
-    mutationFn: async () => {
-      const res = await deleteProgram(programId);
-      useClient.invalidateQueries([API.PROGRAM.LIST]);
-      return res;
-    },
-    onSettled: () => {
-      router.replace(ROUTES.MAIN);
+    mutationFn: async ({ programId }: { programId: number }) =>
+      await deleteProgram(programId),
+    onSuccess: () => {
+      queryClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
 };

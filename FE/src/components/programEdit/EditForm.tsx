@@ -16,6 +16,7 @@ import ProgramTeamList from "../programCreate/ProgramTeamList";
 import ParticipantStateSection from "./ParticipantStateSection";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import FORM_INFO from "@/constants/FORM_INFO";
+import MESSAGE from "@/constants/MESSAGE";
 import {
   useGetProgramByProgramId,
   useUpdateProgram,
@@ -95,22 +96,48 @@ const EditForm = ({ programId }: EditFormProps) => {
       return;
     }
 
-    updateProgramMutate({
-      title,
-      deadLine,
-      content,
-      category,
-      type: isDemand ? "demand" : "notification",
-      teams: teamList,
-      members: Array.from(
-        members,
-        ([memberId, { beforeAttendStatus, afterAttendStatus }]) => ({
-          memberId,
-          beforeAttendStatus,
-          afterAttendStatus,
-        }),
-      ),
-    });
+    const toastId = toast.loading(MESSAGE.EDIT.PENDING);
+
+    updateProgramMutate(
+      {
+        title,
+        deadLine,
+        content,
+        category,
+        type: isDemand ? "demand" : "notification",
+        teams: teamList,
+        members: Array.from(
+          members,
+          ([memberId, { beforeAttendStatus, afterAttendStatus }]) => ({
+            memberId,
+            beforeAttendStatus,
+            afterAttendStatus,
+          }),
+        ),
+      },
+      {
+        onSuccess: () => {
+          toast.update(toastId, {
+            render: MESSAGE.EDIT.SUCCESS,
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+
+          reset();
+          route.back();
+        },
+        onError: () => {
+          toast.error(MESSAGE.EDIT.FAILED);
+          toast.update(toastId, {
+            render: MESSAGE.EDIT.FAILED,
+            type: "error",
+            isLoading: false,
+            autoClose: 3000,
+          });
+        },
+      },
+    );
   };
 
   const isLoading = isProgrmaLoading || !programInfo;

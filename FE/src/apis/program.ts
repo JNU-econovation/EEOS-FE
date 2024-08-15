@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import API from "../constants/API";
 import { AttendStatus } from "../types/member";
 import {
@@ -14,7 +13,6 @@ import {
   ProgramListDto,
 } from "./dtos/program.dto";
 import { https } from "./instance";
-import MESSAGE from "@/constants/MESSAGE";
 import { TeamInputInfo } from "@/types/team";
 
 /**
@@ -30,6 +28,7 @@ export const getProgramById = async (
     : API.PROGRAM.DETAIL(programId);
   const { data } = await https({
     url,
+    method: "GET",
   });
 
   return new ProgramInfoDto(data?.data);
@@ -73,17 +72,10 @@ export const getProgramList = async ({
  */
 
 export const deleteProgram = async (programId: number) => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.DELETE(programId),
-      method: "DELETE",
-    }),
-    {
-      pending: MESSAGE.DELETE.PENDING,
-      success: MESSAGE.DELETE.SUCCESS,
-      error: MESSAGE.DELETE.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.DELETE(programId),
+    method: "DELETE",
+  });
   return data?.data;
 };
 
@@ -105,47 +97,27 @@ export interface PostProgramRequest
   teams: TeamInputInfo[];
 }
 
-export const sendSlackMessage = async (
-  programId: number,
-  isRetry: boolean = false,
-) => {
-  if (!window) return;
-
-  if (!isRetry) {
-    const isConfirmed = confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
-    if (!isConfirmed) return;
-  }
-
-  return await https({
+export const sendSlackMessage = async (programId: number) => {
+  const { data } = await https({
     url: API.PROGRAM.SEND_MESSAGE(programId),
     method: "POST",
     data: {
       programUrl:
         process.env.NEXT_PUBLIC_SLACK_MESSAGE_REQUEST_URL_PREFIX + programId,
     },
-  })
-    .then(() => alert(MESSAGE.SLACK_MESSAGE.SUCCESS))
-    .catch(() => {
-      const retry = confirm(MESSAGE.SLACK_MESSAGE.FAIL);
-      if (retry) sendSlackMessage(programId);
-    });
+  });
+  return data?.data;
 };
 
 export const postProgram = async (
   body: PostProgramRequest,
 ): Promise<ProgramIdDto> => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.CREATE,
-      method: "POST",
-      data: body,
-    }),
-    {
-      pending: MESSAGE.CREATE.PENDING,
-      success: MESSAGE.CREATE.SUCCESS,
-      error: MESSAGE.CREATE.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.CREATE,
+    method: "POST",
+    data: body,
+  });
+
   return new ProgramIdDto(data?.data);
 };
 
@@ -178,23 +150,15 @@ export interface PatchProgramRequest {
   programId: number;
   body: PatchProgramBody;
 }
-
 export const patchProgram = async ({
   programId,
   body,
 }: PatchProgramRequest): Promise<ProgramIdDto> => {
-  const { data } = await toast.promise(
-    https({
-      url: API.PROGRAM.UPDATE(programId),
-      method: "PATCH",
-      data: body,
-    }),
-    {
-      pending: MESSAGE.EDIT.PENDING,
-      success: MESSAGE.EDIT.SUCCESS,
-      error: MESSAGE.EDIT.FAILED,
-    },
-  );
+  const { data } = await https({
+    url: API.PROGRAM.UPDATE(programId),
+    method: "PATCH",
+    data: body,
+  });
 
   return new ProgramIdDto(data?.data);
 };
