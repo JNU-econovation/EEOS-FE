@@ -186,7 +186,7 @@ const EditForm = ({ programId }: EditFormProps) => {
         setMembers={updateMembers}
       />
       <FormBtn
-        submitText={FORM_INFO.SUBMIT_TEXT["create"]}
+        submitText={FORM_INFO.SUBMIT_TEXT["edit"]}
         formReset={() => {
           route.back();
           handleReset;
