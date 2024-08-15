@@ -12,13 +12,26 @@ const EditAndDeleteButton = ({ programId }) => {
 
   const handleClickDelete = () => {
     if (confirm(MESSAGE.CONFIRM.DELETE)) {
+      const toastId = toast.loading(MESSAGE.DELETE.PENDING);
       deleteProgram(programId, {
-        onSettled: () => toast.loading(MESSAGE.DELETE.PENDING),
         onSuccess: () => {
-          toast.success(MESSAGE.DELETE.SUCCESS);
-          router.replace(ROUTES.MAIN);
+          toast.update(toastId, {
+            render: MESSAGE.DELETE.SUCCESS,
+            type: "success",
+            autoClose: 3000,
+            isLoading: false,
+            closeOnClick: true,
+          });
+          router.replace(ROUTES.ADMIN_MAIN);
         },
-        onError: () => toast.error(MESSAGE.DELETE.FAILED),
+        onError: () =>
+          toast.update(toastId, {
+            type: "error",
+            render: MESSAGE.DELETE.FAILED,
+            autoClose: 3000,
+            isLoading: false,
+            closeOnClick: true,
+          }),
       });
     }
   };
