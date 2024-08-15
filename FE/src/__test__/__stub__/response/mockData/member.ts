@@ -35,7 +35,7 @@ export const members = {
  */
 export const myActiveStatus = {
   name: "26기 홍길동",
-  activeStatus: "{{oneOf (array 'am' 'rm' 'cm' 'ob')}}",
+  activeStatus: "am",
 };
 
 /**

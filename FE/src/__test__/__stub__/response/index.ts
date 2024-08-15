@@ -1,6 +1,7 @@
-import memberResponse from "./member";
-import programResponse from "./program";
-import questionResponse from "./question";
+import memberResponse from "./member.mock";
+import programResponse from "./program.mock";
+import questionResponse from "./question.mock";
+import userResponse from "./user.mock";
 
 interface GetResponseParams {
   url: string;
@@ -11,8 +12,8 @@ const getResponse = ({ url, method }: GetResponseParams) => {
     ...programResponse,
     ...memberResponse,
     ...questionResponse,
+    ...userResponse,
   };
-
   return responseData[url][method];
 };
 
