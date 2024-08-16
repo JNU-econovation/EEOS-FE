@@ -1,5 +1,5 @@
-import LoginLeftSection from "@/components/feature/login/LoginLeftSection";
 import LoginRightSection from "@/components/feature/login/LoginRightSection";
+import { IntroLogo, Saly } from "@/components/icons";
 
 const LoginLinks = [
   {
@@ -24,7 +24,10 @@ const LoginPage = () => {
   return (
     <>
       <div className="grid h-[80vh] sm:h-[44rem] sm:grid-cols-[25rem_1fr] sm:shadow-lg">
-        <LoginLeftSection />
+        <div className="hidden flex-col gap-28 bg-secondary-10 p-8 sm:flex">
+          <IntroLogo />
+          <Saly />
+        </div>
         <LoginRightSection />
       </div>
       <ul className="mt-24 flex items-center justify-center gap-4">

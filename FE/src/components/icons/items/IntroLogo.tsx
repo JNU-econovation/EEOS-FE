@@ -13,4 +13,5 @@ const IntroLogo = () => {
     </div>
   );
 };
+
 export default IntroLogo;

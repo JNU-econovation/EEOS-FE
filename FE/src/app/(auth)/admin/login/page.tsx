@@ -1,21 +1,16 @@
-import Image from "next/image";
 import LoginForm from "@/components/feature/login/admin/LoginForm";
-import LoginLeftSection from "@/components/feature/login/LoginLeftSection";
+import { EeosAdminLogo, IntroLogo, Saly } from "@/components/icons";
 
 const LoginPage = () => {
   return (
     <div className="grid h-[80vh] sm:h-[44rem] sm:grid-cols-[25rem_1fr] sm:shadow-lg">
-      <LoginLeftSection />
+      <div className="hidden flex-col gap-28 bg-secondary-10 p-8 sm:flex">
+        <IntroLogo />
+        <Saly />
+      </div>
       <div className="flex items-center justify-center">
         <div className="rounded-lg border bg-gray-10 p-8">
-          <Image
-            src="/icons/eeosAdminLogo.svg"
-            className="mx-auto"
-            alt="logo"
-            width={180}
-            height={36}
-            priority
-          />
+          <EeosAdminLogo />
           <LoginForm />
           <button
             className="mt-4 w-full rounded-lg bg-gray-20 p-2 font-semibold"
