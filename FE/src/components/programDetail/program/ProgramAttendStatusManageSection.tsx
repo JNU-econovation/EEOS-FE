@@ -3,7 +3,7 @@
 
 import classNames from "classnames";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import {
   useGetProgramByProgramId,
   // useGetProgramAttendModeAndStatus,

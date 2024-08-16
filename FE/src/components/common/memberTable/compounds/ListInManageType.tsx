@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "../../ErrorFallback";
+import ErrorFallback from "../../error/ErrorFallback";
 import ActiveStatusToggle from "../../toggle/ActiveStatusToggle";
 import MemberTableLoader from "../MemberTable.loader";
 import { MemberContext } from "../MemberTableWrapper";

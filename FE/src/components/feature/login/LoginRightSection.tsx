@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Link from "../common/Link";
-import Title from "../common/Title";
+import Link from "next/link";
 import LoginSection from "./LoginSection";
+import Title from "@/components/common/Title/Title";
 const LoginRightSection = () => {
   return (
     <div

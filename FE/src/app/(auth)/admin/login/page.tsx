@@ -1,6 +1,6 @@
 import Image from "next/image";
-import LoginForm from "@/components/login/admin/LoginForm";
-import LoginLeftSection from "@/components/login/LoginLeftSection";
+import LoginForm from "@/components/feature/login/admin/LoginForm";
+import LoginLeftSection from "@/components/feature/login/LoginLeftSection";
 
 const LoginPage = () => {
   return (

@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import CheckBox from "../../CheckBox";
+import CheckBox from "../../CheckBox/CheckBox";
 import AttendStatusToggle from "../../toggle/AttendStatusToggle";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";

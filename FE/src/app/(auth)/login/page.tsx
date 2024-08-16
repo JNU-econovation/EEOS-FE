@@ -1,5 +1,5 @@
-import LoginLeftSection from "@/components/login/LoginLeftSection";
-import LoginRightSection from "@/components/login/LoginRightSection";
+import LoginLeftSection from "@/components/feature/login/LoginLeftSection";
+import LoginRightSection from "@/components/feature/login/LoginRightSection";
 
 const LoginLinks = [
   {

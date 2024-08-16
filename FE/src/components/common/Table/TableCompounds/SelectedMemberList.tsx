@@ -1,4 +1,4 @@
-import CheckBox from "../../CheckBox";
+import CheckBox from "../../CheckBox/CheckBox";
 import { ActiveStatus } from "@/types/member";
 
 interface SelectMemberListProps {

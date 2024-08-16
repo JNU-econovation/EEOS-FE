@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import Button from "../common/Button/Button";
 import { useCloseTeamBuildingMutation } from "@/hooks/query/useTeamBuildingQuery";
 
 const TeamBuildingCloseBtn = () => {

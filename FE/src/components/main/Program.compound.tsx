@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "../common/ErrorFallback";
+import ErrorFallback from "../common/error/ErrorFallback";
 import Tab from "../common/tabs/tab/Tab";
 import TextTab from "../common/tabs/tab/TextTab";
 import ProgramList from "./ProgramList";

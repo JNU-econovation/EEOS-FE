@@ -1,7 +1,7 @@
 "use client";
 
 import DashboardWrapper from "./DashboardCompound/DashboardWrapper";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import { AccessType } from "@/types/access";
 
 interface ProgramDashboardProps {

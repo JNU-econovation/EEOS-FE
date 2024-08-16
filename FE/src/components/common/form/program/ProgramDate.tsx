@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
-import Calendar from "../../calendar/Calendar";
+import Calendar from "../../Calendar/Calendar";
 import LabeledInput from "../LabeledInput";
 import { ProgramFormDataState } from "./CreateForm";
 import FORM_INFO from "@/constants/FORM_INFO";
