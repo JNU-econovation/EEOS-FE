@@ -25,6 +25,7 @@ export default function StyledLinkButton({
   const buttonStyle = classNames(defaultStyle, colors[color]);
   return (
     <Link className={buttonStyle} href={linkUrl}>
+      {/* TODO: alt 변경하기 */}
       <Image src={imageUrl} alt="슬랙 로고" width={24} height={24} />
       <p className="text-center font-semibold">{buttonText}</p>
     </Link>
