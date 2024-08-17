@@ -11,6 +11,9 @@ dependencies:
   '@tanstack/react-query-devtools':
     specifier: ^5.28.14
     version: 5.28.14(@tanstack/react-query@4.35.7)(react@18.2.0)
+  '@toss/react':
+    specifier: ^1.7.0
+    version: 1.7.0(react@18.2.0)
   '@types/qs':
     specifier: ^6.9.10
     version: 6.9.10
@@ -1066,6 +1069,33 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
     dev: true
+
+  /@toss/react@1.7.0(react@18.2.0):
+    resolution: {integrity: sha512-aD6pIPUdCyxj4QK2HmLCC6HESgZeqIi5Slzc84Sw/r/PJaRKRG+ukV/Vft7c2NXzqG7TXdFvTzgc4dtfjT3ieA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@toss/storage': 1.4.0
+      '@toss/utils': 1.5.0
+      classnames: 2.3.2
+      lodash.debounce: 4.0.8
+      lodash.throttle: 4.1.1
+      react: 18.2.0
+    dev: false
+
+  /@toss/storage@1.4.0:
+    resolution: {integrity: sha512-rT0AKWS41hX/JmPQ2JZZ7GdicJZM1DPO5VFeiZwDbNFhfgHMGuEAc6w5qDN8+a8R+sQi5jG1oMFd3QNM/EcpRA==}
+    dependencies:
+      '@babel/runtime': 7.23.9
+    dev: false
+
+  /@toss/utils@1.5.0:
+    resolution: {integrity: sha512-zIZoth29c0IGXenFo34dB97CSaGurCtuQ2GRPxcqvj1CfBB/cxEu0GVGFLv/Dg74fNxrkBnv7sbLkrZ6egpzwA==}
+    dependencies:
+      '@babel/runtime': 7.23.9
+      date-fns: 2.30.0
+    dev: false
 
   /@tsconfig/node10@1.0.11:
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -4279,9 +4309,17 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash.throttle@4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
