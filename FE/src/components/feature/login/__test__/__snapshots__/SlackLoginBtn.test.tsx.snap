@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SlackLoginBtn 올바르게 렌더링 된다 1`] = `
+<a
+  href="https://slack.com/oauth/v2/authorize?client_id=5775976606341.6306752698400&team_id=undefined&scope=&user_scope=users.profile:read&redirect_uri=https://localhost:3000/login/logging-in"
+  onClick={[Function]}
+  role="link"
+>
+  <img
+    alt="슬랙 로그인 버튼"
+    data-nimg="1"
+    decoding="async"
+    height={24}
+    loading="lazy"
+    onError={[Function]}
+    onLoad={[Function]}
+    src="/icons/slack.svg"
+    style={
+      {
+        "color": "transparent",
+      }
+    }
+    width={24}
+  />
+  <p
+    className="text-center font-semibold"
+  >
+    슬랙으로 로그인
+  </p>
+</a>
+`;

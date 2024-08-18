@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import StyledLinkButton from "../ui/StyledLinkButton";
+import StyledLinkButton from "../../../common/Button/StyledLinkButton";
 import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
 const SlackLoginBtn = () => {
@@ -12,6 +12,7 @@ const SlackLoginBtn = () => {
 
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+
   const { mutate: loginSlack } = useSlackLoginMutation();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const SlackLoginBtn = () => {
       buttonText="슬랙으로 로그인"
       imageUrl="/icons/slack.svg"
       color="slack"
+      alt="슬랙 로그인 버튼"
     />
   );
 };

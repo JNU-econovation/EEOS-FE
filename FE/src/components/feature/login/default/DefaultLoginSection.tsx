@@ -8,10 +8,7 @@ interface DefaultLoginSectionProps {
 }
 const DefaultLoginSection = ({ changeLoginType }: DefaultLoginSectionProps) => {
   return (
-    <div
-      id="right"
-      className="flex flex-col items-center justify-center gap-24"
-    >
+    <div className="flex flex-col items-center justify-center gap-24">
       <Title text={"로그인"} />
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-6">

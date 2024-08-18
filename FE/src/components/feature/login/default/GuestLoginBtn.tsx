@@ -1,4 +1,4 @@
-import StyledLinkButton from "../ui/StyledLinkButton";
+import StyledLinkButton from "../../../common/Button/StyledLinkButton";
 
 const GuestLoginBtn = () => {
   return (

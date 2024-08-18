@@ -9,7 +9,7 @@ const colors = {
   guest: "bg-primary text-black text-paragraph",
 };
 
-interface StyledLinkButtonProps {
+interface StyledLinkButtonProps extends React.HTMLProps<HTMLAnchorElement> {
   linkUrl: string;
   buttonText: string;
   imageUrl: string;
@@ -21,12 +21,12 @@ export default function StyledLinkButton({
   buttonText,
   imageUrl,
   color,
+  alt = "",
 }: Readonly<StyledLinkButtonProps>) {
   const buttonStyle = classNames(defaultStyle, colors[color]);
   return (
     <Link className={buttonStyle} href={linkUrl}>
-      {/* TODO: alt 변경하기 */}
-      <Image src={imageUrl} alt="슬랙 로고" width={24} height={24} />
+      <Image src={imageUrl} alt={alt} width={24} height={24} />
       <p className="text-center font-semibold">{buttonText}</p>
     </Link>
   );
