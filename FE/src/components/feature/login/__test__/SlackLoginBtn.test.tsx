@@ -36,8 +36,6 @@ jest.mock("next/link", () => {
 });
 
 describe("SlackLoginBtn", () => {
-  let MockNextRouterComponent;
-
   afterEach(() => {
     jest.clearAllMocks();
   });
