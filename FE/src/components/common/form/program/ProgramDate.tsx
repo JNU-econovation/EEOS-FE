@@ -1,13 +1,16 @@
 "use client";
 
+// import dynamic from "next/dynamic";
 import { useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
-import Calendar from "../../Calendar/Calendar";
+import Calendar from "../../calendar/Calendar";
 import LabeledInput from "../LabeledInput";
 import { ProgramFormDataState } from "./CreateForm";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useOutsideRef from "@/hooks/useOutsideRef";
 import { formatTimestamp } from "@/utils/convert";
+
+// const Calendar = dynamic(() => import("@/components/common/Calendar/Calendar"));
 
 interface ProgramDateProps {
   getValues: UseFormGetValues<ProgramFormDataState>;
