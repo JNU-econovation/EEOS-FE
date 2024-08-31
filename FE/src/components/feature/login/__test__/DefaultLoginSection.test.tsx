@@ -6,10 +6,23 @@ import { render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import DefaultLoginSection from "../default/DefaultLoginSection";
 import { Link } from "@/__test__/__mock__/Link";
+import getResponse from "@/__test__/__stub__/response";
 import withReactQuery from "@/__test__/utils/withReactQuery";
+import { https } from "@/apis/instance";
 
+//axios mocking
+jest.mock("@/apis/instance");
+const mockHttps = https as jest.MockedFunction<typeof https>;
+
+const mockReturnData = getResponse({
+  url: "/auth/login/slack",
+  method: "POST",
+});
+
+mockHttps.mockResolvedValue(mockReturnData);
+
+// next.js mocking
 const MockNextRouterComponent = Link;
-const changeLoginType = jest.fn();
 
 jest.mock("next/navigation", () => ({
   useSearchParams: jest.fn(() => ({
@@ -28,6 +41,9 @@ jest.mock("next/link", () => {
     );
   };
 });
+
+// module mocking
+const changeLoginType = jest.fn();
 
 describe("DefaultLoginSection", () => {
   it("올바르게 렌더링 된다", async () => {

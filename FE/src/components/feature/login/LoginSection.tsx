@@ -11,24 +11,20 @@ const LoginSection = () => {
   const [loginType, setLoginType] = useState<LoginType>("login");
 
   return (
-    <>
-      <SwitchCase
-        value={loginType}
-        caseBy={{
-          login: (
-            <DefaultLoginSection
-              changeLoginType={() => setLoginType("admin")}
-            />
-          ),
-          admin: (
-            <AdminLoginSection changeLoginType={() => setLoginType("login")} />
-          ),
-        }}
-        defaultComponent={
+    <SwitchCase
+      value={loginType}
+      caseBy={{
+        login: (
           <DefaultLoginSection changeLoginType={() => setLoginType("admin")} />
-        }
-      />
-    </>
+        ),
+        admin: (
+          <AdminLoginSection changeLoginType={() => setLoginType("login")} />
+        ),
+      }}
+      defaultComponent={
+        <DefaultLoginSection changeLoginType={() => setLoginType("admin")} />
+      }
+    />
   );
 };
 
