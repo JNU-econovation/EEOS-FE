@@ -17,7 +17,7 @@ const AdminLoginSection = ({ changeLoginType }: AdminLoginSectionProps) => {
           ID / PW 찾기
         </button>
       </div>
-      {/* TODO: 명세서 먼저 수정 후 */}
+      {/* TODO: 명세서 수정 필요 */}
       <p className="mx-auto flex select-none" onClick={changeLoginType}>
         이전으로 돌아가기
       </p>

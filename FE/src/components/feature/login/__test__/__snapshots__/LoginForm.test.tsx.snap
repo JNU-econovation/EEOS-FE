@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm 올바르게 렌더링 된다 1`] = `
+<form
+  className="mt-12 flex flex-col gap-3"
+  onSubmit={[Function]}
+>
+  <input
+    className="mx-8 p-2"
+    name="id"
+    onChange={[Function]}
+    placeholder="아이디"
+    type="text"
+    value=""
+  />
+  <input
+    className="mx-8 p-2"
+    name="password"
+    onChange={[Function]}
+    placeholder="비밀번호"
+    type="password"
+    value=""
+  />
+  <button
+    className="mt-4 w-full rounded-lg bg-primary p-2 font-semibold"
+  >
+    로그인
+  </button>
+</form>
+`;
