@@ -26,6 +26,7 @@ const LoginForm = () => {
     <form className="mt-12 flex flex-col gap-3" onSubmit={loginToAdmin}>
       <input
         type="text"
+        aria-label="아이디"
         name="id"
         placeholder="아이디"
         className="mx-8 p-2"
@@ -34,6 +35,8 @@ const LoginForm = () => {
       />
       <input
         type="password"
+        aria-label="비밀번호"
+        role="password"
         name="password"
         placeholder="비밀번호"
         className="mx-8 p-2"
