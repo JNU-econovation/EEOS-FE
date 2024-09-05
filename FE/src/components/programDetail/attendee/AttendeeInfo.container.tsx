@@ -3,7 +3,7 @@
 import { ErrorBoundary } from "react-error-boundary";
 import AttendeeInfo from "./AttendeeInfo";
 import BluredAttedee from "./BluredAttedee";
-import ErrorFallback from "@/components/common/ErrorFallback";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
 
 interface AttendeeInfoContainerProps {
   programId: number;

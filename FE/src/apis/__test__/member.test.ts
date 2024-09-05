@@ -37,7 +37,7 @@ describe("getMembersByActiveStatus", () => {
 
       await getMembersByActiveStatus(activeStatus);
 
-      expect(https).toBeCalledWith({
+      expect(https).toHaveBeenCalledWith({
         url: "/members",
         method: "GET",
         params: { activeStatus },
@@ -62,7 +62,7 @@ describe("getProgramMembersByActiveStatus", () => {
 
       await getProgramMembersByActiveStatus(1, activeStatus);
 
-      expect(https).toBeCalledWith({
+      expect(https).toHaveBeenCalledWith({
         url: `/programs/1/members`,
         method: "GET",
         params: { activeStatus },
@@ -100,7 +100,7 @@ describe("getProgramMembersByAttendStatus", () => {
 
       await getProgramMembersByAttendStatus(1, attendStatus);
 
-      expect(https).toBeCalledWith({
+      expect(https).toHaveBeenCalledWith({
         url: `/attend/programs/1/members`,
         method: "GET",
         params: { attendStatus },
@@ -139,7 +139,7 @@ describe("updateMemberActiveStatus", () => {
 
       await updateMemberActiveStatus(memberId, activeStatus);
 
-      expect(https).toBeCalledWith({
+      expect(https).toHaveBeenCalledWith({
         url: `/members/activeStatus/1`,
         method: "PUT",
         data: activeStatus,
@@ -180,7 +180,7 @@ describe("deleteMember", () => {
 
       await deleteMember(memberId);
 
-      expect(https).toBeCalledWith({
+      expect(https).toHaveBeenCalledWith({
         url: `/members/${memberId}`,
         method: "DELETE",
       });

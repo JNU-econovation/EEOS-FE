@@ -1,7 +1,7 @@
 "use client";
 
 import ProgressDisplay from "@/components/common/ProgressDisplay";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import {
   useCompleteTeamBuildingMutation,
   useDeleteTeamBuildingMutation,

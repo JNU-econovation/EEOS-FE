@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Button from "../../Button";
-import ErrorFallback from "../../ErrorFallback";
+import Button from "../../Button/Button";
+import ErrorFallback from "../../error/ErrorFallback";
 import UserActiveModalSkeleton from "./UserActiveModal.loader";
 import UserInfoSection from "./UserInfoSection";
 import ROUTES from "@/constants/ROUTES";

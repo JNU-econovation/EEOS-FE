@@ -9,6 +9,7 @@ import {
   setTokenExpiration,
 } from "@/utils/authWithStorage";
 
+// TODO: 라우팅 및 토큰 처리 로직은 컴포넌트에서 수행
 export const useSlackLoginMutation = () => {
   const router = useRouter();
   return useMutation(

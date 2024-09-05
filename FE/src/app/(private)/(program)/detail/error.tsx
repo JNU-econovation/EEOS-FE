@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorFallback from "@/components/common/ErrorFallback";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
 
 const DetailPageError = () => {
   const error = {

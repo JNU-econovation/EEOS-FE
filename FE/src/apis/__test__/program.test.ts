@@ -41,7 +41,7 @@ describe("getProgramById", () => {
     const result = await getProgramById(programId, isAbleToEdit);
 
     expect(result).toBeInstanceOf(ProgramInfoDto);
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       url: "/guest/programs/1",
       method: "GET",
     });
@@ -68,7 +68,7 @@ describe("getProgramById", () => {
     const result = await getProgramById(programId, isAbleToEdit);
 
     expect(result).toBeInstanceOf(ProgramInfoDto);
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       url: "/programs/1",
       method: "GET",
     });
@@ -118,7 +118,7 @@ describe("getProgramList", () => {
       isAdmin,
     });
 
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       method: "GET",
       params: {
         category: "weekly",
@@ -145,7 +145,7 @@ describe("getProgramList", () => {
     });
 
     expect(guestResult).toBeInstanceOf(ProgramListDto);
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       method: "GET",
       params: {
         category: "weekly",

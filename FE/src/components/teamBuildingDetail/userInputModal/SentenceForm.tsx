@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { FieldType } from "./SentenceField";
-import Button from "@/components/common/Button";
+import Button from "@/components/common/Button/Button";
 import {
   usePostSentenceMutation,
   usePutSentenceMutation,

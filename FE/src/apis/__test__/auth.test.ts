@@ -28,7 +28,7 @@ describe("postSlackLogin", () => {
     await postSlackLogin(code, redirect_uri);
 
     // then
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       url: "/auth/login/slack",
       method: "POST",
       params: { code, redirect_uri },
@@ -58,7 +58,7 @@ describe("postTokenReissue", () => {
   it("/auth/token/reissue 위치로 post 요청을 보낸다", async () => {
     await postTokenReissue();
 
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       url: "/auth/reissue",
       method: "POST",
     });
@@ -82,7 +82,7 @@ describe("postAdminLogin", () => {
 
     await postAdminLogin(id, password);
 
-    expect(https).toBeCalledWith({
+    expect(https).toHaveBeenCalledWith({
       url: "/auth/login",
       method: "POST",
       data: { id, password },

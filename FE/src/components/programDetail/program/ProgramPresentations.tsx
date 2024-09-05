@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import usePresentations from "@/hooks/query/usePresentations";
 
 interface ProgramPresentationsProps {

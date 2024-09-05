@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect } from "react";
-import CheckBox from "../../CheckBox";
+import CheckBox from "../../CheckBox/CheckBox";
 import { useTableContext } from "../TableWrapper";
 
 interface HeaderProps {

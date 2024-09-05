@@ -1,6 +1,6 @@
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
-import Button from "./Button";
-import Title from "./Title";
+import Button from "../Button/Button";
+import Title from "../Title/Title";
 
 const ERROR_TITLE = "ERROR";
 const RETRY_BUTTON_TEXT = "Try again";

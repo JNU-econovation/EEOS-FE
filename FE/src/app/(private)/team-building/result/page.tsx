@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import TeamBuildingCloseBtn from "@/components/teamBuildingResult/TeamBuildingCloseBtn";
 import TeamResultInfoContainer from "@/components/teamBuildingResult/TeamResultInfo.container";
 import { useGetTeamBuildingResultQuery } from "@/hooks/query/useTeamBuildingQuery";

@@ -2,7 +2,7 @@
 
 import ManageTable from "./memberManageTable/ManageTable";
 import MemberActiveStatusTab from "@/components/common/tabs/MemberActiveStatusTab";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 
 const MemberManageSection = () => {
   return (

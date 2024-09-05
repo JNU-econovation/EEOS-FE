@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useAtom } from "jotai";
-import CheckBox from "@/components/common/CheckBox";
+import CheckBox from "@/components/common/CheckBox/CheckBox";
 import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
 import { FormType } from "@/types/form";
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import TeamList from "./TeamList";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
-import Title from "@/components/common/Title";
+import Title from "@/components/common/Title/Title";
 import { useCreateTeam, useTeamQuery } from "@/hooks/query/useTeamQuery";
 
 const TeamManageSection = () => {

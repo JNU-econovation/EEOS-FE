@@ -1,10 +1,10 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "../../error/ErrorFallback";
 import MemberTableLoader from "../MemberTable.loader";
 import { MemberContext } from "../MemberTableWrapper";
-import CheckBox from "@/components/common/CheckBox";
-import ErrorFallback from "@/components/common/ErrorFallback";
+import CheckBox from "@/components/common/CheckBox/CheckBox";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
 import { Members } from "@/hooks/useMemberForm";

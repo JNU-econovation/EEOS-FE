@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const LogoAndIntro = () => {
+const IntroLogo = () => {
   return (
     <div className="flex flex-col">
       <Image
@@ -13,4 +13,5 @@ const LogoAndIntro = () => {
     </div>
   );
 };
-export default LogoAndIntro;
+
+export default IntroLogo;
