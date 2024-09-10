@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# 커밋 메시지 파일 경로
+commit_msg_file=$1
+
+# 현재 브랜치 이름 가져오기
+branch_name=$(git symbolic-ref --short HEAD)
+
+# 브랜치 이름에서 이슈 번호 추출하기
+issue_number=$(echo $branch_name | grep -oE '[0-9]+')
+
+# 이슈 번호가 추출되었는지 확인
+if [ -n "$issue_number" ]; then
+  # 주석을 제외한 기존 커밋 메시지 가져오기
+  message_body=$(sed '/^#/d' "$commit_msg_file")
+
+  # 새로운 메시지 작성
+  echo "$message_body\n\n#$issue_number" > "$commit_msg_file"
+fi
