@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Provider from "@/utils/provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "EEOS",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Provider>{children}</Provider>
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
       </body>
     </html>
   );
