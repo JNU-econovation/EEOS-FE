@@ -46,7 +46,10 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
 
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
-    mutationFn: (body: PatchProgramBody) => patchProgram({ programId, body }),
+    mutationFn: (body: PatchProgramBody) => {
+      console.log("body", body);
+      return patchProgram({ programId, body });
+    },
     onSettled: ({ programId }) => {
       router.replace(ROUTES.DETAIL(programId));
 
