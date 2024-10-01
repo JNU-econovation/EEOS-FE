@@ -139,7 +139,6 @@ export interface PatchProgramBody
     | "accessRight"
     | "attendMode"
     | "eventStatus"
-    | "programGithubUrl"
     | "teams"
   > {
   members: PatchProgramMember[];

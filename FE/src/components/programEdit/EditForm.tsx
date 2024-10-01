@@ -106,6 +106,7 @@ const EditForm = ({ programId }: EditFormProps) => {
         category,
         type: isDemand ? "demand" : "notification",
         teams: teamList,
+        programGithubUrl,
         members: Array.from(
           members,
           ([memberId, { beforeAttendStatus, afterAttendStatus }]) => ({
