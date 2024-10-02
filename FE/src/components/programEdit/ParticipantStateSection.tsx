@@ -11,15 +11,10 @@ const ParticipantStateSection = ({
   programId,
   setMembers,
 }: ParticipantStateSectionProps) => {
-  const { data: programData, status } = useGetProgramByProgramId(
-    programId,
-    true,
-  );
+  const { data: programData } = useGetProgramByProgramId(programId, true);
 
   const isEnableEdit =
-    status === "success" &&
-    programData?.attendMode !== "attend" &&
-    programData?.attendMode !== "late";
+    programData?.attendMode !== "attend" && programData?.attendMode !== "late";
 
   return (
     <section>
