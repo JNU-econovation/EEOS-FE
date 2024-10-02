@@ -1,27 +1,33 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+// import dynamic from "next/dynamic";
+import { useState } from "react";
+import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import Calendar from "../../calendar/Calendar";
 import LabeledInput from "../LabeledInput";
+import { ProgramFormDataState } from "./CreateForm";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useOutsideRef from "@/hooks/useOutsideRef";
-import { convertDate } from "@/utils/convert";
+import { formatTimestamp } from "@/utils/convert";
+
+// const Calendar = dynamic(() => import("@/components/common/Calendar/Calendar"));
 
 interface ProgramDateProps {
-  programDate: string;
-  setProgramDate: Dispatch<SetStateAction<string>>;
+  getValues: UseFormGetValues<ProgramFormDataState>;
+  setValue: UseFormSetValue<ProgramFormDataState>;
 }
 
-const ProgramDate = ({ programDate, setProgramDate }: ProgramDateProps) => {
+const ProgramDate = ({ getValues, setValue }: ProgramDateProps) => {
   const [openCalender, setOpenCalender] = useState<boolean>(false);
   const calenderRef = useOutsideRef(() => setOpenCalender(false));
   const [date, setDate] = useState<Date | undefined>(
-    new Date(parseInt(programDate)) || new Date(),
+    new Date(parseInt(getValues("deadLine"))) || new Date(),
   );
 
   const handleDateChange = (date: Date | undefined) => {
     setDate(date);
-    setProgramDate(
+    setValue(
+      "deadLine",
       date?.getTime().toString() || new Date().getTime().toString(),
     );
   };
@@ -41,10 +47,13 @@ const ProgramDate = ({ programDate, setProgramDate }: ProgramDateProps) => {
         type={FORM_INFO.PROGRAM.DATE.type}
         label={FORM_INFO.PROGRAM.DATE.label}
         placeholder={FORM_INFO.PROGRAM.DATE.placeholder}
-        value={convertDate(programDate)}
+        value={formatTimestamp(getValues("deadLine"))}
       />
       {openCalender && (
-        <Calendar date={date} handleDateChange={handleDateChange} />
+        <Calendar
+          date={date}
+          handleDateChange={(date: Date) => handleDateChange(date)}
+        />
       )}
     </div>
   );

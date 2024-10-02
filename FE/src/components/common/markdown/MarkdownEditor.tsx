@@ -2,7 +2,8 @@
 
 import "./markdown-editor.styles.css";
 import { useState } from "react";
-import Tab from "../tabs/Tab";
+import Label from "../form/input/Label";
+import Tab from "../tabs/tab/Tab";
 import MarkdownViewer from "./MarkdownViewer";
 import { TabOption } from "@/types/tab";
 import { handleKeydown } from "@/utils/handleKeydown";
@@ -41,9 +42,7 @@ const MarkdownEditor = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="text-sm">
-        {label}
-      </label>
+      <Label id={id} label={label} />
       <div className="flex h-fit w-full flex-col gap-2 rounded-md border-2 border-gray-300 bg-gray-10 p-2 transition-transform">
         <Tab<MarkdownViewType>
           options={Object.values(EDITOR_TAB)}

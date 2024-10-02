@@ -1,8 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
   GetProgramListRequest,
-  PatchProgramRequest,
+  PatchProgramBody,
   PostProgramRequest,
   deleteProgram,
   getProgramAccessRight,
@@ -11,43 +12,47 @@ import {
   patchProgram,
   postProgram,
   sendSlackMessage,
+  updateProgramAttendMode,
 } from "@/apis/program";
 import API from "@/constants/API";
 import ROUTES from "@/constants/ROUTES";
 import { ActiveStatusWithAll } from "@/types/member";
-import { ProgramStatus, ProgramType } from "@/types/program";
+import {
+  ProgramAttendStatus,
+  ProgramStatus,
+  ProgramType,
+} from "@/types/program";
 
-interface CreateProgram {
-  programData: PostProgramRequest;
-  formReset: () => void;
-}
-
-export const useCreateProgram = ({ programData, formReset }: CreateProgram) => {
-  const router = useRouter();
-
+export const useCreateProgram = () => {
+  const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: [API.PROGRAM.CREATE],
-    mutationFn: async () => {
-      const { programId } = await postProgram(programData);
-      await sendSlackMessage(programId);
-      return programId;
-    },
-    onSuccess: (programId) => {
-      formReset();
-      programId && router.replace(ROUTES.DETAIL(programId));
-    },
+    mutationFn: (programData: PostProgramRequest) => postProgram(programData),
+    onSuccess: () => queryClient.invalidateQueries([API.PROGRAM.LIST]),
   });
 };
 
-export const useUpdateProgram = ({ programId, body }: PatchProgramRequest) => {
+export const useSendSlackMessage = () => {
+  return useMutation({
+    mutationFn: (programId: number) => sendSlackMessage(programId),
+  });
+};
+
+interface useUpdateProgramProps {
+  programId: number;
+}
+export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
-    mutationFn: () => patchProgram({ programId, body }),
-    onSettled: (data) => {
-      data && router.replace(ROUTES.DETAIL(data?.programId));
+    mutationFn: (body: PatchProgramBody) => {
+      console.log("body", body);
+      return patchProgram({ programId, body });
+    },
+    onSettled: ({ programId }) => {
+      router.replace(ROUTES.DETAIL(programId));
+
       const statuses: ActiveStatusWithAll[] = ["all", "am", "cm", "rm", "ob"];
       statuses.forEach((status) => {
         queryClient.invalidateQueries([
@@ -59,25 +64,29 @@ export const useUpdateProgram = ({ programId, body }: PatchProgramRequest) => {
   });
 };
 
-export const useDeleteProgram = (programId: number) => {
-  const router = useRouter();
+export const useDeleteProgram = () => {
+  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: [API.PROGRAM.DELETE(programId)],
-    mutationFn: () => deleteProgram(programId),
-    onSettled: () => {
-      router.replace(ROUTES.MAIN);
+    mutationFn: async ({ programId }: { programId: number }) =>
+      await deleteProgram(programId),
+    onSuccess: () => {
+      queryClient.invalidateQueries([API.PROGRAM.LIST]);
     },
   });
 };
 
-export const useGetProgramById = (programId: number, isLoggedIn: boolean) => {
+export const useGetProgramByProgramId = (
+  programId: number,
+  isAbleToEdit: boolean,
+) => {
   const queryClient = useQueryClient();
 
   return useQuery({
-    queryKey: [API.PROGRAM.DETAIL(programId)],
+    queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
-      getProgramById(programId, isLoggedIn).then((res) => {
+      getProgramById(programId, isAbleToEdit).then((res) => {
+        //TODO: setquery 지양하기
         queryClient.setQueryData<ProgramStatus>(
           ["programStatus", programId],
           res.programStatus,
@@ -86,8 +95,13 @@ export const useGetProgramById = (programId: number, isLoggedIn: boolean) => {
           ["programType", programId],
           res.type,
         );
+        queryClient.setQueryData<string>(
+          ["githubUrl", programId],
+          res.programGithubUrl,
+        );
         return res;
       }),
+    staleTime: 1000 * 60 * 5,
   });
 };
 
@@ -96,17 +110,18 @@ export const useGetProgramList = ({
   programStatus,
   size,
   page,
-  isLoggedIn,
+  isAdmin,
 }: GetProgramListRequest) => {
   return useQuery({
     queryKey: [API.PROGRAM.LIST, category, programStatus, size, page],
     queryFn: () =>
-      getProgramList({ category, programStatus, size, page, isLoggedIn }),
+      getProgramList({ category, programStatus, size, page, isAdmin }),
     select: (data) => ({
       totalPage: data?.totalPage,
       programs: data?.programs,
     }),
     suspense: true,
+    staleTime: 1000 * 60 * 60,
   });
 };
 
@@ -114,5 +129,31 @@ export const useGetProgramAccessRight = (programId: number) => {
   return useQuery({
     queryKey: [API.PROGRAM.ACCESS_RIGHT(programId)],
     queryFn: () => getProgramAccessRight(programId),
+  });
+};
+
+export const useUpdateProgramAttendMode = (programId: number) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: [API.PROGRAM.UPDATE_ATTEND_MODE(programId)],
+    mutationFn: (attendMode: ProgramAttendStatus) => {
+      queryClient.invalidateQueries([API.PROGRAM.Edit_DETAIL(programId)]);
+      return updateProgramAttendMode(programId, attendMode);
+    },
+    onSuccess: (_, targetAttendMode) => {
+      const prevProgram = queryClient.getQueryData<ProgramInfoDto>([
+        API.PROGRAM.Edit_DETAIL(programId),
+      ]);
+
+      const newProgram: ProgramInfoDto = {
+        ...prevProgram,
+        attendMode: targetAttendMode,
+      };
+
+      queryClient.setQueryData<ProgramInfoDto>(
+        [API.PROGRAM.Edit_DETAIL(programId)],
+        newProgram,
+      );
+    },
   });
 };

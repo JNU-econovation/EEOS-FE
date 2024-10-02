@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm 네트워크가 올바른 환경에서 올바르게 렌더링 된다 1`] = `
+<form
+  className="mt-12 flex flex-col gap-3"
+  onSubmit={[Function]}
+>
+  <input
+    aria-label="아이디"
+    className="mx-8 p-2"
+    name="id"
+    onChange={[Function]}
+    placeholder="아이디"
+    type="text"
+    value=""
+  />
+  <input
+    aria-label="비밀번호"
+    className="mx-8 p-2"
+    name="password"
+    onChange={[Function]}
+    placeholder="비밀번호"
+    role="password"
+    type="password"
+    value=""
+  />
+  <button
+    className="mt-4 w-full rounded-lg bg-primary p-2 font-semibold"
+  >
+    로그인
+  </button>
+</form>
+`;
+
+exports[`LoginForm 올바르게 렌더링 된다 1`] = `
+<form
+  className="mt-12 flex flex-col gap-3"
+  onSubmit={[Function]}
+>
+  <input
+    aria-label="아이디"
+    className="mx-8 p-2"
+    name="id"
+    onChange={[Function]}
+    placeholder="아이디"
+    type="text"
+    value=""
+  />
+  <input
+    aria-label="비밀번호"
+    className="mx-8 p-2"
+    name="password"
+    onChange={[Function]}
+    placeholder="비밀번호"
+    role="password"
+    type="password"
+    value=""
+  />
+  <button
+    className="mt-4 w-full rounded-lg bg-primary p-2 font-semibold"
+  >
+    로그인
+  </button>
+</form>
+`;
+
+exports[`LoginForm.tsx 네트워크가 올바른 환경에서 올바르게 렌더링 된다 1`] = `
+<form
+  className="mt-12 flex flex-col gap-3"
+  onSubmit={[Function]}
+>
+  <input
+    aria-label="아이디"
+    className="mx-8 p-2"
+    name="id"
+    onChange={[Function]}
+    placeholder="아이디"
+    type="text"
+    value=""
+  />
+  <input
+    aria-label="비밀번호"
+    className="mx-8 p-2"
+    name="password"
+    onChange={[Function]}
+    placeholder="비밀번호"
+    role="password"
+    type="password"
+    value=""
+  />
+  <button
+    className="mt-4 w-full rounded-lg bg-primary p-2 font-semibold"
+  >
+    로그인
+  </button>
+</form>
+`;

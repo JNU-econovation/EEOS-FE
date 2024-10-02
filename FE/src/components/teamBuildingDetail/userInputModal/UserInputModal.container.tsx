@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
 import UserInputModal from "./UserInputModal";
-import ErrorFallbackNoIcon from "@/components/common/ErrorFallbackNoIcon";
+import ErrorFallbackNoIcon from "@/components/common/error/ErrorFallbackNoIcon";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
 

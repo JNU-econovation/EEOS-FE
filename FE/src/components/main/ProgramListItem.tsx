@@ -1,28 +1,46 @@
+import ProgressDisplay from "../common/ProgressDisplay";
 import { ProgramSimpleInfoDto } from "@/apis/dtos/program.dto";
 import Link from "@/components/common/Link";
 import ROUTES from "@/constants/ROUTES";
-import { convertDate } from "@/utils/convert";
+import { AccessType } from "@/types/access";
+import { formatTimestamp } from "@/utils/convert";
 
 interface ProgramListItemProps {
   programData: ProgramSimpleInfoDto;
-  isLoggedIn: boolean;
+  contentType: AccessType;
 }
 
-const ProgramListItem = ({ programData, isLoggedIn }: ProgramListItemProps) => {
-  const { programId, title, deadLine } = programData;
-  const lingUrl = isLoggedIn
-    ? ROUTES.DETAIL(programId)
-    : ROUTES.GUEST_DETAIL(programId);
+const ProgramListItem = ({
+  programData,
+  contentType,
+}: ProgramListItemProps) => {
+  const { programId, title, deadLine, attendMode } = programData;
+
+  const linkUrl =
+    contentType === "admin"
+      ? ROUTES.ADMIN_DETAIL(programId)
+      : contentType === "public"
+      ? ROUTES.GUEST_DETAIL(programId)
+      : ROUTES.DETAIL(programId);
+
+  const isOnChecking = attendMode === "attend" || attendMode === "late";
+
   return (
     <Link
       className="flex w-full flex-col items-center justify-between gap-4 rounded-lg bg-gray-10 px-8 py-6 transition-all hover:bg-secondary-20 sm:flex-row"
-      href={lingUrl}
+      href={linkUrl}
       key={programId}
     >
       <p className="w-full truncate text-center text-lg font-bold sm:text-left">
         {title}
       </p>
-      <p className="text-base font-normal sm:w-52">{convertDate(deadLine)}</p>
+      {isOnChecking ? (
+        <ProgressDisplay progressText="출석 진행중" color="success" />
+      ) : (
+        <p className="text-base font-normal sm:w-52">
+          {formatTimestamp(deadLine)}
+        </p>
+      )}
     </Link>
   );
 };

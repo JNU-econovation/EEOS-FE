@@ -13,7 +13,7 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
 
   return (
     <div className="mb-16 space-y-16">
-      <ProgramInfo programId={+programId} isLoggedIn={false} />
+      <ProgramInfo programId={+programId} accessType="public" />
       <AttendeeInfoContainer programId={+programId} isLoggedIn={false} />
       <UserAttendModalContainer programId={+programId} isLoggedIn={false} />
     </div>

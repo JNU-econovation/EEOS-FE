@@ -1,8 +1,9 @@
+import { StatusToggleItemColor } from "@/components/common/StatusToggleItem";
 import { AttendStatus } from "@/types/member";
 import { TabOption } from "@/types/tab";
 
 export interface AttendStatusToggleOption extends TabOption<AttendStatus> {
-  color: string;
+  color: StatusToggleItemColor;
 }
 type AttendStatusToggle = {
   [key in Exclude<
@@ -20,7 +21,7 @@ type AttendStatusList = {
 
 type AttendStatusUser = {
   [key in AttendStatus]: TabOption<AttendStatus> & {
-    color: string;
+    color: StatusToggleItemColor;
     demand_text?: string;
   };
 };
@@ -59,7 +60,24 @@ const LIST: AttendStatusList = {
 };
 
 const USER: AttendStatusUser = {
-  ...TOGGLE,
+  attend: {
+    type: "attend",
+    text: "참석",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "green",
+  },
+  absent: {
+    type: "absent",
+    text: "불참",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "red",
+  },
+  late: {
+    type: "late",
+    text: "지각",
+    demand_text: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+    color: "yellow",
+  },
   nonResponse: {
     type: "nonResponse",
     text: "출석체크 해주세요!",
@@ -74,9 +92,10 @@ const USER: AttendStatusUser = {
 };
 
 const LABEL = {
-  EDITABLE: "본인의 출석 상태를 선택해주세요.",
+  EDITABLE: "출석 하시겠습니까?",
   NON_RELATED: "출석 상태를 변경할 수 없습니다.",
   INACTIVE: "종료된 행사는 출석 상태를 변경할 수 없습니다.",
+  ALREADY_ATTENDED: "출석은 한 번만 가능합니다.",
 };
 
 Object.freeze(TOGGLE);

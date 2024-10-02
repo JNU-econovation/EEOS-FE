@@ -2,7 +2,7 @@
 
 import { ErrorBoundary } from "react-error-boundary";
 import InputStatusInfo from "./InputStatusInfo";
-import ErrorFallback from "@/components/common/ErrorFallback";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
 
 const InputStatusInfoContainer = () => {
   return (

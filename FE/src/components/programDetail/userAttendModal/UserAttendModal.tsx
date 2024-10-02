@@ -2,11 +2,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import AttendStatusModalLoader from "./AttendStatusModal.loader";
 import AttendStatusView from "./AttendStatusView";
 import AttendToggleLabel from "./AttendToggleLabel";
-import AttendStatusToggle from "@/components/common/attendStatusToggle/AttendStatusToggle";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
 import MESSAGE from "@/constants/MESSAGE";
 import {
   useGetMyAttendStatus,
-  usePutMyAttendStatus,
+  usePostMyAttendance,
 } from "@/hooks/query/useUserQuery";
 import { EditableStatus } from "@/types/attendStatusModal";
 import { AttendStatus } from "@/types/member";
@@ -19,10 +19,7 @@ interface UserAttendModalProps {
 const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   const queryClient = useQueryClient();
   const { data: userInfo, isLoading } = useGetMyAttendStatus(programId);
-  const { mutate: updateAttendStatus } = usePutMyAttendStatus({
-    programId,
-    beforeAttendStatus: userInfo ? userInfo.attendStatus : "nonRelated",
-  });
+  const { mutate: updateAttendStatus } = usePostMyAttendance(programId);
 
   if (isLoading) return <AttendStatusModalLoader />;
 
@@ -37,25 +34,29 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     programStatus: ProgramStatus,
   ): EditableStatus => {
     if (attendStatus === "nonRelated") return "NON_RELATED";
-    if (programStatus !== "active") return "INACTIVE";
+    if (programStatus === "end" || attendStatus === "absent") return "INACTIVE";
+    if (attendStatus === "attend" || attendStatus === "late")
+      return "ALREADY_ATTENDED";
     return "EDITABLE";
   };
 
   const editableStatus = getEditableStatus(attendStatus, programStatus);
 
-  const handleSelectorClick = (value: AttendStatus) => {
-    confirm(MESSAGE.CONFIRM.EDIT) && updateAttendStatus(value);
+  const handleSelectorClick = () => {
+    if (editableStatus === "EDITABLE")
+      confirm(MESSAGE.CONFIRM.EDIT) && updateAttendStatus();
   };
 
   return (
     <>
       <AttendStatusView userInfo={userInfo} programId={programId} />
       <AttendToggleLabel editableStatus={editableStatus} />
-      <AttendStatusToggle
-        selectedValue={attendStatus}
-        disabled={editableStatus !== "EDITABLE"}
-        onSelect={(v) => handleSelectorClick(v)}
-      />
+      <div onClick={handleSelectorClick}>
+        <StatusToggleItem
+          color={editableStatus == "EDITABLE" ? "green" : "gray"}
+          text="출석 하기"
+        />
+      </div>
     </>
   );
 };

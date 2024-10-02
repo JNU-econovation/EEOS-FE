@@ -12,11 +12,10 @@ const UserBtn = () => {
   };
 
   return (
-    <div
+    <button
       ref={modalRef}
       className="relative cursor-pointer"
       onClick={handleClick}
-      role="button"
     >
       <Image
         src="/icons/user.svg"
@@ -26,7 +25,7 @@ const UserBtn = () => {
         className="h-[28px] w-[28px]"
       />
       {isOpen && <UserActiveModal />}
-    </div>
+    </button>
   );
 };
 

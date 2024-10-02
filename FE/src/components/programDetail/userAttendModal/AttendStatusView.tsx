@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
-import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 import { ProgramType } from "@/types/program";
 
@@ -17,7 +17,10 @@ const AttendStatusView = ({ userInfo, programId }: AttendStatusViewProps) => {
     programId,
   ]);
 
+  console.log(programType);
+  console.log(attendStatus);
   const { demand_text, text, color } = ATTEND_STATUS.USER[attendStatus];
+  console.log(demand_text, text, color);
   const isDemandNonResponse =
     programType === "demand" && attendStatus === "nonResponse";
   const displayText = isDemandNonResponse ? demand_text : text;

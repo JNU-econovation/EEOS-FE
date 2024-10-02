@@ -4,15 +4,18 @@ const PROGRAM = {
   GUEST_LIST: "/guest/programs",
   UPDATE: (programId: number) => `/programs/${programId}`,
   DELETE: (programId: number) => `/programs/${programId}`,
-  DETAIL: (programId: number) => `/programs/${programId}`,
-  GUEST_DETAIL: (programId: number) => `/guest/programs/${programId}`,
+  DETAIL: (programId: number) => `/guest/programs/${programId}`,
+  Edit_DETAIL: (programId: number) => `/programs/${programId}`,
   ACCESS_RIGHT: (programId: number) => `/programs/${programId}/accessRight`,
   SEND_MESSAGE: (programId: number) =>
     `/programs/${programId}/slack/notification`,
+  UPDATE_ATTEND_MODE: (programId: number) => `/programs/${programId}`,
 };
 
 const MEMBER = {
   LIST: "/members",
+  UPDATE: (memberId: number) => `/members/activeStatus/${memberId}`,
+  DELETE: (memberId: number) => `/members/${memberId}`,
   ACTIVE_STATUS: (programId: number) => `/programs/${programId}/members`,
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}/members`,
 };
@@ -25,6 +28,7 @@ const USER = {
 const AUTH = {
   SLACK_LOGIN: "/auth/login/slack",
   TOKEN_REISSUE: "/auth/reissue",
+  ADMIN_LOGIN: "/auth/login",
 };
 
 const TEAM_BUILDING = {
@@ -39,10 +43,25 @@ const TEAM_BUILDING = {
   DELETE: "/team-building",
 };
 
+const TEAM = {
+  LIST: "/teams",
+  CREATE: "/teams",
+  DELETE: (teamId: number) => `/teams/${teamId}`,
+};
+
+const QUESTION = {
+  LIST: "comments",
+  CREATE: "comments",
+  UPDATE: (commentId: number) => `comments/${commentId}`,
+  DELETE: (commentId: number) => `comments/${commentId}`,
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
 Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
+Object.freeze(TEAM);
+Object.freeze(QUESTION);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING };
+export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM, QUESTION };

@@ -3,19 +3,21 @@
 import ProgramDetail from "./ProgramDetail";
 import ProgramHeader from "./ProgramHeader";
 import ProgramInfoLoader from "./ProgramInfo.loader";
-import { useGetProgramById } from "@/hooks/query/useProgramQuery";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
+import { AccessType } from "@/types/access";
 
 interface ProgramInfoProps {
   programId: number;
-  isLoggedIn: boolean;
+  accessType?: AccessType;
 }
 
-const ProgramInfo = ({ programId, isLoggedIn }: ProgramInfoProps) => {
+const ProgramInfo = ({ programId, accessType }: ProgramInfoProps) => {
+  const isAbleToEdit = accessType === "admin";
   const {
     data: programData,
     isLoading,
     isError,
-  } = useGetProgramById(programId, isLoggedIn);
+  } = useGetProgramByProgramId(programId, isAbleToEdit);
 
   if (isLoading) return <ProgramInfoLoader />;
   if (isError) return <div>에러 발생</div>;
@@ -23,7 +25,11 @@ const ProgramInfo = ({ programId, isLoggedIn }: ProgramInfoProps) => {
   return (
     <section className="space-y-8">
       <ProgramHeader data={programData} />
-      <ProgramDetail data={programData} />
+      <ProgramDetail
+        data={programData}
+        programId={programId}
+        accessType={accessType}
+      />
     </section>
   );
 };

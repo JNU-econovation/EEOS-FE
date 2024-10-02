@@ -3,7 +3,7 @@
 import { ErrorBoundary } from "react-error-boundary";
 import AttendeeInfo from "./AttendeeInfo";
 import BluredAttedee from "./BluredAttedee";
-import ErrorFallback from "@/components/common/ErrorFallback";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
 
 interface AttendeeInfoContainerProps {
   programId: number;
@@ -27,7 +27,6 @@ const AttendeeInfoContainer = ({
         attendStatuses.map((status) => (
           <BluredAttedee key={status} status={status} />
         ))}
-
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <div className="space-y-16">
           {isLoggedIn &&

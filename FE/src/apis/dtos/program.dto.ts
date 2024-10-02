@@ -5,6 +5,7 @@ import {
   ProgramStatus,
   ProgramCategory,
   AccessRight,
+  ProgramAttendStatus,
 } from "@/types/program";
 
 export class ProgramIdDto {
@@ -24,6 +25,8 @@ export class ProgramInfoDto {
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
   public readonly accessRight: AccessRight;
+  public readonly attendMode: ProgramAttendStatus;
+  public readonly programGithubUrl: string;
 
   constructor(data: ProgramInfo) {
     this.programId = data?.programId;
@@ -34,6 +37,8 @@ export class ProgramInfoDto {
     this.programStatus = data?.programStatus;
     this.type = data?.type;
     this.accessRight = data?.accessRight;
+    this.attendMode = data?.attendMode;
+    this.programGithubUrl = data?.programGithubUrl;
   }
 }
 
@@ -44,6 +49,7 @@ export class ProgramSimpleInfoDto {
   public readonly category: ProgramCategory;
   public readonly programStatus: ProgramStatus;
   public readonly type: ProgramType;
+  public readonly attendMode: ProgramAttendStatus;
 
   constructor(data: ProgramSimpleInfo) {
     this.programId = data?.programId;
@@ -52,6 +58,7 @@ export class ProgramSimpleInfoDto {
     this.category = data?.category;
     this.programStatus = data?.programStatus;
     this.type = data?.type;
+    this.attendMode = data?.attendMode;
   }
 }
 

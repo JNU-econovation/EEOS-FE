@@ -1,16 +1,9 @@
 "use client";
-
-import { useState } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "../ErrorFallback";
-import Tab from "../tabs/Tab";
-import MemberTableHeader from "./MemberTableHeader";
-import CreateMemberTableItemContainer from "@/components/common/memberTable/create/CreateMemberTableItemContainer";
-import EditMemberTableItemContainer from "@/components/programEdit/EditMemberTableItemContainer";
-import { Members } from "@/components/programEdit/ProgramEditForm";
-import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
+import MemberTableWrapper from "./MemberTableWrapper";
+import { Members } from "@/hooks/useMemberForm";
+//FIXME: 하위 호환성을 위해 만들어진 컴포넌트로, 타 컴포넌트와의 의존성을 줄이는 방식으로 리팩토링이 필요
 import { FormType } from "@/types/form";
-import { ActiveStatusWithAll, AttendStatus } from "@/types/member";
+import { AttendStatus } from "@/types/member";
 
 interface MemberTableProps {
   formType: FormType;
@@ -31,49 +24,29 @@ const MemberTable = ({
   programId,
   isEditable = true,
 }: MemberTableProps) => {
-  const [selectedActive, setSelectedActive] =
-    useState<ActiveStatusWithAll>("all");
-
   return (
-    <div className="space-y-6 pt-10">
-      <Tab<ActiveStatusWithAll>
-        options={Object.values(ACTIVE_STATUS.TAB_WITH_ALL)}
-        selected={selectedActive}
-        onItemClick={(v) => setSelectedActive(v)}
-        size="lg"
-        baseColor="gray"
-        pointColor="teal"
-        align="line"
-      />
+    <MemberTableWrapper applyLayout>
+      <MemberTableWrapper.StatusTab />
       <div className="overflow-x-scroll scrollbar-hide">
-        <MemberTableHeader
+        <MemberTableWrapper.Header
           formType={formType}
           onClickCheckBox={onClickHeaderCheckBox}
         />
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {formType === "create" ? (
-            <CreateMemberTableItemContainer
-              members={members as Set<number>}
-              setMembers={setMembers as (memberId: number) => void}
-              status={selectedActive}
-            />
-          ) : (
-            <EditMemberTableItemContainer
-              setMembers={
-                setMembers as (
-                  memberId: number,
-                  before: AttendStatus,
-                  after: AttendStatus,
-                ) => void
-              }
-              status={selectedActive}
-              programId={programId || 0}
-              isEditable={isEditable}
-            />
-          )}
-        </ErrorBoundary>
+        {formType === "create" && (
+          <MemberTableWrapper.CreateList
+            members={members}
+            setMembers={setMembers as (memberId: number) => void}
+          />
+        )}
+        {formType === "edit" && (
+          <MemberTableWrapper.EditList
+            programId={programId}
+            setMembers={setMembers}
+            isEditable={isEditable}
+          />
+        )}
       </div>
-    </div>
+    </MemberTableWrapper>
   );
 };
 

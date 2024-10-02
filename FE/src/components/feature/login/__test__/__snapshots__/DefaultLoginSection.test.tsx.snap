@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultLoginSection 올바르게 렌더링 된다 1`] = `
+<div
+  className="flex flex-col items-center justify-center gap-24"
+>
+  <h1
+    className="text-2xl font-bold sm:text-3xl text-black"
+  >
+    로그인
+  </h1>
+  <div
+    className="flex flex-col gap-6"
+  >
+    <div
+      className="flex flex-col items-center gap-6"
+    >
+      <p
+        className="font-light"
+      >
+        에코노베이션 슬랙으로 로그인
+      </p>
+      <a
+        href="https://slack.com/oauth/v2/authorize?client_id=5775976606341.6306752698400&team_id=undefined&scope=&user_scope=users.profile:read&redirect_uri=https://localhost:3000/login/logging-in"
+        onClick={[Function]}
+        role="link"
+      >
+        <img
+          alt="슬랙 로그인 버튼"
+          data-nimg="1"
+          decoding="async"
+          height={24}
+          loading="lazy"
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/icons/slack.svg"
+          style={
+            {
+              "color": "transparent",
+            }
+          }
+          width={24}
+        />
+        <p
+          className="text-center font-semibold"
+        >
+          슬랙으로 로그인
+        </p>
+      </a>
+    </div>
+    <div
+      className="flex flex-col items-center gap-6"
+    >
+      <p
+        className="font-light"
+      >
+        게스트모드로 EEOS 둘러보기
+      </p>
+      <a
+        href="/guest/main"
+        onClick={[Function]}
+        role="link"
+      >
+        <img
+          alt=""
+          data-nimg="1"
+          decoding="async"
+          height={24}
+          loading="lazy"
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/icons/blackCompany.svg"
+          style={
+            {
+              "color": "transparent",
+            }
+          }
+          width={24}
+        />
+        <p
+          className="text-center font-semibold"
+        >
+          Visit EEOS
+        </p>
+      </a>
+    </div>
+    <p
+      className="mx-auto flex select-none"
+      onClick={[Function]}
+    >
+      관리자 로그인
+      <img
+        alt="arrow right to go admin login page"
+        data-nimg="1"
+        decoding="async"
+        height={20}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="/icons/arrowRight.svg"
+        style={
+          {
+            "color": "transparent",
+          }
+        }
+        width={20}
+      />
+    </p>
+  </div>
+</div>
+`;

@@ -1,6 +1,7 @@
 "use client";
 
-import Title from "@/components/common/Title";
+import ProgressDisplay from "@/components/common/ProgressDisplay";
+import Title from "@/components/common/Title/Title";
 import {
   useCompleteTeamBuildingMutation,
   useDeleteTeamBuildingMutation,
@@ -20,22 +21,12 @@ const TeamBuildingHeader = ({
     <section className="flex justify-between border-b-2 py-4">
       <Title text={title} />
       <div className="flex gap-6">
-        {accessRight === "read_only" && <ProgressDisplay />}
+        {accessRight === "read_only" && (
+          <ProgressDisplay progressText="진행중" color="action" />
+        )}
         {accessRight === "edit" && <CloseBtn />}
       </div>
     </section>
-  );
-};
-
-const ProgressDisplay = () => {
-  return (
-    <div className="flex items-center gap-3">
-      <span className="relative flex h-3 w-3">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-action-20 opacity-40"></span>
-        <span className="relative inline-flex h-3 w-3 rounded-full bg-action-20"></span>
-      </span>
-      <p className="text-lg font-bold text-action-20">진행중</p>
-    </div>
   );
 };
 

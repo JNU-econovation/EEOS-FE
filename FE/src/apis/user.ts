@@ -24,13 +24,13 @@ export const getMyAttendStatus = async (
 
 /**
  * 본인의 출석 상태 변경
+ * 현재는 사용하지 않음
  */
 
 export interface PutMyAttendStatusRequest {
   beforeAttendStatus: AttendStatus;
   afterAttendStatus: AttendStatus;
 }
-
 export const putMyAttendStatus = async (
   programId: number,
   body: PutMyAttendStatusRequest,
@@ -50,6 +50,17 @@ export const putMyAttendStatus = async (
   return new UserAttendStatusInfoDto(data?.data);
 };
 
+export const postMyAttendance = async (
+  programId: number,
+): Promise<UserAttendStatusInfoDto> => {
+  const { data } = await https({
+    url: API.USER.ATTEND_STATUS(programId),
+    method: "POST",
+  });
+
+  return new UserAttendStatusInfoDto(data?.data);
+};
+
 /**
  * 본인의 회원 상태 조회
  */
@@ -64,6 +75,7 @@ export const getMyActiveStatus = async (): Promise<UserActiveStatusInfoDto> => {
 
 /**
  * 본인의 회원 상태 변경
+ * 현재는 사용하지 않음
  */
 
 interface PutMyActiveStatusRequest {

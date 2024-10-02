@@ -1,4 +1,4 @@
-import StatusToggleItem from "@/components/common/attendStatusToggle/StatusToggleItem";
+import StatusToggleItem from "@/components/common/StatusToggleItem";
 import INPUT_STATUS from "@/constants/INPUT_STATUS";
 import { InputStatus } from "@/types/teamBuilding";
 
