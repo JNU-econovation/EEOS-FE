@@ -1,4 +1,4 @@
-// import MemberTableWrapper from "../common/memberTable/MemberTableWrapper";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import MemberActiveStatusTab from "../common/tabs/MemberActiveStatusTab";
 import AttendStateTable from "./AttendStateTable/AttendStateTable";
 
@@ -11,6 +11,16 @@ const ParticipantStateSection = ({
   programId,
   setMembers,
 }: ParticipantStateSectionProps) => {
+  const { data: programData, status } = useGetProgramByProgramId(
+    programId,
+    true,
+  );
+
+  const isEnableEdit =
+    status === "success" &&
+    programData?.attendMode !== "attend" &&
+    programData?.attendMode !== "late";
+
   return (
     <section>
       <MemberActiveStatusTab>
@@ -19,7 +29,7 @@ const ParticipantStateSection = ({
             <AttendStateTable
               programId={programId}
               selectedActive={selectedItem}
-              isEnableEdit={true}
+              isEnableEdit={isEnableEdit}
               setMembers={setMembers}
             />
           </div>
