@@ -1,4 +1,4 @@
-import { checkIsValidateGithubUrl } from "./github";
+// import { checkIsValidateGithubUrl } from "./github";
 
 const WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -25,7 +25,9 @@ export const convertText = (text: string, str: string) => {
 
 //githubUrl을 owner, repo, branch, path로 분리
 export const convertGitHubUrl = (githubUrl: string) => {
-  const isValidateGithubUrl = checkIsValidateGithubUrl(githubUrl);
+  //TODO: 백엔드에서 유효성 검사하도록 수정. 백엔드와 논의 필요
+  // const isValidateGithubUrl = checkIsValidateGithubUrl(githubUrl);
+  const isValidateGithubUrl = true;
   if (!isValidateGithubUrl) throw new Error("올바르지 않은 깃허브 url입니다.");
 
   const parsedUrl = new URL(githubUrl);
