@@ -1,17 +1,17 @@
 import {
   ActiveStatus,
-  AttendStatus,
+  AttendMode,
   UserActiveStatusInfo,
   UserAttendStatusInfo,
 } from "@/types/member";
 
 export class UserAttendStatusInfoDto {
   public readonly name: string;
-  public readonly attendStatus: AttendStatus;
+  public readonly attendStatus: AttendMode;
 
   constructor(data: UserAttendStatusInfo) {
     this.name = data?.name;
-    this.attendStatus = data?.attendStatus;
+    this.attendStatus = data?.attendMode;
   }
 }
 

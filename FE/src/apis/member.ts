@@ -2,7 +2,7 @@ import API from "../constants/API";
 import {
   ActiveStatus,
   ActiveStatusWithAll,
-  AttendStatus,
+  AttendMode,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
   MemberInfo,
@@ -57,7 +57,7 @@ export const getProgramMembersByActiveStatus = async (
 
 export const getProgramMembersByAttendStatus = async (
   programId: number,
-  attendStatus: AttendStatus,
+  attendStatus: AttendMode,
 ): Promise<MemberAttendStatusInfoDto[]> => {
   const { data } = await https({
     url: API.MEMBER.ATTEND_STATUS(programId),

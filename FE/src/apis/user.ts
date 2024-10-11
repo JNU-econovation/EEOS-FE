@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import API from "../constants/API";
-import { ActiveStatus, AttendStatus } from "../types/member";
+import { ActiveStatus, AttendMode } from "../types/member";
 import {
   UserActiveStatusInfoDto,
   UserAttendStatusInfoDto,
@@ -28,8 +28,8 @@ export const getMyAttendStatus = async (
  */
 
 export interface PutMyAttendStatusRequest {
-  beforeAttendStatus: AttendStatus;
-  afterAttendStatus: AttendStatus;
+  beforeAttendStatus: AttendMode;
+  afterAttendStatus: AttendMode;
 }
 export const putMyAttendStatus = async (
   programId: number,

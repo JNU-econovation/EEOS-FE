@@ -1,6 +1,6 @@
 export type ActiveStatus = "am" | "rm" | "cm" | "ob";
 export type ActiveStatusWithAll = ActiveStatus | "all";
-export type AttendStatus =
+export type AttendMode =
   | "attend"
   | "absent"
   | "late"
@@ -10,7 +10,7 @@ export type AttendStatus =
 export interface MemberInfo {
   memberId: number;
   name: string;
-  attendStatus: AttendStatus;
+  attendMode: AttendMode;
   activeStatus: ActiveStatus;
 }
 

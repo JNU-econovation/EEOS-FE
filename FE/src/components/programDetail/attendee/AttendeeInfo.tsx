@@ -3,12 +3,12 @@ import AttendeeInfoLoader from "./AttendeeInfo.loader";
 import AttendeeStatus from "./AttendeeStatus";
 import MemberList from "@/components/common/MemberList";
 import { useGetProgramMembersByAttend } from "@/hooks/query/useMemberQuery";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 import { ProgramType } from "@/types/program";
 
 interface AttendeeInfoProps {
   programId: number;
-  status: AttendStatus;
+  status: AttendMode;
 }
 
 const AttendeeInfo = ({ programId, status }: AttendeeInfoProps) => {

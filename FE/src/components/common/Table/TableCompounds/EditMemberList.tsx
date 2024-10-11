@@ -6,13 +6,13 @@ import CheckBox from "../../CheckBox/CheckBox";
 import AttendStatusToggle from "../../toggle/AttendStatusToggle";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 
 interface EditMemberListProps {
   memberId: number;
   name: string;
   activeStatus: string;
-  initAttendStatus: AttendStatus;
+  initAttendStatus: AttendMode;
   setMembers: (memberId: number, before: string, after: string) => void;
   isEditable?: boolean;
 }
@@ -25,7 +25,7 @@ const EditMemberList = ({
   isEditable = true,
 }: EditMemberListProps) => {
   const [selectedAttend, setSelectedAttend] =
-    useState<AttendStatus>(initAttendStatus);
+    useState<AttendMode>(initAttendStatus);
   const isRelated = selectedAttend !== "nonRelated";
 
   const itemStyle = classNames(
@@ -36,8 +36,8 @@ const EditMemberList = ({
   );
 
   const getAfterAttendStatus = (
-    initAttend: AttendStatus,
-    selectedAttend: AttendStatus,
+    initAttend: AttendMode,
+    selectedAttend: AttendMode,
   ) => {
     if (selectedAttend !== "nonRelated") return "nonRelated";
     if (initAttend === "nonRelated") return "nonResponse";
@@ -57,7 +57,7 @@ const EditMemberList = ({
     setMembers(memberId, initAttendStatus, afterAttendStatus);
   };
 
-  const handleAttendStatusChange = (value: AttendStatus) => {
+  const handleAttendStatusChange = (value: AttendMode) => {
     if (!isEditable) {
       toast.error(MESSAGE.EDIT_DISABLED.PROGRAM_ACTIVE);
       return;

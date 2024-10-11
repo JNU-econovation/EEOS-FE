@@ -1,7 +1,7 @@
 import {
   MemberInfo,
   ActiveStatus,
-  AttendStatus,
+  AttendMode,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
 } from "@/types/member";
@@ -9,13 +9,13 @@ import {
 export class MemberInfoDto {
   public readonly memberId: number;
   public readonly name: string;
-  public readonly attendStatus: AttendStatus;
+  public readonly attendStatus: AttendMode;
   public readonly activeStatus: ActiveStatus;
 
   constructor(data: MemberInfo) {
     this.memberId = data?.memberId;
     this.name = data?.name;
-    this.attendStatus = data?.attendStatus;
+    this.attendStatus = data?.attendMode;
     this.activeStatus = data?.activeStatus;
   }
 }
@@ -23,12 +23,12 @@ export class MemberInfoDto {
 export class MemberAttendStatusInfoDto {
   public readonly memberId: number;
   public readonly name: string;
-  public readonly attendStatus: AttendStatus;
+  public readonly attendStatus: AttendMode;
 
   constructor(data: MemberAttendStatusInfo) {
     this.memberId = data?.memberId;
     this.name = data?.name;
-    this.attendStatus = data?.attendStatus;
+    this.attendStatus = data?.attendMode;
   }
 }
 

@@ -1,7 +1,7 @@
 import AttendeeStatus from "./AttendeeStatus";
 import { MemberAttendStatusInfoDto } from "@/apis/dtos/member.dto";
 import MemberList from "@/components/common/MemberList";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 
 const mockMember: MemberAttendStatusInfoDto = {
   memberId: 1,
@@ -10,7 +10,7 @@ const mockMember: MemberAttendStatusInfoDto = {
 };
 
 interface BluredAttedeeProps {
-  status: AttendStatus;
+  status: AttendMode;
 }
 
 export default function BluredAttedee({ status }: BluredAttedeeProps) {

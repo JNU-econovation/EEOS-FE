@@ -1,5 +1,5 @@
 import API from "../constants/API";
-import { AttendStatus } from "../types/member";
+import { AttendMode } from "../types/member";
 import {
   ProgramAttendStatus,
   ProgramCategoryWithAll,
@@ -127,8 +127,8 @@ export const postProgram = async (
 
 export interface PatchProgramMember {
   memberId: number;
-  beforeAttendStatus: AttendStatus;
-  afterAttendStatus: AttendStatus;
+  beforeAttendStatus: AttendMode;
+  afterAttendStatus: AttendMode;
 }
 
 export interface PatchProgramBody

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { AttendStatus } from "@/types/member";
+import type { AttendMode } from "@/types/member";
 import { updateSet } from "@/utils/set";
 
 export interface Members {
-  beforeAttendStatus: AttendStatus;
-  afterAttendStatus: AttendStatus;
+  beforeAttendStatus: AttendMode;
+  afterAttendStatus: AttendMode;
 }
 
 export const useMemberSet = () => {
@@ -36,8 +36,8 @@ export const useMemberMap = () => {
 
   const updateMembers = (
     memberId: number,
-    before: AttendStatus,
-    after: AttendStatus,
+    before: AttendMode,
+    after: AttendMode,
   ) => {
     const newMembers = new Map<number, Members>(members);
 

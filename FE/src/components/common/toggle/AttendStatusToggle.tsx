@@ -6,11 +6,11 @@ import StatusToggleItem, { StatusToggleItemColor } from "../StatusToggleItem";
 import ATTEND_STATUS, {
   AttendStatusToggleOption,
 } from "@/constants/ATTEND_STATUS";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 
 interface AttendStatusToggleProps {
-  selectedValue: AttendStatus;
-  onSelect: (value: AttendStatus) => void;
+  selectedValue: AttendMode;
+  onSelect: (value: AttendMode) => void;
   disabled?: boolean;
 }
 
@@ -42,7 +42,7 @@ const AttendStatusToggle = ({
     },
   );
 
-  const getItemColor = (type: AttendStatus, color: string) => {
+  const getItemColor = (type: AttendMode, color: string) => {
     if (disabled) {
       return "gray";
     }

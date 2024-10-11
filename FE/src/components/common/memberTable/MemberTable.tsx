@@ -3,14 +3,14 @@ import MemberTableWrapper from "./MemberTableWrapper";
 import { Members } from "@/hooks/useMemberForm";
 //FIXME: 하위 호환성을 위해 만들어진 컴포넌트로, 타 컴포넌트와의 의존성을 줄이는 방식으로 리팩토링이 필요
 import { FormType } from "@/types/form";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 
 interface MemberTableProps {
   formType: FormType;
   members: Set<number> | Map<number, Members>;
   setMembers:
     | ((memberId: number) => void)
-    | ((memberId: number, before: AttendStatus, after: AttendStatus) => void);
+    | ((memberId: number, before: AttendMode, after: AttendMode) => void);
   onClickHeaderCheckBox?: (selected: boolean) => void;
   programId?: number;
   isEditable?: boolean;

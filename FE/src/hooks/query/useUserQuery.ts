@@ -7,7 +7,7 @@ import {
   putMyAttendStatus,
 } from "@/apis/user";
 import API from "@/constants/API";
-import { ActiveStatus, AttendStatus } from "@/types/member";
+import { ActiveStatus, AttendMode } from "@/types/member";
 
 export const useGetMyActiveStatus = () => {
   return useQuery({
@@ -39,7 +39,7 @@ export const useGetMyAttendStatus = (programId: number) => {
 
 interface PutMyAttendStatus {
   programId: number;
-  beforeAttendStatus: AttendStatus;
+  beforeAttendStatus: AttendMode;
 }
 
 /**
@@ -54,7 +54,7 @@ export const usePutMyAttendStatus = ({
 
   return useMutation({
     mutationKey: [API.USER.ATTEND_STATUS],
-    mutationFn: (afterAttendStatus: AttendStatus) =>
+    mutationFn: (afterAttendStatus: AttendMode) =>
       putMyAttendStatus(programId, {
         beforeAttendStatus,
         afterAttendStatus: afterAttendStatus,
@@ -63,7 +63,7 @@ export const usePutMyAttendStatus = ({
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
       });
-      const statuses: AttendStatus[] = [
+      const statuses: AttendMode[] = [
         "attend",
         "late",
         "absent",
@@ -87,7 +87,7 @@ export const usePostMyAttendance = (programId: number) => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
       });
-      const statuses: AttendStatus[] = [
+      const statuses: AttendMode[] = [
         "attend",
         "late",
         "absent",

@@ -10,7 +10,7 @@ import { MemberContext } from "../MemberTableWrapper";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
 import { useGetProgramMembersByActive } from "@/hooks/query/useMemberQuery";
-import { ActiveStatus, AttendStatus } from "@/types/member";
+import { ActiveStatus, AttendMode } from "@/types/member";
 
 interface ListInEditTypeProps {
   programId: number;
@@ -54,12 +54,8 @@ interface EditMemberTableItemProps {
   memberId: number;
   name: string;
   activeStatus: ActiveStatus;
-  initAttendStatus: AttendStatus;
-  setMembers: (
-    memberId: number,
-    before: AttendStatus,
-    after: AttendStatus,
-  ) => void;
+  initAttendStatus: AttendMode;
+  setMembers: (memberId: number, before: AttendMode, after: AttendMode) => void;
   isEditable?: boolean;
 }
 
@@ -72,7 +68,7 @@ const EditMemberTableItem = ({
   isEditable = true,
 }: EditMemberTableItemProps) => {
   const [selectedAttend, setSelectedAttend] =
-    useState<AttendStatus>(initAttendStatus);
+    useState<AttendMode>(initAttendStatus);
   const isRelated = selectedAttend !== "nonRelated";
 
   const itemStyle = classNames(
@@ -83,8 +79,8 @@ const EditMemberTableItem = ({
   );
 
   const getAfterAttendStatus = (
-    initAttend: AttendStatus,
-    selectedAttend: AttendStatus,
+    initAttend: AttendMode,
+    selectedAttend: AttendMode,
   ) => {
     if (selectedAttend !== "nonRelated") return "nonRelated";
     if (initAttend === "nonRelated") return "nonResponse";
@@ -104,7 +100,7 @@ const EditMemberTableItem = ({
     setMembers(memberId, initAttendStatus, afterAttendStatus);
   };
 
-  const handleAttendStatusChange = (value: AttendStatus) => {
+  const handleAttendStatusChange = (value: AttendMode) => {
     if (!isEditable) {
       toast.error(MESSAGE.EDIT_DISABLED.PROGRAM_ACTIVE);
       return;

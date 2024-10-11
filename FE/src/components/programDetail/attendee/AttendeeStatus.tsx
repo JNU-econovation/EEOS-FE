@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import { MemberAttendStatusInfoDto } from "@/apis/dtos/member.dto";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 
 const colors = {
   green: "bg-success-30",
@@ -14,7 +14,7 @@ const colors = {
 };
 
 interface AttendeeStatusProps {
-  status: AttendStatus;
+  status: AttendMode;
   members: MemberAttendStatusInfoDto[];
 }
 

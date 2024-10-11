@@ -9,7 +9,7 @@ import {
   usePostMyAttendance,
 } from "@/hooks/query/useUserQuery";
 import { EditableStatus } from "@/types/attendStatusModal";
-import { AttendStatus } from "@/types/member";
+import { AttendMode } from "@/types/member";
 import { ProgramStatus } from "@/types/program";
 
 interface UserAttendModalProps {
@@ -30,7 +30,7 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   ]);
 
   const getEditableStatus = (
-    attendStatus: AttendStatus,
+    attendStatus: AttendMode,
     programStatus: ProgramStatus,
   ): EditableStatus => {
     if (attendStatus === "nonRelated") return "NON_RELATED";

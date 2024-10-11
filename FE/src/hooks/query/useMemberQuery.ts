@@ -8,11 +8,7 @@ import {
   updateMemberActiveStatus,
 } from "@/apis/member";
 import API from "@/constants/API";
-import {
-  ActiveStatus,
-  ActiveStatusWithAll,
-  AttendStatus,
-} from "@/types/member";
+import { ActiveStatus, ActiveStatusWithAll, AttendMode } from "@/types/member";
 
 export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
   return useQuery({
@@ -27,7 +23,7 @@ interface GetProgramMemebersByActive {
   programId: number;
 }
 interface GetProgramMemebersByAttend {
-  status: AttendStatus;
+  status: AttendMode;
   programId: number;
 }
 interface UpdateMemberActiveStatus {
