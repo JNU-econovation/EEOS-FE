@@ -12,8 +12,9 @@ const MemberList = ({ members, blur = false }: MemberListProps) => {
         blur ? "blur-md" : ""
       }`}
     >
-      {members.map((member) => (
-        <MemberListItem key={member.memberId} name={member.name} />
+      {members.map(({ memberId, name }) => (
+        //TODO: attendMode 설정 임의로 추가됨. 추후 확인 필요
+        <MemberListItem key={memberId} name={name} />
       ))}
     </div>
   );

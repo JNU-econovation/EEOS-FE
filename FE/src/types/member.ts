@@ -26,4 +26,4 @@ export interface UserAttendStatusInfo
   extends Omit<MemberInfo, "memberId" | "activeStatus"> {}
 
 export interface SimpleMemberInfo
-  extends Omit<MemberInfo, "attendStatus" | "activeStatus"> {}
+  extends Omit<MemberInfo, "attendStatus" | "activeStatus" | "attendMode"> {}
