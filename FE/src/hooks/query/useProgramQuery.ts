@@ -91,6 +91,7 @@ export const useGetProgramByProgramId = (
           ["programStatus", programId],
           res.programStatus,
         );
+        queryClient.setQueryData(["attendMode", programId], res.attendMode);
         queryClient.setQueryData<ProgramType>(
           ["programType", programId],
           res.type,

@@ -17,10 +17,7 @@ const AttendStatusView = ({ userInfo, programId }: AttendStatusViewProps) => {
     programId,
   ]);
 
-  console.log(programType);
-  console.log(attendStatus);
   const { demand_text, text, color } = ATTEND_STATUS.USER[attendStatus];
-  console.log(demand_text, text, color);
   const isDemandNonResponse =
     programType === "demand" && attendStatus === "nonResponse";
   const displayText = isDemandNonResponse ? demand_text : text;
