@@ -24,7 +24,7 @@ import {
 import { useMemberMap } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
-import { checkIsValidateGithubUrl } from "@/utils/github";
+// import { checkIsValidateGithubUrl } from "@/utils/github";
 
 const initialState: ProgramFormDataState = {
   title: "",
@@ -89,12 +89,13 @@ const EditForm = ({ programId }: EditFormProps) => {
       return;
     }
 
-    const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+    // Github URL 유효성 검사는 전부 백엔드로 위임 (#127)
+    // const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
 
-    if (!isValidGithubUrl) {
-      toast.error("올바른 Github URL을 입력해주세요.");
-      return;
-    }
+    // if (!isValidGithubUrl) {
+    //   toast.error("올바른 Github URL을 입력해주세요.");
+    //   return;
+    // }
 
     const toastId = toast.loading(MESSAGE.EDIT.PENDING);
 

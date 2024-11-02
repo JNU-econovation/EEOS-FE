@@ -25,8 +25,8 @@ export const convertText = (text: string, str: string) => {
 
 //githubUrl을 owner, repo, branch, path로 분리
 export const convertGitHubUrl = (githubUrl: string) => {
-  const isValidateGithubUrl = checkIsValidateGithubUrl(githubUrl);
-  if (!isValidateGithubUrl) throw new Error("올바르지 않은 깃허브 url입니다.");
+  // const isValidateGithubUrl = checkIsValidateGithubUrl(githubUrl);
+  // if (!isValidateGithubUrl) throw new Error("올바르지 않은 깃허브 url입니다.");
 
   const parsedUrl = new URL(githubUrl);
   const parts = parsedUrl.pathname.split("/").filter(Boolean);
