@@ -301,7 +301,7 @@ describe("sendSlackMessage", () => {
 
     // 내부 구현사항
     expect(https).toHaveBeenCalledWith({
-      data: { programUrl: "https://econo.eeos.store/detail/1" },
+      data: { programUrl: "https://eeos.co.kr/detail/1" },
       method: "POST",
       url: "/programs/1/slack/notification",
     });
@@ -381,6 +381,7 @@ describe("patchProgram", () => {
         },
       ],
       teams: [{ teamId: 1 }],
+      programGithubUrl: "",
     };
 
     const programId = 1;
