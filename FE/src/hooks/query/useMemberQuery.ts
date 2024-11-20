@@ -53,6 +53,11 @@ export const useGetProgramMembersByAttend = ({
     queryKey: [API.MEMBER.ATTEND_STATUS(programId), status],
     queryFn: () => getProgramMembersByAttendStatus(programId, status),
     staleTime: 1000 * 60 * 5,
+    refetchInterval: () => {
+      if (status === "attend") {
+        return 2000;
+      }
+    },
   });
 };
 
