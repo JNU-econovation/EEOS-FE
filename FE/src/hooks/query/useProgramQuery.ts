@@ -85,23 +85,33 @@ export const useGetProgramByProgramId = (
   return useQuery({
     queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
-      getProgramById(programId, isAbleToEdit).then((res) => {
-        //TODO: setquery 지양하기
-        queryClient.setQueryData<ProgramStatus>(
-          ["programStatus", programId],
-          res.programStatus,
-        );
-        queryClient.setQueryData(["attendMode", programId], res.attendMode);
-        queryClient.setQueryData<ProgramType>(
-          ["programType", programId],
-          res.type,
-        );
-        queryClient.setQueryData<string>(
-          ["githubUrl", programId],
-          res.programGithubUrl,
-        );
-        return res;
-      }),
+      getProgramById(programId, isAbleToEdit)
+        .then((res) => {
+          queryClient.cancelQueries({
+            queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+          });
+          return res;
+        })
+        .then((res) => {
+          //TODO: setquery 지양하기
+          queryClient.setQueryData<ProgramStatus>(
+            ["programStatus", programId],
+            res.programStatus,
+          );
+          queryClient.setQueryData(["attendMode", programId], res.attendMode);
+          queryClient.setQueryData<ProgramType>(
+            ["programType", programId],
+            res.type,
+          );
+          queryClient.setQueryData<string>(
+            ["githubUrl", programId],
+            res.programGithubUrl,
+          );
+          queryClient.invalidateQueries({
+            queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+          });
+          return res;
+        }),
     staleTime: 1000 * 60,
   });
 };
