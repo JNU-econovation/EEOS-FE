@@ -1,19 +1,20 @@
 "use client";
+
 import { useQueryClient } from "@tanstack/react-query";
 import ProgramAttendStatusManageSection from "../../programDetail/program/ProgramAttendStatusManageSection";
 import ProgramPresentations from "./ProgramPresentations";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
-import { AccessType } from "@/types/access";
 import ProgramDashboardSection from "./Dashboard/ProgramDashboardSection";
+import { useGetAccessType } from "@/hooks/useAccess";
 
 interface ProgramDetailProps {
   data: ProgramInfoDto;
   programId: number;
-  accessType: AccessType;
 }
 
-const ProgramDetail = ({ data, programId, accessType }: ProgramDetailProps) => {
+const ProgramDetail = ({ data, programId }: ProgramDetailProps) => {
+  const accessType = useGetAccessType();
   const isAdmin = accessType === "admin";
 
   const { content } = data;

@@ -7,7 +7,7 @@ import {
   updateQuestion,
 } from "@/apis/question";
 
-export const useGetQuestion = (programId: number, teamId: number) => {
+export const useGetQuestions = (programId: number, teamId: number) => {
   return useQuery({
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
