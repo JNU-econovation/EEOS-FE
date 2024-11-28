@@ -20,14 +20,14 @@ export interface PostQuestionParams {
   teamId: number;
   questionContent: string;
   parentsCommentId?: number;
-  isChecked: 0 | 1;
+  isAnonymous: 0 | 1;
 }
 export const postQuestion = async ({
   programId,
   teamId,
   questionContent,
   parentsCommentId = -1,
-  isChecked,
+  isAnonymous = 0,
 }: PostQuestionParams) => {
   return await https({
     url: API.QUESTION.CREATE,
@@ -37,7 +37,7 @@ export const postQuestion = async ({
       teamId,
       content: questionContent,
       parentsCommentId,
-      isChecked,
+      isAnonymous,
     },
   });
 };

@@ -7,7 +7,7 @@ import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import dashboardAtoms from "@/store/dashboardAtoms";
 import { TeamInfo } from "@/types/team";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { useState } from "react";
 
 interface DashboardInputProps {
@@ -22,7 +22,7 @@ const DashboardInput = ({
   selectedTeamId,
   teams,
 }: DashboardInputProps) => {
-  const [isChecked, setIsChecked] = useState<0 | 1>(0);
+  const [isAnonymous, setIsAnonymous] = useState<0 | 1>(0);
   const [questionInput, setQuestionInput] = useAtom(
     dashboardAtoms.questionInput,
   );
@@ -33,7 +33,7 @@ const DashboardInput = ({
     dashboardAtoms.selectedCommentContent,
   );
 
-  const { mutate } = usePostQuestion();
+  const { mutate: postQuestion } = usePostQuestion();
   const isReply = selectedCommentId !== -1;
   const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
     ?.teamName;
@@ -53,10 +53,10 @@ const DashboardInput = ({
       teamId: selectedTeamId,
       questionContent,
       parentsCommentId: selectedCommentId,
-      isChecked,
+      isAnonymous,
     };
 
-    mutate(postQuestionParams);
+    postQuestion(postQuestionParams);
     setQuestionInput("");
     setSelectedCommentId(-1);
     setSelectedCommentContent("");
@@ -85,10 +85,10 @@ const DashboardInput = ({
           <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
           <label
             className="flex select-none items-center justify-end gap-2 text-lg"
-            onClick={() => setIsChecked((prev) => (prev === 0 ? 1 : 0))}
+            onClick={() => setIsAnonymous((prev) => (prev === 0 ? 1 : 0))}
           >
             <CheckBox
-              checked={isChecked === 1}
+              checked={isAnonymous === 1}
               onClick={() => {}}
               className="h-5 w-5"
             />

@@ -6,6 +6,9 @@ import {
   PostQuestionParams,
   updateQuestion,
 } from "@/apis/question";
+import { Comment, QuestionListDto } from "@/apis/dtos/question.dto";
+import API from "@/constants/API";
+import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
 
 export const useGetQuestions = (programId: number, teamId: number) => {
   return useQuery({
@@ -20,14 +23,51 @@ export const useGetQuestions = (programId: number, teamId: number) => {
 export const usePostQuestion = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ["question", "post"],
     mutationFn: async (postQuestionParams: PostQuestionParams) => {
-      const res = await postQuestion(postQuestionParams);
+      return await postQuestion(postQuestionParams);
+    },
+    onMutate: ({
+      isAnonymous,
+      programId,
+      teamId,
+      questionContent,
+    }: PostQuestionParams) => {
+      queryClient.cancelQueries(["question", programId, teamId]);
 
-      const { programId, teamId } = postQuestionParams;
-      queryClient.invalidateQueries(["question", programId, teamId]);
+      const oldData = queryClient.getQueryData<QuestionListDto>([
+        "question",
+        programId,
+        teamId,
+      ]);
+      if (!oldData) return;
 
-      return res;
+      const { name: userName } =
+        queryClient.getQueryData<UserAttendStatusInfoDto>([
+          API.USER.ATTEND_STATUS(programId),
+        ]);
+      alert(userName);
+
+      const newComment: Comment = {
+        commentId: oldData.comments.length + 1,
+        teamId,
+        writer: isAnonymous ? "익명" : userName,
+        accessRight: "edit",
+        time: "방금전",
+        content: questionContent,
+        answers: [],
+      };
+
+      queryClient.setQueryData<QuestionListDto>(
+        ["question", programId, teamId],
+        {
+          comments: [...oldData.comments, newComment],
+        },
+      );
+
+      return oldData;
+    },
+    onError: (_, { programId, teamId }, oldData) => {
+      queryClient.setQueriesData(["question", programId, teamId], oldData);
     },
   });
 };

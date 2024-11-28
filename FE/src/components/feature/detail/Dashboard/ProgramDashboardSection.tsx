@@ -24,6 +24,7 @@ const ProgramDashboardSection = ({
   return (
     <section>
       <Title text="질문 게시판" />
+      <div className="mt-4" />
       <Tab<string>
         align="line"
         defaultSelected={`${teams[0].teamName}`}
