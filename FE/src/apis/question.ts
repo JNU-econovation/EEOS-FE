@@ -13,7 +13,7 @@ export const getQuestionsByTeam = async (programId: number, teamId: number) => {
 
 /**
  * 질문을 등록합니다.
- * - isCheck : 질문을 등록할 때 체크박스를 체크했는지 여부. 체크가 되었다면 1, 아니라면 0
+ * - isAnonymous : 질문을 등록할 때 체크박스를 체크했는지 여부. 체크가 되었다면 1, 아니라면 0
  */
 export interface PostQuestionParams {
   programId: number;
