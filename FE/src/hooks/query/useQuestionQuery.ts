@@ -9,6 +9,7 @@ import {
 import { Comment, QuestionListDto } from "@/apis/dtos/question.dto";
 import API from "@/constants/API";
 import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
+import { makeNewQuestionData } from "@/utils/question";
 
 export const useGetQuestions = (programId: number, teamId: number) => {
   return useQuery({
@@ -30,6 +31,7 @@ export const usePostQuestion = () => {
       programId,
       teamId,
       questionContent,
+      parentsCommentId,
     }: PostQuestionParams) => {
       queryClient.cancelQueries(["question", programId, teamId]);
 
@@ -55,13 +57,15 @@ export const usePostQuestion = () => {
         answers: [],
       };
 
-      const newComments = [...oldData.comments, newComment];
+      const newComments = makeNewQuestionData(
+        oldData,
+        newComment,
+        parentsCommentId,
+      );
 
       queryClient.setQueryData<QuestionListDto>(
         ["question", programId, teamId],
-        {
-          comments: [...oldData.comments, newComment],
-        },
+        newComments,
       );
 
       return oldData;
