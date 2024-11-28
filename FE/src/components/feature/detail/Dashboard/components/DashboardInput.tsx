@@ -22,7 +22,7 @@ const DashboardInput = ({
   selectedTeamId,
   teams,
 }: DashboardInputProps) => {
-  const [isAnonymous, setIsAnonymous] = useState<0 | 1>(0);
+  const [isAnonymous, setIsAnonymous] = useAtom(dashboardAtoms.isAnonymous);
   const [questionInput, setQuestionInput] = useAtom(
     dashboardAtoms.questionInput,
   );

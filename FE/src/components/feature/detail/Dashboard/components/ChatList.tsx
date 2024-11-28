@@ -31,6 +31,7 @@ const ChatList = ({
   const setSelectedCommentContent = useSetAtom(
     dashboardAtoms.selectedCommentContent,
   );
+  const setIsAnonymous = useSetAtom(dashboardAtoms.isAnonymous);
 
   const { mutate: updateComment, isSuccess: isUpdateSuccess } =
     useUpdateQuestion();
@@ -40,6 +41,7 @@ const ChatList = ({
   const handleReply = () => {
     setSelectedCommentId(commentId);
     setSelectedCommentContent(content);
+    setIsAnonymous(0);
   };
 
   const handleUpdateComment = ({

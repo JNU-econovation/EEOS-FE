@@ -23,9 +23,8 @@ export const useGetQuestions = (programId: number, teamId: number) => {
 export const usePostQuestion = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (postQuestionParams: PostQuestionParams) => {
-      return await postQuestion(postQuestionParams);
-    },
+    mutationFn: async (postQuestionParams: PostQuestionParams) =>
+      await postQuestion(postQuestionParams),
     onMutate: ({
       isAnonymous,
       programId,
@@ -45,7 +44,6 @@ export const usePostQuestion = () => {
         queryClient.getQueryData<UserAttendStatusInfoDto>([
           API.USER.ATTEND_STATUS(programId),
         ]);
-      alert(userName);
 
       const newComment: Comment = {
         commentId: oldData.comments.length + 1,
@@ -56,6 +54,8 @@ export const usePostQuestion = () => {
         content: questionContent,
         answers: [],
       };
+
+      const newComments = [...oldData.comments, newComment];
 
       queryClient.setQueryData<QuestionListDto>(
         ["question", programId, teamId],
