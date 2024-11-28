@@ -5,7 +5,7 @@ interface CheckBoxProps {
   checked: boolean;
   onClick: () => void;
   disabled?: boolean;
-  className: string;
+  className?: string;
 }
 
 const CheckBox = ({
