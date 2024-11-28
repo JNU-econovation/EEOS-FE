@@ -11,22 +11,34 @@ export const getQuestionsByTeam = async (programId: number, teamId: number) => {
   return new QuestionListDto(data?.data);
 };
 
+/**
+ * 질문을 등록합니다.
+ * - isCheck : 질문을 등록할 때 체크박스를 체크했는지 여부. 체크가 되었다면 1, 아니라면 0
+ */
 export interface PostQuestionParams {
   programId: number;
   teamId: number;
   questionContent: string;
   parentsCommentId?: number;
+  isChecked: 0 | 1;
 }
 export const postQuestion = async ({
   programId,
   teamId,
   questionContent,
   parentsCommentId = -1,
+  isChecked,
 }: PostQuestionParams) => {
   return await https({
     url: API.QUESTION.CREATE,
     method: "POST",
-    data: { programId, teamId, content: questionContent, parentsCommentId },
+    data: {
+      programId,
+      teamId,
+      content: questionContent,
+      parentsCommentId,
+      isChecked,
+    },
   });
 };
 
