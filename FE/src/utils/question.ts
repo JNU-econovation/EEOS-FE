@@ -13,8 +13,10 @@ export const makeNewQuestionData = (
     result = {
       comments: newComments,
     };
+    return result;
   }
 
+  // 답변인 경우
   const newComments = prevData.comments.map((comment) => {
     if (comment.commentId === newCommentParentId) {
       return {

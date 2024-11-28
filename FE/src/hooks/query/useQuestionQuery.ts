@@ -39,8 +39,7 @@ export const usePostQuestion = () => {
         "question",
         programId,
         teamId,
-      ]);
-      if (!oldData) return;
+      ]) || { comments: [] };
 
       const { name: userName } =
         queryClient.getQueryData<UserAttendStatusInfoDto>([
@@ -48,7 +47,7 @@ export const usePostQuestion = () => {
         ]);
 
       const newComment: Comment = {
-        commentId: oldData.comments.length + 1,
+        commentId: new Date().getTime(),
         teamId,
         writer: isAnonymous ? "익명" : userName,
         accessRight: "edit",
@@ -67,6 +66,16 @@ export const usePostQuestion = () => {
         ["question", programId, teamId],
         newComments,
       );
+
+      // console.log(newComments);
+
+      // console.log(
+      //   queryClient.getQueryData<QuestionListDto>([
+      //     "question",
+      //     programId,
+      //     teamId,
+      //   ]) || { comments: [] },
+      // );
 
       return oldData;
     },

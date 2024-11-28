@@ -56,9 +56,10 @@ describe("postQuestion", () => {
     const programId = 1;
     const teamId = 1;
     const questionContent = "질문 내용";
+    const isAnonymous = 0;
 
     // act
-    await postQuestion({ programId, teamId, questionContent });
+    await postQuestion({ programId, teamId, questionContent, isAnonymous });
 
     // assert
     expect(mockHttps).toHaveBeenCalledWith({
@@ -67,6 +68,30 @@ describe("postQuestion", () => {
       data: {
         programId,
         teamId,
+        isAnonymous: 0,
+        content: questionContent,
+        parentsCommentId: -1,
+      },
+    });
+  });
+  it("익명 질문을 등록한다", async () => {
+    // arrange
+    const programId = 1;
+    const teamId = 1;
+    const questionContent = "질문 내용";
+    const isAnonymous = 1;
+
+    // act
+    await postQuestion({ programId, teamId, questionContent, isAnonymous });
+
+    // assert
+    expect(mockHttps).toHaveBeenCalledWith({
+      url: "comments",
+      method: "POST",
+      data: {
+        programId,
+        teamId,
+        isAnonymous: 1,
         content: questionContent,
         parentsCommentId: -1,
       },
@@ -78,6 +103,7 @@ describe("postQuestion", () => {
     const teamId = 1;
     const questionContent = "답변 내용";
     const parentsCommentId = 1;
+    const isAnonymous = 0;
 
     // act
     await postQuestion({
@@ -85,6 +111,7 @@ describe("postQuestion", () => {
       teamId,
       questionContent,
       parentsCommentId,
+      isAnonymous,
     });
 
     // assert
@@ -94,6 +121,7 @@ describe("postQuestion", () => {
       data: {
         programId,
         teamId,
+        isAnonymous: 0,
         content: questionContent,
         parentsCommentId,
       },
