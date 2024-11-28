@@ -40,7 +40,6 @@ const ProgramDashboardSection = ({
         <Tab.Content<string>>
           {({ selectedItem }) => (
             <div className="mt-8 flex flex-col gap-8">
-              {/* Board */}
               <DashboardContent
                 programId={programId}
                 selectedTeamId={

@@ -12,6 +12,7 @@ const questionInput = atomWithStorage("questionInput", "");
 const dashboardAtoms = {
   selectedCommentId,
   selectedCommentContent,
+  questionInput,
 };
 
 export default dashboardAtoms;

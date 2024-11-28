@@ -1,6 +1,7 @@
 "use client";
 
 import { PostQuestionParams } from "@/apis/question";
+import CheckBox from "@/components/common/CheckBox/CheckBox";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
@@ -21,7 +22,10 @@ const DashboardInput = ({
   selectedTeamId,
   teams,
 }: DashboardInputProps) => {
-  const [questionInput, setQuestionInput] = useState<string>("");
+  const [isChecked, setIsChecked] = useState<0 | 1>(0);
+  const [questionInput, setQuestionInput] = useAtom(
+    dashboardAtoms.questionInput,
+  );
   const [selectedCommentId, setSelectedCommentId] = useAtom(
     dashboardAtoms.selectedCommentId,
   );
@@ -49,7 +53,9 @@ const DashboardInput = ({
       teamId: selectedTeamId,
       questionContent,
       parentsCommentId: selectedCommentId,
+      isChecked,
     };
+
     mutate(postQuestionParams);
     setQuestionInput("");
     setSelectedCommentId(-1);
@@ -75,9 +81,21 @@ const DashboardInput = ({
           <p className="ml-2 inline opacity-50">{selectedCommentContent}</p>
         </div>
       ) : (
-        <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
+        <div className="flex items-center justify-between gap-4">
+          <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
+          <label
+            className="flex select-none items-center justify-end gap-2 text-lg"
+            onClick={() => setIsChecked((prev) => (prev === 0 ? 1 : 0))}
+          >
+            <CheckBox
+              checked={isChecked === 1}
+              onClick={() => {}}
+              className="h-5 w-5"
+            />
+            익명으로 질문하기
+          </label>
+        </div>
       )}
-
       <div className="mb-2 " />
       <div className="relative">
         <textarea
