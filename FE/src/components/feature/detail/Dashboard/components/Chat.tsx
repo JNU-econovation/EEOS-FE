@@ -1,6 +1,6 @@
-import ChatList from "./common/ChatList";
-import ReplyChat from "./ReplyChat";
+import ChatList from "./ChatList";
 import { Comment } from "@/apis/dtos/question.dto";
+import ReplyChat from "./ReplyChat";
 
 const Chat = ({
   commentId,
@@ -13,6 +13,8 @@ const Chat = ({
   return (
     <div className="border p-4">
       <ChatList
+        showReplyButton={true}
+        markdownStyle=""
         commentId={commentId}
         writer={writer}
         accessRight={accessRight}

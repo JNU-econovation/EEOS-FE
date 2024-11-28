@@ -1,14 +1,17 @@
-import { useContext } from "react";
-import { DashboardContext } from "../DashboardWrapper";
-import Chat from "./Chat";
-import { useGetQuestion } from "@/hooks/query/useQuestionQuery";
+"use client";
 
-const Board = () => {
-  const {
-    teamValues: { selectedTeamId },
-    programValue: { programId },
-  } = useContext(DashboardContext);
-  const { data, isLoading, error } = useGetQuestion(programId, selectedTeamId);
+import Chat from "@/components/feature/detail/Dashboard/components/Chat";
+import { useGetQuestions } from "@/hooks/query/useQuestionQuery";
+
+interface DashboardContentProps {
+  programId: number;
+  selectedTeamId: number;
+}
+const DashboardContent = ({
+  programId,
+  selectedTeamId,
+}: DashboardContentProps) => {
+  const { data, isLoading, error } = useGetQuestions(programId, selectedTeamId);
 
   // TODO: Loader 적용, 에러 처리
   if (isLoading) return <div>Loading...</div>;
@@ -30,4 +33,4 @@ const Board = () => {
   );
 };
 
-export default Board;
+export default DashboardContent;

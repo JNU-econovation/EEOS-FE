@@ -6,8 +6,12 @@ import {
   PostQuestionParams,
   updateQuestion,
 } from "@/apis/question";
+import { Comment, QuestionListDto } from "@/apis/dtos/question.dto";
+import API from "@/constants/API";
+import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
+import { makeNewQuestionData } from "@/utils/question";
 
-export const useGetQuestion = (programId: number, teamId: number) => {
+export const useGetQuestions = (programId: number, teamId: number) => {
   return useQuery({
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
@@ -20,14 +24,63 @@ export const useGetQuestion = (programId: number, teamId: number) => {
 export const usePostQuestion = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ["question", "post"],
-    mutationFn: async (postQuestionParams: PostQuestionParams) => {
-      const res = await postQuestion(postQuestionParams);
+    mutationFn: async (postQuestionParams: PostQuestionParams) =>
+      await postQuestion(postQuestionParams),
+    onMutate: ({
+      isAnonymous,
+      programId,
+      teamId,
+      questionContent,
+      parentsCommentId,
+    }: PostQuestionParams) => {
+      queryClient.cancelQueries(["question", programId, teamId]);
 
-      const { programId, teamId } = postQuestionParams;
-      queryClient.invalidateQueries(["question", programId, teamId]);
+      const oldData = queryClient.getQueryData<QuestionListDto>([
+        "question",
+        programId,
+        teamId,
+      ]) || { comments: [] };
 
-      return res;
+      const { name: userName } =
+        queryClient.getQueryData<UserAttendStatusInfoDto>([
+          API.USER.ATTEND_STATUS(programId),
+        ]);
+
+      const newComment: Comment = {
+        commentId: new Date().getTime(),
+        teamId,
+        writer: isAnonymous ? "익명" : userName,
+        accessRight: "edit",
+        time: "방금전",
+        content: questionContent,
+        answers: [],
+      };
+
+      const newComments = makeNewQuestionData(
+        oldData,
+        newComment,
+        parentsCommentId,
+      );
+
+      queryClient.setQueryData<QuestionListDto>(
+        ["question", programId, teamId],
+        newComments,
+      );
+
+      // console.log(newComments);
+
+      // console.log(
+      //   queryClient.getQueryData<QuestionListDto>([
+      //     "question",
+      //     programId,
+      //     teamId,
+      //   ]) || { comments: [] },
+      // );
+
+      return oldData;
+    },
+    onError: (_, { programId, teamId }, oldData) => {
+      queryClient.setQueriesData(["question", programId, teamId], oldData);
     },
   });
 };

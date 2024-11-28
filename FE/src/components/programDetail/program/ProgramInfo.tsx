@@ -1,8 +1,8 @@
 "use client";
 
-import ProgramDetail from "./ProgramDetail";
+import ProgramDetail from "../../feature/detail/ProgramDetail";
 import ProgramHeader from "./ProgramHeader";
-import ProgramInfoLoader from "./ProgramInfo.loader";
+import ProgramInfoLoader from "../../feature/detail/loader/ProgramInfo.loader";
 import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { AccessType } from "@/types/access";
 
@@ -25,11 +25,7 @@ const ProgramInfo = ({ programId, accessType }: ProgramInfoProps) => {
   return (
     <section className="space-y-8">
       <ProgramHeader data={programData} />
-      <ProgramDetail
-        data={programData}
-        programId={programId}
-        accessType={accessType}
-      />
+      <ProgramDetail data={programData} programId={programId} />
     </section>
   );
 };
