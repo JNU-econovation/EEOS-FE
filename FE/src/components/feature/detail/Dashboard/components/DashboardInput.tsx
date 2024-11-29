@@ -13,14 +13,14 @@ import { useState } from "react";
 interface DashboardInputProps {
   programId: number;
   selectedTeamId: number;
-  teams: TeamInfo[];
+  selectedTeamName: string;
 }
 
 //TODO: UI 분리하기
 const DashboardInput = ({
   programId,
   selectedTeamId,
-  teams,
+  selectedTeamName,
 }: DashboardInputProps) => {
   const [isAnonymous, setIsAnonymous] = useAtom(dashboardAtoms.isAnonymous);
   const [questionInput, setQuestionInput] = useAtom(
@@ -35,8 +35,6 @@ const DashboardInput = ({
 
   const { mutate: postQuestion } = usePostQuestion();
   const isReply = selectedCommentId !== -1;
-  const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
-    ?.teamName;
 
   const accessType = useGetAccessType();
 
