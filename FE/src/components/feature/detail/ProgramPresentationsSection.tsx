@@ -4,16 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import Title from "@/components/common/Title/Title";
 import usePresentations from "@/hooks/query/usePresentations";
+import { useQueryClient } from "@tanstack/react-query";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
-interface ProgramPresentationsProps {
-  programId: number;
-}
-const ProgramPresentations = ({ programId }: ProgramPresentationsProps) => {
+const ProgramPresentationsSection = () => {
+  const programId = useGetProgramId();
+  const queryClient = useQueryClient();
+
+  const githubUrl = queryClient.getQueryData(["githubUrl", programId]);
+
   const {
     data: presentations,
     isLoading,
     isError,
   } = usePresentations(programId);
+
+  if (githubUrl) return null;
 
   if (isError) return null;
 
@@ -48,4 +54,4 @@ const ProgramPresentations = ({ programId }: ProgramPresentationsProps) => {
   );
 };
 
-export default ProgramPresentations;
+export default ProgramPresentationsSection;

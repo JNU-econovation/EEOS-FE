@@ -5,13 +5,10 @@ import Title from "@/components/common/Title/Title";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
 import DashboardContent from "./components/DashboardContent";
 import DashboardInput from "./components/DashboardInput";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
-interface ProgramDashboardSectionProps {
-  programId: number;
-}
-const ProgramDashboardSection = ({
-  programId,
-}: ProgramDashboardSectionProps) => {
+const ProgramDashboardSection = () => {
+  const programId = useGetProgramId();
   const { data, isLoading } = useTeamQuery(programId);
 
   if (isLoading || !data) return null;
