@@ -20,14 +20,14 @@ export interface PostQuestionParams {
   teamId: number;
   questionContent: string;
   parentsCommentId?: number;
-  isAnonymous: 0 | 1;
+  commentType: "ANONYMOUS" | "NON_ANONYMOUS";
 }
 export const postQuestion = async ({
   programId,
   teamId,
   questionContent,
   parentsCommentId = -1,
-  isAnonymous = 0,
+  commentType = "NON_ANONYMOUS",
 }: PostQuestionParams) => {
   return await https({
     url: API.QUESTION.CREATE,
@@ -37,7 +37,7 @@ export const postQuestion = async ({
       teamId,
       content: questionContent,
       parentsCommentId,
-      isAnonymous,
+      commentType,
     },
   });
 };

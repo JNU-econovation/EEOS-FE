@@ -9,13 +9,13 @@ import { atomWithStorage } from "jotai/utils";
 const selectedCommentId = atom(-1);
 const selectedCommentContent = atom("");
 const questionInput = atomWithStorage("questionInput", "");
-const isAnonymous = atom<0 | 1>(0);
+const commentType = atom<"ANONYMOUS" | "NON_ANONYMOUS">("NON_ANONYMOUS");
 
 const dashboardAtoms = {
   selectedCommentId,
   selectedCommentContent,
   questionInput,
-  isAnonymous,
+  commentType,
 };
 
 export default dashboardAtoms;
