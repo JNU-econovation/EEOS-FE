@@ -6,9 +6,7 @@ import StatusToggleItem from "@/components/common/StatusToggleItem";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import dashboardAtoms from "@/store/dashboardAtoms";
-import { TeamInfo } from "@/types/team";
 import { useAtom } from "jotai";
-import { useState } from "react";
 
 interface DashboardInputProps {
   programId: number;
