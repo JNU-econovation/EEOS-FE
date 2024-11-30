@@ -2,8 +2,8 @@ import AttendeeInfoContainer from "@/components/feature/detail/attendee/Attendee
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
-import ProgramPresentationsSection from "@/components/feature/detail/ProgramPresentationsSection";
-import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
+import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
+import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
 
 interface ProgramDetailPageProps {
   params: {
@@ -21,7 +21,7 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
         <ProgramDetailSection />
         <ProgramPresentationsSection />
         <div className="mt-12">
-          <ProgramDashboardSection />
+          <BlurDashboard />
         </div>
       </section>
       <AttendeeInfoContainer programId={+programId} isLoggedIn={false} />

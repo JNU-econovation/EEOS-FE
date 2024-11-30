@@ -4,7 +4,7 @@ import Title from "@/components/common/Title/Title";
 import DashboardContent from "./components/DashboardContent";
 import DashboardInput from "./components/DashboardInput";
 import { useGetProgramId } from "@/hooks/usePrograms";
-import TeamsTab from "@/components/common/tabs/TeamsTab";
+import TeamsTab from "@/components/feature/detail/Dashboard/TeamsTab";
 
 const ProgramDashboardSection = () => {
   const programId = useGetProgramId();

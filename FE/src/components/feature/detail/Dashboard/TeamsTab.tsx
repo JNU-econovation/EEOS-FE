@@ -1,7 +1,7 @@
 "use client";
 
+import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
-import Tab from "./tab/TabCompound/TabCompound";
 
 interface SelectedItemProps {
   teamName: string;

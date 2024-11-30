@@ -22,7 +22,6 @@ const ProgramHeaderSection = () => {
     isError,
   } = useGetProgramByProgramId(programId, isAbleToEdit);
 
-  // TODO: Loader 적용, 에러 처리
   if (isLoading) return <ProgramHeaderSkeleton />;
   if (isError) return <div>에러 발생</div>;
 
