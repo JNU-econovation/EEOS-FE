@@ -26,7 +26,7 @@ const CheckBox = ({
   );
 
   const handleCheckBoxClick = () => {
-    !disabled && onClick();
+    !disabled && onClick && onClick();
   };
 
   return (
