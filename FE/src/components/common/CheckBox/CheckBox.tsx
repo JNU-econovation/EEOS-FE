@@ -1,9 +1,11 @@
+"use client";
+
 import classNames from "classnames";
 import Image from "next/image";
 
 interface CheckBoxProps {
   checked: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   className?: string;
 }

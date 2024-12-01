@@ -6,23 +6,21 @@ import StatusToggleItem from "@/components/common/StatusToggleItem";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import dashboardAtoms from "@/store/dashboardAtoms";
-import { TeamInfo } from "@/types/team";
 import { useAtom } from "jotai";
-import { useState } from "react";
 
 interface DashboardInputProps {
   programId: number;
   selectedTeamId: number;
-  teams: TeamInfo[];
+  selectedTeamName: string;
 }
 
 //TODO: UI 분리하기
 const DashboardInput = ({
   programId,
   selectedTeamId,
-  teams,
+  selectedTeamName,
 }: DashboardInputProps) => {
-  const [isAnonymous, setIsAnonymous] = useAtom(dashboardAtoms.isAnonymous);
+  const [commentType, setCommentType] = useAtom(dashboardAtoms.commentType);
   const [questionInput, setQuestionInput] = useAtom(
     dashboardAtoms.questionInput,
   );
@@ -35,8 +33,6 @@ const DashboardInput = ({
 
   const { mutate: postQuestion } = usePostQuestion();
   const isReply = selectedCommentId !== -1;
-  const selectedTeamName = teams?.find((team) => team.teamId === selectedTeamId)
-    ?.teamName;
 
   const accessType = useGetAccessType();
 
@@ -53,7 +49,7 @@ const DashboardInput = ({
       teamId: selectedTeamId,
       questionContent,
       parentsCommentId: selectedCommentId,
-      isAnonymous,
+      commentType,
     };
 
     postQuestion(postQuestionParams);
@@ -69,11 +65,8 @@ const DashboardInput = ({
 
   return (
     <div>
-      {/* <div className="absolute z-10 text-xl font-bold">{name}</div> */}
       {isReply ? (
         <div className="truncate text-lg font-semibold">
-          {/* <Image src={"/icons/x.svg"} alt="답글 종료" width={20} height={20} /> */}
-          {/* <button className="px-2 " onClick={() => setselectedCommentId(-1)}> */}
           <button className="px-2 " onClick={resetSelectedComment}>
             x
           </button>
@@ -85,11 +78,14 @@ const DashboardInput = ({
           <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
           <label
             className="flex select-none items-center justify-end gap-2 text-lg"
-            onClick={() => setIsAnonymous((prev) => (prev === 0 ? 1 : 0))}
+            onClick={() =>
+              setCommentType((prev) =>
+                prev === "ANONYMOUS" ? "NON_ANONYMOUS" : "ANONYMOUS",
+              )
+            }
           >
             <CheckBox
-              checked={isAnonymous === 1}
-              onClick={() => {}}
+              checked={commentType === "ANONYMOUS"}
               className="h-5 w-5"
             />
             익명으로 질문하기

@@ -27,7 +27,7 @@ export const usePostQuestion = () => {
     mutationFn: async (postQuestionParams: PostQuestionParams) =>
       await postQuestion(postQuestionParams),
     onMutate: ({
-      isAnonymous,
+      commentType,
       programId,
       teamId,
       questionContent,
@@ -49,7 +49,7 @@ export const usePostQuestion = () => {
       const newComment: Comment = {
         commentId: new Date().getTime(),
         teamId,
-        writer: isAnonymous ? "익명" : userName,
+        writer: commentType === "ANONYMOUS" ? "익명" : userName,
         accessRight: "edit",
         time: "방금전",
         content: questionContent,

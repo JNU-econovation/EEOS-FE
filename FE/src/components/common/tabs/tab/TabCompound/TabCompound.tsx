@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import React, {
+import {
   createContext,
   useContext,
   useState,

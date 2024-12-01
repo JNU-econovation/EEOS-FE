@@ -1,3 +1,5 @@
+"use client";
+
 // TODO: 리팩토링 필요 : 중복되는 코드 줄이기
 // 출석 상태값만 받아오는 API 필요
 
@@ -6,17 +8,13 @@ import StatusToggleItem from "@/components/common/StatusToggleItem";
 import Title from "@/components/common/Title/Title";
 import {
   useGetProgramByProgramId,
-  // useGetProgramAttendModeAndStatus,
-  // useGetProgramByProgramId,
   useUpdateProgramAttendMode,
 } from "@/hooks/query/useProgramQuery";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
-interface ProgramattendModeManageSectionProps {
-  programId: number;
-}
-const ProgramattendModeManageSection = ({
-  programId,
-}: ProgramattendModeManageSectionProps) => {
+const ProgramattendModeManageSection = () => {
+  const programId = useGetProgramId();
+
   const { mutate: updateProgramAttendMode, isLoading } =
     useUpdateProgramAttendMode(programId);
 
