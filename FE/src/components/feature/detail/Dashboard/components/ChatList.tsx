@@ -68,9 +68,9 @@ const ChatList = ({
       deleteComment={handleDeleteComment}
       handleReply={handleReply}
       time={time}
-      updateComment={handleUpdateComment} //
+      updateComment={handleUpdateComment}
       markdownStyle={markdownStyle}
-      showReplyButton={showReplyButton} //
+      showReplyButton={showReplyButton}
     />
   );
 };

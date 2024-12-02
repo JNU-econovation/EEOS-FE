@@ -18,7 +18,7 @@ const ReplyChat = ({
         commentId={commentId}
         accessRight={accessRight}
         markdownStyle="!bg-inherit"
-        showReplyButton={false}
+        showReplyButton={true}
       />
     </div>
   );
