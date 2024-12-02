@@ -67,16 +67,6 @@ export const usePostQuestion = () => {
         newComments,
       );
 
-      // console.log(newComments);
-
-      // console.log(
-      //   queryClient.getQueryData<QuestionListDto>([
-      //     "question",
-      //     programId,
-      //     teamId,
-      //   ]) || { comments: [] },
-      // );
-
       return oldData;
     },
     onError: (_, { programId, teamId }, oldData) => {
