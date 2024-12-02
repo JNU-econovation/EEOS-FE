@@ -95,7 +95,7 @@ const DashboardInput = ({
       <div className="mb-2 " />
       <div className="relative">
         <textarea
-          className={`h-40 w-full resize-none rounded-sm border-2 p-4 px-8 pr-40 text-lg`}
+          className={`min-h-40 w-full rounded-sm border-2 p-4 px-8 pr-40 text-lg`}
           placeholder="질문을 입력해주세요"
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
