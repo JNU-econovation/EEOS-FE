@@ -162,7 +162,16 @@ export const useUpdateProgramAttendMode = (programId: number) => {
         [API.PROGRAM.Edit_DETAIL(programId)],
         newProgram,
       );
+      queryClient.setQueryData<ProgramAttendStatus>(
+        ["attendMode", programId],
+        targetAttendMode,
+      );
       return prevProgram;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+      });
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(
