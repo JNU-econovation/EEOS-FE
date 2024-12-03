@@ -112,7 +112,7 @@ export const useGetProgramByProgramId = (
           });
           return res;
         }),
-    staleTime: 1000 * 60,
+    refetchInterval: 1000 * 60,
   });
 };
 
