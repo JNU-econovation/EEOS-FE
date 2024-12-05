@@ -75,12 +75,14 @@ const CreateForm = () => {
       return;
     }
 
-    // const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
 
-    // if (!isValidGithubUrl) {
-    //   toast.error("올바른 Github URL을 입력해주세요.");
-    //   return;
-    // }
+    //TODO: 백엔드에서 유효성 검사하도록 수정. 백엔드와 논의 필요
+    // const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);
+    const isValidGithubUrl = true;
+    if (!isValidGithubUrl) {
+      toast.error("올바른 Github URL을 입력해주세요.");
+      return;
+    }
     const toastId = toast.loading(MESSAGE.CREATE.PENDING);
 
     createProgramMutate(
