@@ -13,6 +13,7 @@ import {
   ActiveStatusWithAll,
   AttendStatus,
 } from "@/types/member";
+import { ProgramAttendStatus } from "@/types/program";
 
 export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
   return useQuery({
@@ -49,10 +50,23 @@ export const useGetProgramMembersByAttend = ({
   programId,
   status,
 }: GetProgramMemebersByAttend) => {
+  const queryClient = useQueryClient();
+  const adminAttendStatus = queryClient.getQueryData<ProgramAttendStatus>([
+    "attendMode",
+    programId,
+  ]);
+
   return useQuery({
     queryKey: [API.MEMBER.ATTEND_STATUS(programId), status],
     queryFn: () => getProgramMembersByAttendStatus(programId, status),
     staleTime: 1000 * 60 * 5,
+    refetchInterval: () => {
+      if (adminAttendStatus === "attend") {
+        return 2000;
+      } else {
+        return false;
+      }
+    },
   });
 };
 

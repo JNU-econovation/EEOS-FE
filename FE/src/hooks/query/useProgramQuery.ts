@@ -85,23 +85,34 @@ export const useGetProgramByProgramId = (
   return useQuery({
     queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
     queryFn: () =>
-      getProgramById(programId, isAbleToEdit).then((res) => {
-        //TODO: setquery 지양하기
-        queryClient.setQueryData<ProgramStatus>(
-          ["programStatus", programId],
-          res.programStatus,
-        );
-        queryClient.setQueryData<ProgramType>(
-          ["programType", programId],
-          res.type,
-        );
-        queryClient.setQueryData<string>(
-          ["githubUrl", programId],
-          res.programGithubUrl,
-        );
-        return res;
-      }),
-    staleTime: 1000 * 60 * 5,
+      getProgramById(programId, isAbleToEdit)
+        .then((res) => {
+          queryClient.cancelQueries({
+            queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+          });
+          return res;
+        })
+        .then((res) => {
+          //TODO: setquery 지양하기
+          queryClient.setQueryData<ProgramStatus>(
+            ["programStatus", programId],
+            res.programStatus,
+          );
+          queryClient.setQueryData(["attendMode", programId], res.attendMode);
+          queryClient.setQueryData<ProgramType>(
+            ["programType", programId],
+            res.type,
+          );
+          queryClient.setQueryData<string>(
+            ["githubUrl", programId],
+            res.programGithubUrl,
+          );
+          queryClient.invalidateQueries({
+            queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+          });
+          return res;
+        }),
+    refetchInterval: 1000 * 60,
   });
 };
 
@@ -136,23 +147,36 @@ export const useUpdateProgramAttendMode = (programId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE_ATTEND_MODE(programId)],
-    mutationFn: (attendMode: ProgramAttendStatus) => {
-      queryClient.invalidateQueries([API.PROGRAM.Edit_DETAIL(programId)]);
-      return updateProgramAttendMode(programId, attendMode);
-    },
-    onSuccess: (_, targetAttendMode) => {
+    mutationFn: (attendMode: ProgramAttendStatus) =>
+      updateProgramAttendMode(programId, attendMode),
+    onMutate: (targetAttendMode) => {
+      queryClient.cancelQueries([API.PROGRAM.Edit_DETAIL(programId)]);
       const prevProgram = queryClient.getQueryData<ProgramInfoDto>([
         API.PROGRAM.Edit_DETAIL(programId),
       ]);
-
       const newProgram: ProgramInfoDto = {
         ...prevProgram,
         attendMode: targetAttendMode,
       };
-
       queryClient.setQueryData<ProgramInfoDto>(
         [API.PROGRAM.Edit_DETAIL(programId)],
         newProgram,
+      );
+      queryClient.setQueryData<ProgramAttendStatus>(
+        ["attendMode", programId],
+        targetAttendMode,
+      );
+      return prevProgram;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [API.MEMBER.ATTEND_STATUS(programId)],
+      });
+    },
+    onError: (_, __, context) => {
+      queryClient.setQueryData(
+        [API.PROGRAM.Edit_DETAIL(programId)],
+        context as ProgramInfoDto,
       );
     },
   });

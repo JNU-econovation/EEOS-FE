@@ -1,18 +1,31 @@
+"use client";
+
 import EditAndDeleteButton from "./EditAndDeleteButton";
-import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import TabItem from "@/components/common/tabs/tab/TabItem";
 import Title from "@/components/common/Title/Title";
 import PROGRAM from "@/constants/PROGRAM";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
+import { useGetAccessType } from "@/hooks/useAccess";
 import { formatTimestamp } from "@/utils/convert";
-
-interface ProgramHeaderProps {
-  data: ProgramInfoDto;
-}
+import { useGetProgramId } from "@/hooks/usePrograms";
+import ProgramHeaderSkeleton from "../loader/ProgramHeader.skeleton";
 
 const DEADLINE_TEXT = "행사일정 : ";
 
-const ProgramHeader = ({ data }: ProgramHeaderProps) => {
-  const { category, title, deadLine, programId, accessRight } = data;
+const ProgramHeaderSection = () => {
+  const isAbleToEdit = useGetAccessType() === "admin";
+  const programId = useGetProgramId();
+
+  const {
+    data: programData,
+    isLoading,
+    isError,
+  } = useGetProgramByProgramId(programId, isAbleToEdit);
+
+  if (isLoading) return <ProgramHeaderSkeleton />;
+  if (isError) return <div>에러 발생</div>;
+
+  const { accessRight, category, deadLine, title } = programData;
 
   const categoryText = PROGRAM.CATEGORY_TAB[category]?.text ?? "기타";
 
@@ -31,4 +44,4 @@ const ProgramHeader = ({ data }: ProgramHeaderProps) => {
     </section>
   );
 };
-export default ProgramHeader;
+export default ProgramHeaderSection;

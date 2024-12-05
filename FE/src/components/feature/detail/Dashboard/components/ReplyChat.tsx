@@ -1,4 +1,4 @@
-import ChatList from "./common/ChatList";
+import ChatList from "./ChatList";
 import { Answer } from "@/apis/dtos/question.dto";
 
 interface ReplyChatProps extends Answer {}
@@ -18,7 +18,7 @@ const ReplyChat = ({
         commentId={commentId}
         accessRight={accessRight}
         markdownStyle="!bg-inherit"
-        showReplyButton={false}
+        showReplyButton={true}
       />
     </div>
   );

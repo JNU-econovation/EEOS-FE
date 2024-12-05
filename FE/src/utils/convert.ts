@@ -25,6 +25,7 @@ export const convertText = (text: string, str: string) => {
 
 //githubUrl을 owner, repo, branch, path로 분리
 export const convertGitHubUrl = (githubUrl: string) => {
+
   //TODO: 백엔드에서 유효성 검사하도록 수정. 백엔드와 논의 필요
   // const isValidateGithubUrl = checkIsValidateGithubUrl(githubUrl);
   const isValidateGithubUrl = true;

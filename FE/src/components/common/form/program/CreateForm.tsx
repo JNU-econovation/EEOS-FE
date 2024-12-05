@@ -21,7 +21,7 @@ import {
 import { useMemberSet } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
-import { checkIsValidateGithubUrl } from "@/utils/github";
+// import { checkIsValidateGithubUrl } from "@/utils/github";
 
 export interface ProgramFormDataState {
   title: string;
@@ -74,6 +74,7 @@ const CreateForm = () => {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
+
 
     //TODO: 백엔드에서 유효성 검사하도록 수정. 백엔드와 논의 필요
     // const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);

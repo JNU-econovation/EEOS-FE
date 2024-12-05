@@ -1,3 +1,5 @@
+// TODO 해당 컴포넌트 대신 /tabCompound/Tab 컴포넌트를 하용하기 바랍니다.
+
 import classNames from "classnames";
 import TabItem, { tabColors, tabSizes } from "./TabItem";
 import { TabOption } from "@/types/tab";
