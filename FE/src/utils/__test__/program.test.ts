@@ -8,14 +8,14 @@ describe("getEditableStatus", () => {
   let programAttendMode: ProgramAttendStatus;
 
   describe("행사 당일날", () => {
-    // programStatus = "active";
     describe("프로그램이 진행 중인 경우", () => {
-      // programAttendMode = "attend";
       it("내 출석 상태가 미응답인 경우 EDITABLE를 반환한다", () => {
+        // when
         programStatus = "active";
         programAttendMode = "attend";
         myAttendStatus = "nonResponse";
 
+        // then
         const editableStatus = getEditableStatus({
           myAttendStatus,
           programStatus,
@@ -54,10 +54,12 @@ describe("getEditableStatus", () => {
         expect(editableStatus2).toBe("ALREADY_ATTENDED");
       });
       it("나와 관련이 없는 행사인 경우 NON_RELATED를 반환한다.", () => {
+        // when
         programStatus = "active";
         programAttendMode = "attend";
         myAttendStatus = "nonRelated";
 
+        // then
         const editableStatus = getEditableStatus({
           myAttendStatus,
           programStatus,
@@ -161,10 +163,16 @@ describe("getEditableStatus", () => {
       expect(editableStatus).toBe("INACTIVE");
     });
   it("나와 관련이 없는 행사인 경우 NON_RELATED를 반환한다.", () => {
+    //when
+    programStatus = "active";
+    programAttendMode = "attend";
+    myAttendStatus = "nonRelated";
+
+    //then
     const editableStatus = getEditableStatus({
-      myAttendStatus: "nonRelated",
-      programStatus: "active",
-      programAttendMode: "attend",
+      myAttendStatus,
+      programStatus,
+      programAttendMode,
     });
     expect(editableStatus).toBe("NON_RELATED");
   });
