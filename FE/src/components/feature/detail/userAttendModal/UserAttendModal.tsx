@@ -8,9 +8,8 @@ import {
   useGetMyAttendStatus,
   usePostMyAttendance,
 } from "@/hooks/query/useUserQuery";
-import { EditableStatus } from "@/types/attendStatusModal";
-import { AttendStatus } from "@/types/member";
 import { ProgramAttendStatus, ProgramStatus } from "@/types/program";
+import { getEditableStatus } from "@/utils/program";
 
 interface UserAttendModalProps {
   programId: number;
@@ -33,34 +32,11 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     programId,
   ]);
 
-  const getEditableStatus = (
-    attendStatus: AttendStatus,
-    programAttendMode: ProgramAttendStatus,
-    programStatus: ProgramStatus,
-  ): EditableStatus => {
-    if (attendStatus === "nonRelated") {
-      return "NON_RELATED";
-    }
-    if (programStatus === "active") {
-      // 당일날에
-      if (programAttendMode === "attend" || programAttendMode === "late") {
-        // 출석 중이면
-        if (attendStatus === "attend" || attendStatus === "late")
-          // 내 상태가 참석 또는 지각이면
-          return "ALREADY_ATTENDED"; // 변경 불가
-
-        return "EDITABLE"; //내 상태가 없다면 변경 가능
-      }
-      if (programAttendMode === "end") return "NON_RELATED"; // 당일날 종료되었으면 변경 불가
-    }
-    return "INACTIVE"; // 당일날이 아니면 변경 불가
-  };
-
-  const editableStatus = getEditableStatus(
-    attendStatus,
-    attendMode,
-    programStatus,
-  );
+  const editableStatus = getEditableStatus({
+    myAttendStatus: attendStatus,
+    programStatus: programStatus,
+    programAttendMode: attendMode,
+  });
 
   const handleSelectorClick = () => {
     if (editableStatus === "EDITABLE")
