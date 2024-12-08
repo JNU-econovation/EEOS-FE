@@ -76,23 +76,20 @@ const DashboardInput = ({
       ) : (
         <div className="flex items-center justify-between gap-4">
           <p className="text-xl font-bold">@{selectedTeamName} 에게 질문하기</p>
-          {/* 롤백 */}
-          <button disabled className="cursor-wait opacity-50">
-            <label
-              className="flex select-none items-center justify-end gap-2 text-lg"
-              onClick={() =>
-                setCommentType((prev) =>
-                  prev === "ANONYMOUS" ? "NON_ANONYMOUS" : "ANONYMOUS",
-                )
-              }
-            >
-              <CheckBox
-                checked={commentType === "ANONYMOUS"}
-                className="h-5 w-5"
-              />
-              익명으로 질문하기
-            </label>
-          </button>
+          <label
+            className="flex select-none items-center justify-end gap-2 text-lg"
+            onClick={() =>
+              setCommentType((prev) =>
+                prev === "ANONYMOUS" ? "NON_ANONYMOUS" : "ANONYMOUS",
+              )
+            }
+          >
+            <CheckBox
+              checked={commentType === "ANONYMOUS"}
+              className="h-5 w-5"
+            />
+            익명으로 질문하기
+          </label>
         </div>
       )}
       <div className="mb-2 " />
