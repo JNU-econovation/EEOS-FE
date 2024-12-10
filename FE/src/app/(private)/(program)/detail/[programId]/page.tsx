@@ -1,4 +1,4 @@
-import AttendeeInfoContainer from "@/components/feature/detail/attendee/AttendeeInfo.container";
+import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
@@ -24,7 +24,7 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
           <ProgramDashboardSection />
         </div>
       </section>
-      <AttendeeInfoContainer programId={+programId} isLoggedIn />
+      <AttendeeInfoSection />
       <UserAttendModalContainer programId={+programId} isLoggedIn />
     </div>
   );

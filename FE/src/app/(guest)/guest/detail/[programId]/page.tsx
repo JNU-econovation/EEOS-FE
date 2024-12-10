@@ -1,9 +1,10 @@
-import AttendeeInfoContainer from "@/components/feature/detail/attendee/AttendeeInfo.container";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
 import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
+import BluredAttedee from "@/components/feature/detail/attendee/BluredAttedee";
+import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 
 interface ProgramDetailPageProps {
   params: {
@@ -24,7 +25,9 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
           <BlurDashboard />
         </div>
       </section>
-      <AttendeeInfoContainer programId={+programId} isLoggedIn={false} />
+      {ATTEND_STATUS.STATUSES.map((status) => (
+        <BluredAttedee key={status} status={status} />
+      ))}
       <UserAttendModalContainer programId={+programId} isLoggedIn={false} />
     </div>
   );
