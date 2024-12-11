@@ -1,7 +1,7 @@
 import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import ProgramattendModeManageSection from "@/components/feature/detail/program/ProgramAttendStatusManageSection";
+import ProgramAttendModeManageSection from "@/components/feature/detail/program/ProgramAttendStatusManageSection";
 import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 
@@ -11,7 +11,7 @@ const ProgramDetailPage = () => {
       <section className="space-y-8">
         <ProgramHeaderSection />
         <ProgramDetailSection />
-        <ProgramattendModeManageSection />
+        <ProgramAttendModeManageSection />
         <ProgramPresentationsSection />
         <div className="mt-12">
           <ProgramDashboardSection />
