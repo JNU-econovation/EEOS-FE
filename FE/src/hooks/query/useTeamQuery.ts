@@ -6,6 +6,7 @@ export const useTeamQuery = (programId?: number) => {
   return useQuery({
     queryKey: ["teams", programId || programId == 0 ? programId : "all"],
     queryFn: () => getTeamList(programId),
+    suspense: true,
     staleTime: 1000 * 60 * 5,
     cacheTime: 1000 * 60 * 5,
   });

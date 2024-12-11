@@ -1,4 +1,3 @@
-// import AttendToggleLabel from "./AttendToggleLabel";
 import Link from "next/link";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import AttendStatusToggle from "@/components/common/toggle/AttendStatusToggle";
