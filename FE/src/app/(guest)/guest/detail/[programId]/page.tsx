@@ -1,6 +1,6 @@
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
+import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
 import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
 import BluredAttedee from "@/components/feature/detail/attendee/BluredAttedee";
@@ -28,7 +28,7 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
       {ATTEND_STATUS.STATUSES.map((status) => (
         <BluredAttedee key={status} status={status} />
       ))}
-      <UserAttendModalContainer programId={+programId} isLoggedIn={false} />
+      <UserAttendModalSection isLoggedIn={false} />
     </div>
   );
 };
