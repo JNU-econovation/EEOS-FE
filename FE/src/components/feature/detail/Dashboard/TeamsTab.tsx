@@ -2,6 +2,9 @@
 
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
+import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
+import { ErrorBoundary } from "react-error-boundary";
+import { Suspense } from "react";
 
 interface SelectedItemProps {
   teamName: string;
@@ -13,10 +16,7 @@ interface TeamsTabProps {
   children: (selectedItem: SelectedItemProps) => JSX.Element;
 }
 const TeamsTab = ({ programId, children }: TeamsTabProps) => {
-  const { data: teamsQueryData, isLoading, isError } = useTeamQuery(programId);
-
-  if (isLoading) return null;
-  if (isError) return null;
+  const { data: teamsQueryData } = useTeamQuery(programId);
 
   const { teams } = teamsQueryData;
   if (teams.length === 0) return null;

@@ -11,7 +11,7 @@ interface AttendeeInfoProps {
   status: AttendStatus;
 }
 
-const AttendeeInfo = ({ programId, status }: AttendeeInfoProps) => {
+const AttendeeInfoByStatus = ({ programId, status }: AttendeeInfoProps) => {
   const queryClient = useQueryClient();
 
   const {
@@ -45,4 +45,4 @@ const AttendeeInfo = ({ programId, status }: AttendeeInfoProps) => {
     </>
   );
 };
-export default AttendeeInfo;
+export default AttendeeInfoByStatus;

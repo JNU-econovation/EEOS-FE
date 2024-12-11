@@ -1,4 +1,4 @@
-import { FormType } from "./../types/form";
+import { FormType } from "@/types/form";
 
 const PROGRAM = {
   TITLE: {

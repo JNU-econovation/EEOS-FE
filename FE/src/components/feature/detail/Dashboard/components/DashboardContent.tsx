@@ -11,11 +11,7 @@ const DashboardContent = ({
   programId,
   selectedTeamId,
 }: DashboardContentProps) => {
-  const { data, isLoading, error } = useGetQuestions(programId, selectedTeamId);
-
-  // TODO: Loader 적용, 에러 처리
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error...</div>;
+  const { data } = useGetQuestions(programId, selectedTeamId);
 
   const { comments } = data;
 

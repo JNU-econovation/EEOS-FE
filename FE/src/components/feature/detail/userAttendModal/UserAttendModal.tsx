@@ -32,6 +32,8 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     programId,
   ]);
 
+  // if (!attendMode || !programStatus) return null;
+
   const editableStatus = getEditableStatus({
     myAttendStatus: attendStatus,
     programStatus: programStatus,

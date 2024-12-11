@@ -1,23 +1,23 @@
+//TODO: 리팩토링 필요 : isLoggedIn을 props로 받아서 조건부 렌더링을 하고 있음
+
 "use client";
 
 import classNames from "classnames";
-import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
 import LoginModal from "./LoginModal";
 import UserAttendModal from "./UserAttendModal";
 import ErrorFallbackNoIcon from "@/components/common/error/ErrorFallbackNoIcon";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
+import { useGetProgramId } from "@/hooks/usePrograms";
+import { Line } from "@/components/icons";
 
 interface UserAttendModalProps {
-  programId: number;
   isLoggedIn: boolean;
 }
 
-const UserAttendModalContainer = ({
-  programId,
-  isLoggedIn,
-}: UserAttendModalProps) => {
+const UserAttendModalSection = ({ isLoggedIn }: UserAttendModalProps) => {
+  const programId = useGetProgramId();
   const { isOpen, openModal, closeModal } = useModal();
   const modalRef = useOutsideRef(closeModal);
 
@@ -42,13 +42,7 @@ const UserAttendModalContainer = ({
       type="button"
     >
       <div onClick={handleOpenModal} className="pb-1 pt-3">
-        <Image
-          src="/icons/line.svg"
-          alt="line"
-          width={38}
-          height={6}
-          style={{ width: 38, height: 6 }}
-        />
+        <Line />
       </div>
       {isLoggedIn ? (
         <ErrorBoundary FallbackComponent={ErrorFallbackNoIcon}>
@@ -60,4 +54,4 @@ const UserAttendModalContainer = ({
     </button>
   );
 };
-export default UserAttendModalContainer;
+export default UserAttendModalSection;
