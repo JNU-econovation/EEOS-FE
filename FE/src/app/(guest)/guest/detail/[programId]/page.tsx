@@ -3,18 +3,10 @@ import ProgramDetailSection from "@/components/feature/detail/program/ProgramDet
 import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
 import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
-import BluredAttedee from "@/components/feature/detail/attendee/BluredAttedee";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
+import BlurredAttendee from "@/components/feature/detail/attendee/BlurredAttendee";
 
-interface ProgramDetailPageProps {
-  params: {
-    programId: string;
-  };
-}
-
-const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
-  const { programId } = params;
-
+const ProgramDetailPage = () => {
   return (
     <div className="mb-16 space-y-16">
       <section className="space-y-8">
@@ -26,7 +18,7 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
         </div>
       </section>
       {ATTEND_STATUS.STATUSES.map((status) => (
-        <BluredAttedee key={status} status={status} />
+        <BlurredAttendee key={status} status={status} />
       ))}
       <UserAttendModalSection isLoggedIn={false} />
     </div>

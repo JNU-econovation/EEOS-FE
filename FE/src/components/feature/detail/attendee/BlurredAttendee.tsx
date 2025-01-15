@@ -9,11 +9,11 @@ const mockMember: MemberAttendStatusInfoDto = {
   attendStatus: "attend",
 };
 
-interface BluredAttedeeProps {
+interface BlurredAttendeeProps {
   status: AttendStatus;
 }
 
-export default function BluredAttedee({ status }: BluredAttedeeProps) {
+export default function BlurredAttendee({ status }: BlurredAttendeeProps) {
   const population =
     status === "attend"
       ? 52
