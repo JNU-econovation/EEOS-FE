@@ -26,6 +26,8 @@ type AttendStatusUser = {
   };
 };
 
+const STATUSES = ["attend", "late", "absent", "nonResponse"] as const;
+
 const TOGGLE: AttendStatusToggle = {
   attend: { type: "attend", text: "참석", color: "green" },
   absent: { type: "absent", text: "불참", color: "red" },
@@ -104,4 +106,4 @@ Object.freeze(LIST);
 Object.freeze(USER);
 Object.freeze(LABEL);
 
-export default { TOGGLE, LIST, USER, LABEL };
+export default { TOGGLE, LIST, USER, LABEL, STATUSES };

@@ -1,19 +1,17 @@
-import AttendeeInfoContainer from "@/components/feature/detail/attendee/AttendeeInfo.container";
+import dynamic from "next/dynamic";
+import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
+import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
 import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
-import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 
-interface ProgramDetailPageProps {
-  params: {
-    programId: string;
-  };
-}
+// import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
+const ProgramDashboardSection = dynamic(
+  () => import("@/components/feature/detail/Dashboard/ProgramDashboardSection"),
+  { ssr: false },
+);
 
-const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
-  const { programId } = params;
-
+const ProgramDetailPage = () => {
   return (
     <div className="mb-16 space-y-16">
       <section className="space-y-8">
@@ -24,8 +22,8 @@ const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
           <ProgramDashboardSection />
         </div>
       </section>
-      <AttendeeInfoContainer programId={+programId} isLoggedIn />
-      <UserAttendModalContainer programId={+programId} isLoggedIn />
+      <AttendeeInfoSection />
+      <UserAttendModalSection isLoggedIn />
     </div>
   );
 };
