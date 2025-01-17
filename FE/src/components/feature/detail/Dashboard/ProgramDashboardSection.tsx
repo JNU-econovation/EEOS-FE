@@ -18,7 +18,7 @@ const ProgramDashboardSection = () => {
       {/* TODO: 현재는 로더가 에러 fallback으로 적용되어있음. 적절하게 변경할 필요 */}
       <ErrorBoundary fallback={<ProgramDashboardSkeleton />}>
         <Suspense fallback={<ProgramDashboardSkeleton />}>
-          <Title text="질문 게시판" />
+          <Title text="질문 게시판" textSize="xl" />
           <div className="mt-4" />
           <TeamsTab programId={programId}>
             {({ teamId, teamName }) => (
