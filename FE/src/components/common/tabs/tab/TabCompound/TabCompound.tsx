@@ -1,6 +1,5 @@
 "use client";
 
-import classNames from "classnames";
 import {
   createContext,
   useContext,
@@ -8,8 +7,11 @@ import {
   ReactNode,
   PropsWithChildren,
 } from "react";
+import TabList from "./compounds/TabList";
+import TabItem from "./compounds/TabItem";
+import TabNakedItem from "./compounds/TabNakedItem";
 
-const tabAlign = {
+export const tabAlign = {
   line: "flex gap-4",
   square: "grid grid-cols-2 gap-4",
 } as const;
@@ -87,54 +89,6 @@ function Tab<T extends string>({
   );
 }
 
-const TabList = ({ children }: PropsWithChildren) => {
-  const { align } = useTab<string>();
-
-  const tabStyle = classNames(
-    tabAlign[align],
-    "w-full overflow-x-scroll scrollbar-hide",
-  );
-
-  return <div className={tabStyle}>{children}</div>;
-};
-
-interface TabItemProps<T extends string> {
-  text: T;
-}
-
-function TabItem<T extends string>({ text }: TabItemProps<T>) {
-  const {
-    selectedItem,
-    setSelectedItem,
-    tabSize,
-    nonPickedColor,
-    pickedColor,
-    rounded,
-  } = useTab<T>();
-
-  const color = text === selectedItem ? pickedColor : nonPickedColor;
-
-  const tabItemStyle = classNames(
-    "flex h-fit w-fit cursor-pointer items-center justify-center border-2 font-semibold",
-    tabColors[color],
-    tabSizes[tabSize],
-    {
-      "rounded-2xl": rounded,
-      "rounded-md": !rounded,
-    },
-  );
-
-  return (
-    <button
-      className={tabItemStyle}
-      onClick={() => setSelectedItem(text)}
-      type="button"
-    >
-      <p>{text}</p>
-    </button>
-  );
-}
-
 interface TabContentProps<T extends string> {
   children: ({ selectedItem }: { selectedItem: T }) => ReactNode;
 }
@@ -147,6 +101,7 @@ function TabContent<T extends string>({ children }: TabContentProps<T>) {
 
 Tab.List = TabList;
 Tab.Item = TabItem;
+Tab.NakedItem = TabNakedItem;
 Tab.Content = TabContent;
 
 export default Tab;

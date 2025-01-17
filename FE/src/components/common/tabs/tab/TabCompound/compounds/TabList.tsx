@@ -1,16 +1,21 @@
-// import classNames from "classnames";
-// import { PropsWithChildren } from "react";
-// import { useTab } from "../TabCompound";
+import { PropsWithChildren } from "react";
+import { tabAlign, useTab } from "../TabCompound";
+import classNames from "classnames";
 
-// const TabList = ({ children }: PropsWithChildren) => {
-//   const { align } = useTab<string>();
+interface TabListProps extends PropsWithChildren {
+  className?: string;
+}
 
-//   const tabStyle = classNames(
-//     tabAlign[align],
-//     "w-full overflow-x-scroll scrollbar-hide",
-//   );
+const TabList = ({ children, className }: TabListProps) => {
+  const { align } = useTab<string>();
 
-//   return <div className={tabStyle}>{children}</div>;
-// };
+  const tabStyle = classNames(
+    tabAlign[align],
+    className,
+    "w-full overflow-x-scroll scrollbar-hide",
+  );
 
-// export default TabList;
+  return <div className={tabStyle}>{children}</div>;
+};
+
+export default TabList;

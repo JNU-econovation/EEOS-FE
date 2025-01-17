@@ -2,6 +2,7 @@
 
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
+import classNames from "classnames";
 
 interface SelectedItemProps {
   teamName: string;
@@ -24,14 +25,14 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
     <Tab<string>
       align="line"
       defaultSelected={`${teams[0].teamName}`}
-      nonPickedColor="gray"
-      pickedColor="navy"
+      nonPickedColor="white"
+      pickedColor="white"
       tabItemList={teamNameArray}
       tabSize="md"
     >
-      <Tab.List>
+      <Tab.List className="gap-0 border-b">
         {teamNameArray.map((name, index) => (
-          <Tab.Item key={`${name}-${index}`} text={name} />
+          <Tab.NakedItem key={`${name}-${index}`} text={name} />
         ))}
       </Tab.List>
       <Tab.Content<string>>
