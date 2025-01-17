@@ -22,7 +22,7 @@ const ProgramDetailPage = () => {
           <ProgramDashboardSection />
         </div>
       </section>
-      <AttendeeInfoSection />
+      {/* <AttendeeInfoSection /> */}
       <UserAttendModalSection isLoggedIn />
     </div>
   );
