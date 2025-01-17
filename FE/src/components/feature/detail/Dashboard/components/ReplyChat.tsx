@@ -10,7 +10,7 @@ const ReplyChat = ({
   accessRight,
 }: ReplyChatProps) => {
   return (
-    <div className="border bg-gray-10 p-4">
+    <div className="rounded-md bg-gray-10 p-4">
       <ChatList
         writer={writer}
         content={content}
