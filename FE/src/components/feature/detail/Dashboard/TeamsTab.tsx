@@ -2,9 +2,6 @@
 
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
-import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
-import { ErrorBoundary } from "react-error-boundary";
-import { Suspense } from "react";
 
 interface SelectedItemProps {
   teamName: string;
