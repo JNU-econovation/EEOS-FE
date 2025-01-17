@@ -1,4 +1,4 @@
-const DashboardContentSekelton = () => {
+const DashboardContentSkelton = () => {
   return (
     <div className="animate-pulse">
       {/* <div className="mt-8" /> */}
@@ -35,4 +35,4 @@ const DashboardContentSekelton = () => {
   );
 };
 
-export default DashboardContentSekelton;
+export default DashboardContentSkelton;

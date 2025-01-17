@@ -8,7 +8,7 @@ import TeamsTab from "@/components/feature/detail/Dashboard/TeamsTab";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
-import DashboardContentSkeleton from "./components/DashboardContent.skeleton";
+import DashboardContentSkeleton from "./components/DashboardContentSkelton";
 
 const ProgramDashboardSection = () => {
   const programId = useGetProgramId();

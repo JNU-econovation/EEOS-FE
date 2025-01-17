@@ -1,4 +1,4 @@
-import DashboardContentSekelton from "./components/DashboardContent.skeleton";
+import DashboardContentSkelton from "./components/DashboardContentSkelton";
 
 const ProgramDashboardSkeleton = () => {
   return (
@@ -17,7 +17,7 @@ const ProgramDashboardSkeleton = () => {
         <div className="h-8 w-28 rounded-lg bg-slate-200" />
       </div>
 
-      <DashboardContentSekelton />
+      <DashboardContentSkelton />
     </div>
   );
 };
