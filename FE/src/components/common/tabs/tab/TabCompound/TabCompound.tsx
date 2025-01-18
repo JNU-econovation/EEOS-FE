@@ -53,7 +53,7 @@ export function useTab<T extends string>(): TabContextType<T> {
 
 interface TabProps<T extends string> extends PropsWithChildren {
   defaultSelected: T;
-  tabItemList: T[];
+  tabItemList?: T[];
   align: keyof typeof tabAlign;
   tabSize: keyof typeof tabSizes;
   nonPickedColor: keyof typeof tabColors;

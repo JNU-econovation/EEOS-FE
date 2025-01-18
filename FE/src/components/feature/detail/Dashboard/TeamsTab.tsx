@@ -31,7 +31,7 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
     >
       <Tab.List className="gap-0 border-b">
         {teamNameArray.map((name, index) => (
-          <Tab.NakedItem key={`${name}-${index}`} text={name} />
+          <Tab.NakedItem key={`${name}-${index}`} text={name} value={name} />
         ))}
       </Tab.List>
       <Tab.Content<string>>

@@ -1,14 +1,17 @@
 import classNames from "classnames";
-import { tabColors, tabSizes, useTab } from "../TabCompound";
+import { tabSizes, useTab } from "../TabCompound";
 
 interface TabItemProps<T extends string> {
-  text: T;
+  text: string;
+  value: T;
 }
 
-function TabNakedItem<T extends string>({ text }: TabItemProps<T>) {
+function TabNakedItem<T extends string>({ text, value }: TabItemProps<T>) {
   const { selectedItem, setSelectedItem, tabSize } = useTab<T>();
 
-  const border = text === selectedItem ? "border-black" : "border-transparent";
+  const isSelected = value === selectedItem;
+
+  const border = isSelected ? "border-black" : "border-transparent";
 
   const tabItemStyle = classNames(
     "flex h-fit w-fit translate-y-px cursor-pointer items-center justify-center border-b-2 border-black font-semibold text-black transition-all",
@@ -19,7 +22,7 @@ function TabNakedItem<T extends string>({ text }: TabItemProps<T>) {
   return (
     <button
       className={tabItemStyle}
-      onClick={() => setSelectedItem(text)}
+      onClick={() => setSelectedItem(value)}
       type="button"
     >
       <p>{text}</p>
