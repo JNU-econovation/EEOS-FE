@@ -15,7 +15,7 @@ const ProgramDetailPage = () => {
       <AttendeeInfoSection />
       <div className="mt-12" />
       <ProgramDashboardSection />
-      <div className="mb-16" />
+      <div className="mt-24" />
     </section>
   );
 };

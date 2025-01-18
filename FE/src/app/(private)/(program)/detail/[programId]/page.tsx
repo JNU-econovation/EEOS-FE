@@ -6,13 +6,15 @@ import ProgramDashboardSection from "@/components/feature/detail/Dashboard/Progr
 
 const ProgramDetailPage = () => {
   return (
-    <div className="mb-16 space-y-16">
-      <section className="space-y-8">
+    <div>
+      <section>
         <ProgramHeaderSection />
         <ProgramDetailSection />
+        <div className="mt-12" />
         <AttendeeInfoSection />
         <div className="mt-12" />
         <ProgramDashboardSection />
+        <div className="mt-24" />
       </section>
       <UserAttendModalSection isLoggedIn />
     </div>
