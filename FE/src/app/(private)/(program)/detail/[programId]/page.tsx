@@ -17,12 +17,12 @@ const ProgramDetailPage = () => {
       <section className="space-y-8">
         <ProgramHeaderSection />
         <ProgramDetailSection />
+        <AttendeeInfoSection />
         <ProgramPresentationsSection />
         <div className="mt-12">
           <ProgramDashboardSection />
         </div>
       </section>
-      {/* <AttendeeInfoSection /> */}
       <UserAttendModalSection isLoggedIn />
     </div>
   );
