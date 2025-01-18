@@ -17,12 +17,11 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    if (!response.ok) {
+    if (!response.ok)
       throw new Error(`GitHub API responded with status ${response.status}`);
-    }
 
     const data = await response.json();
-    const responseDatas = data
+    const responseData = data
       .filter((item) => item.name !== "README.md")
       .map((item) => ({
         name: item.name.split(".")[0],
@@ -30,26 +29,25 @@ export async function GET(req: NextRequest) {
       }));
 
     return NextResponse.json(
-      {
-        data: responseDatas,
-      },
+      { responseData },
       {
         status: 200,
       },
     );
   } catch (error) {
+    console.log("깃허브 요청 에러");
     console.error(error);
-    // return NextResponse.json(
-    //   { error: "깃허브 요청 중 문제가 발생했습니다. 다시 시도해주세요." },
-    //   { status: 500 },
-    // );
     return NextResponse.json(
-      {
-        data: [],
-      },
-      {
-        status: 200,
-      },
+      { error: "깃허브 요청 중 문제가 발생했습니다. 다시 시도해주세요." },
+      { status: 500 },
     );
+    // return NextResponse.json(
+    //   {
+    //     data: [],
+    //   },
+    //   {
+    //     status: 200,
+    //   },
+    // );
   }
 }
