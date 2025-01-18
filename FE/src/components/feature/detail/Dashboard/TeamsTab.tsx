@@ -1,7 +1,12 @@
+// TODO: 링크가 있을 때 호버시 글씨가 뜨도록 수정
+
 "use client";
 
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
+import { Hyperlink, HyperlinkGray } from "@/components/icons";
+import usePresentations from "@/hooks/query/usePresentations";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
+import Link from "next/link";
 
 interface SelectedItemProps {
   teamName: string;
@@ -14,6 +19,7 @@ interface TeamsTabProps {
 }
 const TeamsTab = ({ programId, children }: TeamsTabProps) => {
   const { data: teamsQueryData } = useTeamQuery(programId);
+  const { data: presentation } = usePresentations(programId);
 
   const { teams } = teamsQueryData;
   if (teams.length === 0) return null;
@@ -31,7 +37,27 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
     >
       <Tab.List className="gap-0 border-b">
         {teamNameArray.map((name, index) => (
-          <Tab.NakedItem key={`${name}-${index}`} text={name} value={name} />
+          <Tab.NakedItem key={`${name}-${index}`} text={name} value={name}>
+            {presentation?.find(
+              ({ name: presentationItemName }) => presentationItemName === name,
+            )?.download_url ? (
+              <Link
+                href={
+                  presentation?.find(
+                    ({ name: presentationItemName }) =>
+                      presentationItemName === name,
+                  )?.download_url
+                    ? presentation.find(({ name }) => name === name)
+                        .download_url
+                    : "#!"
+                }
+              >
+                <Hyperlink />
+              </Link>
+            ) : (
+              <HyperlinkGray />
+            )}
+          </Tab.NakedItem>
         ))}
       </Tab.List>
       <Tab.Content<string>>

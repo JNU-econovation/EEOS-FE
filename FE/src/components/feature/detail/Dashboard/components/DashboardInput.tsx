@@ -3,6 +3,7 @@
 import { PostQuestionParams } from "@/apis/question";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
+import { Send } from "@/components/icons";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import dashboardAtoms from "@/store/dashboardAtoms";
@@ -98,13 +99,10 @@ const DashboardInput = ({
           onChange={(e) => setQuestionInput(e.target.value)}
         />
         <button
-          className="absolute right-4 top-1/2 -translate-y-1/2"
+          className="absolute right-8 top-1/2 -translate-y-1/2"
           onClick={handlePostQuestion}
         >
-          <StatusToggleItem
-            color={isAbleToPost ? "green" : "gray"}
-            text="전송"
-          />
+          <Send />
         </button>
       </div>
     </div>

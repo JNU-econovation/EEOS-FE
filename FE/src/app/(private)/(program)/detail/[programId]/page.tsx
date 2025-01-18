@@ -3,7 +3,7 @@ import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeIn
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
-import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
+// import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 
 // import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 const ProgramDashboardSection = dynamic(
@@ -18,10 +18,9 @@ const ProgramDetailPage = () => {
         <ProgramHeaderSection />
         <ProgramDetailSection />
         <AttendeeInfoSection />
-        <ProgramPresentationsSection />
-        <div className="mt-12">
-          <ProgramDashboardSection />
-        </div>
+        {/* <ProgramPresentationsSection /> */}
+        <div className="mt-12" />
+        <ProgramDashboardSection />
       </section>
       <UserAttendModalSection isLoggedIn />
     </div>
