@@ -9,7 +9,7 @@ import {
 } from "react";
 import TabList from "./compounds/TabList";
 import TabItem from "./compounds/TabItem";
-import TabNakedItem from "./compounds/TabNakedItem";
+import NakedTabItem from "./compounds/NakedTabItem";
 
 export const tabAlign = {
   line: "flex gap-4",
@@ -101,7 +101,7 @@ function TabContent<T extends string>({ children }: TabContentProps<T>) {
 
 Tab.List = TabList;
 Tab.Item = TabItem;
-Tab.NakedItem = TabNakedItem;
+Tab.NakedItem = NakedTabItem;
 Tab.Content = TabContent;
 
 export default Tab;

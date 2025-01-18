@@ -7,7 +7,7 @@ interface TabItemProps<T extends string> extends PropsWithChildren {
   value: T;
 }
 
-function TabNakedItem<T extends string>({
+function NakedTabItem<T extends string>({
   text,
   value,
   children,
@@ -36,4 +36,4 @@ function TabNakedItem<T extends string>({
   );
 }
 
-export default TabNakedItem;
+export default NakedTabItem;
