@@ -1,6 +1,9 @@
+"use client";
+
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 import { AttendStatus } from "@/types/member";
+import AttendeeTabNumberBadge from "./AttendeeTabNumberBadge";
 
 interface AttendeeTabProps {
   children?: (selectedItem: { status: AttendStatus }) => JSX.Element;
@@ -21,7 +24,9 @@ const AttendeeTab = ({ children }: AttendeeTabProps) => {
             key={`${status}-${index}`}
             text={ATTEND_STATUS.LIST[status].text}
             value={status}
-          />
+          >
+            <AttendeeTabNumberBadge status={status} />
+          </Tab.NakedItem>
         ))}
       </Tab.List>
       <Tab.Content<AttendStatus>>

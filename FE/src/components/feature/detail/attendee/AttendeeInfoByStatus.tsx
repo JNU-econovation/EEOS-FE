@@ -1,17 +1,18 @@
 import { useQueryClient } from "@tanstack/react-query";
 import AttendeeInfoLoader from "./AttendeeInfo.loader";
-import AttendeeStatus from "./AttendeeStatus";
 import MemberList from "@/components/common/MemberList";
 import { useGetProgramMembersByAttend } from "@/hooks/query/useMemberQuery";
 import { AttendStatus } from "@/types/member";
 import { ProgramType } from "@/types/program";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
 interface AttendeeInfoProps {
   programId: number;
   status: AttendStatus;
 }
 
-const AttendeeInfoByStatus = ({ programId, status }: AttendeeInfoProps) => {
+const AttendeeInfoByStatus = ({ status }: AttendeeInfoProps) => {
+  const programId = useGetProgramId();
   const queryClient = useQueryClient();
 
   const {
@@ -19,7 +20,7 @@ const AttendeeInfoByStatus = ({ programId, status }: AttendeeInfoProps) => {
     isLoading,
     isError,
   } = useGetProgramMembersByAttend({
-    programId: programId,
+    programId,
     status,
   });
 
@@ -34,15 +35,6 @@ const AttendeeInfoByStatus = ({ programId, status }: AttendeeInfoProps) => {
   const isRender =
     programType === "demand" && status === "nonResponse" ? false : true;
 
-  return (
-    <>
-      {isRender && (
-        <div>
-          <AttendeeStatus status={status} members={members} />
-          <MemberList members={members} />
-        </div>
-      )}
-    </>
-  );
+  return <>{isRender && <MemberList members={members} />}</>;
 };
 export default AttendeeInfoByStatus;

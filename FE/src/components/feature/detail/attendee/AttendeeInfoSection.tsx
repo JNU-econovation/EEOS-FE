@@ -13,6 +13,7 @@ const AttendeeInfoSection = () => {
   return (
     <section>
       <Title text="출석 현황" textSize="xl" />
+      <div className="mt-4" />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AttendeeTab>
           {({ status }) => (
@@ -24,18 +25,6 @@ const AttendeeInfoSection = () => {
           )}
         </AttendeeTab>
       </ErrorBoundary>
-
-      {/* <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <div className="space-y-16">
-          {ATTEND_STATUS.STATUSES.map((status) => (
-            <AttendeeInfoByStatus
-              key={status}
-              programId={programId}
-              status={status}
-            />
-          ))}
-        </div>
-      </ErrorBoundary> */}
     </section>
   );
 };

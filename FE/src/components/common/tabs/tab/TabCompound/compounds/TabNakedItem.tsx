@@ -1,12 +1,17 @@
 import classNames from "classnames";
 import { tabSizes, useTab } from "../TabCompound";
+import { PropsWithChildren } from "react";
 
-interface TabItemProps<T extends string> {
+interface TabItemProps<T extends string> extends PropsWithChildren {
   text: string;
   value: T;
 }
 
-function TabNakedItem<T extends string>({ text, value }: TabItemProps<T>) {
+function TabNakedItem<T extends string>({
+  text,
+  value,
+  children,
+}: TabItemProps<T>) {
   const { selectedItem, setSelectedItem, tabSize } = useTab<T>();
 
   const isSelected = value === selectedItem;
@@ -14,7 +19,7 @@ function TabNakedItem<T extends string>({ text, value }: TabItemProps<T>) {
   const border = isSelected ? "border-black" : "border-transparent";
 
   const tabItemStyle = classNames(
-    "flex h-fit w-fit translate-y-px cursor-pointer items-center justify-center border-b-2 border-black font-semibold text-black transition-all",
+    "flex h-fit w-fit translate-y-px cursor-pointer items-center justify-center gap-2 border-b-2 border-black font-semibold text-black transition-all",
     tabSizes[tabSize],
     border,
   );
@@ -26,6 +31,7 @@ function TabNakedItem<T extends string>({ text, value }: TabItemProps<T>) {
       type="button"
     >
       <p>{text}</p>
+      {children && children}
     </button>
   );
 }
