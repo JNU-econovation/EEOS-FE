@@ -13,7 +13,7 @@ interface AttendeeInfoProps {
 
 const AttendeeInfoByStatus = ({ status }: AttendeeInfoProps) => {
   const programId = useGetProgramId();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const {
     data: members,
@@ -27,14 +27,14 @@ const AttendeeInfoByStatus = ({ status }: AttendeeInfoProps) => {
   if (isLoading) return <AttendeeInfoLoader />;
   if (isError) return <></>;
 
-  const programType = queryClient.getQueryData<ProgramType>([
-    "programType",
-    programId,
-  ]);
+  // const programType = queryClient.getQueryData<ProgramType>([
+  //   "programType",
+  //   programId,
+  // ]);
 
-  const isRender =
-    programType === "demand" && status === "nonResponse" ? false : true;
+  // const isRender =
+  //   programType === "demand" && status === "nonResponse" ? false : true;
 
-  return <>{isRender && <MemberList members={members} />}</>;
+  return <MemberList members={members} />;
 };
 export default AttendeeInfoByStatus;

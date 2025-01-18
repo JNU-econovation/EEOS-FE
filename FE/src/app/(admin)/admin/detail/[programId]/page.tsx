@@ -2,7 +2,6 @@ import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeIn
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import ProgramAttendModeManageSection from "@/components/feature/detail/program/ProgramAttendStatusManageSection";
-import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
 import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 
 const ProgramDetailPage = () => {
@@ -12,12 +11,10 @@ const ProgramDetailPage = () => {
         <ProgramHeaderSection />
         <ProgramDetailSection />
         <ProgramAttendModeManageSection />
-        <ProgramPresentationsSection />
-        <div className="mt-12">
-          <ProgramDashboardSection />
-        </div>
+        <AttendeeInfoSection />
+        <div className="mt-12" />
+        <ProgramDashboardSection />
       </section>
-      <AttendeeInfoSection />
     </div>
   );
 };

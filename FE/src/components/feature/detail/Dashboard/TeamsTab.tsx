@@ -55,7 +55,9 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
                 <Hyperlink />
               </Link>
             ) : (
-              <HyperlinkGray />
+              <div className="cursor-not-allowed">
+                <HyperlinkGray />
+              </div>
             )}
           </Tab.NakedItem>
         ))}
