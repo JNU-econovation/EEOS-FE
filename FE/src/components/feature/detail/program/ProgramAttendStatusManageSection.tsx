@@ -56,10 +56,10 @@ const ProgramAttendModeManageSection = () => {
   return (
     <>
       <section>
-        <Title text="출석 체크 관리하기" />
-        <div className="mt-4" />
-        <div className="flex items-center justify-between rounded-2xl bg-slate-50 p-8">
-          <p className="text-xl font-semibold">출석 체크 상태</p>
+        <Title text="출석 체크 관리하기" textSize="xl" />
+        <div className="mt-8" />
+        <div className="flex items-center justify-between rounded-2xl bg-slate-50 px-10 py-8">
+          <p className="text-lg font-semibold">출석 체크 상태</p>
           <div className={toggleBarStyle}>
             <div className={"flex rounded-full border bg-gray-10"}>
               {/* TODO: switch 로직 짜기 */}
