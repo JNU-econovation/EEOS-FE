@@ -1,5 +1,3 @@
-// TODO: 링크가 있을 때 호버시 글씨가 뜨도록 수정
-
 "use client";
 
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
@@ -51,6 +49,7 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
                         .download_url
                     : "#!"
                 }
+                target="_blank"
               >
                 <Hyperlink />
               </Link>
