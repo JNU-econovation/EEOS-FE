@@ -18,7 +18,7 @@ const AttendeeTab = ({ children }: AttendeeTabProps) => {
       pickedColor="white"
       tabSize="md"
     >
-      <Tab.List className="gap-0 border-b">
+      <Tab.List className="!gap-0 border-b">
         {ATTEND_STATUS.STATUSES.map((status, index) => (
           <Tab.NakedItem
             key={`${status}-${index}`}

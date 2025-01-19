@@ -19,7 +19,7 @@ function NakedTabItem<T extends string>({
   const border = isSelected ? "border-black" : "border-transparent";
 
   const tabItemStyle = classNames(
-    "flex h-fit w-fit translate-y-px cursor-pointer items-center justify-center gap-2 border-b-2 border-black font-semibold text-black transition-all",
+    "relative flex h-fit w-fit cursor-pointer items-center justify-center gap-2 border-b-2 border-black font-semibold text-black transition-all",
     tabSizes[tabSize],
     border,
   );

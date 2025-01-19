@@ -35,7 +35,7 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
       tabItemList={teamNameArray}
       tabSize="md"
     >
-      <Tab.List className="gap-0 border-b">
+      <Tab.List className="!gap-0 border-b">
         {teamNameArray.map((name, index) => (
           <Tab.NakedItem key={`${name}-${index}`} text={name} value={name}>
             {presentation?.find(
