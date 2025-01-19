@@ -3,19 +3,29 @@
 import { useRouter } from "next/navigation";
 import ROUTES from "@/constants/ROUTES";
 import useAuth from "@/hooks/useAuth";
+import { PropsWithChildren } from "react";
 
-interface AuthValidateProps {
+interface AuthValidateProps extends PropsWithChildren {
   isHaveToLoggedInRoute?: boolean;
 }
 
-const AuthValidate = ({ isHaveToLoggedInRoute = true }: AuthValidateProps) => {
+const AuthValidate = ({
+  isHaveToLoggedInRoute = true,
+  children,
+}: AuthValidateProps) => {
   const router = useRouter();
   const { isLoggedIn, isLoading } = useAuth();
 
   if (isLoading) return null;
-  if (isHaveToLoggedInRoute && !isLoggedIn) router.push(ROUTES.LOGIN);
-  if (!isHaveToLoggedInRoute && isLoggedIn) router.push(ROUTES.MAIN);
+  if (isHaveToLoggedInRoute && !isLoggedIn) {
+    router.push(ROUTES.LOGIN);
+    return null;
+  }
+  if (!isHaveToLoggedInRoute && isLoggedIn) {
+    router.push(ROUTES.MAIN);
+    return null;
+  }
 
-  return <></>;
+  return <>{children}</>;
 };
 export default AuthValidate;
