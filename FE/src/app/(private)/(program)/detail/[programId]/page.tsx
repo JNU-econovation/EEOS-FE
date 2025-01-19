@@ -1,28 +1,21 @@
-import dynamic from "next/dynamic";
 import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
-import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
-
-// import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
-const ProgramDashboardSection = dynamic(
-  () => import("@/components/feature/detail/Dashboard/ProgramDashboardSection"),
-  { ssr: false },
-);
+import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 
 const ProgramDetailPage = () => {
   return (
-    <div className="mb-16 space-y-16">
-      <section className="space-y-8">
+    <div>
+      <section>
         <ProgramHeaderSection />
         <ProgramDetailSection />
-        <ProgramPresentationsSection />
-        <div className="mt-12">
-          <ProgramDashboardSection />
-        </div>
+        <div className="mt-12" />
+        <AttendeeInfoSection />
+        <div className="mt-12" />
+        <ProgramDashboardSection />
+        <div className="mt-24" />
       </section>
-      <AttendeeInfoSection />
       <UserAttendModalSection isLoggedIn />
     </div>
   );

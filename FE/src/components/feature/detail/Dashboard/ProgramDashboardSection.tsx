@@ -8,7 +8,8 @@ import TeamsTab from "@/components/feature/detail/Dashboard/TeamsTab";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
-import DashboardContentSkeleton from "./components/DashboardContent.skeleton";
+import DashboardContentSkeleton from "./components/DashboardContentSkelton";
+import { Hyperlink } from "@/components/icons";
 
 const ProgramDashboardSection = () => {
   const programId = useGetProgramId();
@@ -18,11 +19,23 @@ const ProgramDashboardSection = () => {
       {/* TODO: 현재는 로더가 에러 fallback으로 적용되어있음. 적절하게 변경할 필요 */}
       <ErrorBoundary fallback={<ProgramDashboardSkeleton />}>
         <Suspense fallback={<ProgramDashboardSkeleton />}>
-          <Title text="질문 게시판" />
+          <div className="flex items-center gap-4">
+            <Title text="질문 게시판" textSize="xl" />
+            <div className="flex items-center gap-1 text-sm text-gray-30">
+              <span>링크(</span>
+              <Hyperlink />
+              <span>) 를 클릭하여 발표자료를 확인하세요.</span>
+            </div>
+          </div>
           <div className="mt-4" />
           <TeamsTab programId={programId}>
             {({ teamId, teamName }) => (
-              <div className="mt-8 flex flex-col gap-8">
+              <>
+                <DashboardInput
+                  programId={programId}
+                  selectedTeamId={teamId}
+                  selectedTeamName={teamName}
+                />
                 {/* TODO: 현재는 로더가 에러 fallback으로 적용되어있음. 적절하게 변경할 필요 */}
                 <ErrorBoundary fallback={<DashboardContentSkeleton />}>
                   <Suspense fallback={<DashboardContentSkeleton />}>
@@ -32,12 +45,7 @@ const ProgramDashboardSection = () => {
                     />
                   </Suspense>
                 </ErrorBoundary>
-                <DashboardInput
-                  programId={programId}
-                  selectedTeamId={teamId}
-                  selectedTeamName={teamName}
-                />
-              </div>
+              </>
             )}
           </TeamsTab>
         </Suspense>

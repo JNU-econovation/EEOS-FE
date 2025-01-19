@@ -121,9 +121,7 @@ const ChatBox = ({
 
   return (
     <>
-      <div className="relative my-4 h-2 w-fit translate-y-4 bg-emerald-300">
-        <p className="w-fit -translate-y-4 text-lg font-semibold">{writer}</p>
-      </div>
+      <p className="w-fit text-lg font-semibold">{writer}</p>
       <div>
         {!isModifyMode && (
           <MarkdownViewer value={defaultContent} className={markdownStyle} />
@@ -131,7 +129,7 @@ const ChatBox = ({
       </div>
       {isModifyMode && (
         <textarea
-          className="mt-4 h-40 w-full rounded-sm border-2 p-4 text-lg"
+          className="mt-4 h-40 w-full rounded-sm p-4 text-lg"
           value={userInputToModify}
           onChange={(e) => setUserInputToModify(e.target.value)}
         />

@@ -13,7 +13,7 @@ const Chat = ({
   accessRight,
 }: Comment) => {
   return (
-    <div className="border p-4">
+    <div className="border-b p-4">
       <ChatList
         showReplyButton={true}
         markdownStyle=""
@@ -23,11 +23,12 @@ const Chat = ({
         time={time}
         content={content}
       />
-      <div className="mt-8 px-14">
+      <div className="mt-8" />
+      <div className="overflow-hidden rounded-md">
         {answers && (
           <>
-            {answers.map((props) => (
-              <ReplyChat key={props.commentId} {...props} />
+            {answers.map((props, index) => (
+              <ReplyChat key={props.commentId} index={index} {...props} />
             ))}
           </>
         )}

@@ -1,10 +1,10 @@
-const DashboardContentSekelton = () => {
+const DashboardContentSkelton = () => {
   return (
     <div className="animate-pulse">
-      <div className="mt-8" />
+      {/* <div className="mt-8" /> */}
 
-      <div className="flex flex-col gap-3 rounded-lg bg-slate-50 p-8 opacity-70">
-        <div className="h-4 w-40 rounded-lg bg-slate-200" />
+      <div className="flex flex-col gap-3 rounded-lg p-5 opacity-70">
+        <div className="h-4 w-28 rounded-lg bg-slate-200" />
         <div className="mt-1" />
         <div className="h-4 rounded-lg bg-slate-200" />
         <div className="h-4 rounded-lg bg-slate-200" />
@@ -19,7 +19,7 @@ const DashboardContentSekelton = () => {
 
         <div className="mt-4" />
 
-        <div className="h-4 w-40 rounded-lg bg-slate-200" />
+        <div className="h-4 w-28 rounded-lg bg-slate-200" />
         <div className="mt-1" />
         <div className="h-4 rounded-lg bg-slate-200" />
         <div className="h-4 rounded-lg bg-slate-200" />
@@ -35,4 +35,4 @@ const DashboardContentSekelton = () => {
   );
 };
 
-export default DashboardContentSekelton;
+export default DashboardContentSkelton;
