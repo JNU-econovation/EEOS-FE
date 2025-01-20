@@ -26,6 +26,7 @@ const ERROR_CODE = {
     NO_ACCESS_TOKEN: "4000",
     EXPIRED_ACCESS_TOKEN: "4001",
     NOT_EXIST_OAUTH_SERVER: "4002",
+    INVALID_TOKEN: "4003",
     NO_REFRESH_TOKEN: "4004",
     EXPIRED_REFRESH_TOKEN: "4005",
     INVALID_NAME: "4006",
@@ -37,7 +38,7 @@ const ERROR_CODE = {
     NOT_JOINABLE: "6003",
     COMPLETED: "6010",
   },
-};
+} as const;
 
 Object.freeze(ERROR_CODE);
 

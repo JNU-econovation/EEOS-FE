@@ -19,6 +19,14 @@ const https = axios.create({
   withCredentials: true,
 });
 
+const authInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+});
+
 https.interceptors.request.use(
   async (config) => {
     if (typeof window === "undefined") return config;
@@ -34,9 +42,17 @@ https.interceptors.request.use(
     );
 
     if (timeToExpiration < TOKEN_REISSUE_THRESHOLD) {
-      const { accessToken, accessExpiredTime } = await postTokenReissue();
-      setAccessToken(accessToken);
-      setTokenExpiration(accessExpiredTime);
+      try {
+        const { accessToken, accessExpiredTime } = await postTokenReissue();
+        setAccessToken(accessToken);
+        setTokenExpiration(accessExpiredTime);
+      } catch (e) {
+        deleteTokenInfo();
+        // alert("다시 로그인해주세요 ;)");
+        // setTimeout(() => {
+        //   window.location.href = "/login";
+        // }, 3000);
+      }
     }
 
     config.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -88,4 +104,4 @@ https.interceptors.response.use(
   },
 );
 
-export { https };
+export { https, authInstance };
