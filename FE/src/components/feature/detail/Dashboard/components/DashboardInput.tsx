@@ -2,7 +2,6 @@
 
 import { PostQuestionParams } from "@/apis/question";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
-import StatusToggleItem from "@/components/common/StatusToggleItem";
 import { Send } from "@/components/icons";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
