@@ -10,6 +10,7 @@ import {
   setAccessToken,
   setTokenExpiration,
 } from "@/utils/authWithStorage";
+import ROUTES from "@/constants/ROUTES";
 
 const https = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
@@ -48,6 +49,13 @@ https.interceptors.request.use(
         setTokenExpiration(accessExpiredTime);
       } catch (e) {
         deleteTokenInfo();
+        toast.error(ERROR_MESSAGE[ERROR_CODE.AUTH.INVALID_TOKEN].message, {
+          toastId: ERROR_CODE.AUTH.INVALID_TOKEN,
+        });
+
+        setTimeout(() => {
+          window.location.href = ROUTES.LOGIN;
+        }, 3000);
       }
     }
 
@@ -74,7 +82,7 @@ https.interceptors.response.use(
         toastId: errorCode,
       });
       setTimeout(() => {
-        window.location.href = "/login";
+        window.location.href = ROUTES.LOGIN;
       }, 3000);
     }
 
