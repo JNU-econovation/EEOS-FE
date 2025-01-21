@@ -48,10 +48,6 @@ https.interceptors.request.use(
         setTokenExpiration(accessExpiredTime);
       } catch (e) {
         deleteTokenInfo();
-        // alert("다시 로그인해주세요 ;)");
-        // setTimeout(() => {
-        //   window.location.href = "/login";
-        // }, 3000);
       }
     }
 
@@ -71,6 +67,16 @@ https.interceptors.response.use(
     const errorCode = response?.data?.code;
     const errorMessage =
       ERROR_MESSAGE[errorCode]?.message || ERROR_MESSAGE.UNKNOWN.message;
+
+    if (errorCode === ERROR_CODE.AUTH.INVALID_TOKEN) {
+      deleteTokenInfo();
+      toast.error(errorMessage, {
+        toastId: errorCode,
+      });
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 3000);
+    }
 
     if (errorCode === ERROR_CODE.AUTH.EXPIRED_ACCESS_TOKEN) {
       const { accessToken, accessExpiredTime } = await postTokenReissue();
