@@ -48,6 +48,13 @@ https.interceptors.request.use(
         setTokenExpiration(accessExpiredTime);
       } catch (e) {
         deleteTokenInfo();
+        toast.error(ERROR_MESSAGE[ERROR_CODE.AUTH.INVALID_TOKEN].message, {
+          toastId: ERROR_CODE.AUTH.INVALID_TOKEN,
+        });
+
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 3000);
       }
     }
 
