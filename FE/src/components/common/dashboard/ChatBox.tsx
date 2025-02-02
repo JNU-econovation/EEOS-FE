@@ -1,7 +1,7 @@
 "use client";
+import { useGetAccessType } from "@/hooks/useAccess";
 import { useState } from "react";
 import MarkdownViewer from "../markdown/MarkdownViewer";
-import { useGetAccessType } from "@/hooks/useAccess";
 
 export interface ChatBoxInnerData {
   commentId: number;
@@ -135,7 +135,18 @@ const ChatBox = ({
         />
       )}
       <div className="mt-4 flex items-center gap-4">
-        <span className="opacity-60">{time}</span>
+        <span className="opacity-60">
+          {
+            new Date(time)
+              .toLocaleString("ko-KR", {
+                hour12: false,
+                dateStyle: "full",
+                timeStyle: "long",
+              })
+              .toString()
+              .split("GMT")[0]
+          }
+        </span>
         {!isModifyMode && showReplyButton && (
           <>
             {!isGuest && (

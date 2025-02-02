@@ -3,6 +3,7 @@ import {
   ActiveStatus,
   ActiveStatusWithAll,
   AttendStatus,
+  Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
   MemberInfo,
@@ -10,6 +11,7 @@ import {
 import {
   MemberActiveStatusInfoDto,
   MemberAttendStatusInfoDto,
+  MemberDto,
   MemberInfoDto,
 } from "./dtos/member.dto";
 import { https } from "./instance";
@@ -95,4 +97,18 @@ export const deleteMember = async (memberId: number) => {
     method: "DELETE",
   });
   return data?.data;
+};
+
+/**
+ * 해당 프로그램 파이어 핑거 회원 정보 조회
+ */
+export const getFireFingerMembers = async (
+  programId: number,
+): Promise<MemberDto[]> => {
+  const { data } = await https({
+    url: API.MEMBER.FIRE_FINGER(programId),
+    method: "GET",
+  });
+
+  return data?.data.members.map((member: Member) => new MemberDto(member));
 };
