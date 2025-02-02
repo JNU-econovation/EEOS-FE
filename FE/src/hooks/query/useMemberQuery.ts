@@ -113,6 +113,7 @@ export const useGetFireFinger = (programId: number) => {
   return useQuery({
     queryKey: [API.MEMBER.LIST, "fireFinger"],
     queryFn: () => getFireFingerMembers(programId),
-    suspense: true,
+    enabled: !!programId,
+    // suspense: true,
   });
 };
