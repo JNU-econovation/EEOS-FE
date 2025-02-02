@@ -1,6 +1,6 @@
 import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
-import FireFIngerSection from "@/components/feature/detail/fireFinger/FireFingerSection";
+import FireFIngerSection from "@/components/feature/detail/fireFinger/FireFIngerSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
