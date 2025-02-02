@@ -7,9 +7,12 @@ export type AttendStatus =
   | "nonResponse"
   | "nonRelated";
 
-export interface MemberInfo {
+export interface Member {
   memberId: number;
   name: string;
+}
+
+export interface MemberInfo extends Member {
   attendStatus: AttendStatus;
   activeStatus: ActiveStatus;
 }
