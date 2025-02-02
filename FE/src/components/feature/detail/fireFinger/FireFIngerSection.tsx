@@ -20,6 +20,18 @@ const FireFIngerSection = () => {
       </div>
       <div className="mt-8" />
 
+      {data.length === 0 && (
+        <>
+          <p className="text-center text-gray-30">
+            🐦 아직 얼리버드가 없습니다.
+          </p>
+          <div className="mt-2" />
+          <p className="text-center text-gray-30">
+            빠르게 프로그램에 출석하여 얼리버드가 되어보세요! 🔥
+          </p>
+        </>
+      )}
+
       <ul className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5">
         {data.map(({ memberId, name }) => (
           <li
