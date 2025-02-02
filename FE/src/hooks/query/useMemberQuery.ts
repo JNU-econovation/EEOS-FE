@@ -1,7 +1,7 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { MemberActiveStatusInfoDto } from "@/apis/dtos/member.dto";
 import {
   deleteMember,
+  getFireFingerMembers,
   getMembersByActiveStatus,
   getProgramMembersByActiveStatus,
   getProgramMembersByAttendStatus,
@@ -14,6 +14,7 @@ import {
   AttendStatus,
 } from "@/types/member";
 import { ProgramAttendStatus } from "@/types/program";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
   return useQuery({
@@ -106,4 +107,12 @@ export const useDeleteMember = () => {
     },
   });
   return data;
+};
+
+export const useGetFireFinger = (programId: number) => {
+  return useQuery({
+    queryKey: [API.MEMBER.LIST, "fireFinger"],
+    queryFn: () => getFireFingerMembers(programId),
+    suspense: true,
+  });
 };
