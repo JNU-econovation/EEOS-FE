@@ -1,15 +1,15 @@
 "use client";
 
 import Title from "@/components/common/Title/Title";
-import DashboardContent from "./components/DashboardContent";
-import DashboardInput from "./components/DashboardInput";
-import { useGetProgramId } from "@/hooks/usePrograms";
 import TeamsTab from "@/components/feature/detail/Dashboard/TeamsTab";
-import { ErrorBoundary } from "react-error-boundary";
-import { Suspense } from "react";
-import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
-import DashboardContentSkeleton from "./components/DashboardContentSkelton";
 import { Hyperlink } from "@/components/icons";
+import { useGetProgramId } from "@/hooks/usePrograms";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
+import DashboardContent from "./components/DashboardContent";
+import DashboardContentSkeleton from "./components/DashboardContentSkelton";
+import DashboardInput from "./components/DashboardInput";
 
 const ProgramDashboardSection = () => {
   const programId = useGetProgramId();
@@ -27,7 +27,7 @@ const ProgramDashboardSection = () => {
               <span>) 를 클릭하여 발표자료를 확인하세요.</span>
             </div>
           </div>
-          <div className="mt-4" />
+          <div className="mt-8" />
           <TeamsTab programId={programId}>
             {({ teamId, teamName }) => (
               <>
