@@ -1,14 +1,14 @@
+import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import StyledLinkButton from "../../../common/Button/StyledLinkButton";
-import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
 const SlackLoginBtn = () => {
   const clientId = process.env.NEXT_PUBLIC_SLACK_CLIENT_ID;
   const redirectUri = process.env.NEXT_PUBLIC_SLACK_REDIRECT_URI;
   const teamId = process.env.NEXT_PUBLIC_SLACK_TEAM_ID;
 
-  const slackLoginUrl = `https://slack.com/oauth/v2/authorize?client_id=${clientId}&team_id=${teamId}&scope=&user_scope=users.profile:read&redirect_uri=${redirectUri}`;
+  const slackLoginUrl = `https://slack.com/oauth/v2/authorize?client_id=${clientId}&team_id=${teamId}&scope=&user_scope=users.profile:read&redirect_uri=${redirectUri}&prompt=none`;
 
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
