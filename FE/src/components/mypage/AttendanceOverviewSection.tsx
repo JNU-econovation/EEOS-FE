@@ -22,7 +22,10 @@ const AttendanceOverviewSection = () => {
     data: attendanceSummary,
     isLoading: isSummaryLoading,
     isError: isSummaryError,
-  } = useGetUserAttendanceSummary();
+  } = useGetUserAttendanceSummary({
+    startDate,
+    endDate,
+  });
 
   const {
     data: attendanceListData,

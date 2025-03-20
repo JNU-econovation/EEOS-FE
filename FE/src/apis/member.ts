@@ -6,7 +6,7 @@ import {
   Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
-  MemberInfo,
+  MemberInfo
 } from "../types/member";
 import {
   MemberActiveStatusInfoDto,
@@ -141,10 +141,17 @@ export const getUserAttendanceList = async (
 /**
  * 본인의 출결 현황 요약 정보 조회
  */
-export const getUserAttendanceSummary = async () => {
+export const getUserAttendanceSummary = async (
+  startDate: number,
+  endDate: number,
+) => {
   const { data } = await https({
     url: API.MEMBER.ATTENDANCE_SUMMARY,
     method: "GET",
+    params: {
+      startDate,
+      endDate,
+    },
   });
 
   return new UserAttendanceSummaryDto(data?.data);

@@ -47,6 +47,11 @@ interface GetUserAttendanceList {
   page: number;
 }
 
+interface GetUserAttendanceSummary {
+  startDate: number;
+  endDate: number;
+}
+
 export const useGetProgramMembersByActive = ({
   programId,
   status,
@@ -138,12 +143,17 @@ export const useGetUserAttendanceList = ({
   return useQuery({
     queryKey: [API.MEMBER.ATTENDANCE_LIST],
     queryFn: () => getUserAttendanceList(startDate, endDate, size, page),
+    enabled: !!startDate && !!endDate,
   });
 };
 
-export const useGetUserAttendanceSummary = () => {
+export const useGetUserAttendanceSummary = ({
+  startDate,
+  endDate,
+}: GetUserAttendanceSummary) => {
   return useQuery({
     queryKey: [API.MEMBER.ATTENDANCE_SUMMARY],
-    queryFn: () => getUserAttendanceSummary(),
+    queryFn: () => getUserAttendanceSummary(startDate, endDate),
+    enabled: !!startDate && !!endDate,
   });
 };
