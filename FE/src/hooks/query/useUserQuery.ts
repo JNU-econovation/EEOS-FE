@@ -9,11 +9,12 @@ import {
 import API from "@/constants/API";
 import { ActiveStatus, AttendStatus } from "@/types/member";
 
+// 여기
 export const useGetMyActiveStatus = () => {
   return useQuery({
     queryKey: [API.USER.ACTIVE_STATUS],
     queryFn: getMyActiveStatus,
-    suspense: true,
+    // suspense: true,
   });
 };
 
