@@ -13,6 +13,8 @@ import {
   MemberAttendStatusInfoDto,
   MemberDto,
   MemberInfoDto,
+  UserAttendanceListDto,
+  UserAttendanceSummaryDto
 } from "./dtos/member.dto";
 import { https } from "./instance";
 
@@ -111,4 +113,39 @@ export const getFireFingerMembers = async (
   });
 
   return data?.data.members.map((member: Member) => new MemberDto(member));
+};
+
+/**
+ * 본인의 출결 현황 리스트 조회
+ */
+export const getUserAttendanceList = async (
+  startDate: number,
+  endDate: number,
+  size: number,
+  page: number,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_LIST,
+    method: "GET",
+    params: {
+      startDate,
+      endDate,
+      size,
+      page,
+    },
+  });
+
+  return new UserAttendanceListDto(data?.data);
+};
+
+/**
+ * 본인의 출결 현황 요약 정보 조회
+ */
+export const getUserAttendanceSummary = async () => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_SUMMARY,
+    method: "GET",
+  });
+
+  return new UserAttendanceSummaryDto(data?.data);
 };
