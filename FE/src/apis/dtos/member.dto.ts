@@ -5,7 +5,8 @@ import type {
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
   MemberInfo,
-  PageInfo,
+  UserAttendanceInfo,
+  UserAttendanceList,
   UserAttendanceSummary,
 } from "@/types/member";
 import { ProgramStatus } from "@/types/program";
@@ -49,32 +50,13 @@ export class MemberActiveStatusInfoDto extends MemberDto {
   }
 }
 
-class PageInfoDto {
-  public readonly total: number;
-  public readonly current: number;
-  public readonly size: number;
-
-  constructor(data: PageInfo) {
-    this.total = data?.total;
-    this.current = data?.current;
-    this.size = data?.size;
-  }
-}
-
-interface AttendanceInfo {
-  programId: number;
-  title: string;
-  programStatus: ProgramStatus;
-  attendStatus: AttendStatus;
-}
-
 export class AttendanceInfoDto {
   public readonly programId: number;
   public readonly title: string;
   public readonly programStatus: ProgramStatus;
   public readonly attendStatus: AttendStatus;
 
-  constructor(data: AttendanceInfo) {
+  constructor(data: UserAttendanceInfo) {
     this.programId = data.programId;
     this.title = data.title;
     this.programStatus = data.programStatus;
@@ -83,13 +65,17 @@ export class AttendanceInfoDto {
 }
 
 export class UserAttendanceListDto {
-  public readonly pageInfo: PageInfoDto;
-  public readonly attendances: AttendanceInfo[];
+  public readonly size: number;
+  public readonly page: number;
+  public readonly totalPage: number;
+  public readonly attendances: UserAttendanceInfo[];
 
-  constructor(data: any) {
-    this.pageInfo = new PageInfoDto(data?.pageInfo);
-    this.attendances = data?.page.map(
-      (item: AttendanceInfo) => new AttendanceInfoDto(item),
+  constructor(data: UserAttendanceList) {
+    this.size = data.size;
+    this.page = data.page;
+    this.totalPage = data.totalPage;
+    this.attendances = data.contents.map(
+      (item: UserAttendanceInfo) => new AttendanceInfoDto(item),
     );
   }
 }
@@ -101,9 +87,9 @@ export class UserAttendanceSummaryDto {
   public readonly paneltyPoint: number;
 
   constructor(data: UserAttendanceSummary) {
-    this.attendCount = data?.attendCount;
-    this.lateCount = data?.lateCount;
-    this.absentCount = data?.absentCount;
-    this.paneltyPoint = data?.paneltyPoint;
+    this.attendCount = data.attendCount;
+    this.lateCount = data.lateCount;
+    this.absentCount = data.absentCount;
+    this.paneltyPoint = data.paneltyPoint;
   }
 }

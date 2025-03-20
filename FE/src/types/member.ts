@@ -1,3 +1,5 @@
+import { ProgramStatus } from "@/types/program";
+
 export type ActiveStatus = "am" | "rm" | "cm" | "ob";
 export type ActiveStatusWithAll = ActiveStatus | "all";
 export type AttendStatus =
@@ -32,10 +34,18 @@ export interface UserAttendStatusInfo
 export interface SimpleMemberInfo
   extends Omit<MemberInfo, "attendStatus" | "activeStatus"> {}
 
-export interface PageInfo {
-  total: number;
-  current: number;
+export interface UserAttendanceInfo {
+  programId: number;
+  title: string;
+  programStatus: ProgramStatus;
+  attendStatus: AttendStatus;
+}
+
+export interface UserAttendanceList {
   size: number;
+  page: number;
+  totalPage: number;
+  contents: UserAttendanceInfo[];
 }
 
 export interface UserAttendanceSummary {

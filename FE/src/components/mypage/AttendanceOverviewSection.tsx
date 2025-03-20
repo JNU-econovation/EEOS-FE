@@ -58,7 +58,7 @@ const AttendanceOverviewSection = () => {
       />
       <AttendanceTable attendanceList={attendanceListData.attendances} />
       <Paginataion
-        totalPage={attendanceListData.pageInfo.total}
+        totalPage={attendanceListData.totalPage}
         currentPage={page}
         onChange={(newPage: number) => setPage(newPage)}
       />
