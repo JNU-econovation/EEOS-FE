@@ -1,21 +1,13 @@
 import Image from "next/image";
-import UserActiveModal from "./Modal/UserActiveModal";
-import useModal from "@/hooks/useModal";
-import useOutsideRef from "@/hooks/useOutsideRef";
+import { useRouter } from "next/navigation";
 
 const UserBtn = () => {
-  const { isOpen, openModal, closeModal } = useModal();
-  const modalRef = useOutsideRef(closeModal);
-
-  const handleClick = () => {
-    isOpen ? closeModal() : openModal();
-  };
+  const router = useRouter();
 
   return (
     <button
-      ref={modalRef}
       className="relative cursor-pointer"
-      onClick={handleClick}
+      onClick={() => router.push("/mypage")}
     >
       <Image
         src="/icons/user.svg"
@@ -24,7 +16,6 @@ const UserBtn = () => {
         height={28}
         className="h-[28px] w-[28px]"
       />
-      {isOpen && <UserActiveModal />}
     </button>
   );
 };
