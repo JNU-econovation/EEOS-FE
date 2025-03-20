@@ -52,5 +52,5 @@ export interface UserAttendanceSummary {
   attendCount: number;
   lateCount: number;
   absentCount: number;
-  paneltyPoint: number;
+  penaltyPoint: number;
 }

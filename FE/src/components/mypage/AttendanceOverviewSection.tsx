@@ -51,7 +51,7 @@ const AttendanceOverviewSection = () => {
     <section className="flex flex-col gap-4">
       <div className="flex items-center gap-5">
         <span className="text-3xl font-bold">출결 현황</span>
-        <span className="text-lg">{`참석 ${attendanceSummary.attendCount}회 | 지각 ${attendanceSummary.lateCount}회 | 불참 ${attendanceSummary.absentCount}회 | 벌점 ${attendanceSummary.paneltyPoint}점`}</span>
+        <span className="text-lg">{`참석 ${attendanceSummary.attendCount}회 | 지각 ${attendanceSummary.lateCount}회 | 불참 ${attendanceSummary.absentCount}회 | 벌점 ${attendanceSummary.penaltyPoint}점`}</span>
       </div>
       <DateSelector
         startDate={startDate}

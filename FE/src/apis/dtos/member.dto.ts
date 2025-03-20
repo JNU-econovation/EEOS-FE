@@ -84,12 +84,12 @@ export class UserAttendanceSummaryDto {
   public readonly attendCount: number;
   public readonly lateCount: number;
   public readonly absentCount: number;
-  public readonly paneltyPoint: number;
+  public readonly penaltyPoint: number;
 
   constructor(data: UserAttendanceSummary) {
     this.attendCount = data.attendCount;
     this.lateCount = data.lateCount;
     this.absentCount = data.absentCount;
-    this.paneltyPoint = data.paneltyPoint;
+    this.penaltyPoint = data.penaltyPoint;
   }
 }
