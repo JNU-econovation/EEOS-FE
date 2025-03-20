@@ -1,11 +1,11 @@
 import {
-  ProgramType,
-  ProgramSimpleInfo,
-  ProgramInfo,
-  ProgramStatus,
-  ProgramCategory,
   AccessRight,
   ProgramAttendStatus,
+  ProgramCategory,
+  ProgramInfo,
+  ProgramSimpleInfo,
+  ProgramStatus,
+  ProgramType,
 } from "@/types/program";
 
 export class ProgramIdDto {
@@ -72,12 +72,12 @@ export class ProgramListDto {
     size: number;
     page: number;
     totalPage: number;
-    programs: ProgramSimpleInfo[];
+    contents: ProgramSimpleInfo[];
   }) {
     this.size = data?.size;
     this.page = data?.page;
     this.totalPage = data?.totalPage || 1;
-    this.programs = data?.programs.map((program) => {
+    this.programs = data?.contents.map((program) => {
       return new ProgramSimpleInfoDto(program);
     });
   }
