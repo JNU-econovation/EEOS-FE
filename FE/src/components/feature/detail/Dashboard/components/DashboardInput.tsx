@@ -96,6 +96,12 @@ const DashboardInput = ({
           placeholder="질문을 입력해주세요"
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handlePostQuestion();
+            }
+          }}
         />
         <button
           className="absolute right-8 top-1/2 -translate-y-1/2"
