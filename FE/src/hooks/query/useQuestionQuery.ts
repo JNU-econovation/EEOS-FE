@@ -52,7 +52,7 @@ export const usePostQuestion = () => {
         teamId,
         writer: commentType === "ANONYMOUS" ? "익명" : userName,
         accessRight: "edit",
-        time: "방금전",
+        time: +new Date(),
         content: questionContent,
         answers: [],
       };

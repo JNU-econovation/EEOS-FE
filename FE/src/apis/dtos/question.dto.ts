@@ -3,7 +3,7 @@ export interface Comment {
   teamId: number;
   writer: string;
   accessRight: "edit" | "read_only";
-  time: string;
+  time: number;
   content: string;
   answers: Answer[];
 }
@@ -12,7 +12,7 @@ export interface Answer {
   commentId: number;
   writer: string;
   accessRight: "edit" | "read_only";
-  time: string;
+  time: number;
   content: string;
 }
 
