@@ -89,17 +89,16 @@ const DashboardInput = ({
           </label>
         </div>
       )}
-      <div className="mt-2 " />
+      <div className="mt-2" />
       <div className="relative">
         <textarea
           className={`min-h-28 w-full rounded-sm p-4 px-8 pr-40`}
           placeholder="질문을 입력해주세요"
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
-          onKeyDown={(e) => {
+          onKeyDownCapture={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
-              e.stopPropagation();
               handlePostQuestion();
             }
           }}
