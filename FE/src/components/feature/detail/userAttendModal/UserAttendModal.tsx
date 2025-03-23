@@ -17,10 +17,10 @@ interface UserAttendModalProps {
 
 const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   const queryClient = useQueryClient();
-  const { data: userInfo, isLoading } = useGetMyAttendStatus(programId);
+  const { data: userInfo } = useGetMyAttendStatus(programId);
   const { mutate: updateAttendStatus } = usePostMyAttendance(programId);
 
-  if (isLoading) return <AttendStatusModalLoader />;
+  // if (isLoading) return <AttendStatusModalLoader />;
 
   const { attendStatus } = userInfo;
   const attendMode = queryClient.getQueryData<ProgramAttendStatus>([
@@ -31,8 +31,6 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     "programStatus",
     programId,
   ]);
-
-  // if (!attendMode || !programStatus) return null;
 
   const editableStatus = getEditableStatus({
     myAttendStatus: attendStatus,

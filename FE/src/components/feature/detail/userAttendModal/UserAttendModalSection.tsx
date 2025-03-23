@@ -11,6 +11,8 @@ import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
 import { useGetProgramId } from "@/hooks/usePrograms";
 import { Line } from "@/components/icons";
+import { Suspense } from "react";
+import AttendStatusModalLoader from "./AttendStatusModal.loader";
 
 interface UserAttendModalProps {
   isLoggedIn: boolean;
@@ -46,7 +48,9 @@ const UserAttendModalSection = ({ isLoggedIn }: UserAttendModalProps) => {
       </div>
       {isLoggedIn ? (
         <ErrorBoundary FallbackComponent={ErrorFallbackNoIcon}>
-          <UserAttendModal programId={programId} />
+          <Suspense fallback={<AttendStatusModalLoader />}>
+            <UserAttendModal programId={programId} />
+          </Suspense>
         </ErrorBoundary>
       ) : (
         <LoginModal />
