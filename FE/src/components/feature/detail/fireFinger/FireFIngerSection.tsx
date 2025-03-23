@@ -41,7 +41,6 @@ const FireFIngerSection = () => {
             <Frame />
             <div>
               <p>{name}</p>
-              {/* <span className="text-sm text-gray-30">00:00</span> */}
             </div>
           </li>
         ))}
