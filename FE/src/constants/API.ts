@@ -20,6 +20,8 @@ const MEMBER = {
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}/members`,
   FIRE_FINGER: (programId: number) =>
     `/attend/programs/fire-finger/${programId}`,
+  ATTENDANCE_LIST: "/attend/programs",
+  ATTENDANCE_SUMMARY: "/attend/summary",
 };
 
 const USER = {

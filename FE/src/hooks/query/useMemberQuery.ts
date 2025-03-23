@@ -5,6 +5,8 @@ import {
   getMembersByActiveStatus,
   getProgramMembersByActiveStatus,
   getProgramMembersByAttendStatus,
+  getUserAttendanceList,
+  getUserAttendanceSummary,
   updateMemberActiveStatus,
 } from "@/apis/member";
 import API from "@/constants/API";
@@ -28,12 +30,26 @@ interface GetProgramMemebersByActive {
   status: ActiveStatusWithAll;
   programId: number;
 }
+
 interface GetProgramMemebersByAttend {
   status: AttendStatus;
   programId: number;
 }
+
 interface UpdateMemberActiveStatus {
   memberId: number;
+}
+
+interface GetUserAttendanceList {
+  startDate: number;
+  endDate: number;
+  size: number;
+  page: number;
+}
+
+interface GetUserAttendanceSummary {
+  startDate: number;
+  endDate: number;
 }
 
 export const useGetProgramMembersByActive = ({
@@ -115,5 +131,29 @@ export const useGetFireFinger = (programId: number) => {
     queryFn: () => getFireFingerMembers(programId),
     enabled: !!programId,
     // suspense: true,
+  });
+};
+
+export const useGetUserAttendanceList = ({
+  startDate,
+  endDate,
+  size,
+  page,
+}: GetUserAttendanceList) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ATTENDANCE_LIST],
+    queryFn: () => getUserAttendanceList(startDate, endDate, size, page),
+    enabled: !!startDate && !!endDate,
+  });
+};
+
+export const useGetUserAttendanceSummary = ({
+  startDate,
+  endDate,
+}: GetUserAttendanceSummary) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ATTENDANCE_SUMMARY],
+    queryFn: () => getUserAttendanceSummary(startDate, endDate),
+    enabled: !!startDate && !!endDate,
   });
 };

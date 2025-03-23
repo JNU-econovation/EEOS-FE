@@ -5,6 +5,7 @@ import LoginRedirectBtn from "./LoginRedirectBtn";
 import ManageRedirectButton from "./ManageRedirectButton";
 import UserBtn from "./UserBtn";
 import useAuth from "@/hooks/useAuth";
+import LogoutBtn from "@/components/common/header/LogoutButton";
 
 interface HeaderNavSectionProps {
   isAdmin: boolean;
@@ -23,7 +24,14 @@ const HeaderNavSection = ({ isAdmin }: HeaderNavSectionProps) => {
     );
   return (
     <section className="flex w-fit items-center gap-4 sm:gap-8">
-      {isLoggedIn ? <UserBtn /> : <LoginRedirectBtn />}
+      {isLoggedIn ? (
+        <>
+          <UserBtn />
+          <LogoutBtn />
+        </>
+      ) : (
+        <LoginRedirectBtn />
+      )}
     </section>
   );
 };
