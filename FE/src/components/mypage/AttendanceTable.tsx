@@ -30,12 +30,13 @@ const AttendanceTableRow = ({
   title,
   programStatus,
   attendStatus,
+  programId,
 }: AttendanceInfoDto) => {
   return (
     <div className="grid grid-cols-[7.5rem_1fr_7.5rem] items-center justify-center border-b border-stroke-10 px-10  py-6 text-center text-lg">
       <span>{programStatus === "active" ? "진행중" : "완료"}</span>
       <span>{title}</span>
-      <AttendanceBadge attendStatus={attendStatus} programId={1} />
+      <AttendanceBadge attendStatus={attendStatus} programId={programId} />
     </div>
   );
 };
