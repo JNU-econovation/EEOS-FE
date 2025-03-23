@@ -1,4 +1,5 @@
 "use client";
+
 import { useGetAccessType } from "@/hooks/useAccess";
 import { useState } from "react";
 import MarkdownViewer from "../markdown/MarkdownViewer";
@@ -6,7 +7,7 @@ import MarkdownViewer from "../markdown/MarkdownViewer";
 export interface ChatBoxInnerData {
   commentId: number;
   defaultContent: string;
-  time: string;
+  time: number;
   markdownStyle: string;
   showReplyButton: boolean;
   writer: string;
@@ -23,7 +24,7 @@ export interface UpdateComment extends ChatBoxInnerData {
 interface ChatBoxProps {
   writer: string;
   defaultContent: string;
-  time: string;
+  time: number;
   markdownStyle?: string;
   showReplyButton?: boolean;
   accessRight: "edit" | "read_only";

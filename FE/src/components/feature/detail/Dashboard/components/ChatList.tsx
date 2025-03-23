@@ -15,7 +15,7 @@ interface ChatListProps {
   commentId: number;
   writer: string;
   accessRight: "edit" | "read_only";
-  time: string;
+  time: number;
   content: string;
   markdownStyle?: string;
   showReplyButton?: boolean;
