@@ -34,6 +34,7 @@ export const useGetMyAttendStatus = (programId: number) => {
   return useQuery({
     queryKey: [API.USER.ATTEND_STATUS(programId)],
     queryFn: () => getMyAttendStatus(programId),
+    suspense: true,
     staleTime: 1000 * 60 * 5,
   });
 };
@@ -87,6 +88,9 @@ export const usePostMyAttendance = (programId: number) => {
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [API.MEMBER.FIRE_FINGER(programId)],
       });
       const statuses: AttendStatus[] = [
         "attend",

@@ -127,9 +127,11 @@ export const useDeleteMember = () => {
 
 export const useGetFireFinger = (programId: number) => {
   return useQuery({
-    queryKey: [API.MEMBER.LIST, "fireFinger"],
+    queryKey: [API.MEMBER.FIRE_FINGER(programId)],
     queryFn: () => getFireFingerMembers(programId),
     enabled: !!programId,
+    staleTime: 1000 * 60 * 30,
+    cacheTime: 1000 * 60 * 30,
     // suspense: true,
   });
 };

@@ -1,7 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
-import AttendStatusModalLoader from "./AttendStatusModal.loader";
-import AttendStatusView from "./AttendStatusView";
-import AttendToggleLabel from "./AttendToggleLabel";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import MESSAGE from "@/constants/MESSAGE";
 import {
@@ -10,6 +6,9 @@ import {
 } from "@/hooks/query/useUserQuery";
 import { ProgramAttendStatus, ProgramStatus } from "@/types/program";
 import { getEditableStatus } from "@/utils/program";
+import { useQueryClient } from "@tanstack/react-query";
+import AttendStatusView from "./AttendStatusView";
+import AttendToggleLabel from "./AttendToggleLabel";
 
 interface UserAttendModalProps {
   programId: number;
@@ -17,10 +16,8 @@ interface UserAttendModalProps {
 
 const UserAttendModal = ({ programId }: UserAttendModalProps) => {
   const queryClient = useQueryClient();
-  const { data: userInfo, isLoading } = useGetMyAttendStatus(programId);
+  const { data: userInfo } = useGetMyAttendStatus(programId);
   const { mutate: updateAttendStatus } = usePostMyAttendance(programId);
-
-  if (isLoading) return <AttendStatusModalLoader />;
 
   const { attendStatus } = userInfo;
   const attendMode = queryClient.getQueryData<ProgramAttendStatus>([
@@ -31,8 +28,6 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
     "programStatus",
     programId,
   ]);
-
-  // if (!attendMode || !programStatus) return null;
 
   const editableStatus = getEditableStatus({
     myAttendStatus: attendStatus,
