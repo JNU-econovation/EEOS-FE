@@ -141,7 +141,7 @@ export const useGetUserAttendanceList = ({
   page,
 }: GetUserAttendanceList) => {
   return useQuery({
-    queryKey: [API.MEMBER.ATTENDANCE_LIST],
+    queryKey: [API.MEMBER.ATTENDANCE_LIST, startDate, endDate, size, page],
     queryFn: () => getUserAttendanceList(startDate, endDate, size, page),
     enabled: !!startDate && !!endDate,
   });
@@ -152,7 +152,7 @@ export const useGetUserAttendanceSummary = ({
   endDate,
 }: GetUserAttendanceSummary) => {
   return useQuery({
-    queryKey: [API.MEMBER.ATTENDANCE_SUMMARY],
+    queryKey: [API.MEMBER.ATTENDANCE_SUMMARY, startDate, endDate],
     queryFn: () => getUserAttendanceSummary(startDate, endDate),
     enabled: !!startDate && !!endDate,
   });
