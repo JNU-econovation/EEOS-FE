@@ -1,5 +1,5 @@
 import { LoginDto } from "./dtos/auth.dto";
-import { https } from "./instance";
+import { authInstance, https } from "./instance";
 import API from "@/constants/API";
 
 /**
@@ -21,7 +21,7 @@ export const postSlackLogin = async (
  * 토큰 재발급 요청
  */
 export const postTokenReissue = async (): Promise<LoginDto> => {
-  const { data } = await https({
+  const { data } = await authInstance({
     url: API.AUTH.TOKEN_REISSUE,
     method: "POST",
   });

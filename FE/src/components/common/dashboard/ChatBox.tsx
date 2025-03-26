@@ -1,12 +1,13 @@
 "use client";
+
+import { useGetAccessType } from "@/hooks/useAccess";
 import { useState } from "react";
 import MarkdownViewer from "../markdown/MarkdownViewer";
-import { useGetAccessType } from "@/hooks/useAccess";
 
 export interface ChatBoxInnerData {
   commentId: number;
   defaultContent: string;
-  time: string;
+  time: number;
   markdownStyle: string;
   showReplyButton: boolean;
   writer: string;
@@ -23,7 +24,7 @@ export interface UpdateComment extends ChatBoxInnerData {
 interface ChatBoxProps {
   writer: string;
   defaultContent: string;
-  time: string;
+  time: number;
   markdownStyle?: string;
   showReplyButton?: boolean;
   accessRight: "edit" | "read_only";
@@ -121,9 +122,7 @@ const ChatBox = ({
 
   return (
     <>
-      <div className="relative my-4 h-2 w-fit translate-y-4 bg-emerald-300">
-        <p className="w-fit -translate-y-4 text-lg font-semibold">{writer}</p>
-      </div>
+      <p className="w-fit text-lg font-semibold">{writer}</p>
       <div>
         {!isModifyMode && (
           <MarkdownViewer value={defaultContent} className={markdownStyle} />
@@ -131,13 +130,24 @@ const ChatBox = ({
       </div>
       {isModifyMode && (
         <textarea
-          className="mt-4 h-40 w-full rounded-sm border-2 p-4 text-lg"
+          className="mt-4 h-40 w-full rounded-sm p-4 text-lg"
           value={userInputToModify}
           onChange={(e) => setUserInputToModify(e.target.value)}
         />
       )}
       <div className="mt-4 flex items-center gap-4">
-        <span className="opacity-60">{time}</span>
+        <span className="opacity-60">
+          {
+            new Date(time)
+              .toLocaleString("ko-KR", {
+                hour12: false,
+                dateStyle: "full",
+                timeStyle: "long",
+              })
+              .toString()
+              .split("GMT")[0]
+          }
+        </span>
         {!isModifyMode && showReplyButton && (
           <>
             {!isGuest && (

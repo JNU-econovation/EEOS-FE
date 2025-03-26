@@ -9,11 +9,12 @@ import {
 import API from "@/constants/API";
 import { ActiveStatus, AttendStatus } from "@/types/member";
 
+// 여기
 export const useGetMyActiveStatus = () => {
   return useQuery({
     queryKey: [API.USER.ACTIVE_STATUS],
     queryFn: getMyActiveStatus,
-    suspense: true,
+    // suspense: true,
   });
 };
 
@@ -33,6 +34,7 @@ export const useGetMyAttendStatus = (programId: number) => {
   return useQuery({
     queryKey: [API.USER.ATTEND_STATUS(programId)],
     queryFn: () => getMyAttendStatus(programId),
+    suspense: true,
     staleTime: 1000 * 60 * 5,
   });
 };
@@ -86,6 +88,9 @@ export const usePostMyAttendance = (programId: number) => {
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: [API.USER.ATTEND_STATUS(programId)],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [API.MEMBER.FIRE_FINGER(programId)],
       });
       const statuses: AttendStatus[] = [
         "attend",

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CreateForm from "@/components/common/form/program/CreateForm";
 import Title from "@/components/common/Title/Title";
 

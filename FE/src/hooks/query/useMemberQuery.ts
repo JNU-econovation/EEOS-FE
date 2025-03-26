@@ -1,10 +1,12 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { MemberActiveStatusInfoDto } from "@/apis/dtos/member.dto";
 import {
   deleteMember,
+  getFireFingerMembers,
   getMembersByActiveStatus,
   getProgramMembersByActiveStatus,
   getProgramMembersByAttendStatus,
+  getUserAttendanceList,
+  getUserAttendanceSummary,
   updateMemberActiveStatus,
 } from "@/apis/member";
 import API from "@/constants/API";
@@ -14,6 +16,7 @@ import {
   AttendStatus,
 } from "@/types/member";
 import { ProgramAttendStatus } from "@/types/program";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
   return useQuery({
@@ -27,12 +30,26 @@ interface GetProgramMemebersByActive {
   status: ActiveStatusWithAll;
   programId: number;
 }
+
 interface GetProgramMemebersByAttend {
   status: AttendStatus;
   programId: number;
 }
+
 interface UpdateMemberActiveStatus {
   memberId: number;
+}
+
+interface GetUserAttendanceList {
+  startDate: number;
+  endDate: number;
+  size: number;
+  page: number;
+}
+
+interface GetUserAttendanceSummary {
+  startDate: number;
+  endDate: number;
 }
 
 export const useGetProgramMembersByActive = ({
@@ -60,13 +77,7 @@ export const useGetProgramMembersByAttend = ({
     queryKey: [API.MEMBER.ATTEND_STATUS(programId), status],
     queryFn: () => getProgramMembersByAttendStatus(programId, status),
     staleTime: 1000 * 60 * 5,
-    refetchInterval: () => {
-      if (adminAttendStatus === "attend") {
-        return 2000;
-      } else {
-        return false;
-      }
-    },
+    refetchInterval: () => (adminAttendStatus === "attend" ? 2000 : false),
   });
 };
 
@@ -112,4 +123,43 @@ export const useDeleteMember = () => {
     },
   });
   return data;
+};
+
+export const useGetFireFinger = (programId: number) => {
+  return useQuery({
+    queryKey: [API.MEMBER.FIRE_FINGER(programId)],
+    queryFn: () => getFireFingerMembers(programId),
+    enabled: !!programId,
+    staleTime: 1000 * 60 * 30,
+    cacheTime: 1000 * 60 * 30,
+    // suspense: true,
+  });
+};
+
+export const useGetUserAttendanceList = ({
+  startDate,
+  endDate,
+  size,
+  page,
+}: GetUserAttendanceList) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ATTENDANCE_LIST, startDate, endDate, size, page],
+    queryFn: () => getUserAttendanceList(startDate, endDate, size, page),
+    enabled: !!startDate && !!endDate,
+    staleTime: Infinity,
+    keepPreviousData: true,
+  });
+};
+
+export const useGetUserAttendanceSummary = ({
+  startDate,
+  endDate,
+}: GetUserAttendanceSummary) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ATTENDANCE_SUMMARY, startDate, endDate],
+    queryFn: () => getUserAttendanceSummary(startDate, endDate),
+    enabled: !!startDate && !!endDate,
+    staleTime: Infinity,
+    keepPreviousData: true,
+  });
 };

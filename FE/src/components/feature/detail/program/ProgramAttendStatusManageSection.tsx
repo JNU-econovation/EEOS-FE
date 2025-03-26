@@ -12,7 +12,7 @@ import {
 } from "@/hooks/query/useProgramQuery";
 import { useGetProgramId } from "@/hooks/usePrograms";
 
-const ProgramattendModeManageSection = () => {
+const ProgramAttendModeManageSection = () => {
   const programId = useGetProgramId();
 
   const { mutate: updateProgramAttendMode, isLoading } =
@@ -31,13 +31,13 @@ const ProgramattendModeManageSection = () => {
     "cursor-wait opacity-50": isLoading || programStatus === "end",
   });
 
-  const setattendModeToAttend = () => {
+  const setAttendModeToAttend = () => {
     if (programStatus === "end" || attendMode === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("attend");
   };
 
-  const setattendModeToLate = () => {
+  const setAttendModeToLate = () => {
     if (programStatus === "end" || attendMode === "end") return;
     if (attendMode === "non_open") return;
     updateProgramAttendMode("late");
@@ -56,37 +56,37 @@ const ProgramattendModeManageSection = () => {
   return (
     <>
       <section>
-        <Title text="출석 체크 관리하기" />
-        <div className="mt-4" />
-        <div className="flex items-center justify-between rounded-2xl bg-slate-50 p-8">
-          <p className="text-xl font-semibold">출석 체크 상태</p>
+        <Title text="출석 체크 관리하기" textSize="xl" />
+        <div className="mt-8" />
+        <div className="flex items-center justify-between rounded-2xl bg-slate-50 px-10 py-8">
+          <p className="text-lg font-semibold">출석 체크 상태</p>
           <div className={toggleBarStyle}>
             <div className={"flex rounded-full border bg-gray-10"}>
               {/* TODO: switch 로직 짜기 */}
               {attendMode === "attend" ? (
                 <>
-                  <button onClick={setattendModeToAttend} disabled={isLoading}>
+                  <button onClick={setAttendModeToAttend} disabled={isLoading}>
                     <StatusToggleItem color="green" text="참석" />
                   </button>
-                  <button onClick={setattendModeToLate} disabled={isLoading}>
+                  <button onClick={setAttendModeToLate} disabled={isLoading}>
                     <StatusToggleItem color="gray" text="지각" />
                   </button>
                 </>
               ) : attendMode === "late" ? (
                 <>
-                  <button onClick={setattendModeToAttend} disabled={isLoading}>
+                  <button onClick={setAttendModeToAttend} disabled={isLoading}>
                     <StatusToggleItem color="gray" text="참석" />
                   </button>
-                  <button onClick={setattendModeToLate} disabled={isLoading}>
+                  <button onClick={setAttendModeToLate} disabled={isLoading}>
                     <StatusToggleItem color="yellow" text="지각" />
                   </button>
                 </>
               ) : (
                 <>
-                  <button onClick={setattendModeToAttend} disabled={isLoading}>
+                  <button onClick={setAttendModeToAttend} disabled={isLoading}>
                     <StatusToggleItem color="gray" text="참석" />
                   </button>
-                  <button onClick={setattendModeToLate} disabled={isLoading}>
+                  <button onClick={setAttendModeToLate} disabled={isLoading}>
                     <StatusToggleItem color="gray" text="지각" />
                   </button>
                 </>
@@ -110,4 +110,4 @@ const ProgramattendModeManageSection = () => {
   );
 };
 
-export default ProgramattendModeManageSection;
+export default ProgramAttendModeManageSection;

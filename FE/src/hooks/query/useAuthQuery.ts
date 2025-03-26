@@ -1,5 +1,3 @@
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { postAdminLogin, postSlackLogin } from "@/apis/auth";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ROUTES from "@/constants/ROUTES";
@@ -8,15 +6,16 @@ import {
   setAccessToken,
   setTokenExpiration,
 } from "@/utils/authWithStorage";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 // TODO: 라우팅 및 토큰 처리 로직은 컴포넌트에서 수행
 export const useSlackLoginMutation = () => {
   const router = useRouter();
   return useMutation(
     ["slackLogin"],
-    async ({ code, redirect_uri }: { code: string; redirect_uri: string }) => {
-      return await postSlackLogin(code, redirect_uri);
-    },
+    async ({ code, redirect_uri }: { code: string; redirect_uri: string }) =>
+      await postSlackLogin(code, redirect_uri),
     {
       onSuccess: (data) => {
         const { accessToken, accessExpiredTime } = data;

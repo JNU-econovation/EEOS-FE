@@ -1,31 +1,25 @@
-import AttendeeInfoContainer from "@/components/feature/detail/attendee/AttendeeInfo.container";
-import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
-import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import UserAttendModalContainer from "@/components/feature/detail/userAttendModal/UserAttendModal.container";
-import ProgramPresentationsSection from "@/components/feature/detail/presentation/ProgramPresentationsSection";
+import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
 import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
+import FireFIngerSection from "@/components/feature/detail/fireFinger/FireFIngerSection";
+import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
+import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
+import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
 
-interface ProgramDetailPageProps {
-  params: {
-    programId: string;
-  };
-}
-
-const ProgramDetailPage = ({ params }: ProgramDetailPageProps) => {
-  const { programId } = params;
-
+const ProgramDetailPage = () => {
   return (
-    <div className="mb-16 space-y-16">
-      <section className="space-y-8">
+    <div>
+      <section>
         <ProgramHeaderSection />
         <ProgramDetailSection />
-        <ProgramPresentationsSection />
-        <div className="mt-12">
-          <ProgramDashboardSection />
-        </div>
+        <div className="mt-12" />
+        <FireFIngerSection />
+        <div className="mt-12" />
+        <AttendeeInfoSection />
+        <div className="mt-12" />
+        <ProgramDashboardSection />
+        <div className="mt-24" />
       </section>
-      <AttendeeInfoContainer programId={+programId} isLoggedIn />
-      <UserAttendModalContainer programId={+programId} isLoggedIn />
+      <UserAttendModalSection isLoggedIn />
     </div>
   );
 };

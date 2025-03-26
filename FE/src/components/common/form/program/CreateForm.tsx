@@ -3,9 +3,6 @@
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import Participant from "../../../programCreate/Participant";
-import CreateCategory from "./CreateCategory";
-import ProgramTitle from "./ProgramTitle";
 import FormBtn from "@/components/common/form/FormBtn";
 import ProgramDate from "@/components/common/form/program/ProgramDate";
 import MarkdownEditor from "@/components/common/markdown/MarkdownEditor";
@@ -21,6 +18,10 @@ import {
 import { useMemberSet } from "@/hooks/useMemberForm";
 import { ProgramCategory } from "@/types/program";
 import { TeamInputInfo } from "@/types/team";
+import ProgramTitle from "@/components/common/form/program/ProgramTitle";
+import CreateCategory from "@/components/common/form/program/CreateCategory";
+import Participant from "@/components/programCreate/Participant";
+
 // import { checkIsValidateGithubUrl } from "@/utils/github";
 
 export interface ProgramFormDataState {
@@ -74,7 +75,6 @@ const CreateForm = () => {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
-
 
     //TODO: 백엔드에서 유효성 검사하도록 수정. 백엔드와 논의 필요
     // const isValidGithubUrl = checkIsValidateGithubUrl(programGithubUrl);

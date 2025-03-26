@@ -47,7 +47,6 @@ export const useUpdateProgram = ({ programId }: useUpdateProgramProps) => {
   return useMutation({
     mutationKey: [API.PROGRAM.UPDATE(programId)],
     mutationFn: (body: PatchProgramBody) => {
-      console.log("body", body);
       return patchProgram({ programId, body });
     },
     onSettled: ({ programId }) => {
@@ -78,7 +77,7 @@ export const useDeleteProgram = () => {
 
 export const useGetProgramByProgramId = (
   programId: number,
-  isAbleToEdit: boolean,
+  isAbleToEdit: boolean = false,
 ) => {
   const queryClient = useQueryClient();
 

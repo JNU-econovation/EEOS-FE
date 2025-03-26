@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CancleBtn from "@/components/manage/CancleBtn";
 import MemberManageSection from "@/components/manage/member/MemberManageSection";
 import TeamManageSection from "@/components/manage/team/TeamManageSection";

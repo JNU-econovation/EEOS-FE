@@ -3,14 +3,18 @@ import {
   ActiveStatus,
   ActiveStatusWithAll,
   AttendStatus,
+  Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
-  MemberInfo,
+  MemberInfo
 } from "../types/member";
 import {
   MemberActiveStatusInfoDto,
   MemberAttendStatusInfoDto,
+  MemberDto,
   MemberInfoDto,
+  UserAttendanceListDto,
+  UserAttendanceSummaryDto
 } from "./dtos/member.dto";
 import { https } from "./instance";
 
@@ -95,4 +99,60 @@ export const deleteMember = async (memberId: number) => {
     method: "DELETE",
   });
   return data?.data;
+};
+
+/**
+ * 해당 프로그램 파이어 핑거 회원 정보 조회
+ */
+export const getFireFingerMembers = async (
+  programId: number,
+): Promise<MemberDto[]> => {
+  const { data } = await https({
+    url: API.MEMBER.FIRE_FINGER(programId),
+    method: "GET",
+  });
+
+  return data?.data.members.map((member: Member) => new MemberDto(member));
+};
+
+/**
+ * 본인의 출결 현황 리스트 조회
+ */
+export const getUserAttendanceList = async (
+  startDate: number,
+  endDate: number,
+  size: number,
+  page: number,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_LIST,
+    method: "GET",
+    params: {
+      startDate,
+      endDate,
+      size,
+      page,
+    },
+  });
+
+  return new UserAttendanceListDto(data?.data);
+};
+
+/**
+ * 본인의 출결 현황 요약 정보 조회
+ */
+export const getUserAttendanceSummary = async (
+  startDate: number,
+  endDate: number,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_SUMMARY,
+    method: "GET",
+    params: {
+      startDate,
+      endDate,
+    },
+  });
+
+  return new UserAttendanceSummaryDto(data?.data);
 };

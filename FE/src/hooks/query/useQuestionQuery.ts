@@ -15,6 +15,7 @@ export const useGetQuestions = (programId: number, teamId: number) => {
   return useQuery({
     queryKey: ["question", programId, teamId],
     queryFn: () => getQuestionsByTeam(programId, teamId),
+    suspense: true,
     enabled: (!!programId || programId === 0) && (!!teamId || teamId === 0),
     refetchInterval: 10 * 1000,
     staleTime: 10 * 1000,
@@ -51,7 +52,7 @@ export const usePostQuestion = () => {
         teamId,
         writer: commentType === "ANONYMOUS" ? "익명" : userName,
         accessRight: "edit",
-        time: "방금전",
+        time: +new Date(),
         content: questionContent,
         answers: [],
       };

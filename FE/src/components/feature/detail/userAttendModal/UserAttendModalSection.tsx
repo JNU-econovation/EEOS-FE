@@ -1,28 +1,30 @@
+//TODO: 리팩토링 필요 : isLoggedIn을 props로 받아서 조건부 렌더링을 하고 있음
+
 "use client";
 
 import classNames from "classnames";
-import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
 import LoginModal from "./LoginModal";
 import UserAttendModal from "./UserAttendModal";
 import ErrorFallbackNoIcon from "@/components/common/error/ErrorFallbackNoIcon";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
+import { useGetProgramId } from "@/hooks/usePrograms";
+import { Line } from "@/components/icons";
+import { Suspense } from "react";
+import AttendStatusModalLoader from "./AttendStatusModal.loader";
 
 interface UserAttendModalProps {
-  programId: number;
   isLoggedIn: boolean;
 }
 
-const UserAttendModalContainer = ({
-  programId,
-  isLoggedIn,
-}: UserAttendModalProps) => {
+const UserAttendModalSection = ({ isLoggedIn }: UserAttendModalProps) => {
+  const programId = useGetProgramId();
   const { isOpen, openModal, closeModal } = useModal();
   const modalRef = useOutsideRef(closeModal);
 
   const modalStyle = classNames(
-    "fixed left-0 z-10 flex h-60 w-full flex-col items-center gap-5 rounded-t-3xl border-t-2 bg-background shadow-2xl transition-all duration-500",
+    "fixed left-0 z-30 flex h-60 w-full flex-col items-center gap-5 rounded-t-3xl border-t-2 bg-background shadow-2xl transition-all duration-500",
     {
       "bottom-0": isOpen,
       "-bottom-[8rem]": !isOpen,
@@ -42,17 +44,13 @@ const UserAttendModalContainer = ({
       type="button"
     >
       <div onClick={handleOpenModal} className="pb-1 pt-3">
-        <Image
-          src="/icons/line.svg"
-          alt="line"
-          width={38}
-          height={6}
-          style={{ width: 38, height: 6 }}
-        />
+        <Line />
       </div>
       {isLoggedIn ? (
         <ErrorBoundary FallbackComponent={ErrorFallbackNoIcon}>
-          <UserAttendModal programId={programId} />
+          <Suspense fallback={<AttendStatusModalLoader />}>
+            <UserAttendModal programId={programId} />
+          </Suspense>
         </ErrorBoundary>
       ) : (
         <LoginModal />
@@ -60,4 +58,4 @@ const UserAttendModalContainer = ({
     </button>
   );
 };
-export default UserAttendModalContainer;
+export default UserAttendModalSection;
