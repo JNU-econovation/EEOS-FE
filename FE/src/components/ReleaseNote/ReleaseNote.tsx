@@ -46,28 +46,35 @@ const ReleaseNote = () => {
 
   return (
     <Dimmed>
-      <div className="absolute left-1/2 top-1/2 min-h-[350px] w-96 -translate-x-1/2 -translate-y-1/2 transform rounded-lg bg-white px-12 py-8 text-gray-40 md:w-[520px]">
+      <div className="absolute left-1/2 top-1/2 flex min-h-[350px] w-96 -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg bg-white px-12 py-8 text-gray-40 md:w-[520px]">
+        <span className="font-medium text-gray-30">
+          {CURRENT_VERSION} 업데이트 안내
+        </span>
+
         <div className="flex justify-between">
-          <h3 className="text-xl font-semibold ">
+          <h3 className="text-2xl font-semibold ">
             {releaseNotes[curIndex].title}
           </h3>
           <span className="flex justify-end text-sm font-semibold opacity-50">
             {curIndex + 1} / {releaseNotes.length}
           </span>
         </div>
-        <pre className="mt-2 whitespace-pre-wrap font-sans">
+
+        <div className="mt-4" />
+        <pre className="grow whitespace-pre-wrap font-sans text-lg/7">
           {releaseNotes[curIndex].content}
         </pre>
 
         <div className="mt-8" />
-
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between">
           <div
             className="flex select-none items-center opacity-80"
             onClick={() => setIsCheckedDoNotShowAgain((prev) => !prev)}
           >
             <CheckBox className="!h-5 !w-5" checked={isCheckedDoNotShowAgain} />
-            <label className="ml-2 text-sm">다시 보지 않기</label>
+            <label className="ml-2 text-sm font-semibold opacity-80">
+              다시 보지 않기
+            </label>
           </div>
           <div className="flex items-center gap-4">
             <button
