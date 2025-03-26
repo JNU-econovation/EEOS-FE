@@ -146,6 +146,8 @@ export const useGetUserAttendanceList = ({
     queryKey: [API.MEMBER.ATTENDANCE_LIST, startDate, endDate, size, page],
     queryFn: () => getUserAttendanceList(startDate, endDate, size, page),
     enabled: !!startDate && !!endDate,
+    staleTime: Infinity,
+    keepPreviousData: true,
   });
 };
 
@@ -157,5 +159,7 @@ export const useGetUserAttendanceSummary = ({
     queryKey: [API.MEMBER.ATTENDANCE_SUMMARY, startDate, endDate],
     queryFn: () => getUserAttendanceSummary(startDate, endDate),
     enabled: !!startDate && !!endDate,
+    staleTime: Infinity,
+    keepPreviousData: true,
   });
 };
