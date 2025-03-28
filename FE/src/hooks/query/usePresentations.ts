@@ -3,7 +3,7 @@ import { getPresentations } from "@/apis/proxy/github";
 import { useGetProgramByProgramId } from "./useProgramQuery";
 
 const usePresentations = (programId: number) => {
-  const { data: programData } = useGetProgramByProgramId(programId);
+  const { data: programData } = useGetProgramByProgramId(programId, false);
   return useGetPresentation(programId, programData?.programGithubUrl);
 };
 
