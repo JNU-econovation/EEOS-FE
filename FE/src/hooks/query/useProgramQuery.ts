@@ -77,12 +77,12 @@ export const useDeleteProgram = () => {
 
 export const useGetProgramByProgramId = (
   programId: number,
-  isAbleToEdit: boolean = false,
+  isAbleToEdit: boolean,
 ) => {
   const queryClient = useQueryClient();
 
   return useQuery({
-    queryKey: [API.PROGRAM.Edit_DETAIL(programId)],
+    queryKey: [API.PROGRAM.Edit_DETAIL(programId), isAbleToEdit],
     queryFn: () =>
       getProgramById(programId, isAbleToEdit)
         .then((res) => {
