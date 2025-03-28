@@ -4,6 +4,7 @@ import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { Hyperlink, HyperlinkGray } from "@/components/icons";
 import usePresentations from "@/hooks/query/usePresentations";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
+import { useGetAccessType } from "@/hooks/useAccess";
 import Link from "next/link";
 
 interface SelectedItemProps {
