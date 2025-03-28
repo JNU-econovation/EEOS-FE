@@ -37,9 +37,7 @@ const ProgramHeaderSection = () => {
         <p className="sm:text-lg">
           {DEADLINE_TEXT + formatTimestamp(deadLine)}
         </p>
-        {accessRight === "edit" && (
-          <EditAndDeleteButton programId={programId} />
-        )}
+        {accessRight === "edit" && <EditAndDeleteButton />}
       </div>
     </section>
   );
