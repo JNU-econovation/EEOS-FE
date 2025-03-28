@@ -5,34 +5,39 @@ import { toast } from "react-toastify";
 import MESSAGE from "@/constants/MESSAGE";
 import ROUTES from "@/constants/ROUTES";
 import { useDeleteProgram } from "@/hooks/query/useProgramQuery";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
-const EditAndDeleteButton = ({ programId }) => {
+const EditAndDeleteButton = () => {
   const router = useRouter();
+  const programId = useGetProgramId();
   const { mutate: deleteProgram } = useDeleteProgram();
 
   const handleClickDelete = () => {
     if (confirm(MESSAGE.CONFIRM.DELETE)) {
       const toastId = toast.loading(MESSAGE.DELETE.PENDING);
-      deleteProgram(programId, {
-        onSuccess: () => {
-          toast.update(toastId, {
-            render: MESSAGE.DELETE.SUCCESS,
-            type: "success",
-            autoClose: 3000,
-            isLoading: false,
-            closeOnClick: true,
-          });
-          router.replace(ROUTES.ADMIN_MAIN);
+      deleteProgram(
+        { programId },
+        {
+          onSuccess: () => {
+            toast.update(toastId, {
+              render: MESSAGE.DELETE.SUCCESS,
+              type: "success",
+              autoClose: 3000,
+              isLoading: false,
+              closeOnClick: true,
+            });
+            router.replace(ROUTES.ADMIN_MAIN);
+          },
+          onError: () =>
+            toast.update(toastId, {
+              type: "error",
+              render: MESSAGE.DELETE.FAILED,
+              autoClose: 3000,
+              isLoading: false,
+              closeOnClick: true,
+            }),
         },
-        onError: () =>
-          toast.update(toastId, {
-            type: "error",
-            render: MESSAGE.DELETE.FAILED,
-            autoClose: 3000,
-            isLoading: false,
-            closeOnClick: true,
-          }),
-      });
+      );
     }
   };
 
