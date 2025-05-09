@@ -4,7 +4,6 @@ import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { Hyperlink, HyperlinkGray } from "@/components/icons";
 import usePresentations from "@/hooks/query/usePresentations";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
-import { useGetAccessType } from "@/hooks/useAccess";
 import Link from "next/link";
 
 interface SelectedItemProps {
@@ -16,6 +15,7 @@ interface TeamsTabProps {
   programId: number;
   children: (selectedItem: SelectedItemProps) => JSX.Element;
 }
+
 const TeamsTab = ({ programId, children }: TeamsTabProps) => {
   const { data: teamsQueryData } = useTeamQuery(programId);
   const { data: presentation } = usePresentations(programId);
@@ -35,32 +35,33 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
       tabSize="md"
     >
       <Tab.List className="!gap-0 border-b">
-        {teamNameArray.map((name, index) => (
-          <Tab.NakedItem key={`${name}-${index}`} text={name} value={name}>
-            {presentation?.find(
-              ({ name: presentationItemName }) => presentationItemName === name,
-            )?.download_url ? (
-              <Link
-                href={
-                  presentation?.find(
-                    ({ name: presentationItemName }) =>
-                      presentationItemName === name,
-                  )?.download_url
-                    ? presentation.find(({ name }) => name === name)
-                        .download_url
-                    : "#!"
-                }
-                target="_blank"
-              >
-                <Hyperlink />
-              </Link>
-            ) : (
-              <div className="cursor-not-allowed">
-                <HyperlinkGray />
-              </div>
-            )}
-          </Tab.NakedItem>
-        ))}
+        {teamNameArray.map((teamName, index) => {
+          // 해당 팀 이름에 맞는 presentation 항목 찾기
+          const teamPresentation = presentation?.find(
+            (item) => item.name === teamName,
+          );
+
+          const downloadUrl = teamPresentation?.download_url || "#!";
+          const hasDownloadUrl = !!teamPresentation?.download_url;
+
+          return (
+            <Tab.NakedItem
+              key={`${teamName}-${index}`}
+              text={teamName}
+              value={teamName}
+            >
+              {hasDownloadUrl ? (
+                <Link href={downloadUrl} target="_blank">
+                  <Hyperlink />
+                </Link>
+              ) : (
+                <div className="cursor-not-allowed">
+                  <HyperlinkGray />
+                </div>
+              )}
+            </Tab.NakedItem>
+          );
+        })}
       </Tab.List>
       <Tab.Content<string>>
         {({ selectedItem }) =>
