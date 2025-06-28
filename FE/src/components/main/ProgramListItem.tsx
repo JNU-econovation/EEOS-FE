@@ -37,8 +37,8 @@ const ProgramListItem = ({
       {isOnChecking ? (
         <ProgressDisplay progressText="출석 진행중" color="success" />
       ) : (
-        <p className="text-base font-normal sm:w-52">
-          {formatTimestamp(deadLine)}
+        <p className="shrink-0 text-base font-normal sm:w-64 ">
+          {formatTimestamp(deadLine, "full")}
         </p>
       )}
     </Link>
