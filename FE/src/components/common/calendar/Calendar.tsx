@@ -25,25 +25,24 @@ const Calendar = ({ date, withTime, handleDateChange }: CalendarProps) => {
         disabled={disabledDays}
       />
       {withTime && (
-        <>
-          <form style={{ marginBlockEnd: "1em" }}>
-            <label>
-              Set the time:{" "}
-              <input
-                type="time"
-                value={timeValue}
-                onChange={(e) => {
-                  const [hours, minutes] = e.target.value.split(":");
-                  const newDate = date ? new Date(date) : new Date();
-                  newDate.setHours(parseInt(hours, 10));
-                  newDate.setMinutes(parseInt(minutes, 10));
-                  handleDateChange(newDate);
-                  setTimeValue(e.target.value);
-                }}
-              />
-            </label>
-          </form>
-        </>
+        <div className="flex items-center justify-center gap-2 border-t pt-2">
+          <label htmlFor="time-input" className="font-semibold">
+            행사 시작 시간 :{" "}
+          </label>
+          <input
+            id="time-input"
+            type="time"
+            value={timeValue}
+            onChange={(e) => {
+              const [hours, minutes] = e.target.value.split(":");
+              const newDate = date ? new Date(date) : new Date();
+              newDate.setHours(parseInt(hours, 10));
+              newDate.setMinutes(parseInt(minutes, 10));
+              handleDateChange(newDate);
+              setTimeValue(e.target.value);
+            }}
+          />
+        </div>
       )}
     </div>
   );
