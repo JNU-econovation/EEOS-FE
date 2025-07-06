@@ -9,6 +9,7 @@ import { ProgramFormDataState } from "./CreateForm";
 import FORM_INFO from "@/constants/FORM_INFO";
 import useOutsideRef from "@/hooks/useOutsideRef";
 import { formatTimestamp } from "@/utils/convert";
+import LabeldInputFiled from "../input/LabeldInputFiled";
 
 // const Calendar = dynamic(() => import("@/components/common/Calendar/Calendar"));
 
@@ -37,24 +38,27 @@ const ProgramDate = ({ getValues, setValue }: ProgramDateProps) => {
   };
 
   return (
-    <div
-      onClick={handleCalenderOpen}
-      className="relative w-full"
-      ref={calenderRef}
-    >
-      <LabeledInput
-        id={FORM_INFO.PROGRAM.DATE.id}
-        type={FORM_INFO.PROGRAM.DATE.type}
-        label={FORM_INFO.PROGRAM.DATE.label}
-        placeholder={FORM_INFO.PROGRAM.DATE.placeholder}
-        value={formatTimestamp(getValues("deadLine"))}
-      />
-      {openCalender && (
-        <Calendar
-          date={date}
-          handleDateChange={(date: Date) => handleDateChange(date)}
+    <div className="flex w-full flex-col gap-4">
+      <div
+        onClick={handleCalenderOpen}
+        className="relative w-full"
+        ref={calenderRef}
+      >
+        <LabeledInput
+          id={FORM_INFO.PROGRAM.DATE.id}
+          type={FORM_INFO.PROGRAM.DATE.type}
+          label={FORM_INFO.PROGRAM.DATE.label}
+          placeholder={FORM_INFO.PROGRAM.DATE.placeholder}
+          value={formatTimestamp(getValues("deadLine"), "full")}
         />
-      )}
+        {openCalender && (
+          <Calendar
+            date={date}
+            handleDateChange={(date: Date) => handleDateChange(date)}
+            withTime
+          />
+        )}
+      </div>
     </div>
   );
 };

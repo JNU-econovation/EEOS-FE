@@ -35,7 +35,7 @@ const ProgramHeaderSection = () => {
       <Title text={title} />
       <div className="flex justify-between">
         <p className="sm:text-lg">
-          {DEADLINE_TEXT + formatTimestamp(deadLine)}
+          {DEADLINE_TEXT + formatTimestamp(deadLine, "full")}
         </p>
         {accessRight === "edit" && <EditAndDeleteButton />}
       </div>
