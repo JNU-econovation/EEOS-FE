@@ -28,6 +28,25 @@ const authInstance = axios.create({
   withCredentials: true,
 });
 
+authInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    const { response } = error;
+    if (`${response?.status}`.startsWith("4")) {
+      deleteTokenInfo();
+      toast.error(ERROR_MESSAGE[ERROR_CODE.AUTH.INVALID_TOKEN].message, {
+        toastId: ERROR_CODE.AUTH.INVALID_TOKEN,
+      });
+      setTimeout(() => {
+        window.location.href = ROUTES.LOGIN;
+      }, 2000);
+    }
+    return Promise.reject(error);
+  },
+);
+
 https.interceptors.request.use(
   async (config) => {
     if (typeof window === "undefined") return config;
