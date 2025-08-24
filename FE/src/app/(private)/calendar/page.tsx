@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { CreateEventModal } from "@/components/calendar/CreateEventModal";
+import { EventInfoModal } from "@/components/calendar/EventInfoModal";
 import { CalendarEvent } from "@/types/calendarEvent";
 
 export default function CalendarPage() {
@@ -14,10 +15,6 @@ export default function CalendarPage() {
     null,
   );
   const [showEventModal, setShowEventModal] = useState(false);
-
-  const getCategoryColor = (category: "eventTeam" | "etc") => {
-    return category === "eventTeam" ? "#3b82f6" : "#22c55e";
-  };
 
   // 현재 월의 첫 번째 날과 마지막 날
   const firstDayOfMonth = new Date(
@@ -91,11 +88,9 @@ export default function CalendarPage() {
 
   // 이벤트 삭제
   const handleDeleteEvent = (eventId: string) => {
-    if (confirm("이 행사를 삭제하시겠습니까?")) {
-      setEvents(events.filter((e) => e.id !== eventId));
-      setShowEventModal(false);
-      setSelectedEvent(null);
-    }
+    setEvents(events.filter((e) => e.id !== eventId));
+    setShowEventModal(false);
+    setSelectedEvent(null);
   };
 
   // 이벤트 클릭 처리
@@ -260,95 +255,14 @@ export default function CalendarPage() {
 
       {/* 행사 정보 모달 */}
       {showEventModal && selectedEvent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-[450px] max-w-[90vw] rounded-lg bg-white p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold">행사 정보</h2>
-              <button
-                onClick={() => {
-                  setShowEventModal(false);
-                  setSelectedEvent(null);
-                }}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              {/* 행사 이름 */}
-              <div>
-                <h3 className="mb-1 text-sm font-medium text-gray-700">
-                  행사 이름
-                </h3>
-                <p className="text-lg font-semibold text-gray-900">
-                  {selectedEvent.title}
-                </p>
-              </div>
-
-              {/* 카테고리 */}
-              <div>
-                <h3 className="mb-1 text-sm font-medium text-gray-700">
-                  카테고리
-                </h3>
-                <span
-                  className="inline-block rounded-full px-3 py-1 text-sm font-medium text-white"
-                  style={{
-                    backgroundColor: getCategoryColor(selectedEvent.category),
-                  }}
-                >
-                  {selectedEvent.category === "eventTeam" ? "행사부" : "기타"}
-                </span>
-              </div>
-
-              {/* 행사 기간 */}
-              <div>
-                <h3 className="mb-1 text-sm font-medium text-gray-700">
-                  행사 기간
-                </h3>
-                <p className="text-gray-900">
-                  {selectedEvent.startDate.toLocaleDateString("ko-KR")} ~{" "}
-                  {selectedEvent.endDate.toLocaleDateString("ko-KR")}
-                </p>
-              </div>
-
-              {/* Slack 링크 */}
-              {selectedEvent.slackLink && (
-                <div>
-                  <h3 className="mb-1 text-sm font-medium text-gray-700">
-                    관련 Slack 링크
-                  </h3>
-                  <a
-                    href={selectedEvent.slackLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="break-all text-blue-600 underline hover:text-blue-800"
-                  >
-                    {selectedEvent.slackLink}
-                  </a>
-                </div>
-              )}
-
-              <div className="flex space-x-3 border-t border-gray-200 pt-4">
-                <button
-                  onClick={() => handleDeleteEvent(selectedEvent.id)}
-                  className="rounded-md bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-700"
-                >
-                  삭제
-                </button>
-                <button
-                  onClick={() => {
-                    setShowEventModal(false);
-                    setSelectedEvent(null);
-                  }}
-                  className="flex-1 rounded-md bg-gray-300 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-400"
-                >
-                  닫기
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <EventInfoModal
+          event={selectedEvent}
+          closeModal={() => {
+            setShowEventModal(false);
+            setSelectedEvent(null);
+          }}
+          onDeleteEvent={handleDeleteEvent}
+        />
       )}
     </div>
   );
