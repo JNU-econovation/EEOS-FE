@@ -41,9 +41,7 @@ const EventCalender = ({ onClose }: { onClose: () => void }) => {
   return (
     <>
       <button className="fixed z-30 h-screen w-screen" onClick={onClose} />
-      <section
-        className={`fixed bottom-32 right-20 z-30 rounded-xl bg-white p-4 shadow-2xl`}
-      >
+      <section className="right:0 fixed bottom-32 z-30 rounded-xl bg-white p-4 shadow-2xl md:right-20">
         <FadeSlideIn>
           <div className="relative">
             <div className="mb-2 grid grid-cols-12 divide-x divide-gray-200 border-b">
