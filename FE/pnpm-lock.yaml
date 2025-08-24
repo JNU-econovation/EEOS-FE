@@ -20,6 +20,9 @@ dependencies:
   '@types/qs':
     specifier: ^6.9.10
     version: 6.9.10
+  '@types/react-day-picker':
+    specifier: ^5.3.0
+    version: 5.3.0(date-fns@2.30.0)(react@18.2.0)
   '@types/react-syntax-highlighter':
     specifier: ^15.5.11
     version: 15.5.11
@@ -1269,6 +1272,16 @@ packages:
 
   /@types/qs@6.9.10:
     resolution: {integrity: sha512-3Gnx08Ns1sEoCrWssEgTSJs/rsT2vhGP+Ja9cnnk9k4ALxinORlQneLXFeFKOTJMOeZUFD1s7w+w2AphTpvzZw==}
+    dev: false
+
+  /@types/react-day-picker@5.3.0(date-fns@2.30.0)(react@18.2.0):
+    resolution: {integrity: sha512-iMMXQjwTH8uxPTW3WYP6ZufZBSMFFEScGIztENtKfvukefrojmX/WCUNPrimC9ys1ll5nnM0VGaHolYLAbcEtw==}
+    deprecated: This is a stub types definition for react-day-picker (https://github.com/gpbl/react-day-picker). react-day-picker provides its own type definitions, so you don't need @types/react-day-picker installed!
+    dependencies:
+      react-day-picker: 8.9.1(date-fns@2.30.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - date-fns
+      - react
     dev: false
 
   /@types/react-dom@18.2.18:
