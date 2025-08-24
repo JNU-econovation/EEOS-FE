@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useState } from "react";
 import { CreateEventModal } from "@/components/calendar/CreateEventModal";
 import { CalendarEvent } from "@/types/calendarEvent";
@@ -220,10 +221,12 @@ export default function CalendarPage() {
                 {dayEvents.slice(0, 3).map((event) => (
                   <div
                     key={event.id}
-                    className="cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80"
-                    style={{
-                      backgroundColor: getCategoryColor(event.category),
-                    }}
+                    className={classNames(
+                      "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
+                      event.category === "eventTeam"
+                        ? "bg-blue-600"
+                        : "bg-green-600",
+                    )}
                     onClick={(e) => handleEventClick(event, e)}
                     title={`${event.title} (${
                       event.category === "eventTeam" ? "행사부" : "기타"
@@ -246,7 +249,7 @@ export default function CalendarPage() {
       {/* 행사 추가 모달 */}
       {showAddModal && selectedDate && (
         <CreateEventModal
-          closeModal={() => setShowEventModal(false)}
+          closeModal={() => setShowAddModal(false)}
           createNewEvent={(newEvent) => {
             setEvents([...events, newEvent]);
           }}
