@@ -7,6 +7,7 @@ import {
   getProgramMembersByAttendStatus,
   getUserAttendanceList,
   getUserAttendanceSummary,
+  putUserDepartment,
   updateMemberActiveStatus,
 } from "@/apis/member";
 import API from "@/constants/API";
@@ -81,15 +82,22 @@ export const useGetProgramMembersByAttend = ({
   });
 };
 
-export const useUpdateMemberActiveStatus = ({
-  memberId,
-}: UpdateMemberActiveStatus) => {
+export const useUpdateMemberActiveStatus = () => {
   const queryClient = useQueryClient();
-  const data = useMutation<void, Error, { activeStatus: ActiveStatus }>({
-    mutationFn: ({ activeStatus }: { activeStatus: ActiveStatus }) =>
-      updateMemberActiveStatus(memberId, activeStatus),
+  const data = useMutation<
+    void,
+    Error,
+    { activeStatus: ActiveStatus; memberId: number }
+  >({
+    mutationFn: ({
+      activeStatus,
+      memberId,
+    }: {
+      activeStatus: ActiveStatus;
+      memberId: number;
+    }) => updateMemberActiveStatus(memberId, activeStatus),
 
-    onMutate: ({ activeStatus: newActiveStatus }) => {
+    onMutate: ({ activeStatus: newActiveStatus, memberId }) => {
       const prevMemberActiveData = queryClient.getQueryData<
         MemberActiveStatusInfoDto[]
       >([API.MEMBER.LIST, "all"]);
@@ -161,5 +169,32 @@ export const useGetUserAttendanceSummary = ({
     enabled: !!startDate && !!endDate,
     staleTime: Infinity,
     keepPreviousData: true,
+  });
+};
+
+export const usePutUpdateMemberDepartment = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: putUserDepartment,
+    onMutate({ department, userId }) {
+      const prevMembers = queryClient.getQueryData<MemberActiveStatusInfoDto[]>(
+        [API.MEMBER.LIST, "all"],
+      );
+
+      if (!prevMembers) return;
+
+      const newMemberActiveData = prevMembers.map((v) => {
+        if (v.memberId === userId) {
+          return { ...v, department };
+        }
+        return v;
+      });
+      queryClient.setQueryData([API.MEMBER.LIST, "all"], newMemberActiveData);
+
+      return prevMembers;
+    },
+    onError: () => {
+      queryClient.invalidateQueries([API.MEMBER.LIST]);
+    },
   });
 };
