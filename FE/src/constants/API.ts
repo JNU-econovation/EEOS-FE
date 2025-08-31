@@ -1,3 +1,5 @@
+import type { Department } from "@/types/member";
+
 const PROGRAM = {
   LIST: "/programs",
   CREATE: "/programs",
@@ -22,6 +24,8 @@ const MEMBER = {
     `/attend/programs/fire-finger/${programId}`,
   ATTENDANCE_LIST: "/attend/programs",
   ATTENDANCE_SUMMARY: "/attend/summary",
+  UPDATE_DEPARTMENT: (userId: number, department: Department) =>
+    `/members/${userId}/department?to=${department}`,
 };
 
 const USER = {
