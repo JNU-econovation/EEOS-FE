@@ -3,10 +3,11 @@ import {
   ActiveStatus,
   ActiveStatusWithAll,
   AttendStatus,
+  Department,
   Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
-  MemberInfo
+  MemberInfo,
 } from "../types/member";
 import {
   MemberActiveStatusInfoDto,
@@ -14,7 +15,7 @@ import {
   MemberDto,
   MemberInfoDto,
   UserAttendanceListDto,
-  UserAttendanceSummaryDto
+  UserAttendanceSummaryDto,
 } from "./dtos/member.dto";
 import { https } from "./instance";
 
@@ -155,4 +156,22 @@ export const getUserAttendanceSummary = async (
   });
 
   return new UserAttendanceSummaryDto(data?.data);
+};
+
+/**
+ * 사용자의 부서 설정 및 변경
+ */
+export const putUserDepartment = async ({
+  department,
+  userId,
+}: {
+  userId: number;
+  department: Department;
+}) => {
+  const { data } = await https({
+    url: API.MEMBER.UPDATE_DEPARTMENT(userId, department),
+    method: "PUT",
+  });
+
+  return data?.data;
 };
