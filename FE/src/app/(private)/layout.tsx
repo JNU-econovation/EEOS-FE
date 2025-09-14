@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import Header from "@/components/common/header/Header";
 import AuthValidate from "@/components/common/validate/Auth";
 import ReleaseNote from "@/components/ReleaseNote/ReleaseNote";
+import FloatingButton from "@/components/feature/floating/FloatingButton";
 
 const PrivateLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -13,6 +14,7 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
         </main>
         <ReleaseNote />
       </AuthValidate>
+      <FloatingButton />
     </>
   );
 };

@@ -60,6 +60,21 @@ const QUESTION = {
   DELETE: (commentId: number) => `comments/${commentId}`,
 };
 
+const CALENDAR = {
+  WEEKLY: ({
+    year,
+    month,
+    date,
+    duration,
+  }: {
+    year: number;
+    month: number;
+    date: number;
+    duration: number;
+  }) =>
+    `calendars?year=${year}&month=${month}&date=${date}&duration=${duration}`,
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
@@ -67,5 +82,15 @@ Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
 Object.freeze(TEAM);
 Object.freeze(QUESTION);
+Object.freeze(CALENDAR);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM, QUESTION };
+export default {
+  PROGRAM,
+  MEMBER,
+  USER,
+  AUTH,
+  TEAM_BUILDING,
+  TEAM,
+  QUESTION,
+  CALENDAR,
+};
