@@ -6,17 +6,15 @@ import { CalendarHeader } from "@/components/calendar/CalendarHeader";
 import { CreateEventModal } from "@/components/calendar/CreateEventModal";
 import { EventInfoModal } from "@/components/calendar/EventInfoModal";
 import { WeekDayHeader } from "@/components/calendar/WeekDayHeader";
-import { CalendarEvent } from "@/types/calendarEvent";
+import { Calendar } from "@/types/calendar";
 import { getCalendarDates, navigateMonth } from "@/utils/dateUtils";
 
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [events, setEvents] = useState<Calendar[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(
-    null,
-  );
+  const [selectedEvent, setSelectedEvent] = useState<Calendar | null>(null);
   const [showEventModal, setShowEventModal] = useState(false);
 
   const dates = getCalendarDates(currentDate);
@@ -34,13 +32,13 @@ export default function CalendarPage() {
     setShowAddModal(true);
   };
 
-  const handleDeleteEvent = (eventId: string) => {
-    setEvents(events.filter((e) => e.id !== eventId));
+  const handleDeleteEvent = (eventId: number) => {
+    setEvents(events.filter((e) => e.calendarId !== eventId));
     setShowEventModal(false);
     setSelectedEvent(null);
   };
 
-  const handleEventClick = (event: CalendarEvent, e: React.MouseEvent) => {
+  const handleEventClick = (event: Calendar, e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedEvent(event);
     setShowEventModal(true);
