@@ -1,13 +1,13 @@
-import { CalendarEvent } from "@/types/calendarEvent";
 import { CalendarDay } from "./CalendarDay";
+import { Calendar } from "@/types/calendar";
 import { getEventsForDate, isOtherMonth, isToday } from "@/utils/dateUtils";
 
 interface CalendarGridProps {
   dates: Date[];
   currentDate: Date;
-  events: CalendarEvent[];
+  events: Calendar[];
   onDateClick: (date: Date) => void;
-  onEventClick: (event: CalendarEvent, e: React.MouseEvent) => void;
+  onEventClick: (event: Calendar, e: React.MouseEvent) => void;
 }
 
 export function CalendarGrid({

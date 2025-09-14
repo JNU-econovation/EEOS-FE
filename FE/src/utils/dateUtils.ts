@@ -1,4 +1,4 @@
-import { CalendarEvent } from "@/types/calendarEvent";
+import { Calendar } from "@/types/calendar";
 
 export const getDatesInRange = (startDate: Date, endDate: Date): Date[] => {
   const dates = [];
@@ -33,10 +33,13 @@ export const getCalendarDates = (currentDate: Date) => {
   return getDatesInRange(startDate, endDate);
 };
 
-export const getEventsForDate = (date: Date, events: CalendarEvent[]): CalendarEvent[] => {
+export const getEventsForDate = (
+  date: Date,
+  events: Calendar[],
+): Calendar[] => {
   return events.filter((event) => {
-    const eventStart = new Date(event.startDate);
-    const eventEnd = new Date(event.endDate);
+    const eventStart = new Date(event.startAt);
+    const eventEnd = new Date(event.endAt);
     const checkDate = new Date(date);
 
     eventStart.setHours(0, 0, 0, 0);
@@ -56,7 +59,10 @@ export const isToday = (date: Date): boolean => {
   return date.toDateString() === today.toDateString();
 };
 
-export const navigateMonth = (currentDate: Date, direction: "prev" | "next"): Date => {
+export const navigateMonth = (
+  currentDate: Date,
+  direction: "prev" | "next",
+): Date => {
   const newDate = new Date(currentDate);
   newDate.setMonth(currentDate.getMonth() + (direction === "next" ? 1 : -1));
   return newDate;
