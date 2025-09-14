@@ -1,0 +1,80 @@
+import classNames from "classnames";
+import { CalendarEvent } from "@/types/calendarEvent";
+
+interface CalendarDayProps {
+  date: Date;
+  events: CalendarEvent[];
+  isOtherMonth: boolean;
+  isToday: boolean;
+  dayIndex: number;
+  onDateClick: (date: Date) => void;
+  onEventClick: (event: CalendarEvent, e: React.MouseEvent) => void;
+}
+
+export function CalendarDay({
+  date,
+  events,
+  isOtherMonth,
+  isToday,
+  dayIndex,
+  onDateClick,
+  onEventClick,
+}: CalendarDayProps) {
+  return (
+    <div
+      className={classNames(
+        "cursor-pointer border-b border-r border-gray-200 p-2 transition-colors",
+        {
+          "border-r-0": dayIndex % 7 === 6,
+          "bg-gray-100 hover:bg-gray-200": isOtherMonth,
+          "hover:bg-gray-50": !isOtherMonth,
+        },
+      )}
+      onClick={() => onDateClick(date)}
+    >
+      <div
+        className={classNames("mb-1 text-sm", {
+          "text-gray-400": isOtherMonth,
+          "flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 font-medium text-white ":
+            isToday,
+          "text-red-500":
+            !isOtherMonth && !isToday && dayIndex % 7 === 0,
+          "text-blue-500":
+            !isOtherMonth && !isToday && dayIndex % 7 === 6,
+          "text-gray-900":
+            !isOtherMonth &&
+            !isToday &&
+            dayIndex % 7 !== 0 &&
+            dayIndex % 7 !== 6,
+        })}
+      >
+        {date.getDate()}
+      </div>
+
+      <div className="space-y-1">
+        {events.slice(0, 3).map((event) => (
+          <div
+            key={event.id}
+            className={classNames(
+              "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
+              event.category === "eventTeam"
+                ? "bg-blue-600"
+                : "bg-green-600",
+            )}
+            onClick={(e) => onEventClick(event, e)}
+            title={`${event.title} (${
+              event.category === "eventTeam" ? "행사부" : "기타"
+            })`}
+          >
+            {event.title}
+          </div>
+        ))}
+        {events.length > 3 && (
+          <div className="text-xs text-gray-500">
+            +{events.length - 3}개 더
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
