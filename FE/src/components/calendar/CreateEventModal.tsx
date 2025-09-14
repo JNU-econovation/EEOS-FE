@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { CalendarEvent } from "@/types/calendarEvent";
-
-type CalendarEventType = CalendarEvent["category"];
+import { Calendar, CalendarEventType } from "@/types/calendar";
 
 interface Props {
   closeModal: () => void;
-  createNewEvent: (event: CalendarEvent) => void;
+  createNewEvent: (event: Calendar) => void;
   selectedDate: Date | null;
   setSelectedDate: (date: Date | null) => void;
 }
@@ -18,15 +16,17 @@ export function CreateEventModal({
 }: Props) {
   const defaultNewEvent = {
     title: "",
-    category: "eventTeam" as CalendarEventType,
-    startDate: "",
-    endDate: "",
-    slackLink: "",
+    type: "event" as CalendarEventType,
+    startAt: "",
+    endAt: "",
+    url: "",
+    writer: "",
   };
 
   const [newEvent, setNewEvent] = useState(defaultNewEvent);
   const categories: { label: string; value: CalendarEventType }[] = [
-    { label: "행사부", value: "eventTeam" },
+    { label: "행사", value: "event" },
+    { label: "주간발표", value: "weekly_presentation" },
     { label: "기타", value: "etc" },
   ];
 
@@ -35,26 +35,27 @@ export function CreateEventModal({
     if (
       !selectedDate ||
       !newEvent.title.trim() ||
-      !newEvent.startDate ||
-      !newEvent.endDate
+      !newEvent.startAt ||
+      !newEvent.endAt
     )
       return;
 
-    const startDate = new Date(newEvent.startDate);
-    const endDate = new Date(newEvent.endDate);
+    const startAt = new Date(newEvent.startAt).getTime();
+    const endAt = new Date(newEvent.endAt).getTime();
 
-    if (startDate > endDate) {
+    if (startAt > endAt) {
       alert("시작일이 종료일보다 늦을 수 없습니다.");
       return;
     }
 
-    const event: CalendarEvent = {
-      id: Date.now().toString(),
+    const event: Calendar = {
+      calendarId: Date.now(),
+      writer: newEvent.writer || "사용자",
       title: newEvent.title,
-      category: newEvent.category,
-      startDate,
-      endDate,
-      slackLink: newEvent.slackLink,
+      type: newEvent.type,
+      startAt,
+      endAt,
+      url: newEvent.url,
     };
 
     createNewEvent(event);
@@ -87,17 +88,17 @@ export function CreateEventModal({
 
           <div>
             <label className="mb-2 block text-sm font-medium text-gray-700">
-              행사 카테고리 *
+              행사 종류 *
             </label>
             <div className="flex gap-3">
               {categories.map((category) => (
                 <button
                   key={category.value}
                   onClick={() =>
-                    setNewEvent({ ...newEvent, category: category.value })
+                    setNewEvent({ ...newEvent, type: category.value })
                   }
                   className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                    newEvent.category === category.value
+                    newEvent.type === category.value
                       ? "bg-blue-600 text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
@@ -114,9 +115,9 @@ export function CreateEventModal({
             </label>
             <input
               type="date"
-              value={newEvent.startDate}
+              value={newEvent.startAt}
               onChange={(e) =>
-                setNewEvent({ ...newEvent, startDate: e.target.value })
+                setNewEvent({ ...newEvent, startAt: e.target.value })
               }
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -128,9 +129,9 @@ export function CreateEventModal({
             </label>
             <input
               type="date"
-              value={newEvent.endDate}
+              value={newEvent.endAt}
               onChange={(e) =>
-                setNewEvent({ ...newEvent, endDate: e.target.value })
+                setNewEvent({ ...newEvent, endAt: e.target.value })
               }
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -138,16 +139,16 @@ export function CreateEventModal({
 
           <div>
             <label className="mb-2 block text-sm font-medium text-gray-700">
-              관련 Slack 링크 (선택사항)
+              관련 링크 (선택사항)
             </label>
             <input
               type="url"
-              value={newEvent.slackLink}
+              value={newEvent.url}
               onChange={(e) =>
-                setNewEvent({ ...newEvent, slackLink: e.target.value })
+                setNewEvent({ ...newEvent, url: e.target.value })
               }
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="https://econovation.slack.com/..."
+              placeholder="https://..."
             />
           </div>
 
@@ -156,8 +157,8 @@ export function CreateEventModal({
               onClick={handleAddEvent}
               disabled={
                 !newEvent.title.trim() ||
-                !newEvent.startDate ||
-                !newEvent.endDate
+                !newEvent.startAt ||
+                !newEvent.endAt
               }
               className="flex-1 rounded-md bg-blue-600 px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50"
             >

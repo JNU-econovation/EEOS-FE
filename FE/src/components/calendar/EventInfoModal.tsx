@@ -1,16 +1,16 @@
 import classNames from "classnames";
-import { CalendarEvent } from "@/types/calendarEvent";
+import { Calendar } from "@/types/calendar";
 
 interface Props {
-  event: CalendarEvent;
+  event: Calendar;
   closeModal: () => void;
-  onDeleteEvent: (eventId: string) => void;
+  onDeleteEvent: (eventId: number) => void;
 }
 
 export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
   const handleDelete = () => {
     if (confirm("이 행사를 삭제하시겠습니까?")) {
-      onDeleteEvent(event.id);
+      onDeleteEvent(event.calendarId);
     }
   };
 
@@ -38,10 +38,18 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
             <span
               className={classNames(
                 "inline-block rounded-full px-3 py-1 text-sm font-medium text-white",
-                event.category === "eventTeam" ? "bg-blue-600" : "bg-green-600",
+                event.type === "event" 
+                  ? "bg-blue-600" 
+                  : event.type === "weekly_presentation"
+                  ? "bg-green-600"
+                  : "bg-gray-600",
               )}
             >
-              {event.category === "eventTeam" ? "행사부" : "기타"}
+              {event.type === "event" 
+                ? "행사" 
+                : event.type === "weekly_presentation"
+                ? "주간발표"
+                : "기타"}
             </span>
           </div>
           <div>
@@ -49,22 +57,22 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
               행사 기간
             </h3>
             <p className="text-gray-900">
-              {event.startDate.toLocaleDateString("ko-KR")} ~{" "}
-              {event.endDate.toLocaleDateString("ko-KR")}
+              {new Date(event.startAt).toLocaleString("ko-KR")} ~{" "}
+              {new Date(event.endAt).toLocaleString("ko-KR")}
             </p>
           </div>
-          {event.slackLink && (
+          {event.url && (
             <div>
               <h3 className="mb-1 text-sm font-medium text-gray-700">
                 관련 Slack 링크
               </h3>
               <a
-                href={event.slackLink}
+                href={event.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="break-all text-blue-600 underline hover:text-blue-800"
               >
-                {event.slackLink}
+                {event.url}
               </a>
             </div>
           )}
