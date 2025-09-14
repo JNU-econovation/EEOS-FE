@@ -60,6 +60,11 @@ const QUESTION = {
   DELETE: (commentId: number) => `comments/${commentId}`,
 };
 
+const CALENDAR = {
+  CREATE: "/calendars",
+  FETCH: "/calendars",
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
@@ -67,5 +72,15 @@ Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
 Object.freeze(TEAM);
 Object.freeze(QUESTION);
+Object.freeze(CALENDAR);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM, QUESTION };
+export default {
+  PROGRAM,
+  MEMBER,
+  USER,
+  AUTH,
+  TEAM_BUILDING,
+  TEAM,
+  QUESTION,
+  CALENDAR,
+};

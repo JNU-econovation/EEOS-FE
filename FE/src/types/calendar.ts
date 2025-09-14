@@ -1,8 +1,18 @@
-export interface CalendarEvent {
-  id: string;
+export type CalendarEventType = "event" | "weekly_presentation" | "etc";
+
+export interface Calendar {
+  calendarId: number;
+  writer: string;
+  startAt: number;
+  endAt: number;
   title: string;
-  category: "eventTeam" | "etc";
-  startDate: Date;
-  endDate: Date;
-  slackLink?: string;
+  type: CalendarEventType;
+  url?: string;
+}
+
+export type NewCalendar = Omit<Calendar, "calendarId" | "writer">;
+
+export interface DateFilter {
+  year: number;
+  month: number;
 }
