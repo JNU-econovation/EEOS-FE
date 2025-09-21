@@ -26,7 +26,7 @@ export function CreateEventModal({
   const [newEvent, setNewEvent] = useState(defaultNewEvent);
   const categories: { label: string; value: CalendarEventType }[] = [
     { label: "행사", value: "event" },
-    { label: "주간발표", value: "weekly_presentation" },
+    { label: "주간발표", value: "presentation" },
     { label: "기타", value: "etc" },
   ];
 

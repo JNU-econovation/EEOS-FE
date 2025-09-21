@@ -1,4 +1,4 @@
-export type CalendarEventType = "event" | "weekly_presentation" | "etc";
+export type CalendarEventType = "event" | "presentation" | "etc";
 
 export interface Calendar {
   calendarId: number;
