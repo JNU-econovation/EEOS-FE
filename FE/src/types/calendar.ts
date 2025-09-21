@@ -15,4 +15,6 @@ export type NewCalendar = Omit<Calendar, "calendarId" | "writer">;
 export interface DateFilter {
   year: number;
   month: number;
+  date: number;
+  duration: number;
 }
