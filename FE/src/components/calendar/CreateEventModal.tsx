@@ -14,11 +14,18 @@ export function CreateEventModal({
   selectedDate,
   setSelectedDate,
 }: Props) {
+  const formatDateForInput = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const defaultNewEvent = {
     title: "",
     type: "event" as CalendarEventType,
-    startAt: "",
-    endAt: "",
+    startAt: selectedDate ? formatDateForInput(selectedDate) : "",
+    endAt: selectedDate ? formatDateForInput(selectedDate) : "",
     url: "",
     writer: "",
   };
