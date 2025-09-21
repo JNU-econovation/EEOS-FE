@@ -6,18 +6,37 @@ import { CalendarHeader } from "@/components/calendar/CalendarHeader";
 import { CreateEventModal } from "@/components/calendar/CreateEventModal";
 import { EventInfoModal } from "@/components/calendar/EventInfoModal";
 import { WeekDayHeader } from "@/components/calendar/WeekDayHeader";
-import { Calendar } from "@/types/calendar";
+import {
+  useFetchMonthlyCalendarQuery,
+  useCreateCalendarEventMutation,
+  useDeleteCalendarEventMutation,
+} from "@/hooks/query/useCalendarQuery";
+import { Calendar, NewCalendar } from "@/types/calendar";
 import { getCalendarDates, navigateMonth } from "@/utils/dateUtils";
 
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState<Calendar[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Calendar | null>(null);
   const [showEventModal, setShowEventModal] = useState(false);
 
   const dates = getCalendarDates(currentDate);
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const date = 1;
+  const duration = new Date(year, month, 0).getDate();
+
+  const { data: events, refetch: refetchEvent } = useFetchMonthlyCalendarQuery({
+    year,
+    month,
+    date,
+    duration,
+  });
+
+  const { mutate: createEvent } = useCreateCalendarEventMutation();
+  const { mutate: deleteEvent } = useDeleteCalendarEventMutation();
 
   const handleNavigateMonth = (direction: "prev" | "next") => {
     setCurrentDate(navigateMonth(currentDate, direction));
@@ -32,10 +51,32 @@ export default function CalendarPage() {
     setShowAddModal(true);
   };
 
+  const handleCreateEvent = (newEvent: NewCalendar) => {
+    createEvent(newEvent, {
+      onSuccess: () => {
+        setShowAddModal(false);
+        setSelectedDate(null);
+        refetchEvent();
+      },
+      onError: (error) => {
+        console.error("이벤트 생성 실패:", error);
+        alert("이벤트 생성에 실패했습니다.");
+      },
+    });
+  };
+
   const handleDeleteEvent = (eventId: number) => {
-    setEvents(events.filter((e) => e.calendarId !== eventId));
-    setShowEventModal(false);
-    setSelectedEvent(null);
+    deleteEvent(eventId, {
+      onSuccess: () => {
+        setShowEventModal(false);
+        setSelectedEvent(null);
+        refetchEvent();
+      },
+      onError: (error) => {
+        console.error("이벤트 삭제 실패:", error);
+        alert("이벤트 삭제에 실패했습니다.");
+      },
+    });
   };
 
   const handleEventClick = (event: Calendar, e: React.MouseEvent) => {
@@ -43,6 +84,8 @@ export default function CalendarPage() {
     setSelectedEvent(event);
     setShowEventModal(true);
   };
+
+  if (!events) return null;
 
   return (
     <div className="flex h-screen flex-col bg-white">
@@ -65,9 +108,7 @@ export default function CalendarPage() {
       {showAddModal && selectedDate && (
         <CreateEventModal
           closeModal={() => setShowAddModal(false)}
-          createNewEvent={(newEvent) => {
-            setEvents([...events, newEvent]);
-          }}
+          createNewEvent={handleCreateEvent}
           selectedDate={selectedDate}
           setSelectedDate={(selectedDate) => setSelectedDate(selectedDate)}
         />
