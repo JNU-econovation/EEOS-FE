@@ -1,6 +1,7 @@
 import type {
   ActiveStatus,
   AttendStatus,
+  Department,
   Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
@@ -43,10 +44,12 @@ export class MemberAttendStatusInfoDto extends MemberDto {
 
 export class MemberActiveStatusInfoDto extends MemberDto {
   public readonly activeStatus: ActiveStatus;
+  public readonly department: Department;
 
   constructor(data: MemberActiveStatusInfo) {
     super(data);
     this.activeStatus = data?.activeStatus;
+    this.department = data?.department;
   }
 }
 
