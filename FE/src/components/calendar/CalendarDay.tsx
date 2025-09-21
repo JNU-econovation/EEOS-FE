@@ -11,12 +11,6 @@ interface CalendarDayProps {
   onEventClick: (event: SimpleCalendarDto, e: React.MouseEvent) => void;
 }
 
-const color = {
-  event: "bg-blue-500",
-  presentation: "bg-red-500",
-  etc: "bg-teal-500",
-};
-
 export function CalendarDay({
   date,
   events,
@@ -61,7 +55,11 @@ export function CalendarDay({
             key={event.calendarId}
             className={classNames(
               "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
-              color[event.type] || color.etc,
+              event.type === "event"
+                ? "bg-blue-600"
+                : event.type === "presentation"
+                ? "bg-green-600"
+                : "bg-gray-600",
             )}
             onClick={(e) => onEventClick(event, e)}
             title={`${event.title} (${
