@@ -13,7 +13,7 @@ const numberToDay = (nbr: number) => {
 
 const color = {
   event: "bg-blue-500",
-  weekly_presentation: "bg-red-500",
+  presentation: "bg-red-500",
   ect: "bg-teal-500",
 };
 //TODO: ui 따로 추상화 하기

@@ -40,14 +40,14 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
                 "inline-block rounded-full px-3 py-1 text-sm font-medium text-white",
                 event.type === "event"
                   ? "bg-blue-600"
-                  : event.type === "weekly_presentation"
+                  : event.type === "presentation"
                   ? "bg-green-600"
                   : "bg-gray-600",
               )}
             >
               {event.type === "event"
                 ? "행사"
-                : event.type === "weekly_presentation"
+                : event.type === "presentation"
                 ? "주간발표"
                 : "기타"}
             </span>
