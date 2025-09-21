@@ -39,10 +39,10 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
               className={classNames(
                 "inline-block rounded-full px-3 py-1 text-sm font-medium text-white",
                 event.type === "event"
-                  ? "bg-blue-600"
+                  ? "bg-blue-500"
                   : event.type === "presentation"
-                  ? "bg-green-600"
-                  : "bg-gray-600",
+                  ? "bg-red-500"
+                  : "bg-teal-500",
               )}
             >
               {event.type === "event"
