@@ -14,7 +14,7 @@ const numberToDay = (nbr: number) => {
 const color = {
   event: "bg-blue-500",
   presentation: "bg-red-500",
-  ect: "bg-teal-500",
+  etc: "bg-teal-500",
 };
 //TODO: ui 따로 추상화 하기
 const EventCalender = ({ onClose }: { onClose: () => void }) => {
