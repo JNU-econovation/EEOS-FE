@@ -1,11 +1,12 @@
 import { CalendarDay } from "./CalendarDay";
+import { SimpleCalendarDto } from "@/apis/dtos/calendar.dto";
 import { Calendar } from "@/types/calendar";
 import { getEventsForDate, isOtherMonth, isToday } from "@/utils/dateUtils";
 
 interface CalendarGridProps {
   dates: Date[];
   currentDate: Date;
-  events: Calendar[];
+  events: SimpleCalendarDto[];
   onDateClick: (date: Date) => void;
   onEventClick: (event: Calendar, e: React.MouseEvent) => void;
 }

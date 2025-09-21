@@ -1,14 +1,14 @@
 import classNames from "classnames";
-import { Calendar } from "@/types/calendar";
+import { SimpleCalendarDto } from "@/apis/dtos/calendar.dto";
 
 interface CalendarDayProps {
   date: Date;
-  events: Calendar[];
+  events: SimpleCalendarDto[];
   isOtherMonth: boolean;
   isToday: boolean;
   dayIndex: number;
   onDateClick: (date: Date) => void;
-  onEventClick: (event: Calendar, e: React.MouseEvent) => void;
+  onEventClick: (event: SimpleCalendarDto, e: React.MouseEvent) => void;
 }
 
 export function CalendarDay({

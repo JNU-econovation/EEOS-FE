@@ -1,4 +1,4 @@
-import { Calendar } from "@/types/calendar";
+import { SimpleCalendarDto } from "@/apis/dtos/calendar.dto";
 
 export const getDatesInRange = (startDate: Date, endDate: Date): Date[] => {
   const dates = [];
@@ -33,10 +33,7 @@ export const getCalendarDates = (currentDate: Date) => {
   return getDatesInRange(startDate, endDate);
 };
 
-export const getEventsForDate = (
-  date: Date,
-  events: Calendar[],
-): Calendar[] => {
+export const getEventsForDate = (date: Date, events: SimpleCalendarDto[]) => {
   return events.filter((event) => {
     const eventStart = new Date(event.startAt);
     const eventEnd = new Date(event.endAt);
