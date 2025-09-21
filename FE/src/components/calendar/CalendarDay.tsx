@@ -17,12 +17,6 @@ const color = {
   etc: "bg-teal-500",
 };
 
-const typeText = {
-  event: "행사",
-  presentation: "주간발표",
-  etc: "기타",
-};
-
 export function CalendarDay({
   date,
   events,
@@ -70,7 +64,13 @@ export function CalendarDay({
               color[event.type] || color.etc,
             )}
             onClick={(e) => onEventClick(event, e)}
-            title={`${event.title} (${typeText[event.type] || typeText.etc})`}
+            title={`${event.title} (${
+              event.type === "event"
+                ? "행사"
+                : event.type === "presentation"
+                ? "주간발표"
+                : "기타"
+            })`}
           >
             {event.title}
           </div>
