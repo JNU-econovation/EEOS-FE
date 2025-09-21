@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import COLOR from "@/constants/COLOR";
 import { Calendar } from "@/types/calendar";
 
 interface Props {
@@ -38,11 +39,7 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
             <span
               className={classNames(
                 "inline-block rounded-full px-3 py-1 text-sm font-medium text-white",
-                event.type === "event"
-                  ? "bg-blue-600"
-                  : event.type === "presentation"
-                  ? "bg-green-600"
-                  : "bg-gray-600",
+                COLOR.CALENDAR[event.type] || COLOR.CALENDAR.etc,
               )}
             >
               {event.type === "event"

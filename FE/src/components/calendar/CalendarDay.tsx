@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { SimpleCalendarDto } from "@/apis/dtos/calendar.dto";
+import COLOR from "@/constants/COLOR";
 
 interface CalendarDayProps {
   date: Date;
@@ -10,12 +11,6 @@ interface CalendarDayProps {
   onDateClick: (date: Date) => void;
   onEventClick: (event: SimpleCalendarDto, e: React.MouseEvent) => void;
 }
-
-const color = {
-  event: "bg-blue-500",
-  presentation: "bg-red-500",
-  etc: "bg-teal-500",
-};
 
 const typeText = {
   event: "행사",
@@ -67,7 +62,7 @@ export function CalendarDay({
             key={event.calendarId}
             className={classNames(
               "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
-              color[event.type] || color.etc,
+              COLOR.CALENDAR[event.type] || COLOR.CALENDAR.etc,
             )}
             onClick={(e) => onEventClick(event, e)}
             title={`${event.title} (${typeText[event.type] || typeText.etc})`}
