@@ -1,4 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Comment, QuestionListDto } from "@/apis/dtos/question.dto";
+import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
 import {
   deleteQuestion,
   getQuestionsByTeam,
@@ -6,9 +8,7 @@ import {
   PostQuestionParams,
   updateQuestion,
 } from "@/apis/question";
-import { Comment, QuestionListDto } from "@/apis/dtos/question.dto";
 import API from "@/constants/API";
-import { UserAttendStatusInfoDto } from "@/apis/dtos/user.dto";
 import { makeNewQuestionData } from "@/utils/question";
 
 export const useGetQuestions = (programId: number, teamId: number) => {

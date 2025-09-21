@@ -1,13 +1,13 @@
 "use client";
 
+import { useCallback } from "react";
 import { MemberAttendStatusInfoDto } from "@/apis/dtos/member.dto";
 import MemberList from "@/components/common/MemberList";
-import Title from "@/components/common/Title/Title";
-import { AttendStatus } from "@/types/member";
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
-import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
+import Title from "@/components/common/Title/Title";
 import NumberBadge from "@/components/NumberBadge/NumberBadge";
-import { useCallback } from "react";
+import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
+import { AttendStatus } from "@/types/member";
 
 const mockMember: MemberAttendStatusInfoDto = {
   memberId: 1,

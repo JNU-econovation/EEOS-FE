@@ -1,8 +1,8 @@
 import AttendeeInfoLoader from "./AttendeeInfo.loader";
 import MemberList from "@/components/common/MemberList";
 import { useGetProgramMembersByAttend } from "@/hooks/query/useMemberQuery";
-import { AttendStatus } from "@/types/member";
 import { useGetProgramId } from "@/hooks/usePrograms";
+import { AttendStatus } from "@/types/member";
 
 interface AttendeeInfoProps {
   programId: number;

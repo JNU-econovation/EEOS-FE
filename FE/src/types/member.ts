@@ -1,5 +1,5 @@
-import { ProgramStatus } from "@/types/program";
 import DEPARTMENT from "@/constants/DEPARTMENT";
+import { ProgramStatus } from "@/types/program";
 
 export type ActiveStatus = "am" | "rm" | "cm" | "ob";
 export type ActiveStatusWithAll = ActiveStatus | "all";

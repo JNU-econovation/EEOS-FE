@@ -1,5 +1,5 @@
-import { AttendStatus } from "@/types/member";
 import { getEditableStatus } from "../program";
+import { AttendStatus } from "@/types/member";
 import { ProgramAttendStatus, ProgramStatus } from "@/types/program";
 
 describe("getEditableStatus", () => {

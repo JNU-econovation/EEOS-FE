@@ -1,10 +1,10 @@
 "use client";
 
+import ProgramDetailSkeleton from "../loader/ProgramDetail.skeleton";
 import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import { useGetProgramId } from "@/hooks/usePrograms";
-import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
-import ProgramDetailSkeleton from "../loader/ProgramDetail.skeleton";
 
 const ProgramDetailSection = () => {
   const isAbleToEdit = useGetAccessType() === "admin";

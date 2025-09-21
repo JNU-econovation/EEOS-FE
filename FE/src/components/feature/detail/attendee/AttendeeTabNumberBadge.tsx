@@ -1,10 +1,10 @@
 "use client";
 
+import { useCallback } from "react";
 import NumberBadge from "@/components/NumberBadge/NumberBadge";
 import { useGetProgramMembersByAttend } from "@/hooks/query/useMemberQuery";
 import { useGetProgramId } from "@/hooks/usePrograms";
 import { AttendStatus } from "@/types/member";
-import { useCallback } from "react";
 
 const AttendeeTabNumberBadge = ({ status }: { status: AttendStatus }) => {
   const programId = useGetProgramId();

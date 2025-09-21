@@ -1,14 +1,14 @@
 "use client";
 
+import ProgramHeaderSkeleton from "../loader/ProgramHeader.skeleton";
 import EditAndDeleteButton from "./EditAndDeleteButton";
 import TabItem from "@/components/common/tabs/tab/TabItem";
 import Title from "@/components/common/Title/Title";
 import PROGRAM from "@/constants/PROGRAM";
 import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
-import { formatTimestamp } from "@/utils/convert";
 import { useGetProgramId } from "@/hooks/usePrograms";
-import ProgramHeaderSkeleton from "../loader/ProgramHeader.skeleton";
+import { formatTimestamp } from "@/utils/convert";
 
 const DEADLINE_TEXT = "행사일정 : ";
 

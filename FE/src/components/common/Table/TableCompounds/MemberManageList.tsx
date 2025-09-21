@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import Image from "next/image";
+import Selector from "../../Selector/Selector";
 import { useTableContext } from "../TableWrapper";
 import { MemberActiveStatusInfoDto } from "@/apis/dtos/member.dto";
 import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
+import DEPARTMENTS, {
+  findDepartmentEnNameFromKoName,
+} from "@/constants/DEPARTMENT";
+import DEPARTMENT from "@/constants/DEPARTMENT";
 import {
   useDeleteMember,
   usePutUpdateMemberDepartment,
   useUpdateMemberActiveStatus,
 } from "@/hooks/query/useMemberQuery";
-import DEPARTMENTS, {
-  findDepartmentEnNameFromKoName,
-} from "@/constants/DEPARTMENT";
-import Selector from "../../Selector/Selector";
-import DEPARTMENT from "@/constants/DEPARTMENT";
 
 interface MemberManageListProps {
   memberList: MemberActiveStatusInfoDto[];

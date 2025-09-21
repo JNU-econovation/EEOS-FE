@@ -1,5 +1,5 @@
-import { AttendStatus } from "@/types/member";
 import { useRouter } from "next/navigation";
+import { AttendStatus } from "@/types/member";
 
 interface Props {
   attendStatus: AttendStatus;

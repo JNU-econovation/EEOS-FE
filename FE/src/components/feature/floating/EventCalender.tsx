@@ -1,9 +1,9 @@
 "use client";
 
-import FadeSlideIn from "@/components/common/FadeSlideIn/FadeSlideIn";
-import { useGetSimpleCalendarEvents } from "@/hooks/query/useCalendar";
 import Link from "next/link";
 import { useMemo } from "react";
+import FadeSlideIn from "@/components/common/FadeSlideIn/FadeSlideIn";
+import { useGetSimpleCalendarEvents } from "@/hooks/query/useCalendar";
 
 const numberToDay = (nbr: number) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;

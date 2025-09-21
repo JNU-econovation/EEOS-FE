@@ -12,6 +12,7 @@ const ROUTES = {
   LOGIN: "/login",
   LOGGIN_IN: "/login/logging-in",
   NAME_ERROR: "/login/name-error",
+  CALENDAR: "/calendar",
   TEAM_BUILDING: {
     CREATE: "/team-building/create",
     DETAIL: "/team-building/detail",

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getPresentations } from "@/apis/proxy/github";
 import { useGetProgramByProgramId } from "./useProgramQuery";
+import { getPresentations } from "@/apis/proxy/github";
 
 const usePresentations = (programId: number) => {
   const { data: programData } = useGetProgramByProgramId(programId, false);

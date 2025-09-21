@@ -3,16 +3,16 @@
 "use client";
 
 import classNames from "classnames";
+import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import AttendStatusModalLoader from "./AttendStatusModal.loader";
 import LoginModal from "./LoginModal";
 import UserAttendModal from "./UserAttendModal";
 import ErrorFallbackNoIcon from "@/components/common/error/ErrorFallbackNoIcon";
+import { Line } from "@/components/icons";
 import useModal from "@/hooks/useModal";
 import useOutsideRef from "@/hooks/useOutsideRef";
 import { useGetProgramId } from "@/hooks/usePrograms";
-import { Line } from "@/components/icons";
-import { Suspense } from "react";
-import AttendStatusModalLoader from "./AttendStatusModal.loader";
 
 interface UserAttendModalProps {
   isLoggedIn: boolean;

@@ -65,6 +65,9 @@ const QUESTION = {
 };
 
 const CALENDAR = {
+  CREATE: "/calendars",
+  FETCH: "/calendars",
+  DELETE: (calendarId: number) => `/calendars/${calendarId}`,
   WEEKLY: ({
     year,
     month,

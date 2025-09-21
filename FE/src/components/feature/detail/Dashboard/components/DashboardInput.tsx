@@ -1,12 +1,12 @@
 "use client";
 
+import { useAtom } from "jotai";
 import { PostQuestionParams } from "@/apis/question";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
 import { Send } from "@/components/icons";
 import { usePostQuestion } from "@/hooks/query/useQuestionQuery";
 import { useGetAccessType } from "@/hooks/useAccess";
 import dashboardAtoms from "@/store/dashboardAtoms";
-import { useAtom } from "jotai";
 
 interface DashboardInputProps {
   programId: number;

@@ -1,6 +1,6 @@
+import classNames from "classnames";
 import { PropsWithChildren } from "react";
 import { tabAlign, useTab } from "../TabCompound";
-import classNames from "classnames";
 
 interface TabListProps extends PropsWithChildren {
   className?: string;
