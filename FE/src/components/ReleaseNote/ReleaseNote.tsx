@@ -1,11 +1,11 @@
 "use client";
 
+import { useAtom } from "jotai";
+import { useState } from "react";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
 import Dimmed from "@/components/common/Dimmed";
 import RELEASE, { CURRENT_VERSION } from "@/constants/RELEASE";
 import { isReleaseNoteOpen } from "@/store/releaseAtoms";
-import { useAtom } from "jotai";
-import { useState } from "react";
 
 const ReleaseNote = () => {
   const [curIndex, setCurIndex] = useState(0);

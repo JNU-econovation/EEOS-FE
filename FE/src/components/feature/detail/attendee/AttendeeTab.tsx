@@ -1,9 +1,9 @@
 "use client";
 
+import AttendeeTabNumberBadge from "./AttendeeTabNumberBadge";
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 import { AttendStatus } from "@/types/member";
-import AttendeeTabNumberBadge from "./AttendeeTabNumberBadge";
 
 interface AttendeeTabProps {
   children?: (selectedItem: { status: AttendStatus }) => JSX.Element;

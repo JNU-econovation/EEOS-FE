@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { PropsWithChildren } from "react";
 import ROUTES from "@/constants/ROUTES";
 import useAuth from "@/hooks/useAuth";
-import { PropsWithChildren } from "react";
 
 interface AuthValidateProps extends PropsWithChildren {
   isHaveToLoggedInRoute?: boolean;

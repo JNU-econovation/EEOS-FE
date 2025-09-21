@@ -1,15 +1,15 @@
 "use client";
 
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import DashboardContent from "./components/DashboardContent";
+import DashboardContentSkeleton from "./components/DashboardContentSkelton";
+import DashboardInput from "./components/DashboardInput";
+import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
 import Title from "@/components/common/Title/Title";
 import TeamsTab from "@/components/feature/detail/Dashboard/TeamsTab";
 import { Hyperlink } from "@/components/icons";
 import { useGetProgramId } from "@/hooks/usePrograms";
-import { Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import ProgramDashboardSkeleton from "./ProgramDashboard.skeleton";
-import DashboardContent from "./components/DashboardContent";
-import DashboardContentSkeleton from "./components/DashboardContentSkelton";
-import DashboardInput from "./components/DashboardInput";
 
 const ProgramDashboardSection = () => {
   const programId = useGetProgramId();

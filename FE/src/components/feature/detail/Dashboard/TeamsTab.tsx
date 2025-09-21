@@ -1,10 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import { Hyperlink, HyperlinkGray } from "@/components/icons";
 import usePresentations from "@/hooks/query/usePresentations";
 import { useTeamQuery } from "@/hooks/query/useTeamQuery";
-import Link from "next/link";
 
 interface SelectedItemProps {
   teamName: string;

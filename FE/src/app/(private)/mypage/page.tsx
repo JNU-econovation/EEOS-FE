@@ -1,7 +1,7 @@
 "use client";
 
-import UserInfoSection from "@/components/mypage/UserInfoSection";
 import AttendanceOverviewSection from "@/components/mypage/AttendanceOverviewSection";
+import UserInfoSection from "@/components/mypage/UserInfoSection";
 
 const MyPage = () => {
   return (

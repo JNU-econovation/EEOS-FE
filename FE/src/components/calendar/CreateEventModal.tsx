@@ -156,9 +156,7 @@ export function CreateEventModal({
             <button
               onClick={handleAddEvent}
               disabled={
-                !newEvent.title.trim() ||
-                !newEvent.startAt ||
-                !newEvent.endAt
+                !newEvent.title.trim() || !newEvent.startAt || !newEvent.endAt
               }
               className="flex-1 rounded-md bg-blue-600 px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50"
             >

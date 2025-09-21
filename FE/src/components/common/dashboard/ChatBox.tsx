@@ -1,8 +1,8 @@
 "use client";
 
-import { useGetAccessType } from "@/hooks/useAccess";
 import { useState } from "react";
 import MarkdownViewer from "../markdown/MarkdownViewer";
+import { useGetAccessType } from "@/hooks/useAccess";
 
 export interface ChatBoxInnerData {
   commentId: number;

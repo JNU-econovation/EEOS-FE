@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const UserBtn = () => {
   const router = useRouter();

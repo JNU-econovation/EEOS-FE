@@ -1,8 +1,8 @@
 "use client";
 
 import ChatList from "./ChatList";
-import { Comment } from "@/apis/dtos/question.dto";
 import ReplyChat from "./ReplyChat";
+import { Comment } from "@/apis/dtos/question.dto";
 
 const Chat = ({
   commentId,

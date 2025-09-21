@@ -1,3 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
+import AttendStatusView from "./AttendStatusView";
+import AttendToggleLabel from "./AttendToggleLabel";
 import StatusToggleItem from "@/components/common/StatusToggleItem";
 import MESSAGE from "@/constants/MESSAGE";
 import {
@@ -6,9 +9,6 @@ import {
 } from "@/hooks/query/useUserQuery";
 import { ProgramAttendStatus, ProgramStatus } from "@/types/program";
 import { getEditableStatus } from "@/utils/program";
-import { useQueryClient } from "@tanstack/react-query";
-import AttendStatusView from "./AttendStatusView";
-import AttendToggleLabel from "./AttendToggleLabel";
 
 interface UserAttendModalProps {
   programId: number;

@@ -1,11 +1,11 @@
 "use client";
 
-import ErrorFallback from "@/components/common/error/ErrorFallback";
-import Title from "@/components/common/Title/Title";
-import { useGetProgramId } from "@/hooks/usePrograms";
 import { ErrorBoundary } from "react-error-boundary";
 import AttendeeInfoByStatus from "./AttendeeInfoByStatus";
 import AttendeeTab from "./AttendeeTab";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
+import Title from "@/components/common/Title/Title";
+import { useGetProgramId } from "@/hooks/usePrograms";
 
 const AttendeeInfoSection = () => {
   const programId = useGetProgramId();

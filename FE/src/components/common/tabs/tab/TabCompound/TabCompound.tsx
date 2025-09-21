@@ -7,9 +7,9 @@ import {
   ReactNode,
   PropsWithChildren,
 } from "react";
-import TabList from "./compounds/TabList";
-import TabItem from "./compounds/TabItem";
 import NakedTabItem from "./compounds/NakedTabItem";
+import TabItem from "./compounds/TabItem";
+import TabList from "./compounds/TabList";
 
 export const tabAlign = {
   line: "flex gap-4",

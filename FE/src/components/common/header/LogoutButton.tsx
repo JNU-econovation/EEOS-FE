@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 import ROUTES from "@/constants/ROUTES";
+import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 
 const LogoutBtn = () => {
   const router = useRouter();
