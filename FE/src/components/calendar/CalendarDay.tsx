@@ -57,7 +57,7 @@ export function CalendarDay({
               "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
               event.type === "event"
                 ? "bg-blue-600"
-                : event.type === "weekly_presentation"
+                : event.type === "presentation"
                 ? "bg-green-600"
                 : "bg-gray-600",
             )}
@@ -65,7 +65,7 @@ export function CalendarDay({
             title={`${event.title} (${
               event.type === "event"
                 ? "행사"
-                : event.type === "weekly_presentation"
+                : event.type === "presentation"
                 ? "주간발표"
                 : "기타"
             })`}

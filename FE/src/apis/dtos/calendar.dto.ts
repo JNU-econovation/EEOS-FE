@@ -3,14 +3,14 @@ export class SimpleCalendarDto {
   public title: string;
   public startAt: number;
   public endAt: number;
-  public type: "event" | "weekly_presentation" | "etc";
+  public type: "event" | "presentation" | "etc";
 
   constructor(data: {
     calendarId: number;
     title: string;
     startAt: number;
     endAt: number;
-    type: "event" | "weekly_presentation" | "etc";
+    type: "event" | "presentation" | "etc";
   }) {
     this.calendarId = data.calendarId;
     this.title = data.title;
