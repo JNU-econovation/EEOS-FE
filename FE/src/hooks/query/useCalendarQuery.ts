@@ -1,5 +1,9 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { fetchMonthlyCalendar, postCalender } from "@/apis/calendar";
+import {
+  deleteCalender,
+  getCalendarEventsOnWeek,
+  postCalender,
+} from "@/apis/calendar";
 import API from "@/constants/API";
 import { DateFilter, NewCalendar } from "@/types/calendar";
 
@@ -9,9 +13,21 @@ export function useCreateCalendarEventMutation() {
   });
 }
 
+export function useDeleteCalendarEventMutation() {
+  return useMutation({
+    mutationFn: (calendarId: number) => deleteCalender(calendarId),
+  });
+}
+
 export function useFetchMonthlyCalendarQuery(dateFilter: DateFilter) {
   return useQuery({
-    queryKey: [API.CALENDAR.FETCH],
-    queryFn: () => fetchMonthlyCalendar(dateFilter),
+    queryKey: [
+      API.CALENDAR.FETCH,
+      dateFilter.year,
+      dateFilter.month,
+      dateFilter.date,
+      dateFilter.duration,
+    ],
+    queryFn: () => getCalendarEventsOnWeek(dateFilter),
   });
 }
