@@ -163,7 +163,7 @@ const EventCalender = ({ onClose }: { onClose: () => void }) => {
                 );
               })}
             </div>
-            <Link href="/calendar">
+            <Link href="/calendar" onClick={onClose}>
               <p className="mt-2 text-end text-sky-600">
                 달력 자세히 보기 &rarr;
               </p>
