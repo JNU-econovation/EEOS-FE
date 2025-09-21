@@ -1,10 +1,8 @@
 "use client";
 
-import classNames from "classnames";
 import Link from "next/link";
 import { useMemo } from "react";
 import FadeSlideIn from "@/components/common/FadeSlideIn/FadeSlideIn";
-import COLOR from "@/constants/COLOR";
 import { useGetSimpleCalendarEvents } from "@/hooks/query/useCalendar";
 
 const numberToDay = (nbr: number) => {
@@ -13,6 +11,11 @@ const numberToDay = (nbr: number) => {
   return days[day];
 };
 
+const color = {
+  event: "bg-blue-500",
+  presentation: "bg-red-500",
+  etc: "bg-teal-500",
+};
 //TODO: ui 따로 추상화 하기
 const EventCalender = ({ onClose }: { onClose: () => void }) => {
   const { data: events, isLoading, isError } = useGetSimpleCalendarEvents();
@@ -108,10 +111,7 @@ const EventCalender = ({ onClose }: { onClose: () => void }) => {
                   return (
                     <div
                       key={`${calendarId}-${index}`}
-                      className={classNames(
-                        "absolute flex h-6 items-center justify-center truncate rounded-sm px-4 text-xs font-medium text-white opacity-70",
-                        COLOR.CALENDAR[type] || COLOR.CALENDAR.etc,
-                      )}
+                      className={`absolute flex h-6 items-center justify-center truncate rounded-sm ${color[type]} px-4 text-xs font-medium text-white opacity-70`}
                       style={{
                         left: `${(leftOffset * 100) / 12}%`,
                         width: `${(width * 100) / 12}%`,
