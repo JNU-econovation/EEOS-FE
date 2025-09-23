@@ -35,9 +35,9 @@ const Header = ({
   };
 
   return (
-    <div 
+    <div
       className={headerStyle}
-      style={{ gridTemplateColumns: columnWidths.replace(/_/g, ' ') }}
+      style={{ gridTemplateColumns: columnWidths.replace(/_/g, " ") }}
     >
       {hasCheckBox && (
         <CheckBox
