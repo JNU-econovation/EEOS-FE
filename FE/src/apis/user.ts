@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import API from "../constants/API";
 import { ActiveStatus, AttendStatus } from "../types/member";
 import {
+  SemesterStartDateDto,
   UserActiveStatusInfoDto,
   UserAttendStatusInfoDto,
 } from "./dtos/user.dto";
@@ -98,4 +99,12 @@ export const putMyActiveStatus = async (
     },
   );
   return new UserActiveStatusInfoDto(data?.data);
+};
+
+export const getSemesterStartDate = async () => {
+  const { data } = await https({
+    url: API.USER.SEMESTER_START_DATE,
+    method: "GET",
+  });
+  return new SemesterStartDateDto(data?.data);
 };

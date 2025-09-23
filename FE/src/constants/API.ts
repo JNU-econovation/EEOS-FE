@@ -32,6 +32,7 @@ const MEMBER = {
 const USER = {
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}`,
   ACTIVE_STATUS: "/members/activeStatus",
+  SEMESTER_START_DATE: "/admin/semester-periods",
 };
 
 const AUTH = {

@@ -8,40 +8,49 @@ import { memo, useMemo } from "react";
 
 interface TableProps {
   selectedItem: ActiveStatusWithAll;
+  startPeriod: number;
 }
 
-const StatisticsAttendanceTable = memo(({ selectedItem }: TableProps) => {
-  const queryParams = useMemo(() => ({
-    activeStatus: selectedItem,
-    page: 1,
-    endDate: Date.now(),
-    size: 100,
-    startDate: Date.now(),
-  }), [selectedItem]);
+const StatisticsAttendanceTable = memo(
+  ({ selectedItem, startPeriod }: TableProps) => {
+    const queryParams = useMemo(
+      () => ({
+        activeStatus: selectedItem,
+        page: 1,
+        endDate: Date.now(),
+        size: 100,
+        startDate: startPeriod,
+      }),
+      [selectedItem, startPeriod],
+    );
 
-  const { data: memberList, isLoading } = useGetAttendanceStatistics(queryParams);
+    const { data: memberList, isLoading } =
+      useGetAttendanceStatistics(queryParams);
 
-  const columnWidths = [
-    "7rem",
-    "1fr",
-    "7rem",
-    "1fr",
-    "10rem",
-    "10rem",
-    "10rem",
-  ];
+    const columnWidths = [
+      "7rem",
+      "1fr",
+      "7rem",
+      "1fr",
+      "10rem",
+      "10rem",
+      "10rem",
+    ];
 
-  const headerItems = ["활동 상태", "", "이름", "", "지각", "불참", "벌점"];
+    const headerItems = ["활동 상태", "", "이름", "", "지각", "불참", "벌점"];
 
-  return (
-    <TableWrapper columnWidths={columnWidths} headerItems={headerItems}>
-      <TableWrapper.Header />
-      {isLoading && <MemberTableLoader />}
-      {memberList && (
-        <TableWrapper.AttendanceStatisticsMemberList memberList={memberList} />
-      )}
-    </TableWrapper>
-  );
-});
+    return (
+      <TableWrapper columnWidths={columnWidths} headerItems={headerItems}>
+        <TableWrapper.Header />
+        {isLoading && <MemberTableLoader />}
+        {memberList && (
+          <TableWrapper.AttendanceStatisticsMemberList
+            memberList={memberList}
+          />
+        )}
+      </TableWrapper>
+    );
+  },
+);
 
 export default StatisticsAttendanceTable;
