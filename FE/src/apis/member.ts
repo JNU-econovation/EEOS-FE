@@ -196,7 +196,7 @@ export const getAttendanceStatistics = async (
     params,
   });
 
-  return data?.data.members.map(
+  return data?.data.contents.map(
     (item: AttendanceStatisticsDto) => new AttendanceStatisticsDto(item),
   ) as AttendanceStatisticsDto[];
 };
