@@ -180,7 +180,7 @@ export const putUserDepartment = async ({
 export interface AttendanceStatisticsParams {
   size: number;
   page: number;
-  status: string;
+  activeStatus: string;
   startDate: number;
   endDate: number;
 }
@@ -196,7 +196,7 @@ export const getAttendanceStatistics = async (
     params,
   });
 
-  return data?.data.map(
+  return data?.data.members.map(
     (item: AttendanceStatisticsDto) => new AttendanceStatisticsDto(item),
   ) as AttendanceStatisticsDto[];
 };

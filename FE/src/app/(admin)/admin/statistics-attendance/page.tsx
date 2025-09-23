@@ -5,6 +5,7 @@ const StatisticsAttendancePage = () => {
   return (
     <div>
       <Title text="출석 통계" textSize="2xl" />
+      <div className="mt-8" />
       <StatisticsAttendanceTabSection />
     </div>
   );

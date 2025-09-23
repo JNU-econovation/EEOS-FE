@@ -203,16 +203,18 @@ export const usePutUpdateMemberDepartment = () => {
 
 // getAttendanceStatistics
 export const useGetAttendanceStatistics = (
-  params: AttendanceStatisticsParams & {
-    activeStatus: ActiveStatusWithAll;
-  },
+  params: AttendanceStatisticsParams,
 ) => {
   return useQuery({
     queryKey: [API.MEMBER.ATTENDANCE_STATISTICS, params],
     queryFn: () => getAttendanceStatistics(params),
     staleTime: 1000 * 60 * 5,
     cacheTime: 1000 * 60 * 30,
-    select: (data) =>
-      data.filter(({ activeStatus }) => activeStatus === params.activeStatus),
+    select: (data) => {
+      if (params.activeStatus === "all") return data;
+      return data.filter(
+        ({ activeStatus }) => activeStatus === params.activeStatus,
+      );
+    },
   });
 };

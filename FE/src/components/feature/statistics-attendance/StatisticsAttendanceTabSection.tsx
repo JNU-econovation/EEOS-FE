@@ -1,18 +1,15 @@
 "use client";
 
 import StatisticsAttendanceTab from "@/components/common/tabs/StatisticsAttendanceTab";
-import dynamic from "next/dynamic";
-
-const StatisticsAttendanceTable = dynamic(
-  () => import("./StatisticsAttendanceTable"),
-  { ssr: false },
-);
+import StatisticsAttendanceTable from "./StatisticsAttendanceTable";
 
 const StatisticsAttendanceTabSection = () => {
   return (
     <StatisticsAttendanceTab>
       {(selectedItem) => (
-        <StatisticsAttendanceTable selectedItem={selectedItem} />
+        <div className="mt-4">
+          <StatisticsAttendanceTable selectedItem={selectedItem} />
+        </div>
       )}
     </StatisticsAttendanceTab>
   );
