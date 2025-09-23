@@ -26,6 +26,7 @@ const MEMBER = {
   ATTENDANCE_SUMMARY: "/attend/summary",
   UPDATE_DEPARTMENT: (userId: number, department: Department) =>
     `/members/${userId}/department?to=${department}`,
+  ATTENDANCE_STATISTICS: "/attend/statistic",
 };
 
 const USER = {
