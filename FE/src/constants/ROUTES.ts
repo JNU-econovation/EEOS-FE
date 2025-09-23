@@ -4,6 +4,7 @@ const ROUTES = {
   ADMIN_MAIN: "/admin/main",
   CREATE: "/admin/create",
   MANAGE: "/admin/manage",
+  STATISTICS_ATTENDANCE: "/admin/statistics-attendance",
   DETAIL: (programId: number) => `/detail/${programId}`,
   GUEST_DETAIL: (programId: number) => `/guest/detail/${programId}`,
   ADMIN_DETAIL: (programId: number) => `/admin/detail/${programId}`,
