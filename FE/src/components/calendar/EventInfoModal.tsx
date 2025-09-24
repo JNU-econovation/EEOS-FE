@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Calendar } from "@/types/calendar";
+import Link from "next/link";
 
 interface Props {
   event: Calendar;
@@ -66,14 +67,14 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
               <h3 className="mb-1 text-sm font-medium text-gray-700">
                 관련 Slack 링크
               </h3>
-              <a
+              <Link
                 href={event.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="break-all text-blue-600 underline hover:text-blue-800"
               >
                 {event.url}
-              </a>
+              </Link>
             </div>
           )}
 
