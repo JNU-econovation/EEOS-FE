@@ -12,7 +12,8 @@ export const getCalendarEventsOnWeek = async (
   });
 
   return data.data.calendars.map(
-    (item: SimpleCalendarDto) => new SimpleCalendarDto({ ...item }),
+    (item: SimpleCalendarDto) =>
+      new SimpleCalendarDto({ ...item, url: item.url || "" }),
   );
 };
 

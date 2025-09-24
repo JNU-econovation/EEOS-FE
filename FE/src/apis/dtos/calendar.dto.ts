@@ -4,7 +4,7 @@ export class SimpleCalendarDto {
   public startAt: number;
   public endAt: number;
   public type: "event" | "presentation" | "etc";
-  public url: string;
+  public url?: string;
 
   constructor(data: {
     calendarId: number;
