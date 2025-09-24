@@ -1,7 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { MemberActiveStatusInfoDto } from "@/apis/dtos/member.dto";
 import {
+  AttendanceStatisticsParams,
   deleteMember,
+  getAttendanceStatistics,
   getFireFingerMembers,
   getMembersByActiveStatus,
   getProgramMembersByActiveStatus,
@@ -18,6 +19,7 @@ import {
   AttendStatus,
 } from "@/types/member";
 import { ProgramAttendStatus } from "@/types/program";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetMemberByActive = (activeStatus: ActiveStatusWithAll) => {
   return useQuery({
@@ -195,6 +197,24 @@ export const usePutUpdateMemberDepartment = () => {
     },
     onError: () => {
       queryClient.invalidateQueries([API.MEMBER.LIST]);
+    },
+  });
+};
+
+// getAttendanceStatistics
+export const useGetAttendanceStatistics = (
+  params: AttendanceStatisticsParams,
+) => {
+  return useQuery({
+    queryKey: [API.MEMBER.ATTENDANCE_STATISTICS, params],
+    queryFn: () => getAttendanceStatistics(params),
+    staleTime: 1000 * 60 * 5,
+    cacheTime: 1000 * 60 * 30,
+    select: (data) => {
+      if (params.activeStatus === "all") return data;
+      return data.filter(
+        ({ activeStatus }) => activeStatus === params.activeStatus,
+      );
     },
   });
 };

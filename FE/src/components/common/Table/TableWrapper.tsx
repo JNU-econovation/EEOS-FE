@@ -9,6 +9,7 @@ import EditMemberList from "./TableCompounds/EditMemberList";
 import Header from "./TableCompounds/Header";
 import MemberManageList from "./TableCompounds/MemberManageList";
 import SelectMemberList from "./TableCompounds/SelectedMemberList";
+import AttendanceStatisticsMemberList from "./TableCompounds/AttendanceStatisticsMemberList";
 
 interface TableContextType {
   checkboxState: {
@@ -69,5 +70,6 @@ TableWrapper.Header = Header;
 TableWrapper.MemberManageList = MemberManageList;
 TableWrapper.SelectMemberList = SelectMemberList;
 TableWrapper.EditMemberList = EditMemberList;
+TableWrapper.AttendanceStatisticsMemberList = AttendanceStatisticsMemberList;
 
 export default TableWrapper;

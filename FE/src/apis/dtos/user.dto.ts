@@ -24,3 +24,11 @@ export class UserActiveStatusInfoDto {
     this.activeStatus = data?.activeStatus;
   }
 }
+
+export class SemesterStartDateDto {
+  public startDate: number;
+
+  constructor(data: { startDate: number }) {
+    this.startDate = data?.startDate;
+  }
+}

@@ -96,3 +96,21 @@ export class UserAttendanceSummaryDto {
     this.penaltyPoint = data.penaltyPoint;
   }
 }
+
+export class AttendanceStatisticsDto {
+  public id: number;
+  public name: string;
+  public activeStatus: ActiveStatus;
+  public lateCount: number;
+  public absentCount: number;
+  public penaltyPoint: number;
+
+  constructor(data: AttendanceStatisticsDto) {
+    this.id = data.id;
+    this.name = data.name;
+    this.activeStatus = data.activeStatus;
+    this.lateCount = data.lateCount;
+    this.absentCount = data.absentCount;
+    this.penaltyPoint = data.penaltyPoint;
+  }
+}

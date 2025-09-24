@@ -1,13 +1,14 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getMyActiveStatus,
   getMyAttendStatus,
+  getSemesterStartDate,
   postMyAttendance,
   putMyActiveStatus,
   putMyAttendStatus,
 } from "@/apis/user";
 import API from "@/constants/API";
 import { ActiveStatus, AttendStatus } from "@/types/member";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // 여기
 export const useGetMyActiveStatus = () => {
@@ -104,5 +105,16 @@ export const usePostMyAttendance = (programId: number) => {
         });
       });
     },
+  });
+};
+
+// getSemesterStartDate
+export const useGetSemesterStartDate = () => {
+  return useQuery({
+    queryKey: [API.USER.SEMESTER_START_DATE],
+    queryFn: () => getSemesterStartDate(),
+    staleTime: 1000 * 60 * 60,
+    cacheTime: 1000 * 60 * 60,
+    suspense: true,
   });
 };

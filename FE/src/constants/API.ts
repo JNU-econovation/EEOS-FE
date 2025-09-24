@@ -26,11 +26,13 @@ const MEMBER = {
   ATTENDANCE_SUMMARY: "/attend/summary",
   UPDATE_DEPARTMENT: (userId: number, department: Department) =>
     `/members/${userId}/department?to=${department}`,
+  ATTENDANCE_STATISTICS: "/attend/statistic",
 };
 
 const USER = {
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}`,
   ACTIVE_STATUS: "/members/activeStatus",
+  SEMESTER_START_DATE: "/admin/semester-periods",
 };
 
 const AUTH = {

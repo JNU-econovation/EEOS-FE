@@ -7,6 +7,7 @@ import ManageRedirectButton from "./ManageRedirectButton";
 import UserBtn from "./UserBtn";
 import LogoutBtn from "@/components/common/header/LogoutButton";
 import useAuth from "@/hooks/useAuth";
+import StatisticsAttendanceButton from "./StatisticsAttendanceButton";
 
 interface HeaderNavSectionProps {
   isAdmin: boolean;
@@ -19,6 +20,7 @@ const HeaderNavSection = ({ isAdmin }: HeaderNavSectionProps) => {
   if (isAdmin)
     return (
       <section className="flex w-fit items-center gap-4 sm:gap-8 ">
+        <StatisticsAttendanceButton />
         <ManageRedirectButton />
         <CreateBtn />
       </section>

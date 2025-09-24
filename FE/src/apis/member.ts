@@ -10,6 +10,7 @@ import {
   MemberInfo,
 } from "../types/member";
 import {
+  AttendanceStatisticsDto,
   MemberActiveStatusInfoDto,
   MemberAttendStatusInfoDto,
   MemberDto,
@@ -174,4 +175,28 @@ export const putUserDepartment = async ({
   });
 
   return data?.data;
+};
+
+export interface AttendanceStatisticsParams {
+  size: number;
+  page: number;
+  activeStatus: string;
+  startDate: number;
+  endDate: number;
+}
+/**
+ * 출석 통계 조회
+ */
+export const getAttendanceStatistics = async (
+  params: AttendanceStatisticsParams,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_STATISTICS,
+    method: "GET",
+    params,
+  });
+
+  return data?.data.contents.map(
+    (item: AttendanceStatisticsDto) => new AttendanceStatisticsDto(item),
+  ) as AttendanceStatisticsDto[];
 };
