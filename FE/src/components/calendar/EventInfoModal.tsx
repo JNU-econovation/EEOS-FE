@@ -81,7 +81,7 @@ export function EventInfoModal({ event, closeModal, onDeleteEvent }: Props) {
           <div className="flex gap-3 border-t border-gray-200 pt-4">
             <button
               onClick={handleDelete}
-              className="rounded-md bg-red-600 px-4 py-2 font-medium text-white transition-colors hover:bg-red-700"
+              className="rounded-md bg-red-500 px-4 py-2 font-medium text-white transition-colors hover:bg-red-600"
             >
               삭제
             </button>

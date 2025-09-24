@@ -106,7 +106,7 @@ export function CreateEventModal({
                   }
                   className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                     newEvent.type === category.value
-                      ? "bg-blue-600 text-white"
+                      ? "bg-primary"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
@@ -165,7 +165,7 @@ export function CreateEventModal({
               disabled={
                 !newEvent.title.trim() || !newEvent.startAt || !newEvent.endAt
               }
-              className="flex-1 rounded-md bg-blue-600 px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50"
+              className="flex-1 rounded-md bg-primary px-4 py-3 font-medium transition-colors disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50"
             >
               등록
             </button>
