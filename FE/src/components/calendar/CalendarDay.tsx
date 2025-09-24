@@ -35,11 +35,13 @@ export function CalendarDay({
       <div
         className={classNames("mb-1 text-sm", {
           "text-gray-400": isOtherMonth,
-          "flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 font-medium text-white ":
+          "flex h-6 w-6 items-center justify-center rounded-full bg-primary font-medium":
             isToday,
-          "text-red-500": !isOtherMonth && !isToday && dayIndex % 7 === 0,
-          "text-blue-500": !isOtherMonth && !isToday && dayIndex % 7 === 6,
-          "text-gray-900":
+          "text-red-500  opacity-70":
+            !isOtherMonth && !isToday && dayIndex % 7 === 0,
+          "text-blue-500  opacity-70":
+            !isOtherMonth && !isToday && dayIndex % 7 === 6,
+          "text-gray-900  opacity-70":
             !isOtherMonth &&
             !isToday &&
             dayIndex % 7 !== 0 &&
@@ -56,10 +58,10 @@ export function CalendarDay({
             className={classNames(
               "cursor-pointer truncate rounded p-1 text-xs text-white hover:opacity-80",
               event.type === "event"
-                ? "bg-blue-500"
+                ? "bg-blue-500  opacity-70"
                 : event.type === "presentation"
-                ? "bg-red-500"
-                : "bg-teal-500",
+                ? "bg-red-500  opacity-70"
+                : "bg-teal-500  opacity-70",
             )}
             onClick={(e) => onEventClick(event, e)}
             title={`${event.title} (${
