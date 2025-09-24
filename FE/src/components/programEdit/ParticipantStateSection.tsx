@@ -1,6 +1,6 @@
-import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import MemberActiveStatusTab from "../common/tabs/MemberActiveStatusTab";
 import AttendStateTable from "./AttendStateTable/AttendStateTable";
+import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 
 interface ParticipantStateSectionProps {
   programId: number;

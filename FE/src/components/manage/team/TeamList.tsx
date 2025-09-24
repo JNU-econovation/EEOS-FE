@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Image from "next/image";
-import { useDeleteTeam } from "@/hooks/query/useTeamQuery";
 import Check from "@/components/icons/items/Check";
+import { useDeleteTeam } from "@/hooks/query/useTeamQuery";
 
 interface TeamListProps {
   type?: "select" | "manage";
@@ -42,12 +42,20 @@ const TeamList = ({
           />
         </div>
       )}
-      {type === "select" && <div className={classNames("w-5 flex items-center justify-center h-5 border-2 rounded-full", isSelected ? "border-success-30 bg-success-30" : "border-gray-300 bg-none")}>{
-          isSelected && <Check className="fill-white w-3 h-3 stroke-white" />
-      }</div>}
+      {type === "select" && (
+        <div
+          className={classNames(
+            "flex h-5 w-5 items-center justify-center rounded-full border-2",
+            isSelected
+              ? "border-success-30 bg-success-30"
+              : "border-gray-300 bg-none",
+          )}
+        >
+          {isSelected && <Check className="h-3 w-3 fill-white stroke-white" />}
+        </div>
+      )}
     </li>
   );
 };
 
 export default TeamList;
-

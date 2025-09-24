@@ -1,9 +1,9 @@
 "use client";
-import { TeamInfo } from "@/types/team";
-import { Comment } from "@/apis/dtos/question.dto";
-import Title from "@/components/common/Title/Title";
-import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
 import Chat from "./components/Chat";
+import { Comment } from "@/apis/dtos/question.dto";
+import Tab from "@/components/common/tabs/tab/TabCompound/TabCompound";
+import Title from "@/components/common/Title/Title";
+import { TeamInfo } from "@/types/team";
 
 const fakeTeams: TeamInfo[] = [
   {

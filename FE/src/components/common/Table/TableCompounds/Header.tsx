@@ -19,10 +19,8 @@ const Header = ({
     checkboxState: { hasCheckBox, isCheckedAll, setIsCheckedAll },
   } = useTableContext();
 
-  const headerGridStyle = `grid-cols-[${columnWidths}]`;
   const headerStyle = classNames(
-    "grid w-fit  justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full",
-    headerGridStyle,
+    "grid w-fit justify-items-center gap-4 border-y-2 border-stroke-10 bg-gray-10 px-10 py-4 font-bold sm:w-full",
   );
 
   useEffect(() => {
@@ -37,7 +35,10 @@ const Header = ({
   };
 
   return (
-    <div className={headerStyle}>
+    <div
+      className={headerStyle}
+      style={{ gridTemplateColumns: columnWidths.replace(/_/g, " ") }}
+    >
       {hasCheckBox && (
         <CheckBox
           checked={isCheckedAll || isChecked}

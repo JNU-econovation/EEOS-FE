@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Button from "@/components/common/Button/Button";
-import ErrorFallback from "@/components/common/error/ErrorFallback";
 import UserActiveModalSkeleton from "./UserActiveModal.loader";
 import UserInfoSection from "./UserInfoSection";
+import Button from "@/components/common/Button/Button";
+import ErrorFallback from "@/components/common/error/ErrorFallback";
 import ROUTES from "@/constants/ROUTES";
 import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 

@@ -1,3 +1,5 @@
+import type { Department } from "@/types/member";
+
 const PROGRAM = {
   LIST: "/programs",
   CREATE: "/programs",
@@ -22,11 +24,15 @@ const MEMBER = {
     `/attend/programs/fire-finger/${programId}`,
   ATTENDANCE_LIST: "/attend/programs",
   ATTENDANCE_SUMMARY: "/attend/summary",
+  UPDATE_DEPARTMENT: (userId: number, department: Department) =>
+    `/members/${userId}/department?to=${department}`,
+  ATTENDANCE_STATISTICS: "/attend/statistic",
 };
 
 const USER = {
   ATTEND_STATUS: (programId: number) => `/attend/programs/${programId}`,
   ACTIVE_STATUS: "/members/activeStatus",
+  SEMESTER_START_DATE: "/admin/semester-periods",
 };
 
 const AUTH = {
@@ -60,6 +66,24 @@ const QUESTION = {
   DELETE: (commentId: number) => `comments/${commentId}`,
 };
 
+const CALENDAR = {
+  CREATE: "/calendars",
+  FETCH: "/calendars",
+  DELETE: (calendarId: number) => `/calendars/${calendarId}`,
+  WEEKLY: ({
+    year,
+    month,
+    date,
+    duration,
+  }: {
+    year: number;
+    month: number;
+    date: number;
+    duration: number;
+  }) =>
+    `calendars?year=${year}&month=${month}&date=${date}&duration=${duration}`,
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
@@ -67,5 +91,15 @@ Object.freeze(AUTH);
 Object.freeze(TEAM_BUILDING);
 Object.freeze(TEAM);
 Object.freeze(QUESTION);
+Object.freeze(CALENDAR);
 
-export default { PROGRAM, MEMBER, USER, AUTH, TEAM_BUILDING, TEAM, QUESTION };
+export default {
+  PROGRAM,
+  MEMBER,
+  USER,
+  AUTH,
+  TEAM_BUILDING,
+  TEAM,
+  QUESTION,
+  CALENDAR,
+};

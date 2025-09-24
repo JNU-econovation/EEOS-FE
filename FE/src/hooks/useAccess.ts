@@ -1,5 +1,5 @@
-import { AccessType } from "@/types/access";
 import { usePathname } from "next/navigation";
+import { AccessType } from "@/types/access";
 
 export const useGetAccessType = (): AccessType => {
   const pathname = usePathname();

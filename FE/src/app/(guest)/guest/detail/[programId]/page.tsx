@@ -1,8 +1,8 @@
-import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
-import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
-import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
 import BlurredAttendee from "@/components/feature/detail/attendee/BlurredAttendee";
+import BlurDashboard from "@/components/feature/detail/Dashboard/BlurDashboard";
+import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
+import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
+import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
 
 const ProgramDetailPage = () => {
   return (

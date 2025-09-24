@@ -3,18 +3,20 @@ import {
   ActiveStatus,
   ActiveStatusWithAll,
   AttendStatus,
+  Department,
   Member,
   MemberActiveStatusInfo,
   MemberAttendStatusInfo,
-  MemberInfo
+  MemberInfo,
 } from "../types/member";
 import {
+  AttendanceStatisticsDto,
   MemberActiveStatusInfoDto,
   MemberAttendStatusInfoDto,
   MemberDto,
   MemberInfoDto,
   UserAttendanceListDto,
-  UserAttendanceSummaryDto
+  UserAttendanceSummaryDto,
 } from "./dtos/member.dto";
 import { https } from "./instance";
 
@@ -155,4 +157,46 @@ export const getUserAttendanceSummary = async (
   });
 
   return new UserAttendanceSummaryDto(data?.data);
+};
+
+/**
+ * 사용자의 부서 설정 및 변경
+ */
+export const putUserDepartment = async ({
+  department,
+  userId,
+}: {
+  userId: number;
+  department: Department;
+}) => {
+  const { data } = await https({
+    url: API.MEMBER.UPDATE_DEPARTMENT(userId, department),
+    method: "PUT",
+  });
+
+  return data?.data;
+};
+
+export interface AttendanceStatisticsParams {
+  size: number;
+  page: number;
+  activeStatus: string;
+  startDate: number;
+  endDate: number;
+}
+/**
+ * 출석 통계 조회
+ */
+export const getAttendanceStatistics = async (
+  params: AttendanceStatisticsParams,
+) => {
+  const { data } = await https({
+    url: API.MEMBER.ATTENDANCE_STATISTICS,
+    method: "GET",
+    params,
+  });
+
+  return data?.data.contents.map(
+    (item: AttendanceStatisticsDto) => new AttendanceStatisticsDto(item),
+  ) as AttendanceStatisticsDto[];
 };

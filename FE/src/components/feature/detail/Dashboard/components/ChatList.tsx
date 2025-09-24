@@ -1,14 +1,14 @@
 "use client";
 
-import {
-  useDeleteQuestion,
-  useUpdateQuestion,
-} from "@/hooks/query/useQuestionQuery";
+import { useSetAtom } from "jotai";
 import ChatBox, {
   ChatBoxInnerData,
   UpdateComment,
 } from "@/components/common/dashboard/ChatBox";
-import { useSetAtom } from "jotai";
+import {
+  useDeleteQuestion,
+  useUpdateQuestion,
+} from "@/hooks/query/useQuestionQuery";
 import dashboardAtoms from "@/store/dashboardAtoms";
 
 interface ChatListProps {

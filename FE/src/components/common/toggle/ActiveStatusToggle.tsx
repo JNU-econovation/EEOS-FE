@@ -12,11 +12,11 @@ const ActiveStatusToggle = ({
   selectedValue,
 }: ActiveStatusToggleProps) => {
   const options = Object.values(ACTIVE_STATUS.TAB_WITH_COLOR);
-  const { mutate } = useUpdateMemberActiveStatus({ memberId });
+  const { mutate } = useUpdateMemberActiveStatus();
 
   const handleClick = (activeStatus: ActiveStatus) => {
     if (selectedValue === activeStatus) return;
-    mutate({ activeStatus });
+    mutate({ memberId, activeStatus });
   };
 
   const getItemColor = (type: ActiveStatus, color: StatusToggleItemColor) =>

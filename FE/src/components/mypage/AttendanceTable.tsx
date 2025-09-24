@@ -1,5 +1,5 @@
-import AttendanceBadge from "@/components/mypage/AttendanceBadge";
 import { AttendanceInfoDto } from "@/apis/dtos/member.dto";
+import AttendanceBadge from "@/components/mypage/AttendanceBadge";
 
 interface Props {
   attendanceList: AttendanceInfoDto[];

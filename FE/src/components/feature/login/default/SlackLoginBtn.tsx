@@ -1,7 +1,7 @@
-import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import StyledLinkButton from "../../../common/Button/StyledLinkButton";
+import { useSlackLoginMutation } from "@/hooks/query/useAuthQuery";
 
 const SlackLoginBtn = () => {
   const clientId = process.env.NEXT_PUBLIC_SLACK_CLIENT_ID;

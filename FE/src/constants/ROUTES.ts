@@ -4,6 +4,7 @@ const ROUTES = {
   ADMIN_MAIN: "/admin/main",
   CREATE: "/admin/create",
   MANAGE: "/admin/manage",
+  STATISTICS_ATTENDANCE: "/admin/statistics-attendance",
   DETAIL: (programId: number) => `/detail/${programId}`,
   GUEST_DETAIL: (programId: number) => `/guest/detail/${programId}`,
   ADMIN_DETAIL: (programId: number) => `/admin/detail/${programId}`,
@@ -12,6 +13,7 @@ const ROUTES = {
   LOGIN: "/login",
   LOGGIN_IN: "/login/logging-in",
   NAME_ERROR: "/login/name-error",
+  CALENDAR: "/calendar",
   TEAM_BUILDING: {
     CREATE: "/team-building/create",
     DETAIL: "/team-building/detail",
