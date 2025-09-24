@@ -6,6 +6,7 @@ import CheckBox from "@/components/common/CheckBox/CheckBox";
 import Dimmed from "@/components/common/Dimmed";
 import RELEASE, { CURRENT_VERSION } from "@/constants/RELEASE";
 import { isReleaseNoteOpen } from "@/store/releaseAtoms";
+import MarkdownViewer from "../common/markdown/MarkdownViewer";
 
 const ReleaseNote = () => {
   const [curIndex, setCurIndex] = useState(0);
@@ -62,7 +63,10 @@ const ReleaseNote = () => {
 
         <div className="mt-4" />
         <pre className="grow whitespace-pre-wrap font-sans text-lg/7">
-          {releaseNotes[curIndex].content}
+          <MarkdownViewer
+            value={releaseNotes[curIndex].content}
+            className="!p-0 !text-lg"
+          ></MarkdownViewer>
         </pre>
 
         <div className="mt-8" />
