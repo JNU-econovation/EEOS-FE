@@ -1,10 +1,13 @@
+import ROUTES from "@/constants/ROUTES";
+import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import Image from "next/image";
-import Button from "../Button/Button";
+import { useRouter } from "next/navigation";
 import Title from "../Title/Title";
 
 const ERROR_TITLE = "ERROR";
 const RETRY_BUTTON_TEXT = "Try again";
+// const RETRY_BUTTON_TEXT = "Try again";
 
 type FallbackProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,11 +22,18 @@ const ErrorFallback = ({
   resetErrorBoundary = () => {},
   retryButton = true,
 }: FallbackProps) => {
+  const router = useRouter();
+  const { mutate: logout } = useLogoutMutation();
   const { reset } = useQueryErrorResetBoundary();
   const handleReset = () => {
     reset();
     resetErrorBoundary();
   };
+  const handleLogout = () => {
+    logout();
+    router.push(ROUTES.LOGIN);
+  };
+
   return (
     <div className="flex h-fit w-full min-w-[15rem] flex-col items-center justify-center gap-4 bg-background py-6">
       <Image
@@ -34,11 +44,22 @@ const ErrorFallback = ({
       />
       <Title text={ERROR_TITLE} textColor="error" />
       {error?.message && <p className="text-sm font-normal">{error.message}</p>}
-      {retryButton && (
-        <Button color="error" size="lg" type="button" onClick={handleReset}>
-          {RETRY_BUTTON_TEXT}
-        </Button>
-      )}
+      <div className="flex gap-2">
+        {retryButton && (
+          <button
+            className="mt-2 rounded-lg bg-gray-200 px-4 py-2"
+            onClick={handleReset}
+          >
+            {RETRY_BUTTON_TEXT}
+          </button>
+        )}
+        <button
+          className="mt-2 rounded-lg bg-error px-4 py-2 text-white"
+          onClick={handleLogout}
+        >
+          로그아웃
+        </button>
+      </div>
     </div>
   );
 };
