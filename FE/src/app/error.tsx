@@ -9,7 +9,6 @@ const Error = () => {
   const { mutate: logout } = useLogoutMutation();
 
   const handleLogout = () => {
-    console.log("error page logout");
     logout();
     router.push(ROUTES.LOGIN);
   };
