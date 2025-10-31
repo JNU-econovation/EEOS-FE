@@ -1,7 +1,8 @@
 {
-  "name": "eeos",
-  "version": "0.1.0",
-  "private": true,
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +11,9 @@
     "test": "jest --watch",
     "check-types": "tsc --noEmit"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@next/third-parties": "^14.2.8",
     "@tanstack/react-query": "^4.35.7",
@@ -67,6 +71,5 @@
     "ts-node": "^10.9.2",
     "turbo": "^2.5.8",
     "typescript": "latest"
-  },
-  "packageManager": "pnpm@8.15.1+sha1.8adba2d20330c02d3856e18c4eb3819d1d3ca6aa"
+  }
 }
