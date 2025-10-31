@@ -41,7 +41,7 @@ const ProgramWrapper = ({ children }: ProgramWrapperProps) => {
   useEffect(() => {
     setQueryValue({
       ...MAIN.DEFAULT_QUERY,
-      category: parseQuery(searchParams as URLSearchParams).category,
+      category: parseQuery(searchParams as unknown as URLSearchParams).category,
     });
   }, [searchParams]);
 

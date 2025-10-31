@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { StatusType } from "./../types/teamBuilding";
+import { StatusType } from "../types/teamBuilding";
 import {
   TeamBuildingIdDto,
   TeamBuildingInfoDto,

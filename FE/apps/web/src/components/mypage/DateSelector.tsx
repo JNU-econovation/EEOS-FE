@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import "../../components/common/calendar/calendar.styles.css";
+import "../common/calendar/calendar.styles.css";
 import useOutsideRef from "@/hooks/useOutsideRef";
 
 interface Props {
