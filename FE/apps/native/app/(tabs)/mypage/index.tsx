@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 export default function MypageScreen() {
   return (
     <View>
-      <Text>Mypage</Text>
+      <Text className="text-blue-500">Mypage</Text>
     </View>
   );
 }
