@@ -1,5 +1,4 @@
-@import "../../../node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/theme.css" layer(theme);
-@import "../../../node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/preflight.css" layer(base);
-@import "../../../node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/utilities.css";
-
-@import "../../../node_modules/.pnpm/nativewind@5.0.0-preview.2_react-native-css@3.0.1_tailwindcss@4.1.17/node_modules/nativewind/theme.css";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+@import "nativewind/theme";
