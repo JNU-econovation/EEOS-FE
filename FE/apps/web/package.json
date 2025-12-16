@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@next/third-parties": "^14.2.8",
+    "@ssgoi/react": "^3.3.0",
     "@tanstack/react-query": "^4.35.7",
     "@tanstack/react-query-devtools": "^5.28.14",
     "@toss/react": "^1.7.0",
