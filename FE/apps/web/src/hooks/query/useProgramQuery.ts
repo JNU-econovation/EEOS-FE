@@ -135,6 +135,31 @@ export const useGetProgramList = ({
   });
 };
 
+export const useGetProgramListInWebview = ({
+  category,
+  programStatus,
+  size,
+  page,
+}: GetProgramListRequest) => {
+  return useQuery({
+    queryKey: [
+      API.PROGRAM.LIST,
+      category,
+      programStatus,
+      size,
+      page,
+      "webview",
+    ],
+    queryFn: () =>
+      getProgramList({ category, programStatus, size, page, isAdmin: false }),
+    select: (data) => ({
+      totalPage: data?.totalPage,
+      programs: data?.programs,
+    }),
+    staleTime: 1000 * 60 * 60,
+  });
+};
+
 export const useGetProgramAccessRight = (programId: number) => {
   return useQuery({
     queryKey: [API.PROGRAM.ACCESS_RIGHT(programId)],
