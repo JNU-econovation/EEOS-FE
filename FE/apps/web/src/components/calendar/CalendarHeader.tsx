@@ -11,11 +11,7 @@ export function CalendarHeader({
 }: CalendarHeaderProps) {
   return (
     <>
-      <div className="p-4">
-        <h1 className="text-center text-3xl font-bold text-gray-900">
-          에코노 달력
-        </h1>
-      </div>
+      <div className="p-4"></div>
       <div className="flex items-center justify-between border-b border-gray-200 p-4">
         <div className="flex items-center space-x-4">
           <h2 className="text-2xl font-semibold text-gray-900">

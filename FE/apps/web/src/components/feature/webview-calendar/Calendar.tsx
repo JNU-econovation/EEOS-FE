@@ -1,20 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { CalendarGrid } from "@/components/calendar/CalendarGrid";
 import { CalendarHeader } from "@/components/calendar/CalendarHeader";
 import { CreateEventModal } from "@/components/calendar/CreateEventModal";
 import { EventInfoModal } from "@/components/calendar/EventInfoModal";
 import { WeekDayHeader } from "@/components/calendar/WeekDayHeader";
 import {
-  useFetchMonthlyCalendarQuery,
   useCreateCalendarEventMutation,
   useDeleteCalendarEventMutation,
+  useFetchMonthlyCalendarQuery,
 } from "@/hooks/query/useCalendarQuery";
 import { Calendar, NewCalendar } from "@/types/calendar";
 import { getCalendarDates, navigateMonth } from "@/utils/dateUtils";
+import { useState } from "react";
 
-export default function CalendarPage() {
+const WebviewCalendarSection = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -86,12 +86,8 @@ export default function CalendarPage() {
   };
 
   if (!events) return null;
-
   return (
     <div className="flex h-screen flex-col bg-white">
-      <h1 className="text-center text-3xl font-bold text-gray-900">
-        에코노 달력
-      </h1>
       <CalendarHeader
         currentDate={currentDate}
         onNavigateMonth={handleNavigateMonth}
@@ -128,4 +124,6 @@ export default function CalendarPage() {
       )}
     </div>
   );
-}
+};
+
+export default WebviewCalendarSection;
