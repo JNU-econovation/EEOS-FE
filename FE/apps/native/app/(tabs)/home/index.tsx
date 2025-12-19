@@ -1,9 +1,13 @@
-import { Text, View } from "react-native";
+import WebView from "react-native-webview";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <WebView
+        style={{ flex: 1 }}
+        source={{ uri: "https://www.eeos.econovation.kr/" }}
+      />
+    </SafeAreaView>
   );
 }
