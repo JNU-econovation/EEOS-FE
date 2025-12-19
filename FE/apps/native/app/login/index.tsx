@@ -11,7 +11,7 @@ export default function ProgramScreen() {
     <SafeAreaView style={{ flex: 1 }}>
       <WebView
         className="flex-1"
-        source={{ uri: "http://localhost:3000/login" }}
+        source={{ uri: "https://www.eeos.econovation.kr/login" }}
       />
     </SafeAreaView>
   );
