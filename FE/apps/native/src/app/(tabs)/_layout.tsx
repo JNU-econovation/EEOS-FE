@@ -1,13 +1,13 @@
 import { Tabs } from "expo-router";
 
-import Home from "@/assets/icons/home.svg";
-import HomeFill from "@/assets/icons/homeFill.svg";
-import Category from "@/assets/icons/category.svg";
-import CategoryFill from "@/assets/icons/categoryFill.svg";
-import Profile from "@/assets/icons/profile.svg";
-import ProfileFill from "@/assets/icons/profileFill.svg";
 import Calendar from "@/assets/icons/calendar.svg";
 import CalendarFill from "@/assets/icons/calendarFill.svg";
+import Category from "@/assets/icons/category.svg";
+import CategoryFill from "@/assets/icons/categoryFill.svg";
+import Home from "@/assets/icons/home.svg";
+import HomeFill from "@/assets/icons/homeFill.svg";
+import Profile from "@/assets/icons/profile.svg";
+import ProfileFill from "@/assets/icons/profileFill.svg";
 
 // layout은 화면이 아니다!
 // Stack, Tabs, Drawer
@@ -17,6 +17,10 @@ export default function Layout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarLabelStyle: {
+          color: "#000000",
+        },
+        animation: "fade",
       }}
     >
       <Tabs.Screen
