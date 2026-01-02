@@ -1,6 +1,11 @@
 import { https } from "./instants";
 
-export const postLogin = async () => {
+interface LoginResponse {
+  id: string;
+  password: string;
+}
+
+export const postLogin = async (credentials: LoginResponse) => {
   // const { data } = await https({
   //   url: API.AUTH.SLACK_LOGIN,
   //   method: "POST",
