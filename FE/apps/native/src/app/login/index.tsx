@@ -1,3 +1,4 @@
+import useLoginMutation from "@/src/hooks/query/useLoginMutation";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -7,6 +8,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
  */
 
 export default function LoginScreen() {
+  const { mutate: postLogin } = useLoginMutation();
+
   return (
     <SafeAreaView className="flex-1">
       <Text></Text>
