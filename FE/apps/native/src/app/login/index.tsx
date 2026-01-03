@@ -1,7 +1,6 @@
 import useLoginMutation from "@/src/hooks/query/useLoginMutation";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import * as SecureStore from "expo-secure-store";
 import { router } from "expo-router";
 
 /**
@@ -10,21 +9,22 @@ import { router } from "expo-router";
  */
 
 export default function LoginScreen() {
-  const { mutate: postLogin } = useLoginMutation();
+  // const { mutate: postLogin } = useLoginMutation();
 
   const onPressLogin = () => {
-    postLogin(
-      {
-        id: "test",
-        password: "test",
-      },
-      {
-        onSuccess: async (data) => {
-          await SecureStore.setItemAsync("accessToken", "data.accessToken");
-          router.replace("/(tabs)/home");
-        },
-      },
-    );
+    // postLogin(
+    //   {
+    //     id: "test",
+    //     password: "test",
+    //   },
+    //   {
+    //     onSuccess: async (data) => {
+    //       await SecureStore.setItemAsync("accessToken", data.accessToken);
+    //       router.replace("/(tabs)/home");
+    //     },
+    //   },
+    // );
+    router.replace("/(tabs)/home");
   };
 
   return (
