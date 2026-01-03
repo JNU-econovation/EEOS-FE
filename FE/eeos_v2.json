@@ -2074,7 +2074,7 @@
     },
     {
       "key": "Access-Control-Allow-Origin",
-      "value": "*"
+      "value": "{{header 'Origin'}}"
     },
     {
       "key": "Access-Control-Allow-Methods",
