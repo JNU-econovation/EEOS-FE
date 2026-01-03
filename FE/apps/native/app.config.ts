@@ -1,11 +1,11 @@
 module.exports = {
   expo: {
-    name: "native",
-    slug: "native",
+    name: "eeos",
+    slug: "eeos",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
-    scheme: "native",
+    scheme: "",
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
     ios: {
