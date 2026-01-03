@@ -2,3 +2,38 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css";
 @import "nativewind/theme";
+
+@theme {
+  --color-slack: #4A154B;
+  --color-background: #FFFFFE;
+  --color-black: #000000;
+  --color-paragraph: #2D334A;
+  --color-primary: #FFD803;
+  --color-error: #FF6464;
+
+  --color-stroke-10: #D4D3D9;
+  --color-stroke-20: #A9A7B3;
+  --color-stroke-30: #272343;
+
+  --color-secondary-10: #F1FAFA;
+  --color-secondary-20: #E3F6F5;
+
+  --color-tertiary-10: #BAE8E8;
+  --color-tertiary-20: #689696;
+
+  --color-gray-10: #FAFAFA;
+  --color-gray-20: #D9D9D9;
+  --color-gray-30: #8B8B8B;
+  --color-gray-40: #595959;
+
+  --color-warning-10: #FFF7E2;
+  --color-warning-20: #FFC51A;
+  --color-warning-30: #EFB300;
+
+  --color-success-10: #EEFAEE;
+  --color-success-20: #00DE52;
+  --color-success-30: #00A500;
+
+  --color-action-10: #FFE9E4;
+  --color-action-20: #FF6530;
+}

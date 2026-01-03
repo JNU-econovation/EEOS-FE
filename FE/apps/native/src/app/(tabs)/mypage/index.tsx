@@ -1,6 +1,6 @@
+import WebviewWithInjected from "@/src/components/WebviewWithInjected";
 import { WEBVIEW_PATH } from "@/src/constants/webview";
 import { SafeAreaView } from "react-native-safe-area-context";
-import WebView from "react-native-webview";
 
 export default function MypageScreen() {
   return (
@@ -8,10 +8,9 @@ export default function MypageScreen() {
       style={{ flex: 1, backgroundColor: "white" }}
       edges={["left", "right", "top"]}
     >
-      <WebView
+      <WebviewWithInjected
         className="flex-1"
         source={{ uri: WEBVIEW_PATH.MYPAGE }}
-        allowsBackForwardNavigationGestures
       />
     </SafeAreaView>
   );

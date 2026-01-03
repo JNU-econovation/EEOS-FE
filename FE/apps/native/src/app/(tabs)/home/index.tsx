@@ -1,6 +1,6 @@
-import WebView from "react-native-webview";
-import { SafeAreaView } from "react-native-safe-area-context";
+import WebviewWithInjected from "@/src/components/WebviewWithInjected";
 import { WEBVIEW_PATH } from "@/src/constants/webview";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
@@ -8,10 +8,9 @@ export default function HomeScreen() {
       style={{ flex: 1, backgroundColor: "white" }}
       edges={["left", "right", "top"]}
     >
-      <WebView
+      <WebviewWithInjected
         className="flex-1 h-full overflow-hidden"
         source={{ uri: WEBVIEW_PATH.MAIN }}
-        allowsBackForwardNavigationGestures
       />
     </SafeAreaView>
   );
