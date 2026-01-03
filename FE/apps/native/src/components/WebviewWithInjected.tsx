@@ -7,13 +7,13 @@ import {
   INJECT_TOKEN,
   SET_VIEWPORT_RATE,
 } from "@/src/constants/scripts";
-import useSecureStore from "@/src/hooks/useSecureStore";
+import useAuthStore from "@/src/store/authStore";
 
 interface WebviewWithInjectedProps
   extends React.ComponentProps<typeof WebView> {}
 
 const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
-  const { accessToken } = useSecureStore();
+  const accessToken = useAuthStore((state) => state.accessToken);
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
