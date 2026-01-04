@@ -22,14 +22,14 @@ export default function LoginScreen() {
       //   },
       //   {
       //     onSuccess: async (data) => {
-      //       await setAccessToken("dummyAccessToken");
+      //       // API 응답: { accessToken: string, accessExpiredTime: number }
+      //       // accessExpiredTime은 밀리초 단위의 상대 시간 (예: 3600000 = 1시간)
+      //       await setAccessToken(data.accessToken, data.accessExpiredTime);
       //       router.replace("/(tabs)/home");
       //     },
       //   },
       // );
-
-      // Temporary dummy implementation
-      await setAccessToken("dummyAccessToken");
+      await setAccessToken("dummyAccessToken", 99999999999);
       router.replace("/(tabs)/home");
     } catch (error) {
       console.error("[Login] Failed:", error);
