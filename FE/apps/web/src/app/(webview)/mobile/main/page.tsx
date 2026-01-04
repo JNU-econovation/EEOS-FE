@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const WebviewMainPage = () => {
   return (
-    <SsgoiTransition id="/main">
+    <SsgoiTransition id="/main" className="min-h-screen bg-white">
       <div className="flex h-72 gap-3 p-4">
         <Link
           href="/mobile/programs"

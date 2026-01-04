@@ -13,7 +13,7 @@ const WebviewMypage = () => {
   const { activeStatus, name } = data;
 
   return (
-    <SsgoiTransition id="/mypage">
+    <SsgoiTransition id="/mypage" className="min-h-screen bg-white">
       {/* <UserInfoSection /> */}
       <div className="flex h-screen flex-col px-4">
         <div className="mt-8" />
@@ -38,7 +38,7 @@ const WebviewMypage = () => {
           {/*  */}
           <div className="mt-4" />
           <ul className="flex grow flex-col gap-2 overflow-y-auto">
-            <Link href="/detail/94">
+            <Link href="/mobile/program/94">
               <li>
                 <div className="rounded-xl border bg-white p-4">
                   <p className="text-sm font-semibold">진행중</p>

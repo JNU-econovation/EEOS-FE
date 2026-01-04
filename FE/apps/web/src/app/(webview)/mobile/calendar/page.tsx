@@ -9,7 +9,7 @@ export default function WebviewCalendarPage() {
   // const [isOpen, setOpen] = useState(true);
 
   return (
-    <SsgoiTransition id="/calendar">
+    <SsgoiTransition id="/calendar" className="min-h-screen bg-white">
       <div className="max-h-screen overflow-auto">
         <WebviewCalendarSection />
         <div className="mt-20" />
