@@ -13,7 +13,7 @@ interface WebviewWithInjectedProps
   extends React.ComponentProps<typeof WebView> {}
 
 const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
-  const accessToken = useAuthStore((state) => state.accessToken);
+  const accessToken = useAuthStore(({ accessToken }) => accessToken);
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
@@ -26,7 +26,12 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
   return (
     <WebView
       allowsBackForwardNavigationGestures
+      webviewDebuggingEnabled={process.env.EXPO_PUBLIC_ENV === "development"}
       injectedJavaScript={INJECTED_JAVASCRIPT}
+      javaScriptEnabled={true}
+      domStorageEnabled={true}
+      originWhitelist={['*']}
+      mixedContentMode="always"
       {...props}
     />
   );
