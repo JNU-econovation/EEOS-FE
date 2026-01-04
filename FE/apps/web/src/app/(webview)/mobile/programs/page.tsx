@@ -4,14 +4,6 @@ import WebviewProgramList from "@/components/feature/webview-programs/WebviewPro
 import WebviewProgramTab from "@/components/feature/webview-programs/WebviewProgramTab";
 import { SsgoiTransition } from "@ssgoi/react";
 
-// const { data: programListData } = useGetProgramListInWebview({
-// category,
-// programStatus,
-// page: page - 1,
-// size: PROGRAM.LIST_SIZE,
-// isAdmin,
-// });
-
 const WebviewProgramPage = () => {
   return (
     <SsgoiTransition id="/programs" className="min-h-screen bg-white">

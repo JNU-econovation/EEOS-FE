@@ -80,7 +80,7 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
             ref={isLastItem ? ref : null}
             className="flex gap-2"
           >
-            <div className="h-11 w-11 rounded-lg bg-gray-300"></div>
+            <div className="h-11 w-11 shrink-0 rounded-lg bg-gray-300"></div>
             <div className="grow">
               <p className="text-xl font-semibold">{program.title}</p>
               <p className="text-sm font-bold text-green-600">
