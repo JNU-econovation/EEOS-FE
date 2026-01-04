@@ -1978,6 +1978,64 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "756c4029-e557-4334-8f70-e2b074e2b954",
+      "type": "http",
+      "documentation": "본인의 출결 현황 요약 정보 조회 (출불지 카운트)",
+      "method": "get",
+      "endpoint": "attend/summary",
+      "responses": [
+        {
+          "uuid": "5695cf60-2616-4df7-9a8f-50229ad0b089",
+          "body": "{\n  \"data\": {\n\t  \"attendCount\" : 5, \n\t  \"lateCount\" : 3, \n\t  \"absentCount\" : 2,\n\t  \"paneltyPoint\" : 24\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "6be97697-b664-48f9-a370-6e7031265e02",
+      "type": "http",
+      "documentation": "본인의 출결 현황 리스트 조회",
+      "method": "get",
+      "endpoint": "attend/programs",
+      "responses": [
+        {
+          "uuid": "e55f0694-28d7-4a79-b79b-e2507a3792d4",
+          "body": "{\n  \"data\": {\n    \"totalPage\": 10,\n    \"page\": 1,\n    \"size\": 10,\n    \"contents\": [\n      {\n        \"programId\": 1,\n        \"title\": \"2024-2 B팀 2차 주간발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 2,\n        \"title\": \"2024-2 A팀 프로젝트 중간점검\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 3,\n        \"title\": \"2024-2 C팀 최종발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 4,\n        \"title\": \"2024-2 전체 세미나\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 5,\n        \"title\": \"2024-2 D팀 1차 주간발표\",\n        \"programStatus\": \"completed\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 6,\n        \"title\": \"2024-2 멘토링 세션\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 7,\n        \"title\": \"2024-2 기술 스터디 그룹\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 8,\n        \"title\": \"2024-2 E팀 코드리뷰\",\n        \"programStatus\": \"pending\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 9,\n        \"title\": \"2024-2 네트워킹 데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 10,\n        \"title\": \"2024-2 F팀 데모데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      }\n    ]\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -2052,6 +2110,14 @@
     {
       "type": "route",
       "uuid": "921f141e-edc6-413d-9bd0-8023ae057095"
+    },
+    {
+      "type": "route",
+      "uuid": "756c4029-e557-4334-8f70-e2b074e2b954"
+    },
+    {
+      "type": "route",
+      "uuid": "6be97697-b664-48f9-a370-6e7031265e02"
     }
   ],
   "proxyMode": false,
