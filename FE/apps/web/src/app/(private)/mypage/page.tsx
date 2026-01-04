@@ -1,5 +1,3 @@
-"use client";
-
 import AttendanceOverviewSection from "@/components/mypage/AttendanceOverviewSection";
 import UserInfoSection from "@/components/mypage/UserInfoSection";
 
