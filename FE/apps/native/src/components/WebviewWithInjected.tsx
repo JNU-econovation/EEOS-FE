@@ -40,6 +40,16 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       originWhitelist={["*"]}
       mixedContentMode="always"
       collapsable={false}
+      onShouldStartLoadWithRequest={(request) => {
+        if (
+          request.url.includes("mobile") ||
+          request.mainDocumentURL?.includes("mobile")
+        ) {
+          return true;
+        }
+
+        return false;
+      }}
       {...props}
     />
   );
