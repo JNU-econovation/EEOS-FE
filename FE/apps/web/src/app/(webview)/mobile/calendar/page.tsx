@@ -1,4 +1,4 @@
-import WebviewCalendarSection from "@/components/feature/webview-calendar/Calendar";
+import WebviewCalendarSection from "@/components/feature/webview-calendar/calendar/Calendar";
 import CalendarBottomSheet from "@/components/feature/webview-calendar/CalendarBottomSheet";
 import { SsgoiTransition } from "@ssgoi/react";
 
