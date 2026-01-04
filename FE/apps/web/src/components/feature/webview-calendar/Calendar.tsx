@@ -87,7 +87,7 @@ const WebviewCalendarSection = () => {
 
   if (!events) return null;
   return (
-    <div className="flex h-screen flex-col bg-white">
+    <div className="flex grow flex-col bg-white">
       <CalendarHeader
         currentDate={currentDate}
         onNavigateMonth={handleNavigateMonth}
