@@ -20,7 +20,6 @@ export default function Layout() {
         tabBarLabelStyle: {
           color: "#000000",
         },
-        animation: "fade",
       }}
     >
       <Tabs.Screen

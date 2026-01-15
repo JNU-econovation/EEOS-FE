@@ -1,20 +1,23 @@
 import { Redirect } from "expo-router";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import useSecureStore from "@/src/hooks/useSecureStore";
+import useAuthStore, { initializeAuth } from "@/src/store/authStore";
 
 export default function Index() {
-  const { accessToken, isLoading } = useSecureStore();
+  const { accessToken, isInitialized } = useAuthStore();
 
   useEffect(() => {
-    if (!isLoading) {
-      // 토큰 확인 완료 후 스플래시 숨김
-      SplashScreen.hideAsync();
-    }
-  }, [isLoading]);
+    // AuthStore 초기화 후 스플래시 제거
+    const initialize = async () => {
+      await initializeAuth();
+      await SplashScreen.hideAsync();
+    };
 
-  // 로딩 중에는 null 반환 (스플래시 유지)
-  if (isLoading) {
+    initialize();
+  }, []);
+
+  // 초기화 중에는 null 반환 (스플래시 유지)
+  if (!isInitialized) {
     return null;
   }
 

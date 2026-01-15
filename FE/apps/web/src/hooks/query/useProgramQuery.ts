@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
@@ -203,5 +203,35 @@ export const useUpdateProgramAttendMode = (programId: number) => {
         context as ProgramInfoDto,
       );
     },
+  });
+};
+
+export const useGetProgramListInWebviewInfinite = ({
+  category,
+  programStatus,
+  size,
+}: Omit<GetProgramListRequest, "page" | "isAdmin">) => {
+  return useInfiniteQuery({
+    queryKey: [
+      API.PROGRAM.LIST,
+      category,
+      programStatus,
+      size,
+      "webview",
+      "infinite",
+    ],
+    queryFn: ({ pageParam = 0 }) =>
+      getProgramList({
+        category,
+        programStatus,
+        size,
+        page: pageParam,
+        isAdmin: false,
+      }),
+    getNextPageParam: (lastPage) => {
+      const nextPage = lastPage.page + 1;
+      return nextPage < lastPage.totalPage ? nextPage : undefined;
+    },
+    staleTime: 1000 * 60 * 60,
   });
 };

@@ -6,7 +6,7 @@ import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewProgramPage = () => {
   return (
-    <SsgoiTransition id="/programs">
+    <SsgoiTransition id="/programs" className="min-h-screen bg-white">
       <div className="h-screen p-4">
         <WebviewProgramTab>
           {(selectedTab) => (

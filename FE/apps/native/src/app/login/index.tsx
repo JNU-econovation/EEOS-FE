@@ -1,7 +1,8 @@
-import useLoginMutation from "@/src/hooks/query/useLoginMutation";
+// import useLoginMutation from "@/src/hooks/query/useLoginMutation";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import useAuthStore from "@/src/store/authStore";
 
 /**
  * TODO: 웹 - 앱 로그인 상태 동기화
@@ -10,21 +11,29 @@ import { router } from "expo-router";
 
 export default function LoginScreen() {
   // const { mutate: postLogin } = useLoginMutation();
+  const setAccessToken = useAuthStore((state) => state.setAccessToken);
 
-  const onPressLogin = () => {
-    // postLogin(
-    //   {
-    //     id: "test",
-    //     password: "test",
-    //   },
-    //   {
-    //     onSuccess: async (data) => {
-    //       await SecureStore.setItemAsync("accessToken", data.accessToken);
-    //       router.replace("/(tabs)/home");
-    //     },
-    //   },
-    // );
-    router.replace("/(tabs)/home");
+  const onPressLogin = async () => {
+    try {
+      // postLogin(
+      //   {
+      //     id: "test",
+      //     password: "test",
+      //   },
+      //   {
+      //     onSuccess: async (data) => {
+      //       // API 응답: { accessToken: string, accessExpiredTime: number }
+      //       // accessExpiredTime은 밀리초 단위의 상대 시간 (예: 3600000 = 1시간)
+      //       await setAccessToken(data.accessToken, data.accessExpiredTime);
+      //       router.replace("/(tabs)/home");
+      //     },
+      //   },
+      // );
+      await setAccessToken("dummyAccessToken", 99999999999);
+      router.replace("/(tabs)/home");
+    } catch (error) {
+      console.error("[Login] Failed:", error);
+    }
   };
 
   return (

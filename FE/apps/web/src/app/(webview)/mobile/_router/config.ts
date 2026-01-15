@@ -75,5 +75,29 @@ export const pageTransitionConfig = {
       }),
       symmetric: true,
     },
+    {
+      from: "/programs",
+      to: "/programs/[programId]",
+      transition: slide({
+        direction: "right",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
+    {
+      from: "/mypage",
+      to: "/programs/[programId]",
+      transition: slide({
+        direction: "right",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
   ],
 };
