@@ -13,7 +13,7 @@ interface SelectedItemProps {
 
 interface TeamsTabProps {
   programId: number;
-  children: (selectedItem: SelectedItemProps) => JSX.Element;
+  children: (selectedItem: SelectedItemProps) => React.ReactNode;
 }
 
 const TeamsTab = ({ programId, children }: TeamsTabProps) => {

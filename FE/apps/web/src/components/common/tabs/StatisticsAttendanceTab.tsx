@@ -19,7 +19,7 @@ interface StatisticsAttendanceTabProps {
   }: {
     selectedItem: ActiveStatusWithAll;
     startPeriod: number;
-  }) => JSX.Element;
+  }) => React.ReactNode;
 }
 const StatisticsAttendanceTab = ({
   children,

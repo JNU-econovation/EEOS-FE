@@ -10,7 +10,7 @@ const memberTabItemList: ActiveStatusWithAll[] = [
 ];
 
 interface MemberActiveStatusTabProps {
-  children: (selectedItem: ActiveStatusWithAll) => JSX.Element;
+  children: (selectedItem: ActiveStatusWithAll) => React.ReactNode;
 }
 const MemberActiveStatusTab = ({ children }: MemberActiveStatusTabProps) => {
   return (

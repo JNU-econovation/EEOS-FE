@@ -6,7 +6,7 @@ import ATTEND_STATUS from "@/constants/ATTEND_STATUS";
 import { AttendStatus } from "@/types/member";
 
 interface AttendeeTabProps {
-  children?: (selectedItem: { status: AttendStatus }) => JSX.Element;
+  children?: (selectedItem: { status: AttendStatus }) => React.ReactNode;
 }
 
 const AttendeeTab = ({ children }: AttendeeTabProps) => {
