@@ -1,11 +1,7 @@
-import Program from "@/components/main/Program";
+import ProgramListSection from "@/components/feature/program-list";
 
 const MainPage = () => {
-  return (
-    <div className="relative space-y-8">
-      <Program AccessType="private" />
-    </div>
-  );
+  return <ProgramListSection accessType="private" />;
 };
 
 export default MainPage;

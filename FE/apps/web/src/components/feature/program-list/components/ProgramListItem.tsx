@@ -1,4 +1,4 @@
-import ProgressDisplay from "../common/ProgressDisplay";
+import ProgressDisplay from "@/components/common/ProgressDisplay";
 import { ProgramSimpleInfoDto } from "@/apis/dtos/program.dto";
 import Link from "@/components/common/Link";
 import ROUTES from "@/constants/ROUTES";
@@ -7,19 +7,25 @@ import { formatTimestamp } from "@/utils/convert";
 
 interface ProgramListItemProps {
   programData: ProgramSimpleInfoDto;
-  contentType: AccessType;
+  accessType: AccessType;
 }
 
-const ProgramListItem = ({
+/**
+ * 프로그램 목록 아이템 컴포넌트
+ *
+ * 개선사항:
+ * - Props명 contentType → accessType으로 통일
+ */
+export default function ProgramListItem({
   programData,
-  contentType,
-}: ProgramListItemProps) => {
+  accessType,
+}: ProgramListItemProps) {
   const { programId, title, deadLine, attendMode } = programData;
 
   const linkUrl =
-    contentType === "admin"
+    accessType === "admin"
       ? ROUTES.ADMIN_DETAIL(programId)
-      : contentType === "public"
+      : accessType === "public"
       ? ROUTES.GUEST_DETAIL(programId)
       : ROUTES.DETAIL(programId);
 
@@ -43,6 +49,4 @@ const ProgramListItem = ({
       )}
     </Link>
   );
-};
-
-export default ProgramListItem;
+}
