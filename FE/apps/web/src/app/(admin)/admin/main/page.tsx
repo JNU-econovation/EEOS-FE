@@ -1,11 +1,7 @@
-import Program from "@/components/main/Program";
+import ProgramListSection from "@/components/feature/program-list";
 
 const AdminMainPage = () => {
-  return (
-    <div className="relative space-y-8">
-      <Program AccessType="admin" />
-    </div>
-  );
+  return <ProgramListSection accessType="admin" />;
 };
 
 export default AdminMainPage;

@@ -1,11 +1,7 @@
-import Program from "@/components/main/Program";
+import ProgramListSection from "@/components/feature/program-list";
 
 const GuestMainPage = () => {
-  return (
-    <div className="relative space-y-8">
-      <Program AccessType="public" />
-    </div>
-  );
+  return <ProgramListSection accessType="public" />;
 };
 
 export default GuestMainPage;
