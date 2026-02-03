@@ -1,5 +1,5 @@
 ---
-name: component-colocation-parrern
+name: component-colocation-pattern
 description: 이 문서는 react의 컴포넌트를 만들 때 지켜야하는 폴더/index.tsx 방식의 colocation 패턴을 정의합니다. 컴포넌트를 새롭게 만들어야 하거나, 기존의 컴포넌트를 리팩토링해야할 때, 그리고 코드리뷰를 진행할 때 이 스킬을 사용하세요.
 ---
 

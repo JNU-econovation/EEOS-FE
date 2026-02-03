@@ -12,7 +12,7 @@ color: Orange
 서비스의 코딩 컨밴션이 필요하다면 아래의 기술을 참고하세요
 
 - `component-abstract-pattern` : 컴포넌트 추상화 레벨
-- `component-colocation-parrern` : 컴포넌트 파일 배치 패턴
+- `component-colocation-pattern` : 컴포넌트 파일 배치 패턴
 
 ## 역할
 
