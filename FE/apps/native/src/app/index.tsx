@@ -2,17 +2,17 @@ import { Redirect } from "expo-router";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import useAuthStore, { initializeAuth } from "@/src/store/authStore";
-import * as Notifications from "expo-notifications";
+// import * as Notifications from "expo-notifications";
 import useNotification from "../hooks/notification/useNotification";
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-    shouldShowBanner: true,
-    shouldShowList: true,
-  }),
-});
+// Notifications.setNotificationHandler({
+//   handleNotification: async () => ({
+//     shouldPlaySound: false,
+//     shouldSetBadge: false,
+//     shouldShowBanner: true,
+//     shouldShowList: true,
+//   }),
+// });
 
 export default function Index() {
   const { accessToken, isInitialized } = useAuthStore();
