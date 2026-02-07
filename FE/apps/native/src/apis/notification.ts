@@ -1,4 +1,4 @@
-import { https } from "./instants";
+import { https } from "./instants/publicInstance";
 
 interface SaveTokenRequest {
   token: string;

@@ -1,16 +1,25 @@
-import { https } from "./instants";
+import { publicInstance } from "./instants/publicInstance";
+
+const API = {
+  AUTH: {
+    ADMIN_LOGIN: "/auth/login",
+  },
+};
 
 interface LoginResponse {
-  id: string;
-  password: string;
+  accessToken: string;
+  accessExpiredTime: number;
 }
 
-export const postLogin = async (credentials: LoginResponse) => {
-  // const { data } = await https({
-  //   url: API.AUTH.SLACK_LOGIN,
-  //   method: "POST",
-  //   params: { code, redirect_uri },
-  // });
-  // return data;
-  return null;
+export const postLogin = async () => {
+  const { data } = await publicInstance<LoginResponse>({
+    url: API.AUTH.ADMIN_LOGIN,
+    method: "POST",
+    data: {
+      id: process.env.EXPO_PUBLIC_TESTER_ID,
+      password: process.env.EXPO_PUBLIC_TESTER_PW,
+    },
+  });
+
+  return data;
 };
