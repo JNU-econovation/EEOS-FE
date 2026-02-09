@@ -1,10 +1,5 @@
+import API from "@constants/apis";
 import { publicInstance } from "./instants/publicInstance";
-
-const API = {
-  AUTH: {
-    ADMIN_LOGIN: "/auth/login",
-  },
-};
 
 interface LoginResponse {
   accessToken: string;
