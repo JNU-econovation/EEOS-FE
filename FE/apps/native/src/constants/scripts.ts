@@ -63,27 +63,54 @@ export const SET_VIEWPORT_RATE = `
 })();
 `;
 
-export const INJECT_TOKEN = (
-  accessToken: string,
-  tokenExpiration: string,
-) => `
+// export const INJECT_TOKEN = (accessToken: string, tokenExpiration: string) => `
+// (() => {
+//   try {
+//     const newAccessToken = ${JSON.stringify(accessToken)};
+//     const newTokenExpiration = ${JSON.stringify(tokenExpiration)};
+//     const currentAccessToken = localStorage.getItem('accessToken');
+//     const currentTokenExpiration = localStorage.getItem('tokenExpiration');
+
+//     if(!currentAccessToken || newAccessToken !== currentAccessToken) {
+//       localStorage.setItem('accessToken', newAccessToken);
+//     }
+
+//     if(!currentTokenExpiration || newTokenExpiration !== currentTokenExpiration) {
+//       localStorage.setItem('tokenExpiration', newTokenExpiration);
+//     }
+
+//     return true;
+
+//   } catch (error) {
+//     console.error('[INJECT_TOKEN] 토큰 주입 실패:', error);
+//     return false;
+//   }
+// })();
+// `;
+export const INJECT_TOKEN = (accessToken: string, tokenExpiration: string) => `
 (() => {
   try {
-    const newAccessToken = ${JSON.stringify(accessToken)};
-    const newTokenExpiration = ${JSON.stringify(tokenExpiration)};
-    const currentAccessToken = localStorage.getItem('accessToken');
-    const currentTokenExpiration = localStorage.getItem('tokenExpiration');
+    setInterval(() => {
+      const newAccessToken = ${JSON.stringify(accessToken)};
+      const currentAccessToken = localStorage.getItem('accessToken');
+      if(!currentAccessToken || newAccessToken !== currentAccessToken) {
+        localStorage.setItem('accessToken', newAccessToken);
+      }
 
-    if(!currentAccessToken || newAccessToken !== currentAccessToken) {
-      localStorage.setItem('accessToken', newAccessToken);
-    }
+      const newTokenExpiration = ${JSON.stringify(tokenExpiration)};
+      const currentTokenExpiration = localStorage.getItem('tokenExpiration');
+      if(!currentTokenExpiration || currentTokenExpiration !== newTokenExpiration) {
+        localStorage.setItem('tokenExpiration', newTokenExpiration);
+      }
 
-    if(!currentTokenExpiration || newTokenExpiration !== currentTokenExpiration) {
-      localStorage.setItem('tokenExpiration', newTokenExpiration);
-    }
-
-    return true;
-
+      console.log(localStorage.getItem('accessToken'));
+      console.log(localStorage.getItem('tokenExpiration'));
+      // alert(localStorage.getItem('accessToken'));
+      // alert(localStorage.getItem('tokenExpiration'));
+        
+      return true;
+    }, 2000);
+    
   } catch (error) {
     console.error('[INJECT_TOKEN] 토큰 주입 실패:', error);
     return false;

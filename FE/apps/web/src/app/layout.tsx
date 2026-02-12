@@ -1,10 +1,10 @@
+import Provider from "@/utils/provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import "./globals.css";
 import { PropsWithChildren } from "react";
-import Provider from "@/utils/provider";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "EEOS",

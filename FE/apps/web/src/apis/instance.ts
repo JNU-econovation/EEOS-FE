@@ -17,7 +17,7 @@ const https = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  withCredentials: process.env.NEXT_PUBLIC_USE_CREDENTIALS === "true",
 });
 
 const authInstance = axios.create({
@@ -25,7 +25,7 @@ const authInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  withCredentials: process.env.NEXT_PUBLIC_USE_CREDENTIALS === "true",
 });
 
 authInstance.interceptors.response.use(
@@ -53,7 +53,20 @@ https.interceptors.request.use(
     const accessToken = getAccessToken();
     const tokenExpiration = getTokenExpiration();
 
-    if (!accessToken || !tokenExpiration) return config;
+    // 개발 환경 디버깅 로그
+    if (process.env.NODE_ENV === "development") {
+      console.log("[API Request]", config.url);
+      console.log("[Token Status]", {
+        hasToken: !!accessToken,
+        hasExpiration: !!tokenExpiration,
+        token: accessToken?.substring(0, 20) + "...",
+      });
+    }
+
+    if (!accessToken || !tokenExpiration) {
+      console.warn("[API Request] No token found, proceeding without auth");
+      return config;
+    }
 
     const currentTime = new Date().getTime();
     const timeToExpiration = Number(tokenExpiration) - currentTime;

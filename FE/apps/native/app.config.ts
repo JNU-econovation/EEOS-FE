@@ -11,6 +11,7 @@ module.exports = {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.geongyu09.xnative",
+      googleServicesFile: "./GoogleService-Info.plist",
       infoPlist: {
         // 웹뷰에서 http 도메인 허용. 빌드시에는 https로 변경 혹은 특정 도메인만 허용하도록 수정 필요
         NSAppTransportSecurity: {
@@ -25,11 +26,13 @@ module.exports = {
         backgroundImage: "./assets/images/android-icon-background.png",
         monochromeImage: "./assets/images/android-icon-monochrome.png",
       },
+      googleServicesFile: "./google-services.json",
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
       package: "com.geongyu09.xnative",
       // 웹뷰에서 http 도메인 허용. 빌드시에는 https로 변경 혹은 특정 도메인만 허용하도록 수정 필요
       usesCleartextTraffic: true,
+      useNextNotificationsApi: true, // FCM을 위한 설정
     },
     web: {
       output: "static",

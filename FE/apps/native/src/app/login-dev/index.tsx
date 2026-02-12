@@ -1,9 +1,11 @@
 // import useLoginMutation from "@/src/hooks/query/useLoginMutation";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import useAuthStore from "@/src/store/authStore";
 import useLoginMutation from "@/src/hooks/query/useLoginMutation";
+import { IS_DEV } from "..";
+import * as SecureStore from "expo-secure-store";
 
 /**
  * TODO: 웹 - 앱 로그인 상태 동기화
@@ -18,9 +20,13 @@ export default function LoginScreen() {
     try {
       postLogin(undefined, {
         onSuccess: async ({ accessToken, accessExpiredTime }) => {
-          // API 응답: { accessToken: string, accessExpiredTime: number }
-          // accessExpiredTime은 밀리초 단위의 상대 시간 (예: 3600000 = 1시간)
           await setAccessToken(accessToken, accessExpiredTime);
+          if (IS_DEV) {
+            const storedToken = await SecureStore.getItemAsync("accessToken");
+            setTimeout(() => {
+              console.log("[DEV] 로그인 성공 여부:", storedToken !== null);
+            }, 1000);
+          }
           router.replace("/(tabs)/home");
         },
       });
@@ -31,22 +37,14 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView className="flex-1">
-      <Text></Text>
-      <View className="p-4">
-        <TextInput
-          placeholder="ID"
-          className="border rounded-lg p-4 border-gray-300 mb-4"
-        />
-        <TextInput
-          placeholder="PW"
-          className="border rounded-lg p-4 border-gray-300 mb-4"
-          secureTextEntry
-        />
+      <View className="p-4 flex justify-center items-center w-full h-full">
         <TouchableOpacity
           onPress={onPressLogin}
-          className="px-4 py-2 rounded-full bg-primary"
+          className="px-4 py-4 rounded-full bg-primary"
         >
-          <Text className="text-black text-center">Login</Text>
+          <Text className="text-black text-center text-2xl">
+            테스트 아이디로 로그인하기
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

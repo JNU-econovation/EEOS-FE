@@ -1,15 +1,18 @@
 "use client";
 
 import ROUTES from "@/constants/ROUTES";
+import useLogoutBridge from "@/hooks/bridge/useLogoutBridge";
 import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 import { useRouter } from "next/navigation";
 
 const Error = () => {
   const router = useRouter();
   const { mutate: logout } = useLogoutMutation();
+  const logoutBridge = useLogoutBridge();
 
   const handleLogout = () => {
     logout();
+    logoutBridge();
     router.push(ROUTES.LOGIN);
   };
 
