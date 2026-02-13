@@ -3,8 +3,8 @@ const API = {
     ADMIN_LOGIN: "/auth/login",
   },
   NOTIFICATION: {
-    SAVE_TOKEN: "/notification/token",
-    DELETE_TOKEN: "/notification/token",
+    SAVE_TOKEN: "/pushToken",
+    DELETE_TOKEN: "/pushToken",
   },
 };
 

@@ -1,0 +1,33 @@
+{
+  "cli": {
+    "version": ">= 16.28.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "GOOGLE_SERVICES_IOS": "@GOOGLE_SERVICES_IOS",
+        "GOOGLE_SERVICES_ANDROID": "@GOOGLE_SERVICES_ANDROID"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "GOOGLE_SERVICES_IOS": "@GOOGLE_SERVICES_IOS",
+        "GOOGLE_SERVICES_ANDROID": "@GOOGLE_SERVICES_ANDROID"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "GOOGLE_SERVICES_IOS": "@GOOGLE_SERVICES_IOS",
+        "GOOGLE_SERVICES_ANDROID": "@GOOGLE_SERVICES_ANDROID"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

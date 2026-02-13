@@ -1,4 +1,4 @@
-import { publicInstance } from "./instants/publicInstance";
+import { authInstance } from "./instants/authInstance";
 import API from "@constants/apis";
 
 /**
@@ -7,7 +7,7 @@ import API from "@constants/apis";
  * @returns 백엔드 응답 데이터
  */
 export const postSavePushToken = async (pushToken: string) => {
-  const { data } = await publicInstance.post(API.NOTIFICATION.SAVE_TOKEN, {
+  const { data } = await authInstance.post(API.NOTIFICATION.SAVE_TOKEN, {
     pushToken,
     provider: "FCM",
   });
@@ -20,7 +20,7 @@ export const postSavePushToken = async (pushToken: string) => {
  */
 export const deletePushToken = async () => {
   // TODO: 백엔드 API 엔드포인트가 준비되면 아래 주석을 해제하고 사용
-  // const { data } = await publicInstance.delete(API.NOTIFICATION.DELETE_TOKEN);
+  // const { data } = await authInstance.delete(API.NOTIFICATION.DELETE_TOKEN);
   // return data;
 
   console.log("📤 백엔드에서 토큰 삭제 (구현 대기)");
