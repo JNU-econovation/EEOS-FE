@@ -60,10 +60,24 @@ module.exports = {
             "Allow $(PRODUCT_NAME) to access your Face ID biometric data.",
         },
       ],
+      "@react-native-firebase/app",
+      [
+        "@react-native-firebase/messaging",
+        {
+          ios: {
+            useFrameworks: "static",
+          },
+        },
+      ],
     ],
     experiments: {
       typedRoutes: true,
       reactCompiler: true,
+    },
+    extra: {
+      eas: {
+        projectId: "05949d1e-7d4a-4649-b8d7-84e37126e5a7",
+      },
     },
   },
 };

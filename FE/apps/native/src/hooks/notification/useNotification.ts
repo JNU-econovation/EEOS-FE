@@ -2,6 +2,8 @@ import { IS_DEV } from "@/src/app";
 import useSavePushTokenMutation from "@hooks/query/useSavePushTokenMutation";
 import * as Notifications from "expo-notifications";
 import { useCallback, useEffect, useState } from "react";
+import { PermissionsAndroid, Platform } from "react-native";
+import messaging from "@react-native-firebase/messaging";
 
 // 포그라운드 알림 표시 방식 설정
 Notifications.setNotificationHandler({
@@ -13,6 +15,35 @@ Notifications.setNotificationHandler({
     shouldShowList: true,
   }),
 });
+
+// 권한 요청 (Android 13+)
+async function requestUserPermission() {
+  if (Platform.OS === "android" && Platform.Version >= 33) {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+    );
+    return granted === PermissionsAndroid.RESULTS.GRANTED;
+  }
+
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  return enabled;
+}
+
+// FCM 토큰 가져오기
+async function getFCMToken() {
+  const hasPermission = await requestUserPermission();
+
+  if (hasPermission) {
+    const fcmToken = await messaging().getToken();
+    console.log("FCM Token:", fcmToken);
+    return fcmToken;
+  }
+  throw new Error("푸시 알림 권한이 거부되었습니다.");
+}
 
 const useNotification = () => {
   const [expoPushToken, setExpoPushToken] = useState<string>("");
@@ -43,8 +74,9 @@ const useNotification = () => {
         // 2. 푸시 토큰 발급
         // FCM을 사용하려면 getDevicePushTokenAsync() 사용
         // Expo Push Notification을 사용하려면 getExpoPushTokenAsync() 사용
-        const tokenData = await Notifications.getDevicePushTokenAsync();
-        const token = tokenData.data;
+        // const tokenData = await Notifications.getDevicePushTokenAsync();
+        // const token = tokenData.data;
+        const token = await getFCMToken();
         if (IS_DEV) console.log("✅ 푸시 토큰 발급 완료:", token);
         setExpoPushToken(token);
 
