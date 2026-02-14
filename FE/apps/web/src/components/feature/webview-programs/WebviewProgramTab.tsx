@@ -12,12 +12,14 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
   const [selectedTab, setSelectedTab] = useState<ProgramStatus>("active");
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex shrink-0 overflow-hidden rounded-full bg-gray-100">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex shrink-0 overflow-hidden rounded-full bg-[#F5F5F5] p-1">
         <button
           className={classNames(
             "grow rounded-full p-2",
-            selectedTab === "active" ? "bg-slate-900 text-white" : "text-black",
+            selectedTab === "active"
+              ? "bg-white text-black shadow-sm"
+              : "text-black",
           )}
           onClick={() => setSelectedTab("active")}
         >
@@ -26,14 +28,19 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
         <button
           className={classNames(
             "grow rounded-full p-2",
-            selectedTab === "end" ? "bg-slate-900 text-white" : "text-black",
+            selectedTab === "end"
+              ? "bg-white text-black shadow-sm"
+              : "text-black",
           )}
           onClick={() => setSelectedTab("end")}
         >
           <span className="block text-center">완료</span>
         </button>
       </div>
-      {children(selectedTab)}
+      <div className="h-8 shrink-0" />
+      <div className="min-h-0 flex-1 overflow-hidden">
+        {children(selectedTab)}
+      </div>
     </div>
   );
 };

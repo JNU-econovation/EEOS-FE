@@ -5,6 +5,7 @@ import { useGetProgramListInWebviewInfinite } from "@/hooks/query/useProgramQuer
 import PROGRAM from "@/constants/PROGRAM";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Presentation from "@/components/icons/items/Presentation";
 
 interface WebviewProgramListProps {
   selectedTab: ProgramStatus;
@@ -80,7 +81,9 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
             ref={isLastItem ? ref : null}
             className="flex gap-2"
           >
-            <div className="h-11 w-11 shrink-0 rounded-lg bg-gray-300"></div>
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#F5F5F5]">
+              <Presentation />
+            </div>
             <div className="grow">
               <p className="text-xl font-semibold">{program.title}</p>
               <p className="text-sm font-bold text-green-600">
@@ -103,7 +106,7 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
 
       {/* 마지막 페이지 */}
       {!hasNextPage && programs.length > 0 && (
-        <li className="flex items-center justify-center py-4">
+        <li className="flex w-full items-center justify-center py-4">
           <p className="text-sm text-gray-400">모든 프로그램을 불러왔습니다.</p>
         </li>
       )}

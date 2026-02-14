@@ -1,8 +1,6 @@
-"use client";
-
 import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
-import WebviewProgramList from "@/components/feature/webview-programs/WebviewProgramList";
-import WebviewProgramTab from "@/components/feature/webview-programs/WebviewProgramTab";
+import WebviewProgramsSection from "@/components/feature/webview-programs/WebviewProgramsSection";
+import Calendar from "@/components/icons/items/CalendarIcon";
 import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewProgramPage = () => {
@@ -10,18 +8,15 @@ const WebviewProgramPage = () => {
     <SsgoiTransition id="/programs" className="min-h-screen bg-white">
       <AppSafeArea
         edges={["top", "left", "right", "bottom"]}
-        classname="!overflow-hidden h-full"
+        classname="flex h-screen flex-col !overflow-visible"
       >
-        <div className="h-full overflow-hidden">
-          <WebviewProgramTab>
-            {(selectedTab) => (
-              <div className="h-full ">
-                <div className="h-8" />
-                <WebviewProgramList selectedTab={selectedTab} />
-              </div>
-            )}
-          </WebviewProgramTab>
+        <div className="flex w-full shrink-0 justify-end">
+          <button className="rounded-full bg-[#F5F5F5] p-2">
+            <Calendar />
+          </button>
         </div>
+        <div className="h-4 shrink-0" />
+        <WebviewProgramsSection />
       </AppSafeArea>
     </SsgoiTransition>
   );
