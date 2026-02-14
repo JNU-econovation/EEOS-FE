@@ -1,9 +1,10 @@
 import BellIcon from "@/components/common/icons/BellIcon";
 import LogoIcon from "@/components/common/icons/LogoIcon";
+import HelloSection from "@/components/feature/webview-main/HelloSection";
+import UserMetaSection from "@/components/feature/webview-main/UserMetaSection";
 import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewMainPage = () => {
-  const name = "홍길동";
   return (
     <SsgoiTransition id="/main" className="min-h-screen bg-white">
       <div>
@@ -13,28 +14,13 @@ const WebviewMainPage = () => {
             <BellIcon />
           </div>
           <div className="h-6" />
-          <div>
-            <p className="text-base font-medium leading-5">{`${name}님 안녕하세요`}</p>
-            <p className="text-base font-medium leading-5">
-              오늘도 화이팅이에요!
-            </p>
-          </div>
+          <HelloSection />
 
           <div className="h-8" />
 
-          <div className="flex gap-2">
-            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
-              30기
-            </div>
-            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
-              디자이너
-            </div>
-            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
-              AM
-            </div>
-          </div>
+          <UserMetaSection />
 
-          <div className="h-3" />
+          <div className="h-20" />
         </section>
       </div>
     </SsgoiTransition>
