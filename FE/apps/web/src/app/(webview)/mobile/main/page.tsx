@@ -1,39 +1,41 @@
+import BellIcon from "@/components/common/icons/BellIcon";
+import LogoIcon from "@/components/common/icons/LogoIcon";
 import { SsgoiTransition } from "@ssgoi/react";
-import Link from "next/link";
 
 const WebviewMainPage = () => {
+  const name = "홍길동";
   return (
     <SsgoiTransition id="/main" className="min-h-screen bg-white">
-      <div className="flex h-72 gap-3 p-4">
-        <Link
-          href="/mobile/programs"
-          className="grow rounded-lg border bg-teal-500 p-4"
-        >
-          <p className="text-2xl font-semibold text-white">행사 목록</p>
-          <span className="justify-start text-sm font-normal text-white">
-            전체 행사 보기
-          </span>
-        </Link>
-        <div className="flex grow flex-col gap-3 rounded-lg">
-          <Link
-            href="/mobile/mypage"
-            className="grow rounded-lg border bg-gray-200 p-4"
-          >
-            <p className="text-2xl font-semibold">마이페이지</p>
-            <span className="justify-start text-sm font-normal">
-              전체 행사 보기
-            </span>
-          </Link>
-          <Link
-            href="/mobile/calendar"
-            className="grow rounded-lg border bg-gray-200 p-4"
-          >
-            <p className="text-xl font-semibold">캘린더</p>
-            <span className="justify-start text-sm font-normal">
-              전체 행사 보기
-            </span>
-          </Link>
-        </div>
+      <div>
+        <section className="bg-[#F2F2F7] px-6 pb-4 pt-16">
+          <div className="flex items-center justify-between">
+            <LogoIcon />
+            <BellIcon />
+          </div>
+          <div className="h-6" />
+          <div>
+            <p className="text-base font-medium leading-5">{`${name}님 안녕하세요`}</p>
+            <p className="text-base font-medium leading-5">
+              오늘도 화이팅이에요!
+            </p>
+          </div>
+
+          <div className="h-8" />
+
+          <div className="flex gap-2">
+            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
+              30기
+            </div>
+            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
+              디자이너
+            </div>
+            <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
+              AM
+            </div>
+          </div>
+
+          <div className="h-3" />
+        </section>
       </div>
     </SsgoiTransition>
   );
