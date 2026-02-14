@@ -546,7 +546,7 @@
           "uuid": "fbb793ae-1a94-449a-9c05-2ea7c0863df8",
           "body": "{\n\t\"status\" : \"200\",\n\t\"message\" : \"행사 조회 성공\",\n\t\"data\" : {\n\t\t\"size\" : {{queryParam 'size'}},\n\t\t\"page\" : {{queryParam 'page'}},\n\t\t\"totalPage\" : 5,\n\t\t\"contents\" : [\n\t\t  {{#repeat (queryParam 'size')}}\n\t\t  {\n\t\t\t  \"programId\" : {{@index}},\n\t\t\t  \"title\": \"행사이름 {{@index}}\",\n\t\t\t  \"deadLine\" : \"1695691732000\",\n\t\t\t  \"category\" : \"{{queryParam 'category'}}\",\n\t\t\t  \"programStatus\" : \"{{queryParam 'programStatus'}}\",\n\t\t\t  \"type\" : \"{{oneOf (array 'demand' 'notification')}}\",\n\t\t\t  \"attendMode\" : \"attend\"\n\t\t  },\n\t\t  {{/repeat}}\n\t\t  ]\n\t}\n}",
           "latency": 0,
-          "statusCode": 403,
+          "statusCode": 200,
           "label": "",
           "headers": [],
           "bodyType": "INLINE",

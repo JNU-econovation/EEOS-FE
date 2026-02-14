@@ -12,8 +12,8 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
   const [selectedTab, setSelectedTab] = useState<ProgramStatus>("active");
 
   return (
-    <>
-      <div className="flex overflow-hidden rounded-full bg-gray-100">
+    <div className="flex h-full flex-col">
+      <div className="flex shrink-0 overflow-hidden rounded-full bg-gray-100">
         <button
           className={classNames(
             "grow rounded-full p-2",
@@ -34,7 +34,7 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
         </button>
       </div>
       {children(selectedTab)}
-    </>
+    </div>
   );
 };
 

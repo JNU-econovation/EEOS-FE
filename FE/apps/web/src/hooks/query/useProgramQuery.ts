@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQuery,
+  useInfiniteQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { ProgramInfoDto } from "@/apis/dtos/program.dto";
 import {
@@ -226,7 +231,7 @@ export const useGetProgramListInWebviewInfinite = ({
         programStatus,
         size,
         page: pageParam,
-        isAdmin: false,
+        isAdmin: true,
       }),
     getNextPageParam: (lastPage) => {
       const nextPage = lastPage.page + 1;

@@ -1,3 +1,4 @@
+import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import BellIcon from "@/components/common/icons/BellIcon";
 import LogoIcon from "@/components/common/icons/LogoIcon";
 import HelloSection from "@/components/feature/webview-main/HelloSection";
