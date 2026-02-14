@@ -23,11 +23,7 @@ const AppSafeArea = ({ children, edges, classname }: AppSafeAreaProps) => {
     .join(" ");
 
   return (
-    <div
-      className={`h-screen max-h-screen w-screen overflow-y-auto ${edgeClasses} ${
-        classname || ""
-      }`}
-    >
+    <div className={`max-h-screen w-screen ${edgeClasses} ${classname || ""}`}>
       {children}
     </div>
   );
