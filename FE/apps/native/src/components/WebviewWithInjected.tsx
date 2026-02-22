@@ -15,6 +15,8 @@ import {
 } from "../types/bridge";
 import { router } from "expo-router";
 import { IS_DEV } from "../app";
+import useDeletePushTokenMutation from "../hooks/query/useDeletePushTokenMutation";
+import useNotification from "../hooks/notification/useNotification";
 
 interface WebviewWithInjectedProps
   extends React.ComponentProps<typeof WebView> {}
@@ -23,6 +25,10 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const tokenExpiration = useAuthStore((state) => state.tokenExpiration);
   const clearAccessToken = useAuthStore((state) => state.clearAccessToken);
+
+  const { pushToken } = useNotification();
+
+  const { mutate: deletePushToken } = useDeletePushTokenMutation();
 
   // 페이지 로드 전에 토큰 주입
   const INJECTED_JAVASCRIPT_BEFORE_LOAD = useMemo(
@@ -48,6 +54,7 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
     // 로그아웃 처리
     if (name === "logout" && method === "DELETE") {
       clearAccessToken();
+      deletePushToken(pushToken);
       if (router.canDismiss()) router.dismiss();
       if (IS_DEV) {
         console.log("[DEV] 로그아웃 여부 : ", accessToken === null);
