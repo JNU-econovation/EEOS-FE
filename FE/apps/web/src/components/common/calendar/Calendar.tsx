@@ -1,7 +1,7 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import "./calendar.styles.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface CalendarProps {
   date: Date | undefined;
@@ -12,15 +12,37 @@ interface CalendarProps {
 const Calendar = ({ date, withTime, handleDateChange }: CalendarProps) => {
   const disabledDays = { before: new Date() };
 
-  const [timeValue, setTimeValue] = useState<string>("00:00");
+  const [timeValue, setTimeValue] = useState<string>(() => {
+    if (!date) return "00:00";
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  });
+
+  useEffect(() => {
+    if (date) {
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      setTimeValue(`${hours}:${minutes}`);
+    }
+  }, [date]);
 
   return (
     <div className="absolute left-0 top-[4.5rem] z-10 rounded-md bg-background p-3 shadow-md">
       <DayPicker
         mode="single"
         selected={date}
-        onSelect={(e) => {
-          handleDateChange(e);
+        onSelect={(selectedDate) => {
+          if (!selectedDate) {
+            handleDateChange(selectedDate);
+            return;
+          }
+
+          const [hours, minutes] = timeValue.split(":");
+          const newDate = new Date(selectedDate);
+          newDate.setHours(parseInt(hours, 10));
+          newDate.setMinutes(parseInt(minutes, 10));
+          handleDateChange(newDate);
         }}
         disabled={disabledDays}
       />
