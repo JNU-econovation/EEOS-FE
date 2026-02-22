@@ -2,6 +2,12 @@
 
 const WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
+export const getDayString = (day: number) => {
+  if (day % 1) throw new Error();
+  if (day < 0 || day > 6) throw new Error();
+  return WEEK[day];
+};
+
 export const formatTimestamp = (
   timestamp: string,
   type: "default" | "short" | "full" = "default",

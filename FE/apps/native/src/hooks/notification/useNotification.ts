@@ -39,7 +39,6 @@ async function getFCMToken() {
 
   if (hasPermission) {
     const fcmToken = await messaging().getToken();
-    console.log("FCM Token:", fcmToken);
     return fcmToken;
   }
   throw new Error("푸시 알림 권한이 거부되었습니다.");
@@ -77,7 +76,6 @@ const useNotification = () => {
         // const tokenData = await Notifications.getDevicePushTokenAsync();
         // const token = tokenData.data;
         const token = await getFCMToken();
-        if (IS_DEV) console.log("✅ 푸시 토큰 발급 완료:", token);
         setPushToken(token);
 
         // 3. 백엔드로 토큰 전송

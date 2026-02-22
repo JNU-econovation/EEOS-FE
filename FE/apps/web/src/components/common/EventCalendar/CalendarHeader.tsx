@@ -1,5 +1,7 @@
 "use client";
 
+import LeftClampButton from "@/components/icons/items/LeftClampButton";
+import RightClampButton from "@/components/icons/items/RightClampButton";
 import { calendarDateAtom, selectedDateAtom } from "@/store/calendarAtoms";
 import { useAtom } from "jotai";
 
@@ -44,21 +46,15 @@ const CalendarHeader = () => {
 
   return (
     <div className="flex">
-      <button
-        className="rounded border px-4 py-2"
-        onClick={handleClickPrevMonth}
-      >
-        {"<"}
+      <button onClick={handleClickPrevMonth}>
+        <LeftClampButton />
       </button>
       <div className="flex w-full flex-col items-center">
         <h2 className="text-lg font-medium">{month}</h2>
         <span className="text-sm opacity-60">{year}</span>
       </div>
-      <button
-        className="rounded border px-4 py-2"
-        onClick={handleClickNextMonth}
-      >
-        {">"}
+      <button onClick={handleClickNextMonth}>
+        <RightClampButton />
       </button>
     </div>
   );
