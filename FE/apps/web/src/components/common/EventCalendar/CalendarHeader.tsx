@@ -2,7 +2,6 @@
 
 import { calendarDateAtom, selectedDateAtom } from "@/store/calendarAtoms";
 import { useAtom } from "jotai";
-import { useState } from "react";
 
 function getMonthString(date: Date) {
   const month = date.getMonth();

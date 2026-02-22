@@ -3,6 +3,7 @@
 import type { SimpleCalendarDto } from "@/apis/dtos/calendar.dto";
 import Spacing from "@/components/common/Spacing";
 import { calendarDateAtom, selectedDateAtom } from "@/store/calendarAtoms";
+import { getEventsForDate } from "@/utils/dateUtils";
 import { useAtom } from "jotai";
 
 function getFirstDayOfMonth(year: number, month: number) {
@@ -18,11 +19,18 @@ function getLastDateOfPrevMonth(year: number, month: number) {
   return new Date(year, month, 0).getDate();
 }
 
+const EVENT_TYPE_DOT_STYLES: Record<SimpleCalendarDto["type"], string> = {
+  event: "bg-blue-500 opacity-70",
+  presentation: "bg-red-500 opacity-70",
+  etc: "bg-teal-500 opacity-70",
+} as const;
+
 interface CalendarBodyProps {
   events: SimpleCalendarDto[];
+  onDateClick?: (date: Date) => void;
 }
 
-const CalendarBody = ({ events }: CalendarBodyProps) => {
+const CalendarBody = ({ events, onDateClick }: CalendarBodyProps) => {
   const [selectedDate, setSelectedDate] = useAtom(selectedDateAtom);
   const [calendarDate, setCalendarDate] = useAtom(calendarDateAtom);
 
@@ -72,12 +80,19 @@ const CalendarBody = ({ events }: CalendarBodyProps) => {
 
         {/* this month */}
         {Array.from({ length: lastDateOfMonth }).map((_, date) => {
+          const currentDate = new Date(year, month, date + 1);
+          const dayEvents = getEventsForDate(currentDate, events);
+          const uniqueTypes = [
+            ...new Set(dayEvents.map((e) => e.type)),
+          ] as SimpleCalendarDto["type"][];
+
           return (
             <button
               key={`${date}-${month}-${year}`}
               className={`flex w-full flex-col items-center justify-center p-2.5`}
               onClick={() => {
-                setSelectedDate(new Date(year, month, date + 1));
+                setSelectedDate(currentDate);
+                onDateClick?.(currentDate);
               }}
             >
               <div
@@ -93,12 +108,16 @@ const CalendarBody = ({ events }: CalendarBodyProps) => {
               </div>
               <Spacing size={0.25} direction="vertical" />
               {/* event */}
-
-              <div className="flex h-1 items-center justify-around gap-1">
-                <div className="h-1 w-1 rounded-full border border-teal-500"></div>
-                <div className="h-1 w-1 rounded-full border border-blue-500"></div>
-                <div className="h-1 w-1 rounded-full border border-red-600"></div>
-              </div>
+              {uniqueTypes.length > 0 && (
+                <div className="flex h-1 items-center justify-around gap-1">
+                  {uniqueTypes.map((type) => (
+                    <div
+                      key={type}
+                      className={`h-1 w-1 rounded-full ${EVENT_TYPE_DOT_STYLES[type]}`}
+                    />
+                  ))}
+                </div>
+              )}
             </button>
           );
         })}
