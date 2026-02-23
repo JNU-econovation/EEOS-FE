@@ -11,6 +11,7 @@ import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+//TODO: 날짜를 코드가 아닌 env로 관리하기
 const INITIAL_START_DATE = new Date("2025-03-24").getTime();
 const INITIAL_END_DATE = new Date("2025-08-30").getTime();
 

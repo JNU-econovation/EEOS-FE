@@ -2,7 +2,7 @@ import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import Spacing from "@/components/common/Spacing";
 import AttendanceSection from "@/components/feature/webview-mypage/AttendanceSection";
 import MobileUserInfoSection from "@/components/feature/webview-mypage/MobileUserInfoSection";
-import Hamburger from "@/components/icons/items/Hamberger";
+import Hamburger from "@/components/icons/items/Hamburger";
 import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewMypage = () => {
