@@ -79,7 +79,7 @@ const WebviewCalendarEventBottomSheet = () => {
               });
             }}
           >
-            <div className="text-xl font-medium text-gray-500">
+            <div className="text-base font-medium text-gray-500">
               + 새로운 행사 만들기
             </div>
           </button>
