@@ -103,6 +103,7 @@ https.interceptors.response.use(
     return config;
   },
   async (error) => {
+    console.error("[API Error]", error);
     const { config: originalRequest, response } = error;
     const errorCode = response?.data?.code;
     const errorMessage =
@@ -145,7 +146,8 @@ https.interceptors.response.use(
         window.location.href = "/login";
       }, 3000);
     }
-    error.message = errorMessage;
+
+    // error.message = errorMessage;
     return Promise.reject(error);
   },
 );

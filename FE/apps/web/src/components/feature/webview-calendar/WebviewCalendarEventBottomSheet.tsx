@@ -98,7 +98,17 @@ const WebviewCalendarEventBottomSheet = () => {
                     )}
                   />
                   <span className="text-sm font-medium opacity-60">
-                    {`${formatDate(event.startAt)} - ${
+                    {`${
+                      // 시작 날이 선택된 날짜보다 이전이라면 00:00으로 표시. 아니라면 startAt 시간으로 표시
+                      event.startAt <
+                      new Date(
+                        selectedDate.getFullYear(),
+                        selectedDate.getMonth(),
+                        selectedDate.getDate(),
+                      ).getTime()
+                        ? `00:00`
+                        : formatDate(event.startAt)
+                    } - ${
                       // 다음날까지 이어진다면 24:00으로 표시. 아니라면 endAt 시간으로 표시
                       event.endAt >
                       new Date(
