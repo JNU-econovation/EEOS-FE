@@ -4,9 +4,14 @@ import { AttendStatus } from "@/types/member";
 interface Props {
   attendStatus: AttendStatus;
   programId: number;
+  backgroundColor?: boolean;
 }
 
-const AttendanceBadge = ({ attendStatus, programId }: Props) => {
+const AttendanceBadge = ({
+  attendStatus,
+  programId,
+  backgroundColor = true,
+}: Props) => {
   const router = useRouter();
 
   switch (attendStatus) {
@@ -21,21 +26,39 @@ const AttendanceBadge = ({ attendStatus, programId }: Props) => {
       );
     case "attend":
       return (
-        <div className="mx-auto flex w-fit items-center gap-2 rounded-3xl bg-success-10 px-4 py-1 font-semibold text-success-30">
+        <div
+          className={
+            backgroundColor
+              ? "mx-auto flex w-fit items-center gap-2 rounded-3xl bg-success-10 px-4 py-1 font-semibold text-success-30"
+              : "mx-auto flex w-fit items-center gap-2 px-4 py-1 font-semibold text-success-30"
+          }
+        >
           <CheckSVG />
           <span>참석</span>
         </div>
       );
     case "absent":
       return (
-        <div className="mx-auto flex w-fit items-center gap-2 rounded-3xl bg-action-10 px-4 py-1 font-semibold text-action-20">
+        <div
+          className={
+            backgroundColor
+              ? "mx-auto flex w-fit items-center gap-2 rounded-3xl bg-action-10 px-4 py-1 font-semibold text-action-20"
+              : "mx-auto flex w-fit items-center gap-2 px-4 py-1 font-semibold text-action-20"
+          }
+        >
           <XSVG />
           <span>불참</span>
         </div>
       );
     case "late":
       return (
-        <div className="mx-auto flex w-fit items-center gap-2 rounded-3xl bg-warning-10 px-4 py-1 font-semibold text-warning-30">
+        <div
+          className={
+            backgroundColor
+              ? "mx-auto flex w-fit items-center gap-2 rounded-3xl bg-warning-10 px-4 py-1 font-semibold text-warning-30"
+              : "mx-auto flex w-fit items-center gap-2 px-4 py-1 font-semibold text-warning-30"
+          }
+        >
           <ClockSVG />
           <span>지각</span>
         </div>

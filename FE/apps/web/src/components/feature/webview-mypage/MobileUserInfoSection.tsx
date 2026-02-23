@@ -1,5 +1,6 @@
 "use client";
 
+import Spacing from "@/components/common/Spacing";
 import { useGetMyActiveStatus } from "@/hooks/query/useUserQuery";
 
 const MobileUserInfoSection = () => {
@@ -7,19 +8,28 @@ const MobileUserInfoSection = () => {
 
   if (!data || isLoading || isError) return null;
 
-  const { activeStatus, name } = data;
+  const { name, activeStatus } = data;
 
   return (
     <section className="flex flex-col gap-2 px-4">
-      <div className="flex items-center gap-4">
-        <span className="text-2xl font-bold">{name}</span>
-        <div className="rounded-xl border border-tertiary-20 bg-secondary-20 px-4 py-1.5 text-sm font-bold text-tertiary-20">
+      <div className="mx-auto h-24 w-24 rounded-full bg-white" />
+      <Spacing size={18} direction="vertical" unit="px" />
+      <div className="flex items-center justify-center">
+        <span className="text-xl font-medium text-black">
+          {name.split(" ")[1]}
+        </span>
+      </div>
+      <div className="mx-auto flex gap-2">
+        <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
+          {name.split(" ")[0]}
+        </div>
+        <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
+          디자이너
+        </div>
+        <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
           {activeStatus.toUpperCase()}
         </div>
       </div>
-      <span className="text-xs font-light opacity-70">
-        활동 상태 변경은 관리자에게 요청해주세요!
-      </span>
     </section>
   );
 };
