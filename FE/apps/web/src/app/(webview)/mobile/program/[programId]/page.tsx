@@ -6,6 +6,7 @@ import FireFIngerSection from "@/components/feature/detail/fireFinger/FireFInger
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
 import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
 import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
+import WebviewFireFingerSection from "@/components/feature/webview-programs/WebviewFireFingerSection";
 import WebviewProgramAttendSection from "@/components/feature/webview-programs/WebviewProgramAttendSection";
 import WebviewProgramHeaderSection from "@/components/feature/webview-programs/WebviewProgramHeaderSection";
 import { SsgoiTransition } from "@ssgoi/react";
@@ -26,7 +27,7 @@ const ProgramDetailPage = () => {
       <section className="px-4">
         {/* <ProgramHeaderSection /> */}
         <div className="mt-12" />
-        <FireFIngerSection />
+        <WebviewFireFingerSection />
         <div className="mt-12" />
         <AttendeeInfoSection />
         <div className="mt-12" />
