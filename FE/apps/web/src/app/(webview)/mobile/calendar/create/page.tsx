@@ -1,36 +1,25 @@
 "use client";
 
-import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import Calendar from "@/components/common/calendar/Calendar";
+import Spacing from "@/components/common/Spacing";
+import useGoBackBridge from "@/hooks/bridge/useGoBackBridge";
 import { useCreateCalendarEventMutation } from "@/hooks/query/useCalendarQuery";
-import {
-  CalendarEventType,
-  Calendar as CalendarType,
-  NewCalendar,
-} from "@/types/calendar";
+import { CalendarEventType, Calendar as CalendarType } from "@/types/calendar";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import Spacing from "@/components/common/Spacing";
 
 const CreateEventPage = () => {
   const searchParams = useSearchParams();
-  const dateParam = searchParams.get("date");
-  const selectedDate = dateParam ? new Date(Number(dateParam)) : null;
+  const dateParam = searchParams.get("timestamp");
+  const selectedDate = dateParam
+    ? new Date(Number(dateParam) + 9 * 60 * 60 * 1000)
+    : null;
   const [isLoading, setIsLoading] = useState(false);
   const [showStartCalendar, setShowStartCalendar] = useState(false);
   const [showEndCalendar, setShowEndCalendar] = useState(false);
 
+  const goBack = useGoBackBridge();
   const { mutate: createEvent } = useCreateCalendarEventMutation();
-
-  const handleCreateEvent = (newEvent: NewCalendar) => {
-    setIsLoading(true);
-    createEvent(newEvent, {
-      onError: (error) => {
-        console.error("이벤트 생성 실패:", error);
-        alert("이벤트 생성에 실패했습니다.");
-      },
-    });
-  };
 
   const formatDateForInput = (date: Date) => {
     const year = date.getFullYear();
@@ -101,14 +90,27 @@ const CreateEventPage = () => {
       url: newEvent.url,
     };
 
-    handleCreateEvent(event);
+    setIsLoading(true);
+    createEvent(event, {
+      onSuccess: () => {
+        alert("이벤트가 성공적으로 등록되었습니다.");
+        setIsLoading(false);
+        setNewEvent(defaultNewEvent);
+        goBack();
+      },
+      onError: (error) => {
+        setIsLoading(false);
+        console.error("이벤트 생성 실패:", error);
+        alert("이벤트 생성에 실패했습니다.");
+      },
+    });
   };
 
-  // if (!selectedDate) {
-  //   throw new Error(
-  //     "선택된 날짜가 없습니다. 날짜를 선택하고 다시 시도해주세요.",
-  //   );
-  // }
+  if (!selectedDate) {
+    throw new Error(
+      "선택된 날짜가 없습니다. 날짜를 선택하고 다시 시도해주세요.",
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -142,7 +144,7 @@ const CreateEventPage = () => {
                 }
                 className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   newEvent.type === category.value
-                    ? "bg-primary"
+                    ? "bg-black text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -179,7 +181,6 @@ const CreateEventPage = () => {
                     ...newEvent,
                     startAt: formatDateForInput(date),
                   });
-                  // setShowStartCalendar(false);
                 }
               }}
             />

@@ -57,10 +57,36 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       deletePushToken(pushToken);
       if (router.canDismiss()) router.dismiss();
       if (IS_DEV) {
-        console.log("[DEV] 로그아웃 여부 : ", accessToken === null);
         return router.replace("/login-dev");
       }
       router.replace("/login");
+    }
+
+    // 일정 생성 모달 열기
+    if (
+      name === "open-event-create-form-modal" &&
+      method === "POST" &&
+      typeof body === "object" &&
+      body !== null &&
+      "year" in body &&
+      "month" in body &&
+      "date" in body &&
+      typeof body.year === "number" &&
+      typeof body.month === "number" &&
+      typeof body.date === "number"
+    ) {
+      router.push(
+        `/createEvent/${new Date(
+          body.year,
+          body.month - 1,
+          body.date,
+        ).getTime()}`,
+      );
+    }
+
+    // 뒤로 가기 처리
+    if (name === "go-back" && method === "DELETE") {
+      if (router.canDismiss()) router.back();
     }
   };
 

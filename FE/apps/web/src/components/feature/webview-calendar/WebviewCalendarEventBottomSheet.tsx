@@ -2,6 +2,7 @@
 
 import BottomSheet from "@/components/common/BottomSheet";
 import Spacing from "@/components/common/Spacing";
+import useOpenEventCreateFormModalBridge from "@/hooks/bridge/useOpenEventCreateFormModalBridge";
 import {
   isBottomSheetOpenAtom,
   selectedDateAtom,
@@ -15,6 +16,8 @@ const WebviewCalendarEventBottomSheet = () => {
   const [isOpen, setIsOpen] = useAtom(isBottomSheetOpenAtom);
   const [selectedDate] = useAtom(selectedDateAtom);
   const [events] = useAtom(selectedDateEventsAtom);
+
+  const openEventCreateModal = useOpenEventCreateFormModalBridge();
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
@@ -68,7 +71,13 @@ const WebviewCalendarEventBottomSheet = () => {
         {events.length === 0 ? (
           <button
             className="flex w-full items-center justify-center rounded-lg border px-4 py-10"
-            onClick={() => {}}
+            onClick={() => {
+              openEventCreateModal({
+                year: selectedDate.getFullYear(),
+                month: selectedDate.getMonth() + 1,
+                date: selectedDate.getDate(),
+              });
+            }}
           >
             <div className="text-xl font-medium text-gray-500">
               + 새로운 행사 만들기
@@ -126,7 +135,13 @@ const WebviewCalendarEventBottomSheet = () => {
             ))}
             <li
               className="flex items-center justify-center rounded-lg border px-4 py-10"
-              onClick={() => {}}
+              onClick={() => {
+                openEventCreateModal({
+                  year: selectedDate.getFullYear(),
+                  month: selectedDate.getMonth() + 1,
+                  date: selectedDate.getDate(),
+                });
+              }}
             >
               <div className="text-base font-medium text-gray-500">
                 + 새로운 행사 만들기

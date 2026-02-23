@@ -4,6 +4,10 @@ export const WEBVIEW_PATH = Object.freeze({
   LOGIN: WEBVIEW_BASE_URL + "/login",
   MAIN: WEBVIEW_BASE_URL + "/mobile/main",
   CALENDAR: WEBVIEW_BASE_URL + "/mobile/calendar",
+  CREATE_EVENT: (selectedDateTimestamp: string) =>
+    WEBVIEW_BASE_URL +
+    "/mobile/calendar/create" +
+    `?timestamp=${selectedDateTimestamp}`,
   MYPAGE: WEBVIEW_BASE_URL + "/mobile/mypage",
   PROGRAMS: WEBVIEW_BASE_URL + "/mobile/programs",
 } as const);
