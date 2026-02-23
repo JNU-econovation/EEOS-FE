@@ -18,11 +18,10 @@ export const postSavePushToken = async (pushToken: string) => {
 /**
  * 저장된 푸시 토큰 삭제 (로그아웃 시 호출)
  */
-export const deletePushToken = async () => {
-  // TODO: 백엔드 API 엔드포인트가 준비되면 아래 주석을 해제하고 사용
-  // const { data } = await authInstance.delete(API.NOTIFICATION.DELETE_TOKEN);
-  // return data;
+export const deletePushToken = async (pushToken: string) => {
+  const { data } = await authInstance.delete(API.NOTIFICATION.DELETE_TOKEN, {
+    data: { pushToken },
+  });
 
-  console.log("📤 백엔드에서 토큰 삭제 (구현 대기)");
-  return null;
+  return data;
 };

@@ -14,7 +14,16 @@ export default function RootLayout() {
           headerShown: false,
           animation: "fade",
         }}
-      />
+      >
+        <Stack.Screen
+          name="createEvent/[date]"
+          options={{
+            animation: "slide_from_bottom",
+            presentation: "modal",
+            gestureEnabled: false,
+          }}
+        />
+      </Stack>
     </Provider>
   );
 }

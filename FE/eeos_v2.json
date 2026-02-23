@@ -22,6 +22,10 @@
         {
           "type": "route",
           "uuid": "316f10ea-248b-468a-b22a-4577d772f021"
+        },
+        {
+          "type": "route",
+          "uuid": "25448556-a037-4e74-a4e0-610956dec455"
         }
       ]
     },
@@ -2018,6 +2022,35 @@
         {
           "uuid": "e55f0694-28d7-4a79-b79b-e2507a3792d4",
           "body": "{\n  \"data\": {\n    \"totalPage\": 10,\n    \"page\": 1,\n    \"size\": 10,\n    \"contents\": [\n      {\n        \"programId\": 1,\n        \"title\": \"2024-2 B팀 2차 주간발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 2,\n        \"title\": \"2024-2 A팀 프로젝트 중간점검\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 3,\n        \"title\": \"2024-2 C팀 최종발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 4,\n        \"title\": \"2024-2 전체 세미나\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 5,\n        \"title\": \"2024-2 D팀 1차 주간발표\",\n        \"programStatus\": \"completed\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 6,\n        \"title\": \"2024-2 멘토링 세션\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 7,\n        \"title\": \"2024-2 기술 스터디 그룹\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 8,\n        \"title\": \"2024-2 E팀 코드리뷰\",\n        \"programStatus\": \"pending\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 9,\n        \"title\": \"2024-2 네트워킹 데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 10,\n        \"title\": \"2024-2 F팀 데모데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      }\n    ]\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "25448556-a037-4e74-a4e0-610956dec455",
+      "type": "http",
+      "documentation": "캘린더 행사 생성",
+      "method": "post",
+      "endpoint": "calendars",
+      "responses": [
+        {
+          "uuid": "dbec5774-f259-468d-9322-4f007c819bc7",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"생성 성공\",\n    \"data\": {\n\t\t\t\"calendarId\" : 1\n    }\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
