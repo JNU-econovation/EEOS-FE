@@ -31,3 +31,24 @@ export function useFetchMonthlyCalendarQuery(dateFilter: DateFilter) {
     queryFn: () => getCalendarEventsOnWeek(dateFilter),
   });
 }
+
+export function useGetTodayCalenderEventsQuery() {
+  const today = new Date();
+  const dateFilter: DateFilter = {
+    year: today.getFullYear(),
+    month: today.getMonth() + 1,
+    date: today.getDate(),
+    duration: 1,
+  };
+
+  return useQuery({
+    queryKey: [
+      API.CALENDAR.FETCH,
+      dateFilter.year,
+      dateFilter.month,
+      dateFilter.date,
+      dateFilter.duration,
+    ],
+    queryFn: () => getCalendarEventsOnWeek(dateFilter),
+  });
+}

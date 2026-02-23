@@ -1,8 +1,10 @@
 import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import BellIcon from "@/components/common/icons/BellIcon";
 import LogoIcon from "@/components/common/icons/LogoIcon";
+import Spacing from "@/components/common/Spacing";
 import HelloSection from "@/components/feature/webview-main/HelloSection";
-import UserMetaSection from "@/components/feature/webview-main/UserMetaSection";
+import TodayEventSection from "@/components/feature/webview-main/TodayEventSection";
+// import UserMetaSection from "@/components/feature/webview-main/UserMetaSection";
 import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewMainPage = () => {
@@ -17,11 +19,9 @@ const WebviewMainPage = () => {
           <div className="h-6" />
           <HelloSection />
 
-          <div className="h-8" />
-
-          <UserMetaSection />
-
-          <div className="h-20" />
+          <Spacing size={74} direction="vertical" unit="px" />
+          <TodayEventSection />
+          <Spacing size={24} direction="vertical" unit="px" />
         </section>
       </div>
     </SsgoiTransition>
