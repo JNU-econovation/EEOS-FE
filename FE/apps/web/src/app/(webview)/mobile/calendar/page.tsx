@@ -1,5 +1,4 @@
 import WebviewCalendar from "@/components/feature/webview-calendar/WebviewCalendar";
-import CalendarBottomSheet from "@/components/feature/webview-calendar/CalendarBottomSheet";
 import { SsgoiTransition } from "@ssgoi/react";
 import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import WebviewCalendarEventBottomSheet from "@/components/feature/webview-calendar/WebviewCalendarEventBottomSheet";
@@ -12,7 +11,6 @@ export default function WebviewCalendarPage() {
           <WebviewCalendar />
         </div>
       </AppSafeArea>
-      {/* <CalendarBottomSheet /> */}
       <WebviewCalendarEventBottomSheet />
     </SsgoiTransition>
   );
