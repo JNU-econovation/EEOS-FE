@@ -1,29 +1,56 @@
-import AttendeeInfoSection from "@/components/feature/detail/attendee/AttendeeInfoSection";
+import Spacing from "@/components/common/Spacing";
 import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
-import FireFIngerSection from "@/components/feature/detail/fireFinger/FireFIngerSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import ProgramHeaderSection from "@/components/feature/detail/program/ProgramHeaderSection";
-import UserAttendModalSection from "@/components/feature/detail/userAttendModal/UserAttendModalSection";
+import WebviewFireFingerSection from "@/components/feature/webview-programs/WebviewFireFingerSection";
+import WebviewProgramAttendSection from "@/components/feature/webview-programs/WebviewProgramAttendSection";
+import WebviewProgramHeaderSection from "@/components/feature/webview-programs/WebviewProgramHeaderSection";
 import { SsgoiTransition } from "@ssgoi/react";
+import dynamic from "next/dynamic";
+
+const WebviewAttendeeInfoSection = dynamic(
+  () =>
+    import("@/components/feature/webview-programs/WebviewAttendeeInfoSection"),
+  {
+    ssr: false,
+  },
+);
 
 const ProgramDetailPage = () => {
   return (
     <SsgoiTransition
       id="/program/[programId]"
-      className="min-h-screen bg-white"
+      className="relative max-h-screen min-h-screen overflow-auto bg-white"
     >
-      <section className="px-2">
-        <ProgramHeaderSection />
-        <ProgramDetailSection />
-        <div className="mt-12" />
-        <FireFIngerSection />
-        <div className="mt-12" />
-        <AttendeeInfoSection />
-        <div className="mt-12" />
+      <WebviewProgramHeaderSection />
+      <ProgramDetailSection />
+      <Spacing size={50} direction="vertical" unit="px" />
+      <WebviewProgramAttendSection />
+      <Spacing size={40} direction="vertical" unit="px" />
+      <div className="h-3 bg-[#F5F5F5]" />
+
+      <div className="mt-12" />
+      <div className="px-4">
+        <WebviewFireFingerSection />
+      </div>
+
+      <div className="mt-6" />
+      <div className="h-3 bg-[#F5F5F5]" />
+      <div className="mt-6" />
+
+      <div className="px-4">
+        <WebviewAttendeeInfoSection />
+      </div>
+
+      <div className="mt-6" />
+      <div className="h-3 bg-[#F5F5F5]" />
+      <div className="mt-6" />
+
+      <div className="px-4">
         <ProgramDashboardSection />
-        <div className="mt-24" />
-      </section>
-      <UserAttendModalSection isLoggedIn />
+      </div>
+
+      <div className="mt-24" />
+      {/* <UserAttendModalSection isLoggedIn /> */}
     </SsgoiTransition>
   );
 };

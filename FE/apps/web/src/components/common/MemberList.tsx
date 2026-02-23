@@ -8,7 +8,7 @@ interface MemberListProps {
 const MemberList = ({ members, blur = false }: MemberListProps) => {
   return (
     <div
-      className={`grid w-full auto-cols-auto grid-cols-2 justify-items-center gap-x-4 md:grid-cols-4 lg:grid-cols-5 ${
+      className={`md:gap-t-6 grid w-full auto-cols-auto grid-cols-3 justify-items-center gap-y-3 md:grid-cols-4 md:gap-x-4 md:gap-y-6 lg:grid-cols-5 ${
         blur ? "blur-md" : ""
       }`}
     >
@@ -21,7 +21,7 @@ const MemberList = ({ members, blur = false }: MemberListProps) => {
 
 const MemberListItem = ({ name }: Omit<SimpleMemberInfo, "memberId">) => {
   return (
-    <div className="grid w-fit cursor-default select-none grid-cols-1 justify-items-center px-4 py-6 text-lg">
+    <div className="grid w-fit cursor-default select-none grid-cols-1 justify-items-center px-4 text-lg">
       <span>{name}</span>
     </div>
   );

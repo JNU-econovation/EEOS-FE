@@ -5,11 +5,13 @@ import { tabSizes, useTab } from "../TabCompound";
 interface TabItemProps<T extends string> extends PropsWithChildren {
   text: string;
   value: T;
+  fullWidth?: boolean;
 }
 
 function NakedTabItem<T extends string>({
   text,
   value,
+  fullWidth = false,
   children,
 }: TabItemProps<T>) {
   const { selectedItem, setSelectedItem, tabSize } = useTab<T>();
@@ -22,6 +24,7 @@ function NakedTabItem<T extends string>({
     "relative flex h-fit w-fit cursor-pointer items-center justify-center gap-2 border-b-2 border-black font-semibold text-black transition-all",
     tabSizes[tabSize],
     border,
+    fullWidth ? "w-full" : "",
   );
 
   return (

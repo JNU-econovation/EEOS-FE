@@ -1992,7 +1992,7 @@
       "responses": [
         {
           "uuid": "5695cf60-2616-4df7-9a8f-50229ad0b089",
-          "body": "{\n  \"data\": {\n\t  \"attendCount\" : 5, \n\t  \"lateCount\" : 3, \n\t  \"absentCount\" : 2,\n\t  \"paneltyPoint\" : 24\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "body": "{\n  \"data\": {\n\t  \"attendCount\" : 5, \n\t  \"lateCount\" : 3, \n\t  \"absentCount\" : 2,\n\t  \"penaltyPoint\" : 24\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
