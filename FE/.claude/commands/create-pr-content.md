@@ -1,6 +1,6 @@
 ---
 description: 현재 브랜치의 HEAD에 있는 커밋과 develop 브랜치의 커밋의 변경사항을 비교하여 pr 내용을 작성합니다.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # pr 작성 커맨트
