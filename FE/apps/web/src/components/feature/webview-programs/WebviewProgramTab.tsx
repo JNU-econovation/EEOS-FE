@@ -23,7 +23,7 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
           )}
           onClick={() => setSelectedTab("active")}
         >
-          <span className="block text-center">진행중</span>
+          <span className="block text-center">진행 · 예정</span>
         </button>
         <button
           className={classNames(

@@ -11,7 +11,7 @@ const WebviewMainPage = () => {
   return (
     <SsgoiTransition id="/main" className="min-h-screen bg-white">
       <div>
-        <section className="bg-[#F2F2F7] px-6 pb-4 pt-16">
+        <section className="bg-[#F2F2F7] px-6 pt-16">
           <div className="flex items-center justify-between">
             <LogoIcon />
             <BellIcon />
@@ -21,7 +21,7 @@ const WebviewMainPage = () => {
 
           <Spacing size={74} direction="vertical" unit="px" />
           <TodayEventSection />
-          <Spacing size={24} direction="vertical" unit="px" />
+          {/* <Spacing size={24} direction="vertical" unit="px" /> */}
         </section>
       </div>
     </SsgoiTransition>

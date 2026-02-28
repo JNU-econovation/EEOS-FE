@@ -20,28 +20,27 @@ const TodayEventSection = () => {
   } = useGetTodayCalenderEventsQuery();
 
   if (isLoading) {
-    return (
-      <div className="rounded-xl bg-[#00c3d0] px-5 py-3.5">로딩 중...</div>
-    );
+    return <div className="rounded-t-xl bg-[#00c3d0] p-5" />;
   }
 
   if (isError || !todayEvent) {
     return (
-      <div className="rounded-xl bg-[#00c3d0] px-5 py-3.5">
+      <div className="rounded-t-xl bg-[#00c3d0] px-5 py-3.5">
         오늘의 이벤트를 불러오지 못했습니다.
       </div>
     );
   }
 
-  const targetEvent = todayEvent[0];
-
-  if (!targetEvent) {
+  if (todayEvent.length === 0) {
     return (
-      <div className="rounded-xl bg-[#00c3d0] px-5 py-3.5">
+      <div className="rounded-t-xl bg-[#00c3d0] px-5 py-3.5">
         오늘의 이벤트가 없습니다.
       </div>
     );
   }
+
+  const targetEvent = todayEvent[0];
+  const targetEvents = todayEvent.slice(0, 3);
 
   const today = new Date();
   const thisYear = today.getFullYear();
@@ -75,7 +74,7 @@ const TodayEventSection = () => {
   console.log(new Date(+targetEvent.startAt));
 
   return (
-    <section className="rounded-xl bg-[#00c3d0] px-5 py-3.5">
+    <section className="rounded-t-xl bg-[#00c3d0] px-5 py-3.5">
       <div>
         <div className="flex w-full justify-between">
           <div>
@@ -86,10 +85,15 @@ const TodayEventSection = () => {
           </div>
           <div className="text-lg font-medium text-white ">{eventTime}</div>
         </div>
-        <Spacing size={4} direction="vertical" unit="px" />
-        <p className="text-end text-base font-semibold text-white">
-          #{eventType}
-        </p>
+        <div className="flex w-full justify-between">
+          <div>
+            <span className="text-lg font-semibold text-white">오늘 ㅣ </span>
+            <span className="text-lg font-semibold text-white">
+              {eventTitle}
+            </span>
+          </div>
+          <div className="text-lg font-medium text-white ">{eventTime}</div>
+        </div>
       </div>
     </section>
   );

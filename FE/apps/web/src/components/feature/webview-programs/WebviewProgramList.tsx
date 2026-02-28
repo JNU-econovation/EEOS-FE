@@ -1,11 +1,11 @@
 "use client";
 
-import { ProgramStatus } from "@/types/program";
-import { useGetProgramListInWebviewInfinite } from "@/hooks/query/useProgramQuery";
-import PROGRAM from "@/constants/PROGRAM";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import Presentation from "@/components/icons/items/Presentation";
+import PROGRAM from "@/constants/PROGRAM";
+import { useGetProgramListInWebviewInfinite } from "@/hooks/query/useProgramQuery";
+import { ProgramStatus } from "@/types/program";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface WebviewProgramListProps {
   selectedTab: ProgramStatus;
@@ -71,29 +71,41 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
 
   // 8. 리스트 렌더링
   return (
-    <ul className="flex h-full flex-col gap-6 overflow-y-auto">
+    <ul className="flex h-full flex-col overflow-y-auto">
       {programs.map((program, index) => {
         const isLastItem = index === programs.length - 1;
 
         return (
-          <li
-            key={program.programId}
-            ref={isLastItem ? ref : null}
-            className="flex gap-2"
-          >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#F5F5F5]">
-              <Presentation />
-            </div>
-            <div className="grow">
-              <p className="text-xl font-semibold">{program.title}</p>
-              <p className="text-sm font-bold text-green-600">
-                {program.attendMode === "attend" && "출석체크중"}
-                {program.attendMode === "late" && "지각체크중"}
-                {program.attendMode === "non_open" && "출석 전"}
-                {program.attendMode === "end" && "출석 종료"}
-              </p>
-            </div>
-          </li>
+          <>
+            <li
+              key={program.programId}
+              ref={isLastItem ? ref : null}
+              className="border-b py-4"
+            >
+              <div className="flex gap-2">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#F5F5F5]">
+                  <Presentation />
+                </div>
+                <div className="grow">
+                  <p className="line-clamp-1 text-xl font-semibold">
+                    {program.title}
+                  </p>
+                  {(program.attendMode === "attend" ||
+                    program.attendMode === "late") && (
+                    <p className="text-sm font-bold text-green-600">
+                      "출석체크중"
+                    </p>
+                  )}
+
+                  <p className="text-[15px] font-normal text-[#767676]">
+                    {new Date(program.deadLine).toLocaleDateString("ko", {
+                      dateStyle: "long",
+                    })}
+                  </p>
+                </div>
+              </div>
+            </li>
+          </>
         );
       })}
 
