@@ -19,6 +19,17 @@ const ROUTES = {
     DETAIL: "/team-building/detail",
     RESULT: "/team-building/result",
   },
+  MOBILE: {
+    MAIN: "/mobile/main",
+    PROGRAMS: "/mobile/programs",
+    PROGRAM_DETAIL: (programId: number) => `/mobile/program/${programId}`,
+    CALENDAR: "/mobile/calendar",
+    SETTING: {
+      MAIN: "/mobile/setting",
+      ACCOUNT: "/mobile/setting/account",
+      NOTIFICATION: "/mobile/setting/notification",
+    },
+  },
 };
 
 Object.freeze(ROUTES);

@@ -10,11 +10,11 @@ const WebviewProgramPage = () => {
         edges={["top", "left", "right", "bottom"]}
         classname="flex h-screen flex-col !overflow-visible"
       >
-        <div className="flex w-full shrink-0 justify-end">
+        <header className="flex w-full shrink-0 justify-end">
           <button className="rounded-full bg-[#F5F5F5] p-2">
             <Calendar />
           </button>
-        </div>
+        </header>
 
         <div className="h-4 shrink-0" />
         <WebviewProgramsSection />
