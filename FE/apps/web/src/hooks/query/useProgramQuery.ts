@@ -231,7 +231,7 @@ export const useGetProgramListInWebviewInfinite = ({
         programStatus,
         size,
         page: pageParam,
-        isAdmin: true,
+        isAdmin: false,
       }),
     getNextPageParam: (lastPage) => {
       const nextPage = lastPage.page + 1;
