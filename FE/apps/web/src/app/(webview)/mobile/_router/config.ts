@@ -111,5 +111,65 @@ export const pageTransitionConfig = {
       }),
       symmetric: true,
     },
+    {
+      from: "/setting",
+      to: "/mypage",
+      transition: slide({
+        direction: "right",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
+    {
+      from: "/setting",
+      to: "/setting/account",
+      transition: slide({
+        direction: "left",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
+    {
+      from: "/setting/account",
+      to: "/setting",
+      transition: slide({
+        direction: "right",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
+    {
+      from: "/setting",
+      to: "/setting/notification",
+      transition: slide({
+        direction: "left",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
+    {
+      from: "/setting/notification",
+      to: "/setting",
+      transition: slide({
+        direction: "right",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
   ],
 };
