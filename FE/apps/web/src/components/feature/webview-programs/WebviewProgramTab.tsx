@@ -13,10 +13,10 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex shrink-0 overflow-hidden rounded-full bg-[#F5F5F5] p-1">
+      <div className="grid shrink-0 grid-cols-2 overflow-hidden rounded-full bg-[#F5F5F5] p-1">
         <button
           className={classNames(
-            "grow rounded-full p-2",
+            "grow rounded-full py-2",
             selectedTab === "active"
               ? "bg-white text-black shadow-sm"
               : "text-black",
@@ -27,7 +27,7 @@ const WebviewProgramTab = ({ children }: WebviewProgramTabProps) => {
         </button>
         <button
           className={classNames(
-            "grow rounded-full p-2",
+            "grow rounded-full py-2",
             selectedTab === "end"
               ? "bg-white text-black shadow-sm"
               : "text-black",

@@ -90,18 +90,18 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
                   <p className="line-clamp-1 text-xl font-semibold">
                     {program.title}
                   </p>
-                  {(program.attendMode === "attend" ||
-                    program.attendMode === "late") && (
+                  {program.attendMode === "attend" ||
+                  program.attendMode === "late" ? (
                     <p className="text-sm font-bold text-green-600">
                       "출석체크중"
                     </p>
+                  ) : (
+                    <p className="text-[15px] font-normal text-[#767676]">
+                      {new Date(program.deadLine).toLocaleDateString("ko", {
+                        dateStyle: "long",
+                      })}
+                    </p>
                   )}
-
-                  <p className="text-[15px] font-normal text-[#767676]">
-                    {new Date(program.deadLine).toLocaleDateString("ko", {
-                      dateStyle: "long",
-                    })}
-                  </p>
                 </div>
               </div>
             </li>
