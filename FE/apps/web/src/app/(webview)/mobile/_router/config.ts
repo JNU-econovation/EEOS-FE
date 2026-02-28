@@ -99,5 +99,17 @@ export const pageTransitionConfig = {
       }),
       symmetric: true,
     },
+    {
+      from: "/mypage",
+      to: "/setting",
+      transition: slide({
+        direction: "left",
+        spring: {
+          damping: 100,
+          stiffness: 1000,
+        },
+      }),
+      symmetric: true,
+    },
   ],
 };

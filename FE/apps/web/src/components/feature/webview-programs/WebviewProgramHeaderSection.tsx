@@ -2,6 +2,7 @@
 
 import Spacing from "@/components/common/Spacing";
 import { ArrowRight } from "@/components/icons";
+import { ArrowLeft } from "@/components/icons/items/ArrotLeft";
 import PROGRAM from "@/constants/PROGRAM";
 import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { useGetProgramId } from "@/hooks/usePrograms";
@@ -54,32 +55,5 @@ const WebviewProgramHeaderSection = () => {
     </section>
   );
 };
-
-function ArrowLeft() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 19L5 12L12 5"
-        stroke="black"
-        stroke-width="1.25"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M19 12H5"
-        stroke="black"
-        stroke-width="1.25"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  );
-}
 
 export default WebviewProgramHeaderSection;
