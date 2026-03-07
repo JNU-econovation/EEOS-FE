@@ -12,6 +12,12 @@ import {
   setTokenExpiration,
 } from "@/utils/authWithStorage";
 
+declare module "axios" {
+  export interface InternalAxiosRequestConfig {
+    _retry?: boolean;
+  }
+}
+
 const https = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
   headers: {
@@ -105,28 +111,29 @@ https.interceptors.response.use(
   async (error) => {
     console.error("[API Error]", error);
     const { config: originalRequest, response } = error;
+    const status = response?.status;
     const errorCode = response?.data?.code;
     const errorMessage =
       ERROR_MESSAGE[errorCode]?.message || ERROR_MESSAGE.UNKNOWN.message;
 
-    if (errorCode === ERROR_CODE.AUTH.INVALID_TOKEN) {
-      deleteTokenInfo();
-      toast.error(errorMessage, {
-        toastId: errorCode,
-      });
-      setTimeout(() => {
-        window.location.href = ROUTES.LOGIN;
-      }, 3000);
-    }
-
-    if (errorCode === ERROR_CODE.AUTH.EXPIRED_ACCESS_TOKEN) {
-      const { accessToken, accessExpiredTime } = await postTokenReissue();
-
-      setAccessToken(accessToken);
-      setTokenExpiration(accessExpiredTime);
-      originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
-
-      return await axios(originalRequest);
+    if ((status === 401 || status === 403) && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const { accessToken, accessExpiredTime } = await postTokenReissue();
+        setAccessToken(accessToken);
+        setTokenExpiration(accessExpiredTime);
+        originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+        return await axios(originalRequest);
+      } catch {
+        deleteTokenInfo();
+        toast.error(ERROR_MESSAGE[ERROR_CODE.AUTH.INVALID_TOKEN].message, {
+          toastId: ERROR_CODE.AUTH.INVALID_TOKEN,
+        });
+        setTimeout(() => {
+          window.location.href = ROUTES.LOGIN;
+        }, 3000);
+        return Promise.reject(error);
+      }
     }
 
     if (errorCode === ERROR_CODE.AUTH.INVALID_NAME) {
@@ -147,7 +154,6 @@ https.interceptors.response.use(
       }, 3000);
     }
 
-    // error.message = errorMessage;
     return Promise.reject(error);
   },
 );

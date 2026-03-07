@@ -13,6 +13,7 @@ module.exports = {
       bundleIdentifier: "com.geongyu09.xnative",
       googleServicesFile: "./GoogleService-Info.plist",
       infoPlist: {
+        ITSAppUsesNonExemptEncryption: false, //
         // 웹뷰에서 http 도메인 허용. 빌드시에는 https로 변경 혹은 특정 도메인만 허용하도록 수정 필요
         NSAppTransportSecurity: {
           NSAllowsArbitraryLoads: true,
