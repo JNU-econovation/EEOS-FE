@@ -34,6 +34,8 @@ const CalendarBody = ({ events, onDateClick }: CalendarBodyProps) => {
   const [selectedDate, setSelectedDate] = useAtom(selectedDateAtom);
   const [calendarDate, setCalendarDate] = useAtom(calendarDateAtom);
 
+  const today = new Date();
+
   const year = calendarDate.getFullYear();
   const month = calendarDate.getMonth();
 
@@ -101,6 +103,12 @@ const CalendarBody = ({ events, onDateClick }: CalendarBodyProps) => {
                   year === selectedDate.getFullYear() &&
                   month === selectedDate.getMonth()
                     ? "bg-black text-white"
+                    : ""
+                } ${
+                  date + 1 === today.getDate() &&
+                  year === today.getFullYear() &&
+                  month === today.getMonth()
+                    ? "bg-[#DFE1E5]"
                     : ""
                 }`}
               >
