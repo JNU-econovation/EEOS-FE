@@ -18,11 +18,6 @@ const WebviewCalendarEventBottomSheet = () => {
   const [selectedDate] = useAtom(selectedDateAtom);
   const [events] = useAtom(selectedDateEventsAtom);
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedEvent, setSelectedEvent] = useState<SimpleCalendarDto>(null);
-
-  // const { mutate: deleteEvent } = useDeleteCalendarEventMutation();
-
   const openEventCreateModal = useOpenEventCreateFormModalBridge();
 
   const formatDate = (timestamp: number) => {

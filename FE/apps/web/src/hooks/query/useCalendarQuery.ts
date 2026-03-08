@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   deleteCalender,
   getCalendarEventsOnWeek,
@@ -10,12 +10,20 @@ import { DateFilter, NewCalendar } from "@/types/calendar";
 export function useCreateCalendarEventMutation() {
   return useMutation({
     mutationFn: (newCalendar: NewCalendar) => postCalender(newCalendar),
+    onSuccess: () => {
+      const queryClient = useQueryClient();
+      queryClient.invalidateQueries({ queryKey: [API.CALENDAR.FETCH] });
+    },
   });
 }
 
 export function useDeleteCalendarEventMutation() {
   return useMutation({
     mutationFn: (calendarId: number) => deleteCalender(calendarId),
+    onSuccess: () => {
+      const queryClient = useQueryClient();
+      queryClient.invalidateQueries({ queryKey: [API.CALENDAR.FETCH] });
+    },
   });
 }
 
