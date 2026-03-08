@@ -20,9 +20,9 @@ function getLastDateOfPrevMonth(year: number, month: number) {
 }
 
 const EVENT_TYPE_DOT_STYLES: Record<SimpleCalendarDto["type"], string> = {
-  event: "bg-blue-500 opacity-70",
-  presentation: "bg-red-500 opacity-70",
-  etc: "bg-teal-500 opacity-70",
+  event: "border border-blue-500 opacity-70",
+  presentation: "border border-red-500 opacity-70",
+  etc: "border border-teal-500 opacity-70",
 } as const;
 
 interface CalendarBodyProps {
@@ -102,7 +102,7 @@ const CalendarBody = ({ events, onDateClick }: CalendarBodyProps) => {
                   date + 1 === selectedDate.getDate() &&
                   year === selectedDate.getFullYear() &&
                   month === selectedDate.getMonth()
-                    ? "bg-black text-white"
+                    ? "!bg-black text-white"
                     : ""
                 } ${
                   date + 1 === today.getDate() &&
