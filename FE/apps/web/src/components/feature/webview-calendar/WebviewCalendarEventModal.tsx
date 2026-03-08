@@ -92,7 +92,15 @@ const WebviewCalendarEventModal = ({
               <button
                 className="w-full rounded-xl bg-primary p-2"
                 onClick={() => {
-                  deleteEvent(selectedEvent.calendarId, {});
+                  deleteEvent(selectedEvent.calendarId, {
+                    onSuccess: () => {
+                      setIsModalOpen(false);
+                      setSelectedEvent(null);
+                    },
+                    onError: () => {
+                      alert("행사 삭제에 실패했습니다.");
+                    },
+                  });
                 }}
               >
                 삭제하기

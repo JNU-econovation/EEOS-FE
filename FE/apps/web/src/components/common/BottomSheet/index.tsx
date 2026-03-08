@@ -31,7 +31,7 @@ const BottomSheet = ({
   } = useBottomSheet({ isOpen, onOpen, onClose, maxHeight, threshold });
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl border bg-white shadow-[0_0_5px_rgba(0,0,0,0.1)]">
+    <div className="fixed bottom-0 left-0 right-0 z-10 rounded-t-2xl border bg-white shadow-[0_0_5px_rgba(0,0,0,0.1)]">
       <BottomSheetHandle
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
