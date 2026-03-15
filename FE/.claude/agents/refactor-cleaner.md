@@ -2,7 +2,7 @@
 name: refactor-cleaner
 description: 불필요한 코드 정리 및 통합 전문가. 사용하지 않는 코드, 중복, 리팩토링을 위해 적극적으로 사용하세요. 분석 도구(knip, depcheck, ts-prune)를 실행하여 불필요한 코드를 식별하고 안전하게 제거합니다.
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: opus
+model: sonnet
 ---
 
 # 리팩토링 & 불필요한 코드 정리사

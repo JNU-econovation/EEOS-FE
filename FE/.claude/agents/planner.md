@@ -13,6 +13,7 @@ color: Orange
 
 - `component-abstract-pattern` : 컴포넌트 추상화 레벨
 - `component-colocation-pattern` : 컴포넌트 파일 배치 패턴
+- `hook-abstract-pattern` : 커스텀 훅 추상화 패턴
 
 ## 역할
 
@@ -88,7 +89,7 @@ src/
 ## 상태 관리 전략
 
 - 로컬 상태: useState를 사용한 컴포넌트 내부 상태
-- 공유 상태: Context API 또는 [상태 관리 라이브러리명]
+- 공유 상태: Context API 또는 사용되는 프로젝트의 상태 관리 라이브러리 (예: Zustand, jotai)
 - 서버 상태: React Query, SWR 등 (해당하는 경우)
 
 ## 구현 단계
@@ -184,7 +185,7 @@ src/
 ## 위험 및 완화
 
 - **위험**: 큰 번들 사이즈로 인한 초기 로딩 지연
-  - 완화: 동적 import()와 React.lazy()로 코드 스플리팅 적용
+  - 완화: 동적 import()와 React.lazy(), dynamic() 코드 스플리팅 적용
 
 - **위험**: 복잡한 상태로 인한 예측 불가능한 동작
   - 완화: useReducer로 상태 전환 명확하게 정의
@@ -223,7 +224,7 @@ src/
 
 ## 프론트엔드 확인해야 할 경고 신호
 
-- 큰 컴포넌트 (>200줄)
+- 큰 컴포넌트 (>160줄)
 - 깊은 컴포넌트 중첩 (>5 레벨)
 - 중복된 UI 로직
 - Props drilling (2단계 이상)

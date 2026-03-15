@@ -259,3 +259,6 @@ Modify `apps/native/src/constants/webview.ts`:
 export const WEBVIEW_BASE_URL = process.env.EXPO_PUBLIC_WEB_BASE_URL || "";
 ```
 Ensure all paths match routes in `apps/web/src/app/(webview)/mobile/*`
+
+## important notes
+- this project never use eas for build app

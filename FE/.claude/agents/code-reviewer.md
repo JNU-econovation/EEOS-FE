@@ -2,7 +2,7 @@
 name: code-reviewer
 description: 전문 코드 리뷰 전문가. 품질, 보안 및 유지보수성을 위해 코드를 적극적으로 검토합니다. 코드 작성 또는 수정 직후 사용하세요. 모든 코드 변경에 반드시 사용해야 합니다.
 tools: Read, Grep, Glob, Bash
-model: opus
+model: sonnet
 color: Purple
 ---
 
