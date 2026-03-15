@@ -8,20 +8,20 @@ import API from "@/constants/API";
 import { DateFilter, NewCalendar } from "@/types/calendar";
 
 export function useCreateCalendarEventMutation() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (newCalendar: NewCalendar) => postCalender(newCalendar),
     onSuccess: () => {
-      const queryClient = useQueryClient();
       queryClient.invalidateQueries({ queryKey: [API.CALENDAR.FETCH] });
     },
   });
 }
 
 export function useDeleteCalendarEventMutation() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (calendarId: number) => deleteCalender(calendarId),
     onSuccess: () => {
-      const queryClient = useQueryClient();
       queryClient.invalidateQueries({ queryKey: [API.CALENDAR.FETCH] });
     },
   });
