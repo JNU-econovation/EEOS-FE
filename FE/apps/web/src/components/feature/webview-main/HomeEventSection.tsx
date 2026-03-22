@@ -29,7 +29,7 @@ const HomeEventSection = () => {
     isError,
   } = useGetTwoMonthCalenderEventsQuery();
 
-  const baseClass = `rounded-t-xl bg-[#00c3d0] px-5 py-3.5 flex flex-col relative ${FIXED_HEIGHT}`;
+  const baseClass = `rounded-t-xl bg-[#00c3d0] px-4 py-3.5 flex flex-col relative ${FIXED_HEIGHT}`;
 
   if (isLoading) {
     return <div className={baseClass} />;
@@ -61,9 +61,6 @@ const HomeEventSection = () => {
           <p className="text-lg font-semibold text-white">
             아직 다가오는 일정이 없어요.
           </p>
-          <p className="text-lg font-semibold text-white">
-            {/* 아직 다가오는 일정이 없어요. */}
-          </p>
         </div>
         <p className="text-end text-[0.75rem] text-white">
           일정 전체보기 {">"}
@@ -74,23 +71,23 @@ const HomeEventSection = () => {
 
   return (
     <section className={baseClass}>
-      <div className="flex gap-4">
-        <div>
+      <div className="flex min-w-0 gap-2 overflow-hidden">
+        <div className="shrink-0">
           {upcomingEvents.map(({ calendarId, startAt }) => {
             const label = getDdayLabel(startAt);
 
             return (
               <div
                 key={calendarId}
-                className="w-full shrink-0 text-lg font-semibold text-white"
+                className="text-lg font-semibold text-white"
               >
-                {label}
+                <p>{label}</p>
               </div>
             );
           })}
         </div>
-        <div className="border border-white" />
-        <div className="grow">
+        <div className="shrink-0 border border-white" />
+        <div className="min-w-0 grow overflow-hidden">
           {upcomingEvents.map((event) => {
             const thisYear = today.getFullYear();
             const thisMonth = today.getMonth();
@@ -107,14 +104,12 @@ const HomeEventSection = () => {
             return (
               <div
                 key={event.calendarId}
-                className="flex w-full justify-between"
+                className="flex w-full justify-between gap-1 overflow-hidden"
               >
-                <div>
-                  <span className="text-lg font-semibold text-white">
-                    {event.title}
-                  </span>
-                </div>
-                <div className="text-lg font-medium text-white">
+                <p className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold text-white">
+                  {event.title}
+                </p>
+                <div className="shrink-0 text-lg font-medium text-white">
                   {startDisplay} - {endDisplay}
                 </div>
               </div>
