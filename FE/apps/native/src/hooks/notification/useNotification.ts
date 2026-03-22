@@ -3,7 +3,13 @@ import useSavePushTokenMutation from "@hooks/query/useSavePushTokenMutation";
 import * as Notifications from "expo-notifications";
 import { useCallback, useEffect, useState } from "react";
 import { PermissionsAndroid, Platform } from "react-native";
-import messaging from "@react-native-firebase/messaging";
+import messaging, {
+  getToken,
+  onTokenRefresh,
+  requestPermission,
+  registerDeviceForRemoteMessages,
+  AuthorizationStatus,
+} from "@react-native-firebase/messaging";
 
 // 포그라운드 알림 표시 방식 설정
 Notifications.setNotificationHandler({
@@ -25,10 +31,10 @@ async function requestUserPermission() {
     return granted === PermissionsAndroid.RESULTS.GRANTED;
   }
 
-  const authStatus = await messaging().requestPermission();
+  const authStatus = await requestPermission(messaging());
   const enabled =
-    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    authStatus === AuthorizationStatus.AUTHORIZED ||
+    authStatus === AuthorizationStatus.PROVISIONAL;
 
   return enabled;
 }
@@ -38,7 +44,10 @@ async function getFCMToken() {
   const hasPermission = await requestUserPermission();
 
   if (hasPermission) {
-    const fcmToken = await messaging().getToken();
+    if (Platform.OS === "ios") {
+      await registerDeviceForRemoteMessages(messaging());
+    }
+    const fcmToken = await getToken(messaging());
     return fcmToken;
   }
   throw new Error("푸시 알림 권한이 거부되었습니다.");
@@ -107,11 +116,19 @@ const useNotification = () => {
         // const data = response.notification.request.content.data;
       });
 
+    // 4. FCM 토큰 갱신 리스너
+    const unsubscribeTokenRefresh = onTokenRefresh(messaging(), (newToken) => {
+      if (IS_DEV) console.log("FCM 토큰 갱신:", newToken);
+      setPushToken(newToken);
+      savePushToken(newToken);
+    });
+
     return () => {
       notificationListener.remove();
       responseListener.remove();
+      unsubscribeTokenRefresh();
     };
-  }, [requestUserPermission]);
+  }, [requestUserPermission, savePushToken]);
 
   // 4. 앱이 종료 상태에서 알림으로 열렸을 때 처리
   useEffect(() => {
