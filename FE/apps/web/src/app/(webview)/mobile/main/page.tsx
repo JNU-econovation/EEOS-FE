@@ -1,11 +1,11 @@
-import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import BellIcon from "@/components/common/icons/BellIcon";
 import LogoIcon from "@/components/common/icons/LogoIcon";
 import Spacing from "@/components/common/Spacing";
+import AnnouncementSection from "@/components/feature/webview-main/AnnouncementSection";
 import HelloSection from "@/components/feature/webview-main/HelloSection";
 import HomeEventSection from "@/components/feature/webview-main/HomeEventSection";
-// import UserMetaSection from "@/components/feature/webview-main/UserMetaSection";
 import { SsgoiTransition } from "@ssgoi/react";
+// import UserMetaSection from "@/components/feature/webview-main/UserMetaSection";
 
 const WebviewMainPage = () => {
   return (
@@ -24,10 +24,12 @@ const WebviewMainPage = () => {
             <div className="z-50">
               <HomeEventSection />
             </div>
-            {/* <Spacing size={24} direction="vertical" unit="px" /> */}
           </section>
         </div>
-        <div className="grow shadow-[0px_-100px_10px_0px_rgba(34,43,69,0.21)]"></div>
+        <div className="grow px-6 shadow-[0px_-100px_10px_0px_rgba(34,43,69,0.21)]">
+          <Spacing size={32} direction="vertical" unit="px" />
+          <AnnouncementSection />
+        </div>
       </div>
     </SsgoiTransition>
   );
