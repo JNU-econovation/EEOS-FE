@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { PropsWithChildren } from "react";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "EEOS",
@@ -25,6 +26,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
+      <head>
+        {process.env.NODE_ENV === "development" && (
+          <Script
+            src="//unpkg.com/react-grab/dist/index.global.js"
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          />
+        )}
+      </head>
       <body className="flex flex-col items-center">
         <Provider>{children}</Provider>
         <Analytics />

@@ -40,13 +40,13 @@ export function useFetchMonthlyCalendarQuery(dateFilter: DateFilter) {
   });
 }
 
-export function useGetTodayCalenderEventsQuery() {
+export function useGetTwoMonthCalenderEventsQuery() {
   const today = new Date();
   const dateFilter: DateFilter = {
     year: today.getFullYear(),
     month: today.getMonth() + 1,
     date: today.getDate(),
-    duration: 1,
+    duration: 60,
   };
 
   return useQuery({
