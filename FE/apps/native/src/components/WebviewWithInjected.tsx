@@ -39,11 +39,8 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
   // 페이지 로드 후 UI 설정
   const INJECTED_JAVASCRIPT_AFTER_LOAD = useMemo(
     () =>
-      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}${INJECT_TOKEN(
-        accessToken ?? "",
-        tokenExpiration ?? "",
-      )}`,
-    [accessToken, tokenExpiration],
+      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}`,
+    [],
   );
 
   const middleware = (message: MessageEventRequestData) => {
