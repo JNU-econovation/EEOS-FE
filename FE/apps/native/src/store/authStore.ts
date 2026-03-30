@@ -10,6 +10,7 @@ interface AuthState {
 
   // Actions
   setAccessToken: (token: string, expiredTime: number) => Promise<void>;
+  setRefreshToken: (token: string) => Promise<void>;
   clearAccessToken: () => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -39,6 +40,15 @@ const useAuthStore = create<AuthState>((set) => ({
       console.error("[AuthStore] Set token failed:", error);
       // 3. 실패 시 이전 상태로 롤백
       set({ accessToken: previousToken, tokenExpiration: previousExpiration });
+      throw error;
+    }
+  },
+
+  setRefreshToken: async (token: string) => {
+    try {
+      await SecureStore.setItemAsync("refreshToken", token);
+    } catch (error) {
+      console.error("[AuthStore] Set refresh token failed:", error);
       throw error;
     }
   },

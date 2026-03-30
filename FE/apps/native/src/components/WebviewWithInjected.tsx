@@ -28,6 +28,8 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const tokenExpiration = useAuthStore((state) => state.tokenExpiration);
   const clearAccessToken = useAuthStore((state) => state.clearAccessToken);
+  const setAccessToken = useAuthStore((state) => state.setAccessToken);
+  const setRefreshToken = useAuthStore((state) => state.setRefreshToken);
 
   const { pushToken } = useNotification();
 
@@ -87,6 +89,35 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
     // 뒤로 가기 처리
     if (name === "go-back" && method === "DELETE") {
       if (router.canDismiss()) router.back();
+    }
+
+    // 토큰 저장 처리 (OAuth 로그인 콜백)
+    if (
+      name === "put-token" &&
+      method === "PUT" &&
+      typeof body === "object" &&
+      body !== null &&
+      "accessToken" in body &&
+      "refreshToken" in body &&
+      "accessExpiredTime" in body &&
+      typeof body.accessToken === "string" &&
+      typeof body.refreshToken === "string" &&
+      typeof body.accessExpiredTime === "string"
+    ) {
+      const { accessToken, refreshToken, accessExpiredTime } = body;
+
+      const expiredTimeNumber = Number(accessExpiredTime);
+      if (isNaN(expiredTimeNumber)) return;
+
+      setAccessToken(accessToken, expiredTimeNumber)
+        .then(() => setRefreshToken(refreshToken))
+        .then(() => {
+          if (router.canDismiss()) router.dismiss();
+          router.replace("/(tabs)/home");
+        })
+        .catch((error: unknown) => {
+          console.error("[WebviewWithInjected] put-token failed:", error);
+        });
     }
   };
 
