@@ -1,9 +1,10 @@
 // import useLoginMutation from "@/src/hooks/query/useLoginMutation";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { router } from "expo-router";
-import useAuthStore from "@/src/store/authStore";
+import WebviewWithInjected from "@/src/components/WebviewWithInjected";
 import useLoginMutation from "@/src/hooks/query/useLoginMutation";
+import useAuthStore from "@/src/store/authStore";
+import { router } from "expo-router";
+import { SSO_PATH } from "@/src/constants/webview";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 /**
  * TODO: 웹 - 앱 로그인 상태 동기화
@@ -30,25 +31,14 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1">
-      <Text></Text>
-      <View className="p-4">
-        <TextInput
-          placeholder="ID"
-          className="border rounded-lg p-4 border-gray-300 mb-4"
-        />
-        <TextInput
-          placeholder="PW"
-          className="border rounded-lg p-4 border-gray-300 mb-4"
-          secureTextEntry
-        />
-        <TouchableOpacity
-          onPress={onPressLogin}
-          className="px-4 py-2 rounded-full bg-primary"
-        >
-          <Text className="text-black text-center">Login</Text>
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "white" }}
+      edges={["left", "right", "top", "bottom"]}
+    >
+      <WebviewWithInjected
+        className="h-full"
+        source={{ uri: SSO_PATH.LOGIN }}
+      />
     </SafeAreaView>
   );
 }

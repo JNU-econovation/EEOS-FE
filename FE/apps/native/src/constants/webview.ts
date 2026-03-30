@@ -1,4 +1,5 @@
 export const WEBVIEW_BASE_URL = process.env.EXPO_PUBLIC_WEB_BASE_URL || "";
+export const SSO_BASE_URL = process.env.EXPO_PUBLIC_SSO_BASE_URL || "";
 
 export const WEBVIEW_PATH = Object.freeze({
   LOGIN: WEBVIEW_BASE_URL + "/login",
@@ -11,3 +12,8 @@ export const WEBVIEW_PATH = Object.freeze({
   MYPAGE: WEBVIEW_BASE_URL + "/mobile/mypage",
   PROGRAMS: WEBVIEW_BASE_URL + "/mobile/programs",
 } as const);
+
+export const SSO_PATH = {
+  LOGIN: SSO_BASE_URL,
+  SIGN_UP: SSO_BASE_URL + "/signup",
+} as const;

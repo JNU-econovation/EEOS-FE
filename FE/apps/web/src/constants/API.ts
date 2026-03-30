@@ -38,7 +38,7 @@ const USER = {
 const AUTH = {
   SLACK_LOGIN: "/auth/login/slack",
   TOKEN_REISSUE: "/auth/reissue",
-  ADMIN_LOGIN: "/auth/login",
+  ADMIN_LOGIN: "/v1/auth/login",
 };
 
 const TEAM_BUILDING = {

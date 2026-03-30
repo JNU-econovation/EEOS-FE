@@ -17,9 +17,12 @@ import { router } from "expo-router";
 import { IS_DEV } from "../app";
 import useDeletePushTokenMutation from "../hooks/query/useDeletePushTokenMutation";
 import useNotification from "../hooks/notification/useNotification";
+import { SSO_BASE_URL } from "../constants/webview";
 
 interface WebviewWithInjectedProps
   extends React.ComponentProps<typeof WebView> {}
+
+// TODO: 현재는 도메인에 너무 강결합 되어있으므로, 게층에 맞추어 분리 필요
 
 const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
   const accessToken = useAuthStore((state) => state.accessToken);
@@ -102,7 +105,8 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       onShouldStartLoadWithRequest={(request) => {
         if (
           request.url.includes("/mobile") ||
-          request.mainDocumentURL?.includes("/mobile")
+          request.mainDocumentURL?.includes("/mobile") ||
+          request.url.includes(SSO_BASE_URL)
         ) {
           return true;
         }
