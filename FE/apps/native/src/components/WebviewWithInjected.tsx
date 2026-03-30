@@ -17,7 +17,7 @@ import { router } from "expo-router";
 import { IS_DEV } from "../app";
 import useDeletePushTokenMutation from "../hooks/query/useDeletePushTokenMutation";
 import useNotification from "../hooks/notification/useNotification";
-import { SSO_BASE_URL } from "../constants/webview";
+import { SSO_BASE_URL, WEBVIEW_PATH } from "../constants/webview";
 
 interface WebviewWithInjectedProps
   extends React.ComponentProps<typeof WebView> {}
@@ -136,8 +136,11 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       onShouldStartLoadWithRequest={(request) => {
         if (
           request.url.includes("/mobile") ||
+          request.url.includes(SSO_BASE_URL) ||
+          request.url.includes(WEBVIEW_PATH.OAUTH_REDIRECT) ||
           request.mainDocumentURL?.includes("/mobile") ||
-          request.url.includes(SSO_BASE_URL)
+          request.mainDocumentURL?.includes(SSO_BASE_URL) ||
+          request.mainDocumentURL?.includes(WEBVIEW_PATH.OAUTH_REDIRECT)
         ) {
           return true;
         }

@@ -12,10 +12,11 @@ const Page = () => {
 
   useEffect(() => {
     const accessToken = searchParams.get("accessToken");
-    const accessExpiredTime = searchParams.get("accessExpiredTime");
+    const accessExpiredTime =
+      searchParams.get("accessExpiredTime") ?? "9999999999";
     const refreshToken = searchParams.get("refreshToken");
 
-    if (!accessToken || !accessExpiredTime || !refreshToken) {
+    if (!accessToken || !refreshToken) {
       router.replace("/login");
       return;
     }
