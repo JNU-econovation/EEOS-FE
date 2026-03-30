@@ -1,5 +1,6 @@
 "use client";
 
+import CharacterImage from "@/components/common/CharacterImage/Charactor-Image";
 import { useGetTwoMonthCalenderEventsQuery } from "@/hooks/query/useCalendarQuery";
 
 const FIXED_HEIGHT = "min-h-[6rem]";
@@ -29,7 +30,7 @@ const HomeEventSection = () => {
     isError,
   } = useGetTwoMonthCalenderEventsQuery();
 
-  const baseClass = `rounded-t-xl bg-[#00c3d0] px-4 py-3.5 flex flex-col relative ${FIXED_HEIGHT}`;
+  const baseClass = `rounded-t-xl bg-[#00c3d0] px-4 py-3.5 flex flex-col relative ${FIXED_HEIGHT} relative`;
 
   if (isLoading) {
     return <div className={baseClass} />;
@@ -129,6 +130,10 @@ const HomeEventSection = () => {
       >
         전체보기 {">"}
       </button>
+
+      <div className="absolute right-0 top-0 -z-10 -translate-y-32">
+        <CharacterImage />
+      </div>
     </section>
   );
 };

@@ -19,7 +19,6 @@ const WebviewMainPage = () => {
             </div>
             <div className="h-6" />
             <HelloSection />
-
             <Spacing size={74} direction="vertical" unit="px" />
             <div className="z-50">
               <HomeEventSection />
