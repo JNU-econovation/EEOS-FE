@@ -15,6 +15,10 @@ export const WEBVIEW_PATH = Object.freeze({
 } as const);
 
 export const SSO_PATH = {
-  LOGIN: SSO_BASE_URL + "?redirect-url=" + WEBVIEW_PATH.OAUTH_REDIRECT,
+  LOGIN:
+    SSO_BASE_URL +
+    "?redirect-url=" +
+    WEBVIEW_PATH.OAUTH_REDIRECT +
+    "&client-type=mobile",
   SIGN_UP: SSO_BASE_URL + "/signup",
 } as const;
