@@ -1,6 +1,6 @@
 import Spacing from "@/components/common/Spacing";
-import ProgramDashboardSection from "@/components/feature/detail/Dashboard/ProgramDashboardSection";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
+import WebviewProgramDashboardSection from "@/components/feature/webview-programs/Dashboard/WebviewProgramDashboardSection";
 import WebviewFireFingerSection from "@/components/feature/webview-programs/WebviewFireFingerSection";
 import WebviewProgramAttendSection from "@/components/feature/webview-programs/WebviewProgramAttendSection";
 import WebviewProgramHeaderSection from "@/components/feature/webview-programs/WebviewProgramHeaderSection";
@@ -46,7 +46,7 @@ const ProgramDetailPage = () => {
       <div className="mt-6" />
 
       <div className="px-4">
-        <ProgramDashboardSection />
+        <WebviewProgramDashboardSection />
       </div>
 
       <div className="mt-24" />

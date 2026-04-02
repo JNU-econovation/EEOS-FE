@@ -36,12 +36,30 @@ const TeamsTab = ({ programId, children }: TeamsTabProps) => {
     >
       <Tab.List className="!gap-0 border-b">
         {teamNameArray.map((teamName, index) => {
+          // 해당 팀 이름에 맞는 presentation 항목 찾기
+          const teamPresentation = presentation?.find(
+            (item) => item.name === teamName,
+          );
+
+          const downloadUrl = teamPresentation?.download_url || "#!";
+          const hasDownloadUrl = !!teamPresentation?.download_url;
+
           return (
             <Tab.NakedItem
               key={`${teamName}-${index}`}
               text={teamName}
               value={teamName}
-            />
+            >
+              {hasDownloadUrl ? (
+                <Link href={downloadUrl} target="_blank">
+                  <Hyperlink />
+                </Link>
+              ) : (
+                <div className="cursor-not-allowed">
+                  <HyperlinkGray />
+                </div>
+              )}
+            </Tab.NakedItem>
           );
         })}
       </Tab.List>
