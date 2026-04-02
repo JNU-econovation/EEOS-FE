@@ -4,11 +4,13 @@ import AppSafeArea from "@/components/common/AppSafeArea/AppSafeArea";
 import Spacing from "@/components/common/Spacing";
 import AppSettingHeader from "@/components/feature/app-setting/AppSettingHeader";
 import ROUTES from "@/constants/ROUTES";
+import useLogoutBridge from "@/hooks/bridge/useLogoutBridge";
 import { SsgoiTransition } from "@ssgoi/react";
 import { useRouter } from "next/navigation";
 
 const SettingPage = () => {
   const router = useRouter();
+  const logout = useLogoutBridge();
 
   return (
     <SsgoiTransition id="/setting" className="min-h-screen bg-white">
@@ -113,9 +115,7 @@ const SettingPage = () => {
           <ul className="flex flex-col gap-4">
             <li
               className="flex justify-between gap-3"
-              onClick={() => {
-                router.push(ROUTES.MOBILE.SETTING.ACCOUNT);
-              }}
+              onClick={logout}
             >
               <div className="w-full text-lg font-medium leading-6 text-red-500">
                 로그아웃
