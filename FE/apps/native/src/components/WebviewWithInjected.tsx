@@ -91,6 +91,18 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       if (router.canDismiss()) router.back();
     }
 
+    // 새 WebView 스크린으로 이동
+    if (
+      name === "route-to-webview-screen" &&
+      method === "POST" &&
+      typeof body === "object" &&
+      body !== null &&
+      "uri" in body &&
+      typeof body.uri === "string"
+    ) {
+      router.push(`/webview/${encodeURIComponent(body.uri)}`);
+    }
+
     // 토큰 저장 처리 (OAuth 로그인 콜백)
     if (
       name === "put-token" &&

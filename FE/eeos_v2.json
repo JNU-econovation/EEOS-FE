@@ -723,7 +723,7 @@
           "uuid": "1694ba4d-02de-419e-97d8-6bf8a70a6027",
           "body": "{\n  \"code\": \"4003\",\n  \"message\" : \"유효하지 않은 토큰입니다.\",\n  \"status\" : \"401\"\n}",
           "latency": 0,
-          "statusCode": 401,
+          "statusCode": 200,
           "label": "",
           "headers": [],
           "bodyType": "INLINE",
@@ -2074,7 +2074,7 @@
       "uuid": "b90f0902-05b2-4213-b1e5-08d019ac8847",
       "type": "http",
       "documentation": "",
-      "method": "get",
+      "method": "post",
       "endpoint": "v1/auth/login",
       "responses": [
         {

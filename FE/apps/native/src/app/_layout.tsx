@@ -23,6 +23,12 @@ export default function RootLayout() {
             gestureEnabled: false,
           }}
         />
+        <Stack.Screen
+          name="webview/[uri]"
+          options={{
+            animation: "slide_from_right",
+          }}
+        />
       </Stack>
     </Provider>
   );

@@ -2,6 +2,7 @@
 
 import Presentation from "@/components/icons/items/Presentation";
 import PROGRAM from "@/constants/PROGRAM";
+import useRouteToWebviewScreenBridge from "@/hooks/bridge/useRouteToWebviewScreenBridge";
 import { useGetProgramListInWebviewInfinite } from "@/hooks/query/useProgramQuery";
 import { ProgramStatus } from "@/types/program";
 import { useEffect } from "react";
@@ -25,6 +26,8 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
     programStatus: selectedTab,
     size: PROGRAM.LIST_SIZE,
   });
+
+  const routeToWebviewScreen = useRouteToWebviewScreenBridge();
 
   // 2. Intersection Observer 설정
   const { ref, inView } = useInView({
@@ -69,6 +72,12 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
     );
   }
 
+  const handleProgramClick = (programId: number) => {
+    routeToWebviewScreen({
+      uri: `${window.location.origin}/mobile/program/${programId}`,
+    });
+  };
+
   // 8. 리스트 렌더링
   return (
     <ul className="flex h-full flex-col overflow-y-auto">
@@ -81,6 +90,7 @@ const WebviewProgramList = ({ selectedTab }: WebviewProgramListProps) => {
               key={program.programId}
               ref={isLastItem ? ref : null}
               className="border-b py-4"
+              onClick={() => handleProgramClick(program.programId)}
             >
               <div className="flex gap-2">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#F5F5F5]">
