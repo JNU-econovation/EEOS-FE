@@ -1,6 +1,5 @@
 import Spacing from "@/components/common/Spacing";
 import ProgramDetailSection from "@/components/feature/detail/program/ProgramDetailSection";
-import WebviewProgramDashboardSection from "@/components/feature/webview-programs/Dashboard/WebviewProgramDashboardSection";
 import WebviewFireFingerSection from "@/components/feature/webview-programs/WebviewFireFingerSection";
 import WebviewProgramAttendSection from "@/components/feature/webview-programs/WebviewProgramAttendSection";
 import WebviewProgramHeaderSection from "@/components/feature/webview-programs/WebviewProgramHeaderSection";
@@ -10,6 +9,16 @@ import dynamic from "next/dynamic";
 const WebviewAttendeeInfoSection = dynamic(
   () =>
     import("@/components/feature/webview-programs/WebviewAttendeeInfoSection"),
+  {
+    ssr: false,
+  },
+);
+
+const WebviewProgramDashboardSection = dynamic(
+  () =>
+    import(
+      "@/components/feature/webview-programs/Dashboard/WebviewProgramDashboardSection"
+    ),
   {
     ssr: false,
   },
