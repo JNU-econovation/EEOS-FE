@@ -1,6 +1,6 @@
 const API = {
   AUTH: {
-    ADMIN_LOGIN: "/auth/login",
+    ADMIN_LOGIN: "v1/auth/login",
   },
   NOTIFICATION: {
     SAVE_TOKEN: "/pushToken",
