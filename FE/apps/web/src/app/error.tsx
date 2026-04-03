@@ -5,7 +5,13 @@ import useLogoutBridge from "@/hooks/bridge/useLogoutBridge";
 import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
 import { useRouter } from "next/navigation";
 
-const Error = () => {
+const Error = ({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) => {
   const router = useRouter();
   const { mutate: logout } = useLogoutMutation();
   const logoutBridge = useLogoutBridge();
@@ -36,6 +42,12 @@ const Error = () => {
       <p className="mt-8 text-sm text-gray-500">
         ⓘ 어떻게 해당 페이지를 확인하게 되었는지 블랙컴퍼니에 제보해주세요!
       </p>
+
+      <div className="px-4">
+        <div className="mt-4 rounded-md bg-red-50 p-4">
+          <p className="text-sm text-gray-400">에러 내용 : {error.message}</p>
+        </div>
+      </div>
     </div>
   );
 };
