@@ -43,8 +43,8 @@ const Error = ({
         ⓘ 어떻게 해당 페이지를 확인하게 되었는지 블랙컴퍼니에 제보해주세요!
       </p>
 
-      <div className="px-4">
-        <div className="mt-4 rounded-md bg-red-50 p-4">
+      <div className="w-full px-4 md:w-auto">
+        <div className="mt-4 w-full rounded-md bg-red-50 p-4 md:w-auto">
           <p className="text-sm text-gray-400">에러 내용 : {error.message}</p>
         </div>
       </div>
