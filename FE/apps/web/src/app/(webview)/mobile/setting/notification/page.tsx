@@ -1,9 +1,10 @@
+import ComingSoonScreen from "@/components/common/ComingSoonScreen";
 import { SsgoiTransition } from "@ssgoi/react";
 
 const AppNotificationSettingPage = () => {
   return (
     <SsgoiTransition id="/setting/notification">
-      <div>AppNotificationSettingPage</div>
+      <ComingSoonScreen />
     </SsgoiTransition>
   );
 };
