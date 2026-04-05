@@ -1,0 +1,2238 @@
+{
+  "uuid": "603279cd-9909-4ef4-be62-6d0a43cede79",
+  "lastMigration": 32,
+  "name": "Eeos v2",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 8082,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "433edfef-7ade-48fb-8dc2-cefb3f261583",
+      "name": "행사 생성",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "849be584-b584-4cd9-8abd-2d5c8b9ab183"
+        },
+        {
+          "type": "route",
+          "uuid": "1a37abf9-1cb4-4855-8952-ab0a59517229"
+        },
+        {
+          "type": "route",
+          "uuid": "316f10ea-248b-468a-b22a-4577d772f021"
+        },
+        {
+          "type": "route",
+          "uuid": "25448556-a037-4e74-a4e0-610956dec455"
+        }
+      ]
+    },
+    {
+      "uuid": "363f5837-4f82-45c9-92d5-1f5c3689b96a",
+      "name": "행사 수정",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "1a933632-b457-4273-86c7-d5bc7b381fae"
+        },
+        {
+          "type": "route",
+          "uuid": "7d2dbac6-3a9f-4032-9ad6-f1cf90b20983"
+        }
+      ]
+    },
+    {
+      "uuid": "4032937f-a7a6-484b-8e2b-44736fd0152c",
+      "name": "행사 조회",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "9a7e229b-4fa2-49bd-91ae-bf17bbcae8d7"
+        },
+        {
+          "type": "route",
+          "uuid": "f6b0e922-2427-4a4f-853d-44b3bb9da000"
+        },
+        {
+          "type": "route",
+          "uuid": "950bbd82-18b6-47bd-b9b0-945d9c84f29d"
+        },
+        {
+          "type": "route",
+          "uuid": "5d53f250-e268-4f7a-ad3c-87fe3f63850a"
+        },
+        {
+          "type": "route",
+          "uuid": "c022255d-529a-42cb-9247-de130cf5cf7f"
+        },
+        {
+          "type": "route",
+          "uuid": "f00b6efc-9c1f-4957-ad52-a99e72cfb54a"
+        },
+        {
+          "type": "route",
+          "uuid": "c1094f17-9d1e-4c62-9a4b-b52d8a88acf6"
+        },
+        {
+          "type": "route",
+          "uuid": "d5a90548-b507-4a9f-9c5b-b25d2df166fb"
+        },
+        {
+          "type": "route",
+          "uuid": "85a4d50f-47db-48fc-b57e-a9df050400d6"
+        }
+      ]
+    },
+    {
+      "uuid": "07227a35-6c6f-45de-9dc7-3303d703dd86",
+      "name": "유저 정보",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "096029ce-5345-4cbd-8d43-8aeb4292284d"
+        },
+        {
+          "type": "route",
+          "uuid": "58383fc1-6273-4643-875d-740d8643ec24"
+        }
+      ]
+    },
+    {
+      "uuid": "3902c423-4987-4f42-8f3c-e4de7759394c",
+      "name": "\b권한",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "b70697b3-d978-4406-b8da-afbfbc5bc753"
+        },
+        {
+          "type": "route",
+          "uuid": "e5fcb1ad-6f99-45ed-9343-3b5db9fde981"
+        },
+        {
+          "type": "route",
+          "uuid": "505c5915-2905-4ab5-a2ae-d7edfe1ebd38"
+        }
+      ]
+    },
+    {
+      "uuid": "f0b86bf4-75a8-404d-bfdd-2196a5051ec1",
+      "name": "팀빌딩 생성",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "ee37ae77-9d64-4fa8-bbc2-8280d9a96491"
+        },
+        {
+          "type": "route",
+          "uuid": "5f151589-06c5-4543-80e1-ac1052382d5f"
+        }
+      ]
+    },
+    {
+      "uuid": "4d58c51c-f1bb-4f1e-b65e-61682b914a93",
+      "name": "팀빌딩 조회",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "9bc0ce41-9a30-4c04-a634-201381f545f9"
+        },
+        {
+          "type": "route",
+          "uuid": "c1c0bf18-6270-4467-93d2-a7dcdceddd7e"
+        },
+        {
+          "type": "route",
+          "uuid": "5d9d1b62-220a-4c19-b617-3b1cdeed0076"
+        },
+        {
+          "type": "route",
+          "uuid": "ee26ea7b-da36-4f35-b709-1dcb535bc371"
+        },
+        {
+          "type": "route",
+          "uuid": "cf8befa1-b04f-45f0-b8f0-45a346d9e995"
+        },
+        {
+          "type": "route",
+          "uuid": "27a1cb03-a6fb-45a4-8bd2-0bfef24168f2"
+        }
+      ]
+    },
+    {
+      "uuid": "ae5bf90f-d917-4063-a785-e5d63e1a35b6",
+      "name": "팀빌딩 결과",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "89320eef-49d2-458d-8c92-db52ca0ac883"
+        },
+        {
+          "type": "route",
+          "uuid": "4b507f5f-6459-42a9-9238-164d237ec903"
+        }
+      ]
+    },
+    {
+      "uuid": "b06f87b4-32f1-486b-8ad4-824125b41c99",
+      "name": "팀 관리 ",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "5843c208-72f1-429b-8b7c-af1d2110d60a"
+        },
+        {
+          "type": "route",
+          "uuid": "b57cbdbe-4168-434d-93bb-4c378ce551df"
+        },
+        {
+          "type": "route",
+          "uuid": "fb0c82a7-17e3-40f0-97c7-b92cf313d801"
+        }
+      ]
+    },
+    {
+      "uuid": "d6441bc0-fa8a-482b-af7b-9bd7471d3f45",
+      "name": "멤러 관리 ",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "2f85194a-e084-4df2-9175-24d34f3f1d96"
+        },
+        {
+          "type": "route",
+          "uuid": "bd66c4a3-b60e-4b2a-a37f-b9cddec0cfe1"
+        }
+      ]
+    },
+    {
+      "uuid": "664c8fa1-762c-49f8-bcd4-720b3ff1a25b",
+      "name": "질문 ",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "6f000e12-dcfe-4dab-8094-7093db8bfec8"
+        },
+        {
+          "type": "route",
+          "uuid": "b94476d5-ca06-4f33-9fef-523f803bdd4b"
+        },
+        {
+          "type": "route",
+          "uuid": "8f7befdf-59cc-42ee-be39-d722e6ac9f21"
+        }
+      ]
+    },
+    {
+      "uuid": "481ba8dd-3335-4ffd-9c5d-9df9e1d4fad7",
+      "name": "출석",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "b591fcfe-2d15-41c3-991a-4633876b7dc2"
+        },
+        {
+          "type": "route",
+          "uuid": "07b4c689-9743-4e17-827e-19eed03cc41d"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "849be584-b584-4cd9-8abd-2d5c8b9ab183",
+      "type": "http",
+      "documentation": "프로그램 정보 생성 및 대상자 선정",
+      "method": "post",
+      "endpoint": "programs",
+      "responses": [
+        {
+          "uuid": "cd47f46a-678a-4fb5-a2c4-a702f9c56c3d",
+          "body": "{\n  \"status\": \"201\",\n  \"message\" : \"행사 생성 성공\",\n\t\"data\" : {\n\t\t\"programId\" : 1\n\t}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "91f95917-32e9-43f1-9081-9053b4c4daf7",
+          "body": "{\n  \"status\": 400,\n  \"code\": 1001,\n  \"message\": \"오늘 이후 날짜에 해당하는 행사만 생성할 수 있습니다.\"\n}",
+          "latency": 3000,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "1a37abf9-1cb4-4855-8952-ab0a59517229",
+      "type": "http",
+      "documentation": "사용자 리스트 불러오기",
+      "method": "get",
+      "endpoint": "members",
+      "responses": [
+        {
+          "uuid": "b9acf22d-5158-4a47-9811-9c2fb35e69d5",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"정보 조회 성공\",\n  \"data\": {\n    \"members\": [\n      {{#repeat 8}}\n      {\n        \"memberId\": {{@index}},\n        \"name\": \"26기 {{oneOf (array '홍길동' '김김김' '이이이' '박박박' '최최최' '강강강'  '장장장')}}\",\n        {{#switch (queryParam 'activeStatus')}}\n          {{#case 'am'}}\"activeStatus\": \"am\"{{/case}}\n          {{#case 'rm'}}\"activeStatus\": \"rm\"{{/case}}\n          {{#case 'cm'}}\"activeStatus\": \"cm\"{{/case}}\n          {{#case 'ob'}}\"activeStatus\": \"ob\"{{/case}}\n          {{#case 'all'}}\"activeStatus\": \"{{oneOf (array 'am' 'rm' 'cm' 'ob')}}\"{{/case}}\n        {{/switch}},\n        \"department\": \"{{oneOf (array 'marketing' 'management' 'president' 'event' 'none')}}\"\n      }\n      {{/repeat}}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a41f5cd5-0b97-4727-b29a-5e6f353a1906",
+          "body": "{\n  \"status\": 401,\n  \"code\": 4000,\n  \"message\": \"토큰이 존재하지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "1a933632-b457-4273-86c7-d5bc7b381fae",
+      "type": "http",
+      "documentation": "프로그램 정보 수정 및 참여 대상자/참여 상태 변경",
+      "method": "patch",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "b170ab68-f4f3-40b1-a030-da6717e9e5ce",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"행사 수정 성공\",\n  \"data\": {\n    \"programId\": {{urlParam 'programId'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "096029ce-5345-4cbd-8d43-8aeb4292284d",
+      "type": "http",
+      "documentation": "본인의 활동상태 정보 가져오기",
+      "method": "get",
+      "endpoint": "members/activeStatus",
+      "responses": [
+        {
+          "uuid": "2715bbd6-1f3d-4295-a588-bba9f0265a2e",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"응답 성공\",\n  \"data\": {\n    \"name\": \"26기 숲속별\",\n    \"activeStatus\": \"{{oneOf (array 'am' 'rm' 'cm' 'ob')}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "5146a28d-deea-465e-a61c-3b53f56de92c",
+          "body": "{\n  \"status\": 401,\n  \"code\": 4000,\n  \"message\": \"토큰이 존재하지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "58383fc1-6273-4643-875d-740d8643ec24",
+      "type": "http",
+      "documentation": "본인의 활동상태 정보 변경하기",
+      "method": "put",
+      "endpoint": "members/activeStatus",
+      "responses": [
+        {
+          "uuid": "f7ff7ec0-ffd6-4778-b004-8db770542329",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"응답 성공\",\n  \"data\": {\n    \"name\": \"26기 숲속별\",\n    \"activeStatus\": \"am\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "db29a02b-0da2-48d5-a0a1-76cb3407eb56",
+          "body": "{\n  \"status\": 400,\n  \"code\": 3001,\n  \"message\": \"xx는 존재하지 않는 활동 상태입니다.\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "존재하지 않는 활동 상태 요청",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "9a7e229b-4fa2-49bd-91ae-bf17bbcae8d7",
+      "type": "http",
+      "documentation": "프로그램 조회",
+      "method": "get",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "273a5f2f-ad32-4bc2-acc8-106f6b62dc54",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"행사 조회 성공\",\n  \"data\": {\n    \"programId\": 1,\n    \"title\": \"주간 발표 B팀\",\n    \"deadLine\": \"1795691732000\",\n    \"content\": \"**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 숲속별, 파도람, 하늘콩(WEB)\\n    - 단풍곰, 물방울, 햇님이, 산들새(WEB)\\n    - 숲속별, 나무꾀, 푸른손(WEB)\\n    - 꿈나비, 바람곰, 햇살비(APP)\\n    - 별빛달, 구름이, 달토끼(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.\",\n    \"category\": \"{{oneOf (array 'weekly' 'presidentTeam' 'eventTeam' 'etc')}}\",\n    \"programStatus\": \"active\",\n    \"type\": \"{{oneOf (array 'demand')}}\",\n    \"accessRight\": \"edit\",\n    \"programGithubUrl\" : \"https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st\",\n    \"eventStatus\" : \"active\",\n    \"attendMode\" : \"late\"\n  }}\n  \n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "7b96b627-17f8-405e-9bcb-dc58510a3335",
+          "body": "{\n  \"status\": 401,\n  \"code\": 4000,\n  \"message\": \"토큰이 존재하지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5d53f250-e268-4f7a-ad3c-87fe3f63850a",
+      "type": "http",
+      "documentation": "프로그램 삭제",
+      "method": "delete",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "c99ca4ed-3821-439e-a9b8-2ff6c977a296",
+          "body": "{\n  \"data\" : null,\n\t\"status\": \"201\",\n  \"message\" : \"행사 삭제 성공\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c022255d-529a-42cb-9247-de130cf5cf7f",
+      "type": "http",
+      "documentation": "행사 리스트 조회",
+      "method": "get",
+      "endpoint": "programs",
+      "responses": [
+        {
+          "uuid": "fbb793ae-1a94-449a-9c05-2ea7c0863df8",
+          "body": "{\n\t\"status\" : \"200\",\n\t\"message\" : \"행사 조회 성공\",\n\t\"data\" : {\n\t\t\"size\" : {{queryParam 'size'}},\n\t\t\"page\" : {{queryParam 'page'}},\n\t\t\"totalPage\" : 5,\n\t\t\"contents\" : [\n\t\t  {{#repeat (queryParam 'size')}}\n\t\t  {\n\t\t\t  \"programId\" : {{@index}},\n\t\t\t  \"title\": \"행사이름 {{@index}}\",\n\t\t\t  \"deadLine\" : \"1695691732000\",\n\t\t\t  \"category\" : \"{{queryParam 'category'}}\",\n\t\t\t  \"programStatus\" : \"{{queryParam 'programStatus'}}\",\n\t\t\t  \"type\" : \"{{oneOf (array 'demand' 'notification')}}\",\n\t\t\t  \"attendMode\" : \"attend\"\n\t\t  },\n\t\t  {{/repeat}}\n\t\t  ]\n\t}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ba271c05-70db-42a3-812e-7b3f6ad76aaa",
+          "body": "{\n  \"status\": \"401\",\n  \"code\": \"4001\",\n  \"message\": \"토큰이 만료되었습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "토큰 만료 시 응답",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c1094f17-9d1e-4c62-9a4b-b52d8a88acf6",
+      "type": "http",
+      "documentation": "해당 행사에 참여하는 본인의 상태정보 변경하기",
+      "method": "put",
+      "endpoint": "attend/programs/:programId",
+      "responses": [
+        {
+          "uuid": "80b76ff8-869f-44c0-937c-1b6f2cd44cca",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"수정 성공\",\n  \"data\": {\n    \"name\": \"26기 물방울\",\n    \"attendStatus\": \"attend\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "950bbd82-18b6-47bd-b9b0-945d9c84f29d",
+      "type": "http",
+      "documentation": "해당 행사의 본인의 상태정보 가져오기",
+      "method": "get",
+      "endpoint": "attend/programs/:programId",
+      "responses": [
+        {
+          "uuid": "f712b804-0216-4b33-b9ea-e685f0519541",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"응답 성공\",\n  \"data\": {\n    \"name\": \"26기 물방울\",\n    \"attendStatus\": \"nonResponse\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "623337d4-e9da-4f4c-82dd-63cd2defeeb3",
+          "body": "{\n  \"status\": 401,\n  \"code\": 4000,\n  \"message\": \"토큰이 존재하지 않습니다.\"\n}",
+          "latency": 3000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b70697b3-d978-4406-b8da-afbfbc5bc753",
+      "type": "http",
+      "documentation": "슬랙 로그인 리다이렉트 후 토큰 발급",
+      "method": "post",
+      "endpoint": "auth/login/slack",
+      "responses": [
+        {
+          "uuid": "09055557-90fb-408f-a4b9-4777fb8a590a",
+          "body": "{\n  \"data\": {\n    \"accessToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MSwiaWF0IjoxNzA0NDMxNjU1LCJleHAiOjE3MDQ0NDk2NTV9.j1SaITuXgVaGaoNm6zGUCCqhWoo68M9KqUCMF6kV2js\",\n    \"accessExpiredTime\": 170444965500000\n  },\n  \"message\": \"생성 성공\",\n  \"code\": \"201\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "e7884331-9532-47b3-923a-153da5182f34",
+          "body": "{\n  \"status\": \"400\",\n  \"code\": \"4006\",\n  \"message\": \"%s 유저의 이름이 형식과 일치하지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "e5fcb1ad-6f99-45ed-9343-3b5db9fde981",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "auth/reissue",
+      "responses": [
+        {
+          "uuid": "1694ba4d-02de-419e-97d8-6bf8a70a6027",
+          "body": "{\n  \"code\": \"4003\",\n  \"message\" : \"유효하지 않은 토큰입니다.\",\n  \"status\" : \"401\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "d5a90548-b507-4a9f-9c5b-b25d2df166fb",
+      "type": "http",
+      "documentation": "행사 수정 및 삭제 권한 확인",
+      "method": "get",
+      "endpoint": "programs/:programId/accessRight",
+      "responses": [
+        {
+          "uuid": "b251e604-4fde-45e3-bc1e-03d80188a240",
+          "body": "{\n  \"data\": {\n    \"accessRight\": \"{{oneOf (array 'edit')}}\"\n  },\n  \"message\": \"생성 성공\",\n  \"code\": \"201\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "85a4d50f-47db-48fc-b57e-a9df050400d6",
+      "type": "http",
+      "documentation": "행사에 참여하는 사용자 불러오기",
+      "method": "get",
+      "endpoint": "attend/programs/:programId/members",
+      "responses": [
+        {
+          "uuid": "23d6d77e-93f3-4331-96cf-b717c2cb97e6",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"프로그램 참여자 정보 조회 성공\",\n  \"data\": {\n    \"members\": [\n      {{#repeat 22}}\n      {\n        \"memberId\": {{@index}},\n        \"name\": \"{{oneOf (array '25기 숲속별' '26기 파도람' '27기 달토끼' '25기 구름이' '26기 별빛달' '27기 바람곰' '28기 햇살비' '28기 하늘콩' '28기 푸른손' '28기 나무꾀')}}\",\n        {{#switch (queryParam 'attendStatus')}}\n          {{#case 'attend'}}\"attendStatus\": \"attend\"{{/case}}\n          {{#case 'absent'}}\"attendStatus\": \"absent\"{{/case}}\n          {{#case 'late'}}\"attendStatus\": \"late\"{{/case}}\n          {{#case 'nonResponse'}}\"attendStatus\": \"nonResponse\"{{/case}}\n          {{#default}}\"attendStatus\": \"{{oneOf (array 'attend' 'absent' 'late' 'nonResponse' 'nonRelated')}}\"{{/default}}\n        {{/switch}}\n      }\n      {{/repeat}}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "64697eb9-913f-45c7-ad33-815642cb96ff",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ee37ae77-9d64-4fa8-bbc2-8280d9a96491",
+      "type": "http",
+      "documentation": "팀빌딩 생성",
+      "method": "post",
+      "endpoint": "team-building",
+      "responses": [
+        {
+          "uuid": "9c7e8387-9934-4f4d-84d5-0f2a19d7a925",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"생성 성공\",\n  \"data\": {\n    \"teamBuildingId\": 1\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "9bc0ce41-9a30-4c04-a634-201381f545f9",
+      "type": "http",
+      "documentation": "팀빌딩 조회",
+      "method": "get",
+      "endpoint": "team-building",
+      "responses": [
+        {
+          "uuid": "194bb9b9-9875-4145-b15f-b60732979a28",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"조회 성공\",\n  \"data\": {\n    \"title\": \"크리스마스 파티 팀빌딩\",\n    \"content\": \"**크리스마스 파티**를 위한 팀빌딩 입니다. \\n\\n 크리스마스 파티에서 가장 기대되는 것을 입력해주세요🎅🎄\\n\\n 팀빌딩으로 생성된 팀은 크리스마스 파티에서 게임을 같이 하게 됩니다~!\\n\\n완료 시 @25기 Steve에게 확인 DM 보내주세요!💬💬\",\n    \"accessRight\" : \"{{oneOf (array 'edit' 'read_only')}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9017469e-0611-4965-975f-e810a791ccef",
+          "body": "{\n  \"status\": \"401\",\n  \"code\": \"6010\",\n  \"message\": \"팀빌딩이 완료되었습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "팀빌딩 완료",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c1c0bf18-6270-4467-93d2-a7dcdceddd7e",
+      "type": "http",
+      "documentation": "팀빌딩 문장 입력",
+      "method": "post",
+      "endpoint": "target/team-building",
+      "responses": [
+        {
+          "uuid": "de7def9a-4c15-4f40-b8a2-b74b87975056",
+          "body": "{\n  \"status\": 200,\n  \"message\" : \"성공\",\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5d9d1b62-220a-4c19-b617-3b1cdeed0076",
+      "type": "http",
+      "documentation": "팀빌딩 문장 수정",
+      "method": "put",
+      "endpoint": "target/team-building",
+      "responses": [
+        {
+          "uuid": "b3a8343b-5049-4ae7-b05b-993f76ac2078",
+          "body": "{\n  \"status\": 200,\n  \"message\" : \"수정 성공\",\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "172bf864-e59a-4bfd-a726-3d73de922c53",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ee26ea7b-da36-4f35-b709-1dcb535bc371",
+      "type": "http",
+      "documentation": "팀빌딩 대상자 본인의 문장 입력 상태 가져오기",
+      "method": "get",
+      "endpoint": "target/team-building",
+      "responses": [
+        {
+          "uuid": "a6475c1a-51f0-4e19-980b-73c51d9a2df3",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"수정 성공\",\n  \"data\": {\n    \"name\": \"25기 강바다\",\n    \"status\": \"{{oneOf (array 'complete')}}\",\n    \"content\": \"이전에 쓴 문장\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5f151589-06c5-4543-80e1-ac1052382d5f",
+      "type": "http",
+      "documentation": "팀빌딩 생성/참석 가능한 상태인지 확인",
+      "method": "get",
+      "endpoint": "team-building/validate",
+      "responses": [
+        {
+          "uuid": "36ea47fe-40ab-49d9-9db0-4b7c72745e17",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"성공\",\n\t\t\"data\" : {\n\t\t  {{#switch (queryParam 'status')}}\n\t\t  {{#case 'creatability'}}\"status\": \"{{oneOf (array 'noncreatable')}}\"{{/case}}\n\t\t  {{#case 'joinability'}}\"status\": \"{{oneOf (array 'joinable')}}\"{{/case}}\n\t\t  {{/switch}}\n\t\t}\n}\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "19aaf708-e8c9-4c84-a0e3-5d7838dbe7d6",
+          "body": "{\n  \"status\": 401,\n  \"code\": \"4000\",\n  \"message\": \"토큰이 존재하지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9d9d228f-6d74-4db3-902c-6aa392c3312b",
+          "body": "{\n  \"status\": 400,\n  \"code\": \"6000\",\n  \"message\": \"진행중인 팀빌딩이 존재합니다.\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "89320eef-49d2-458d-8c92-db52ca0ac883",
+      "type": "http",
+      "documentation": "팀빌딩 결과",
+      "method": "get",
+      "endpoint": "team-building/result",
+      "responses": [
+        {
+          "uuid": "794e5bb4-5aa4-4218-86b1-b4833645a4b8",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"조회 성공\",\n  \"data\": {\n    \"accessRights\" : \"{{oneOf (array 'edit' 'read_only')}}\",\n    \"results\": [\n      {{#repeat 4}}\n      [\n        {{#repeat 5}}\n        {\n          \"memberId\": {{@index}},\n          \"name\": \"25기 {{oneOf (array '스티브' '박주우' '인텔리' '김만두' '강오션' '박준수' '박지유' '장현지' '김수민' '강바다')}}\"\n        },\n        {{/repeat}}\n      ],\n      {{/repeat}}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "88583205-1645-4b3e-8476-754fb7df6421",
+          "body": "{\n  \"status\": 400,\n  \"code\": 6002,\n  \"message\": \"진행중인 팀빌딩이 존재하지 않습니다\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "4b507f5f-6459-42a9-9238-164d237ec903",
+      "type": "http",
+      "documentation": "팀빌딩 종료하기",
+      "method": "delete",
+      "endpoint": "team-building/end",
+      "responses": [
+        {
+          "uuid": "19841bbf-2cae-4790-a711-cf0ea1adc0a9",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"삭제 성공\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "f6c45c87-991b-4f2d-b60c-7581c3cb8de0",
+          "body": "{\n  \"status\": 400,\n  \"code\": 6002,\n  \"message\": \"진행중인 팀빌딩이 존재하지 않습니다\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "6002 - 진행중인 팀빌딩이 존재하지 않습니다.",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "5ecb3395-460a-4d30-b47a-f0007fdbcc19",
+          "body": "{\n  \"status\": 404,\n  \"code\": 6003,\n  \"message\": \"팀빌딩 대상자가 아닙니다.\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "6003 - 팀빌딩 대상자가 아닙니다.",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1600d2bd-8927-4d7d-9f36-acadb42c53f5",
+          "body": "{\n  \"status\": 401,\n  \"code\": 6005,\n  \"message\": \"팀빌딩 수정 권한을 가지고 있지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "6005 - 팀빌딩 수정 권한을 가지고 있지 않습니다.",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "cf8befa1-b04f-45f0-b8f0-45a346d9e995",
+      "type": "http",
+      "documentation": "팀빌딩 완료하기",
+      "method": "post",
+      "endpoint": "team-building/complete",
+      "responses": [
+        {
+          "uuid": "a3f7f9e4-d28b-4124-9879-0c83126ac5b7",
+          "body": "{\n  \"status\": 401,\n  \"code\": \"6005\",\n  \"message\": \"팀빌딩 수정 권한을 가지고 있지 않습니다.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "팀빌딩 수정 권한 없음",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "01981075-14f4-4f92-8644-dac7908f73ab",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"완료 성공\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "27a1cb03-a6fb-45a4-8bd2-0bfef24168f2",
+      "type": "http",
+      "documentation": "진행중인 팀빌딩 삭제하기",
+      "method": "delete",
+      "endpoint": "team-building",
+      "responses": [
+        {
+          "uuid": "8c29010b-aab8-48dc-bc99-3e5f50904325",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"삭제 성공\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ec2af5a9-9aed-45f3-9f0b-f910eb9fa6c4",
+          "body": "{\n  \"status\": 400,\n  \"code\": \"6002\",\n  \"message\": \"진행중인 팀빌딩이 존재하지 않습니다\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "f6b0e922-2427-4a4f-853d-44b3bb9da000",
+      "type": "http",
+      "documentation": "[guest] 프로그램 조회",
+      "method": "get",
+      "endpoint": "guest/programs/:programId",
+      "responses": [
+        {
+          "uuid": "d2bbe3d9-bdd0-4708-95e4-e1cbcf60a7ab",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"행사 조회 성공\",\n  \"data\": {\n    \"programId\": 1,\n    \"title\": \"주간 발표 B팀\",\n    \"deadLine\": \"1795691732000\",\n    \"content\": \"**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 숲속별, 파도람, 하늘콩(WEB)\\n    - 단풍곰, 물방울, 햇님이, 산들새(WEB)\\n    - 숲속별, 나무꾀, 푸른손(WEB)\\n    - 꿈나비, 바람곰, 햇살비(APP)\\n    - 별빛달, 구름이, 달토끼(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.\",\n    \"category\": \"{{oneOf (array 'weekly' 'presidentTeam' 'eventTeam' 'etc')}}\",\n    \"programStatus\": \"active\",\n    \"type\": \"\",\n    \"accessRight\": \"read_only\",\n    \"programGithubUrl\" : \"https://github.com/JNU-econovation/weekly_presentation/tree/2025-1/2025-1/B_TEAM/2nd\",\n    \"attendMode\" : \"attend\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8f0250f2-1a20-4212-99fd-b0a2198f360a",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"행사 조회 성공\",\n  \"data\": {\n    \"programId\": 1,\n    \"title\": \"[수요조사] 주간 발표 B팀\",\n    \"deadLine\": \"1795691732000\",\n    \"content\": \"**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.\",\n    \"category\": \"{{oneOf (array 'weekly' 'presidentTeam' 'eventTeam' 'etc')}}\",\n    \"programStatus\": \"end\",\n    \"type\": \"{{oneOf (array 'demand')}}\",\n    \"accessRight\": \"edit\",\n    \"programGithubUrl\" : \"https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st\",\n    \"eventStatus\" : \"active\",\n    \"attend_mode\" : \"attend\",\n  }\n}",
+          "latency": 100000,
+          "statusCode": 200,
+          "label": " (copy)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cbd658bc-4eb1-4560-b18b-4848026d9499",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"행사 조회 성공\",\n  \"data\": {\n    \"programId\": 1,\n    \"title\": \"[수요조사] 주간 발표 B팀\",\n    \"deadLine\": \"1795691732000\",\n    \"content\": \"**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.\",\n    \"category\": \"{{oneOf (array 'weekly' 'presidentTeam' 'eventTeam' 'etc')}}\",\n    \"programStatus\": \"end\",\n    \"type\": \"{{oneOf (array 'demand')}}\",\n    \"accessRight\": \"edit\",\n    \"programGithubUrl\" : \"https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st\",\n    \"eventStatus\" : \"active\",\n    \"attend_mode\" : \"attend\",\n  }\n}",
+          "latency": 100000,
+          "statusCode": 200,
+          "label": " (copy) (copy)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4bd2a2c5-0597-4e82-a6ae-06c8efb32ab6",
+          "body": "{\n  \"status\": \"200\",\n  \"message\": \"행사 조회 성공\",\n  \"data\": {\n    \"programId\": 1,\n    \"title\": \"[수요조사] 주간 발표 B팀\",\n    \"deadLine\": \"1795691732000\",\n    \"content\": \"**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.**[주간발표 공지]**\\n**금일 B팀의 주간발표가 있습니다.**\\n\\n - 일시: 10월 13일 (금) 17시~\\n - 장소: 정보화본부 109호\\n - 발표팀\\n     - 강도희, 곽민주, 박건규(WEB)\\n    - 강하은, 윤석호, 이장안, 최규민(WEB)\\n    - 곽민준, 김종민, 오명헌(WEB)\\n    - 박민규, 박현솔, 정서윤(APP)\\n    - 김성빈, 서영우, 오현서(AI)\\n- 발표자료 업로드\\n    - 16:00까지 깃허브에 각 팀 폴더 생성 후 발표자료 업로드\\n     - 발표자료 업로드 가이드 (막힌다면 언제든지 DM 주세요!)\\n - 발표 순서는 추후 공지합니다.\",\n    \"category\": \"{{oneOf (array 'weekly' 'presidentTeam' 'eventTeam' 'etc')}}\",\n    \"programStatus\": \"end\",\n    \"type\": \"{{oneOf (array 'demand')}}\",\n    \"accessRight\": \"edit\",\n    \"programGithubUrl\" : \"https://github.com/JNU-econovation/weekly_presentation/tree/2024-1/2024-1/A_team/1st\",\n    \"eventStatus\" : \"active\",\n    \"attend_mode\" : \"attend\",\n  }\n}",
+          "latency": 100000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "f00b6efc-9c1f-4957-ad52-a99e72cfb54a",
+      "type": "http",
+      "documentation": "[guest] 행사 리스트 조회",
+      "method": "get",
+      "endpoint": "guest/programs",
+      "responses": [
+        {
+          "uuid": "8e0b9bf5-3c4f-42c1-a2ba-8a537cef1120",
+          "body": "{\n    \"data\": {\n        \"size\": 6,\n        \"page\": 0,\n        \"totalPage\": 1,\n        \"contents\": [\n            {\n                \"programId\": 94,\n                \"title\": \"[수요조사] 아나바다 \\uD83C\\uDF4E\",\n                \"deadLine\": 1712329200000,\n                \"category\": \"etc\",\n                \"programStatus\": \"active\",\n                \"type\": \"demand\",\n                \"attendMode\": \"end\"\n            },\n            {\n                \"programId\": 86,\n                \"title\": \" 에코노베이션 X SPARCS 세미나 [3월 30일(토)]\",\n                \"deadLine\": 1711724400000,\n                \"category\": \"presidentTeam\",\n                \"programStatus\": \"active\",\n                \"type\": \"demand\",\n                \"attendMode\": \"end\"\n            },\n            {\n                \"programId\": 95,\n                \"title\": \"2024-1 A팀 1차 주간발표\",\n                \"deadLine\": 1711638000000,\n                \"category\": \"weekly\",\n                \"programStatus\": \"active\",\n                \"type\": \"notification\",\n                \"attendMode\": \"end\"\n            }\n        ]\n    },\n    \"message\": \"조회 성공\",\n    \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "316f10ea-248b-468a-b22a-4577d772f021",
+      "type": "http",
+      "documentation": "Slack 행사 공지",
+      "method": "post",
+      "endpoint": "programs/:programid/slack/notification",
+      "responses": [
+        {
+          "uuid": "0ee2f4ce-5afb-46a4-a76e-de0d70909db3",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"슬랙 알림 성공\",\n\t\t\"data\" : {\n\t\t\t\"programId\" : 1\n\t\t}\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "505c5915-2905-4ab5-a2ae-d7edfe1ebd38",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "auth/login",
+      "responses": [
+        {
+          "uuid": "f53a8f07-ee80-487f-8643-da270b6219e7",
+          "body": "{\n  \"data\": {\n    \"accessToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MSwiaWF0IjoxNzA0NDMxNjU1LCJleHAiOjE3MDQ0NDk2NTV9.j1SaITuXgVaGaoNm6zGUCCqhWoo68M9KqUCMF6kV2js\",\n    \"accessExpiredTime\": 170444965500000\n  },\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b57cbdbe-4168-434d-93bb-4c378ce551df",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "teams/:teamId",
+      "responses": [
+        {
+          "uuid": "2e425230-3889-4be7-b9c2-61671d622c94",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"팀이 삭제되었습니다.\",\n\t\t\"data\" : {\n\t\t}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5843c208-72f1-429b-8b7c-af1d2110d60a",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "teams",
+      "responses": [
+        {
+          "uuid": "70112853-de5e-4300-b049-58f8d038d7ae",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"팀 생성 성공\",\n\t\t\"data\" : {\n\t\t\t\"teamId\" : 1\n\t\t}\n}",
+          "latency": 10000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "bd66c4a3-b60e-4b2a-a37f-b9cddec0cfe1",
+      "type": "http",
+      "documentation": "멤버 활동상태 변경",
+      "method": "put",
+      "endpoint": "members/activestatus/:memberId",
+      "responses": [
+        {
+          "uuid": "2c32cf3d-90fe-4bbf-ba4c-0d21ce03fa1f",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"응답 성공\",\n    \"data\": {\n        \"name\": \"22기 김수민\",\n        \"activeStatus\": \"am\"\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "2f85194a-e084-4df2-9175-24d34f3f1d96",
+      "type": "http",
+      "documentation": "멤버 삭제",
+      "method": "delete",
+      "endpoint": "members/:memberId",
+      "responses": [
+        {
+          "uuid": "9078054a-5679-4c8e-9090-7bd8091e69d4",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"회원이 삭제되었습니다.\",\n\t\t\"data\" : {\n\t\t}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "fb0c82a7-17e3-40f0-97c7-b92cf313d801",
+      "type": "http",
+      "documentation": "행사 관련 팀들을 조회합니다 ",
+      "method": "get",
+      "endpoint": "teams",
+      "responses": [
+        {
+          "uuid": "3cfc7640-3c6b-47c7-849d-6a222e897b84",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"응답 성공\",\n  \"data\": {\n\t   \"teams\" : [{\n\t\t  \"teamId\" : 0,\n\t\t  \"teamName\" : \"black-company\"\n\t   },{\n\t\t  \"teamId\" : 1,\n\t\t  \"teamName\" : \"SEED\"\n\t   },{\n\t\t  \"teamId\" : 2,\n\t\t  \"teamName\" : \"융융융\"\n\t   },{\n\t\t  \"teamId\" : 3,\n\t\t  \"teamName\" : \"밥(BAP)\"\n\t   },{\n\t\t  \"teamId\" : 4,\n\t\t  \"teamName\" : \"ST4R\"\n\t   },{\n\t\t  \"teamId\" : 5,\n\t\t  \"teamName\" : \"error\"\n\t   },{\n\t\t  \"teamId\" : 6,\n\t\t  \"teamName\" : \"white-company\"\n\t   }\n\t   ]\n    }\n}",
+          "latency": 3,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "6f000e12-dcfe-4dab-8094-7093db8bfec8",
+      "type": "http",
+      "documentation": "질문 조회",
+      "method": "get",
+      "endpoint": "comments",
+      "responses": [
+        {
+          "uuid": "3fc0d8cf-5240-4261-9793-714fb6e1460f",
+          "body": "{\n    \"data\": {\n        \"comments\": [\n        ]\n        \n    },\n    \"message\": \"조회 성공\",\n    \"code\": \"200\"\n}",
+          "latency": 1500,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b94476d5-ca06-4f33-9fef-523f803bdd4b",
+      "type": "http",
+      "documentation": "질문 등록",
+      "method": "post",
+      "endpoint": "comments",
+      "responses": [
+        {
+          "uuid": "b5f17844-4ed2-433b-9b4f-b323a921e991",
+          "body": "{\n    \"status\": \"200\",\n    \"message\" : \"코멘트 작성 성공\",\n\t\t\"data\" : {\n\t\t\t\"programId\" : 0,\n\t\t}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "7d2dbac6-3a9f-4032-9ad6-f1cf90b20983",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "435dd854-7f4a-4e3e-ba17-c8515c81989d",
+          "body": "{\n  \"data\": {\n    \"programId\" : 0\n  },\n  \"message\": \"출석 체크가 시작되었습니다.\",\n  \"code\": \"200\"\n}",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b591fcfe-2d15-41c3-991a-4633876b7dc2",
+      "type": "http",
+      "documentation": "유저 출석체크 하기",
+      "method": "post",
+      "endpoint": "attend/programs/:programId",
+      "responses": [
+        {
+          "uuid": "3c745eee-d626-44e4-9025-2910a90f61e8",
+          "body": "{\n  \"data\": {\n    \"name\": \"26기 홍길동\",\n    \"attendStatus\": \"attend\"\n  },\n  \"message\": \"출석체크 되었습니다.\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "8f7befdf-59cc-42ee-be39-d722e6ac9f21",
+      "type": "http",
+      "documentation": "질문 및 답변 삭제하기",
+      "method": "delete",
+      "endpoint": "comments/:commentId",
+      "responses": [
+        {
+          "uuid": "86d565e1-c5b3-48b6-803f-39834431e9bf",
+          "body": "{\n    \"code\": 200,\n    \"message\": \"질문 삭제가 완료되었습니다.\",\n    \"data\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5088f24f-ddcc-4cef-b13f-dfc9a954df6b",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "programs/:programId/members",
+      "responses": [
+        {
+          "uuid": "da9b3069-9c8c-4cd9-92d0-57dbc4839c59",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"프로그램 참여자 정보 조회 성공\",\n  \"data\": {\n    \"members\": [\n      {{#repeat 15}}\n      {\n        \"memberId\": {{@index}},\n        \"name\": \"25기 {{oneOf (array '파도람' '달토끼' '구름이' '산들새' '물방울' '숲속별' '하늘콩' '나무꾀' '꿈나비' '햇님이')}}\",\n        \"attendStatus\": \"{{oneOf (array 'attend' 'late' 'absent' 'nonResponse' 'nonRelated')}}\",\n        {{#switch (queryParam 'activeStatus')}}\n          {{#case 'am'}}\"activeStatus\": \"am\"{{/case}}\n          {{#case 'rm'}}\"activeStatus\": \"rm\"{{/case}}\n          {{#case 'cm'}}\"activeStatus\": \"cm\"{{/case}}\n          {{#case 'ob'}}\"activeStatus\": \"ob\"{{/case}}\n          {{#case 'all'}}\"activeStatus\": \"{{oneOf (array 'am' 'rm' 'cm' 'ob')}}\"{{/case}}\n        {{/switch}}\n      }\n      {{/repeat}}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "07b4c689-9743-4e17-827e-19eed03cc41d",
+      "type": "http",
+      "documentation": "파이어 핑거",
+      "method": "get",
+      "endpoint": "attend/programs/fire-finger/:programId",
+      "responses": [
+        {
+          "uuid": "d20c1291-57bd-42f5-921f-9a86365e6717",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"응답 성공\",\n    \"data\": {\n        \"members\": [\n            {\n                \"memberId\": 1,\n                \"name\": \"28기 파도람\"\n            },\n            {\n                \"memberId\": 2,\n                \"name\": \"27기 달토끼\"\n            },\n            {\n                \"memberId\": 3,\n                \"name\": \"27기 구름이\"\n            },\n            {\n                \"memberId\": 4,\n                \"name\": \"27기 산들새\"\n            },\n            {\n                \"memberId\": 5,\n                \"name\": \"27기 물방울\"\n            }\n        ]\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "7d87cc14-326b-4432-8e2f-7a4b649b6fd4",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "calendars",
+      "responses": [
+        {
+          "uuid": "48b9e66b-bf7b-407f-931b-ee8352620153",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"생성 성공\",\n  \"data\": {\n    \"calendars\": [\n      {\n        \"calendarId\": 99,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"과거 행사 (필터됨)\",\n        \"startAt\": 1773284400000,\n        \"endAt\": 1773291600000,\n        \"type\": \"etc\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 1,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"오늘 행사\",\n        \"startAt\": 1774148400000,\n        \"endAt\": 1774155600000,\n        \"type\": \"event\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 2,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"주간발표\",\n        \"startAt\": 1774321200000,\n        \"endAt\": 1774328400000,\n        \"type\": \"presentation\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 3,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"해커톤\",\n        \"startAt\": 1774580400000,\n        \"endAt\": 1774587600000,\n        \"type\": \"event\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 4,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"스터디\",\n        \"startAt\": 1775012400000,\n        \"endAt\": 1775019600000,\n        \"type\": \"etc\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 5,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"MT\",\n        \"startAt\": 1775876400000,\n        \"endAt\": 1775883600000,\n        \"type\": \"event\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 6,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"세미나\",\n        \"startAt\": 1776740400000,\n        \"endAt\": 1776747600000,\n        \"type\": \"presentation\",\n        \"url\": \"\"\n      },\n      {\n        \"calendarId\": 7,\n        \"writer\": \"00기 EEOS\",\n        \"title\": \"OB 행사OB 행사OB 행사OB 행사OB 행사OB 행사\",\n        \"startAt\": 1774195200000,\n        \"endAt\": 1774195200000,\n        \"type\": \"event\",\n        \"url\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "21478cc7-99db-4f0d-b390-668795154253",
+          "body": "{\n  error_code: \"2000\",\n  message:\"인증이 필요합니다\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ccefcba0-c1fd-4384-b1b4-8b75536a3652",
+      "type": "http",
+      "documentation": "사용자의 부서 설정 및 변경",
+      "method": "put",
+      "endpoint": "members/:memberId/department",
+      "responses": [
+        {
+          "uuid": "95b565fa-32bd-49a8-abf5-97f1a895da40",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"수정 성공\",\n    \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "2ba1d040-2c96-4be1-a312-f633e7e89685",
+      "type": "http",
+      "documentation": "출석 통계 불러오기",
+      "method": "get",
+      "endpoint": "attend/statistic",
+      "responses": [
+        {
+          "uuid": "c4e82923-6800-4715-8185-0c7b7613a26b",
+          "body": "{\n    \"data\": {\n        \"size\": 100,\n        \"page\": 0,\n        \"totalPage\": 1,\n        \"contents\": [\n            {\n                \"id\": 8,\n                \"name\": \"02기 Bellmin\",\n                \"activeStatus\": \"am\",\n                \"lateCount\": 0,\n                \"absentCount\": 14,\n                \"penaltyPoint\": 0\n            },\n            {\n                \"id\": 10,\n                \"name\": \"01기 Steve\",\n                \"activeStatus\": \"am\",\n                \"lateCount\": 1,\n                \"absentCount\": 13,\n                \"penaltyPoint\": 0\n            },\n            {\n                \"id\": 5,\n                \"name\": \"02기 Knotted\",\n                \"activeStatus\": \"am\",\n                \"lateCount\": 1,\n                \"absentCount\": 11,\n                \"penaltyPoint\": 0\n            },\n            {\n                \"id\": 12,\n                \"name\": \"03기 DeulGiReum\",\n                \"activeStatus\": \"am\",\n                \"lateCount\": 0,\n                \"absentCount\": 3,\n                \"penaltyPoint\": 0\n            },\n            {\n                \"id\": 13,\n                \"name\": \"01기 Mando\",\n                \"activeStatus\": \"am\",\n                \"lateCount\": 0,\n                \"absentCount\": 2,\n                \"penaltyPoint\": 0\n            }\n        ]\n    },\n    \"message\": \"생성 성공\",\n    \"code\": \"201\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "d4e3fad8-a92d-4f86-a0b0-d60d7e1d3552",
+      "type": "http",
+      "documentation": "기본 조회 시작 날짜 조회 (학기 시작 날짜 조회)",
+      "method": "get",
+      "endpoint": "admin/semester-periods",
+      "responses": [
+        {
+          "uuid": "ce856162-c216-4e8d-9f44-feda600767f6",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"응답 성공\",\n    \"data\": {\n        \"startDate\": 1703894400000\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "921f141e-edc6-413d-9bd0-8023ae057095",
+      "type": "http",
+      "documentation": "벌점 가중치 조회",
+      "method": "get",
+      "endpoint": "admin/attend/weight-policy",
+      "responses": [
+        {
+          "uuid": "2644d2c6-2d78-4d07-a647-8a201a136f95",
+          "body": "{\n    \"data\": {\n        \"policies\": [\n            {\n                \"type\": \"late\",\n                \"signType\": \"minus\", \n                \"score\": 1 \n            },\n            {\n                \"type\": \"absent\",\n                \"signType\": \"minus\",\n                \"score\": 5 \n            }\n        ]\n    },\n    \"message\": \"조회 성공\",\n    \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "756c4029-e557-4334-8f70-e2b074e2b954",
+      "type": "http",
+      "documentation": "본인의 출결 현황 요약 정보 조회 (출불지 카운트)",
+      "method": "get",
+      "endpoint": "attend/summary",
+      "responses": [
+        {
+          "uuid": "5695cf60-2616-4df7-9a8f-50229ad0b089",
+          "body": "{\n  \"data\": {\n\t  \"attendCount\" : 5, \n\t  \"lateCount\" : 3, \n\t  \"absentCount\" : 2,\n\t  \"penaltyPoint\" : 24\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "6be97697-b664-48f9-a370-6e7031265e02",
+      "type": "http",
+      "documentation": "본인의 출결 현황 리스트 조회",
+      "method": "get",
+      "endpoint": "attend/programs",
+      "responses": [
+        {
+          "uuid": "e55f0694-28d7-4a79-b79b-e2507a3792d4",
+          "body": "{\n  \"data\": {\n    \"totalPage\": 10,\n    \"page\": 1,\n    \"size\": 10,\n    \"contents\": [\n      {\n        \"programId\": 1,\n        \"title\": \"2024-2 B팀 2차 주간발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 2,\n        \"title\": \"2024-2 A팀 프로젝트 중간점검\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 3,\n        \"title\": \"2024-2 C팀 최종발표\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 4,\n        \"title\": \"2024-2 전체 세미나\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 5,\n        \"title\": \"2024-2 D팀 1차 주간발표\",\n        \"programStatus\": \"completed\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 6,\n        \"title\": \"2024-2 멘토링 세션\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"late\"\n      },\n      {\n        \"programId\": 7,\n        \"title\": \"2024-2 기술 스터디 그룹\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 8,\n        \"title\": \"2024-2 E팀 코드리뷰\",\n        \"programStatus\": \"pending\",\n        \"attendStatus\": \"attend\"\n      },\n      {\n        \"programId\": 9,\n        \"title\": \"2024-2 네트워킹 데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"absent\"\n      },\n      {\n        \"programId\": 10,\n        \"title\": \"2024-2 F팀 데모데이\",\n        \"programStatus\": \"active\",\n        \"attendStatus\": \"attend\"\n      }\n    ]\n  },\n  \"message\": \"조회 성공\",\n  \"code\": \"200\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "25448556-a037-4e74-a4e0-610956dec455",
+      "type": "http",
+      "documentation": "캘린더 행사 생성",
+      "method": "post",
+      "endpoint": "calendars",
+      "responses": [
+        {
+          "uuid": "dbec5774-f259-468d-9322-4f007c819bc7",
+          "body": "{\n    \"status\": 200,\n    \"message\": \"생성 성공\",\n    \"data\": {\n\t\t\t\"calendarId\" : 1\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b90f0902-05b2-4213-b1e5-08d019ac8847",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/auth/login",
+      "responses": [
+        {
+          "uuid": "fc8b3389-53f1-4fa8-9d7c-39bc5998f909",
+          "body": "{\n  \"data\": {\n    \"accessToken\": \"string\",\n    \"accessExpiredTime\": 0,\n    \"refreshToken\": \"string\"\n  },\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "433edfef-7ade-48fb-8dc2-cefb3f261583"
+    },
+    {
+      "type": "folder",
+      "uuid": "363f5837-4f82-45c9-92d5-1f5c3689b96a"
+    },
+    {
+      "type": "folder",
+      "uuid": "3902c423-4987-4f42-8f3c-e4de7759394c"
+    },
+    {
+      "type": "folder",
+      "uuid": "07227a35-6c6f-45de-9dc7-3303d703dd86"
+    },
+    {
+      "type": "folder",
+      "uuid": "4032937f-a7a6-484b-8e2b-44736fd0152c"
+    },
+    {
+      "type": "folder",
+      "uuid": "f0b86bf4-75a8-404d-bfdd-2196a5051ec1"
+    },
+    {
+      "type": "folder",
+      "uuid": "4d58c51c-f1bb-4f1e-b65e-61682b914a93"
+    },
+    {
+      "type": "folder",
+      "uuid": "ae5bf90f-d917-4063-a785-e5d63e1a35b6"
+    },
+    {
+      "type": "folder",
+      "uuid": "b06f87b4-32f1-486b-8ad4-824125b41c99"
+    },
+    {
+      "type": "folder",
+      "uuid": "d6441bc0-fa8a-482b-af7b-9bd7471d3f45"
+    },
+    {
+      "type": "folder",
+      "uuid": "664c8fa1-762c-49f8-bcd4-720b3ff1a25b"
+    },
+    {
+      "type": "folder",
+      "uuid": "481ba8dd-3335-4ffd-9c5d-9df9e1d4fad7"
+    },
+    {
+      "type": "route",
+      "uuid": "5088f24f-ddcc-4cef-b13f-dfc9a954df6b"
+    },
+    {
+      "type": "route",
+      "uuid": "7d87cc14-326b-4432-8e2f-7a4b649b6fd4"
+    },
+    {
+      "type": "route",
+      "uuid": "ccefcba0-c1fd-4384-b1b4-8b75536a3652"
+    },
+    {
+      "type": "route",
+      "uuid": "2ba1d040-2c96-4be1-a312-f633e7e89685"
+    },
+    {
+      "type": "route",
+      "uuid": "d4e3fad8-a92d-4f86-a0b0-d60d7e1d3552"
+    },
+    {
+      "type": "route",
+      "uuid": "921f141e-edc6-413d-9bd0-8023ae057095"
+    },
+    {
+      "type": "route",
+      "uuid": "756c4029-e557-4334-8f70-e2b074e2b954"
+    },
+    {
+      "type": "route",
+      "uuid": "6be97697-b664-48f9-a370-6e7031265e02"
+    },
+    {
+      "type": "route",
+      "uuid": "b90f0902-05b2-4213-b1e5-08d019ac8847"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "{{header 'Origin'}}"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    },
+    {
+      "key": "Access-Control-Allow-Credentials",
+      "value": "true"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

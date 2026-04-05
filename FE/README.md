@@ -1,5 +1,83 @@
 # FE - README.md
 
+## Getting Started
+
+### Installation
+
+```bash
+pnpm install
+```
+
+### Development
+
+**모든 앱 실행 (Web + Native):**
+```bash
+pnpm turbo dev
+```
+
+**웹 앱만 실행:**
+```bash
+cd apps/web
+pnpm dev          # 개발 서버 실행 (port 3000)
+```
+
+**네이티브 앱만 실행:**
+```bash
+cd apps/native
+pnpm start        # Expo dev server 실행
+pnpm ios          # iOS 시뮬레이터에서 실행
+pnpm android      # Android 에뮬레이터에서 실행
+```
+
+### Build
+
+**모든 앱 빌드:**
+```bash
+pnpm turbo build
+```
+
+**웹 앱 빌드:**
+```bash
+cd apps/web
+pnpm build        # 프로덕션 빌드
+pnpm start        # 빌드 후 프로덕션 서버 실행
+```
+
+### Testing
+
+```bash
+cd apps/web
+pnpm test         # 테스트 실행 (watch mode)
+pnpm test --coverage  # 커버리지 리포트 포함
+```
+
+### Type Checking
+
+**모든 앱 타입 체크:**
+```bash
+pnpm turbo check-types
+```
+
+**웹 앱만 타입 체크:**
+```bash
+cd apps/web
+pnpm check-types
+```
+
+### Linting
+
+**웹 앱:**
+```bash
+cd apps/web
+pnpm lint
+```
+
+**네이티브 앱:**
+```bash
+cd apps/native
+pnpm lint
+```
+
 ## TechStack
 
 | Architecture            | MVVM                                            |

@@ -1,0 +1,32 @@
+const XIcons = () => {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="1.41406"
+        y1="15.1424"
+        x2="15.5562"
+        y2="1.00029"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+      <line
+        x1="1.41421"
+        y1="1"
+        x2="15.5563"
+        y2="15.1421"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  );
+};
+
+export default XIcons;
