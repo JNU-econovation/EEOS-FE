@@ -136,13 +136,13 @@ const ChatBox = ({
         />
       )}
       <div className="mt-4 flex items-center gap-4">
-        <span className="opacity-60">
+        <span className="text-sm opacity-60">
           {
             new Date(time)
               .toLocaleString("ko-KR", {
                 hour12: false,
-                dateStyle: "full",
-                timeStyle: "long",
+                dateStyle: "long",
+                timeStyle: "short",
               })
               .toString()
               .split("GMT")[0]
@@ -155,7 +155,7 @@ const ChatBox = ({
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={handleReply}
               >
-                답변하기
+                답변
               </button>
             )}
             {hasUpdateRight && (
@@ -163,7 +163,7 @@ const ChatBox = ({
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={toggleIsModify}
               >
-                수정하기
+                수정
               </button>
             )}
             {hasUpdateRight && (
@@ -171,7 +171,7 @@ const ChatBox = ({
                 className="opacity-60 transition-all hover:opacity-100"
                 onClick={handleDeleteComment}
               >
-                삭제하기
+                삭제
               </button>
             )}
           </>
