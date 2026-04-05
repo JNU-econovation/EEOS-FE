@@ -46,7 +46,7 @@ const UserAttendModal = ({ programId }: UserAttendModalProps) => {
       <AttendToggleLabel editableStatus={editableStatus} />
       <div onClick={handleSelectorClick}>
         <StatusToggleItem
-          color={editableStatus == "EDITABLE" ? "green" : "gray"}
+          color={editableStatus === "EDITABLE" ? "green" : "gray"}
           text="출석 하기"
         />
       </div>

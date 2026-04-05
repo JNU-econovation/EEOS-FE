@@ -17,8 +17,8 @@ import { TeamInputInfo } from "@/types/team";
 
 /**
  * 프로그램 정보 조회
+ * guest가 아니라면 isAbletoEdit에 true를 넘기세요
  */
-
 export const getProgramById = async (
   programId: number,
   isAbletoEdit: boolean,
