@@ -14,7 +14,7 @@ interface DashboardInputProps {
   selectedTeamName: string;
 }
 
-//TODO: UI 분리하기
+//TODO: UI 분리
 const DashboardInput = ({
   programId,
   selectedTeamId,
@@ -70,12 +70,12 @@ const DashboardInput = ({
           <button className="px-2" onClick={resetSelectedComment}>
             x
           </button>
-          <p className="inline font-bold">답변하기 :</p>
+          <p className="inline font-bold">답변 :</p>
           <p className="ml-2 inline opacity-50">{selectedCommentContent}</p>
         </div>
       ) : (
         <div className="flex items-center justify-between gap-4">
-          <p className="text-lg font-bold">@{selectedTeamName} 에게 질문하기</p>
+          <p className="text-lg font-bold">@{selectedTeamName}에게 질문</p>
           <label
             className="flex select-none items-center justify-end gap-2 text-base text-gray-30"
             onClick={() =>
@@ -85,7 +85,7 @@ const DashboardInput = ({
             }
           >
             <CheckBox checked={commentType === "ANONYMOUS"} className="h-2" />
-            익명으로 질문하기
+            익명
           </label>
         </div>
       )}
