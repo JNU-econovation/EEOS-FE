@@ -1,4 +1,4 @@
-import WebviewWithInjected from "@/src/components/WebviewWithInjected";
+import WebviewWithInjected from "@/src/components/WebviewWithInjected/WebviewWithInjected";
 import { useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
 

@@ -6,6 +6,7 @@ import { ArrowLeft } from "@/components/icons/items/ArrotLeft";
 import PROGRAM from "@/constants/PROGRAM";
 import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { useGetProgramId } from "@/hooks/usePrograms";
+import { SwitchCase } from "@toss/react";
 import { useRouter } from "next/navigation";
 
 function formatDeadlineText(deadLine: string) {
@@ -30,7 +31,6 @@ const WebviewProgramHeaderSection = () => {
     isError,
   } = useGetProgramByProgramId(programId, false);
 
-  // if (isLoading) return <ProgramHeaderSkeleton />;
   if (isLoading) return null;
   if (isError) return <div>에러 발생</div>;
 
@@ -47,7 +47,14 @@ const WebviewProgramHeaderSection = () => {
         </button>
         <div className="relative mx-auto w-fit text-xl font-bold">
           <p>{title}</p>
-          <div className="absolute -right-2 top-0 size-[5px] rounded-full bg-[#14ae5c]" />
+          <SwitchCase
+            value={programStatus}
+            caseBy={{
+              active: (
+                <div className="absolute -right-2 top-0 size-[5px] rounded-full bg-[#14ae5c]" />
+              ),
+            }}
+          />
         </div>
       </div>
       <p className="text-center sm:text-lg">{formatDeadlineText(deadLine)}</p>

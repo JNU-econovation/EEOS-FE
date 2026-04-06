@@ -1,4 +1,4 @@
-import WebviewWithInjected from "@/src/components/WebviewWithInjected";
+import WebviewWithInjected from "@/src/components/WebviewWithInjected/WebviewWithInjected";
 import { WEBVIEW_PATH } from "@/src/constants/webview";
 import useNotification from "@/src/hooks/notification/useNotification";
 import { useEffect } from "react";
