@@ -1,7 +1,7 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import "./calendar.styles.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Spacing from "../Spacing";
 
 /**
@@ -40,12 +40,6 @@ const Calendar = ({
   const disabledDays = { before: new Date() };
   const [dateValue, setDateValue] = useState<Date | undefined>(date);
 
-  useEffect(() => handleDateChange(dateValue), [dateValue, handleDateChange]);
-
-  // useEffect(() => {
-  //   setDateValue(date);
-  // }, [date]);
-
   return (
     <div className="absolute left-0 top-[4.5rem] z-10 rounded-md bg-background p-3 shadow-md">
       <DayPicker
@@ -58,8 +52,10 @@ const Calendar = ({
             newDate.setMinutes(dateValue.getMinutes());
             newDate.setSeconds(dateValue.getSeconds());
             setDateValue(newDate);
+            handleDateChange(newDate);
           } else {
             setDateValue(e);
+            handleDateChange(e);
           }
         }}
         disabled={disabledDays}
@@ -84,6 +80,7 @@ const Calendar = ({
               newDate.setHours(parseInt(hours, 10));
               newDate.setMinutes(parseInt(minutes, 10));
               setDateValue(newDate);
+              handleDateChange(newDate);
             }}
           />
         </div>
