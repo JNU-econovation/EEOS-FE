@@ -107,7 +107,7 @@ const CreateForm = () => {
       {
         onSuccess: ({ programId }) => {
           localStorage.setItem("github-link", programGithubUrl);
-          const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
+          // const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
           const sendMessage = () => {
             if (!confirm) return;
             sendSlackMessage(programId, {
