@@ -1,7 +1,7 @@
 const AnnouncementSection = () => {
   return (
     <section>
-      <p className="text-xs font-medium text-[#767676]">일정 리마인트</p>
+      <p className="text-xs font-medium text-[#767676]">일정 리마인드</p>
       <h2 className="text-lg font-semibold">에코노베이션 공지사항</h2>
       <ul className="flex flex-col gap-2">
         {/* <li className="rounded-lg bg-[#F2F2F7] p-2">공지사항 1</li>
