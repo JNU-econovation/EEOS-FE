@@ -17,11 +17,13 @@ const AttendeeInfoSection = () => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AttendeeTab>
           {({ status }) => (
-            <AttendeeInfoByStatus
-              key={status}
-              programId={programId}
-              status={status}
-            />
+            <div className="mt-4">
+              <AttendeeInfoByStatus
+                key={status}
+                programId={programId}
+                status={status}
+              />
+            </div>
           )}
         </AttendeeTab>
       </ErrorBoundary>
