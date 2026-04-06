@@ -29,7 +29,7 @@ const WebviewFireFingerSection = () => {
         </>
       )}
 
-      <ul className="flex max-w-full gap-4 overflow-auto md:grid-cols-4 xl:grid-cols-5">
+      <ul className="grid w-full grid-cols-2 gap-4 overflow-auto md:grid-cols-4 xl:grid-cols-5">
         {data.map(({ memberId, name }) => (
           <li
             key={memberId}

@@ -1,7 +1,7 @@
 "use client";
 
 // import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import Calendar from "../../calendar/Calendar";
 // import LabeldInputFiled from "../input/LabeldInputFiled";
@@ -25,13 +25,16 @@ const ProgramDate = ({ getValues, setValue }: ProgramDateProps) => {
     new Date(parseInt(getValues("deadLine"))) || new Date(),
   );
 
-  const handleDateChange = (date: Date | undefined) => {
-    setDate(date);
-    setValue(
-      "deadLine",
-      date?.getTime().toString() || new Date().getTime().toString(),
-    );
-  };
+  const handleDateChange = useCallback(
+    (date: Date | undefined) => {
+      setDate(date);
+      setValue(
+        "deadLine",
+        date?.getTime().toString() || new Date().getTime().toString(),
+      );
+    },
+    [setValue],
+  );
 
   const handleCalenderOpen = () => {
     setOpenCalender(true);

@@ -46,7 +46,7 @@ const AttendeeTab = ({ children }: AttendeeTabProps) => {
       pickedColor="white"
       tabSize="md"
     >
-      <Tab.List className="!gap-0 border-b">
+      <Tab.List className="grid w-full grid-cols-3 !gap-0 border-b">
         {ATTEND_STATUS.STATUSES.filter(
           (status) => status !== "nonResponse",
         ).map((status, index) => (

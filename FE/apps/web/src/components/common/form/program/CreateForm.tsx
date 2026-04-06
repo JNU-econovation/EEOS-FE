@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import FormBtn from "@/components/common/form/FormBtn";
@@ -52,6 +53,13 @@ const CreateForm = () => {
       defaultValues: initialState,
     });
 
+  useEffect(() => {
+    const savedGithubLink = localStorage.getItem("github-link");
+    if (savedGithubLink) {
+      setValue("programGithubUrl", savedGithubLink);
+    }
+  }, [setValue]);
+
   const { members, clearMembers, setAllMembers, updateMembers } =
     useMemberSet();
 
@@ -98,21 +106,22 @@ const CreateForm = () => {
       },
       {
         onSuccess: ({ programId }) => {
-          const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
-          const sendMessage = () => {
-            if (!confirm) return;
-            sendSlackMessage(programId, {
-              onSuccess: () => {
-                alert(MESSAGE.SLACK_MESSAGE.SUCCESS);
-              },
-              onError: () => {
-                const retry = window.confirm(MESSAGE.SLACK_MESSAGE.FAIL);
-                if (retry) sendMessage();
-              },
-            });
-          };
+          localStorage.setItem("github-link", programGithubUrl);
+          // const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
+          // const sendMessage = () => {
+          //   if (!confirm) return;
+          //   sendSlackMessage(programId, {
+          //     onSuccess: () => {
+          //       alert(MESSAGE.SLACK_MESSAGE.SUCCESS);
+          //     },
+          //     onError: () => {
+          //       const retry = window.confirm(MESSAGE.SLACK_MESSAGE.FAIL);
+          //       if (retry) sendMessage();
+          //     },
+          //   });
+          // };
 
-          sendMessage();
+          // sendMessage();
           reset();
           router.replace(ROUTES.ADMIN_DETAIL(programId));
           toast.update(toastId, {
