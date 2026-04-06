@@ -16,6 +16,7 @@ const ProgramGithubLinkInput = ({ register }: ProgramGithubLinkInputProps) => {
         type="text"
         prefix=""
       />
+      <span>처음 보이는 링크는 가장 최근에 입력한 깃허브 링크에요!</span>
     </div>
   );
 };
