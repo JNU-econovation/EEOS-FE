@@ -40,7 +40,7 @@ const Calendar = ({
   const disabledDays = { before: new Date() };
   const [dateValue, setDateValue] = useState<Date | undefined>(date);
 
-  useEffect(() => handleDateChange(dateValue), [dateValue]);
+  useEffect(() => handleDateChange(dateValue), [dateValue, handleDateChange]);
 
   // useEffect(() => {
   //   setDateValue(date);
@@ -52,7 +52,15 @@ const Calendar = ({
         mode="single"
         selected={dateValue}
         onSelect={(e) => {
-          setDateValue(e);
+          if (e && dateValue) {
+            const newDate = new Date(e);
+            newDate.setHours(dateValue.getHours());
+            newDate.setMinutes(dateValue.getMinutes());
+            newDate.setSeconds(dateValue.getSeconds());
+            setDateValue(newDate);
+          } else {
+            setDateValue(e);
+          }
         }}
         disabled={disabledDays}
       />
