@@ -145,6 +145,7 @@ const WebviewWithInjected = (props: WebviewWithInjectedProps) => {
       originWhitelist={["*"]}
       mixedContentMode="always"
       collapsable={false}
+      cacheEnabled
       onShouldStartLoadWithRequest={(request) => {
         if (
           request.url.includes("/mobile") ||
