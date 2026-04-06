@@ -108,20 +108,20 @@ const CreateForm = () => {
         onSuccess: ({ programId }) => {
           localStorage.setItem("github-link", programGithubUrl);
           // const confirm = window.confirm(MESSAGE.SLACK_MESSAGE.CONFIRM);
-          const sendMessage = () => {
-            if (!confirm) return;
-            sendSlackMessage(programId, {
-              onSuccess: () => {
-                alert(MESSAGE.SLACK_MESSAGE.SUCCESS);
-              },
-              onError: () => {
-                const retry = window.confirm(MESSAGE.SLACK_MESSAGE.FAIL);
-                if (retry) sendMessage();
-              },
-            });
-          };
+          // const sendMessage = () => {
+          //   if (!confirm) return;
+          //   sendSlackMessage(programId, {
+          //     onSuccess: () => {
+          //       alert(MESSAGE.SLACK_MESSAGE.SUCCESS);
+          //     },
+          //     onError: () => {
+          //       const retry = window.confirm(MESSAGE.SLACK_MESSAGE.FAIL);
+          //       if (retry) sendMessage();
+          //     },
+          //   });
+          // };
 
-          sendMessage();
+          // sendMessage();
           reset();
           router.replace(ROUTES.ADMIN_DETAIL(programId));
           toast.update(toastId, {
