@@ -1,7 +1,7 @@
 import X from "@/assets/icons/X.svg";
 import { router, useLocalSearchParams } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
-import WebviewWithInjected from "../../components/WebviewWithInjected";
+import WebviewWithInjected from "../../components/WebviewWithInjected/WebviewWithInjected";
 import { WEBVIEW_PATH } from "../../constants/webview";
 
 const createEvent = () => {

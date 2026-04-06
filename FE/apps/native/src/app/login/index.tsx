@@ -1,4 +1,4 @@
-import WebviewWithInjected from "@/src/components/WebviewWithInjected";
+import WebviewWithInjected from "@/src/components/WebviewWithInjected/WebviewWithInjected";
 import { SSO_PATH } from "@/src/constants/webview";
 import { SafeAreaView } from "react-native-safe-area-context";
 
