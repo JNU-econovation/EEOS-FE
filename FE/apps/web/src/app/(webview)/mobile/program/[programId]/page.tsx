@@ -59,7 +59,6 @@ const ProgramDetailPage = () => {
       </div>
 
       <div className="mt-24" />
-      {/* <UserAttendModalSection isLoggedIn /> */}
     </SsgoiTransition>
   );
 };
