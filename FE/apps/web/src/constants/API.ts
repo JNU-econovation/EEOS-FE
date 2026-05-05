@@ -84,6 +84,10 @@ const CALENDAR = {
     `calendars?year=${year}&month=${month}&date=${date}&duration=${duration}`,
 };
 
+const ANNOUNCEMENT = {
+  LIST: "/announcements",
+};
+
 Object.freeze(PROGRAM);
 Object.freeze(MEMBER);
 Object.freeze(USER);
@@ -92,7 +96,7 @@ Object.freeze(TEAM_BUILDING);
 Object.freeze(TEAM);
 Object.freeze(QUESTION);
 Object.freeze(CALENDAR);
-
+Object.freeze(ANNOUNCEMENT);
 export default {
   PROGRAM,
   MEMBER,
@@ -102,4 +106,5 @@ export default {
   TEAM,
   QUESTION,
   CALENDAR,
+  ANNOUNCEMENT,
 };
