@@ -11,6 +11,7 @@ const config = {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.blackcompany.eeos",
+      appleTeamId: "3XD9F9256D",
       googleServicesFile: "./GoogleService-Info.plist",
       entitlements: {
         "aps-environment": "production",
