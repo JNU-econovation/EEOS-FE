@@ -2098,6 +2098,35 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "ac2a2c3d-6063-41a5-b366-4494da1289e5",
+      "type": "http",
+      "documentation": "공지사항 불러오기",
+      "method": "get",
+      "endpoint": "announcements",
+      "responses": [
+        {
+          "uuid": "2bd58c05-8b98-41be-b621-04def09fb3a6",
+          "body": "{\n  \"data\": {\n    \"announcements\": [\n      {\n        \"id\": 1,\n        \"title\": \"31기 신입모집 면접 도우미 모집\",\n        \"body\": \"안녕하세요! 면접 도우미를 모집합니다.\",\n        \"announcedAt\": 1774187000000,\n        \"deadline\": 1774396800000,\n        \"createdDate\": 1774187457249\n      }, {\n        \"id\": 2,\n        \"title\": \"31기 신입모집 면접 도우미 모집\",\n        \"body\": \"안녕하세요! 면접 도우미를 모집합니다.\",\n        \"announcedAt\": 1774187000000,\n        \"deadline\": 1774396800000,\n        \"createdDate\": 1774187457249\n      }, {\n        \"id\": 3,\n        \"title\": \"매우매우 중요한 공지!!!\",\n        \"body\": \"안녕하세요! 면접 도우미를 모집합니다.\",\n        \"announcedAt\": 1774187000000,\n        \"deadline\": 1774396800000,\n        \"createdDate\": 1774187457249\n      }\n    ]\n  },\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -2184,6 +2213,10 @@
     {
       "type": "route",
       "uuid": "b90f0902-05b2-4213-b1e5-08d019ac8847"
+    },
+    {
+      "type": "route",
+      "uuid": "ac2a2c3d-6063-41a5-b366-4494da1289e5"
     }
   ],
   "proxyMode": false,
