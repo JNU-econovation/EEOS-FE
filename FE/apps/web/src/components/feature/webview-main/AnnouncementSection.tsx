@@ -23,7 +23,7 @@ const AnnouncementSection = () => {
       <h2 className="text-lg font-semibold">에코노베이션 공지사항</h2>
       <Spacing size={0.75} direction="vertical" />
       <ul className="flex flex-col gap-2">
-        {announcements.map(({ id, title, body, announcedAt }) => (
+        {announcements.slice(0, 3).map(({ id, title, body, announcedAt }) => (
           <li key={id} className="gap-4 rounded-lg bg-[#F2F2F7] p-3">
             <div className="flex items-center gap-1">
               {!isOpen && (
