@@ -23,9 +23,9 @@ const MobileUserInfoSection = () => {
         <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
           {name.split(" ")[0]}
         </div>
-        <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
+        {/* <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
           디자이너
-        </div>
+        </div> */}
         <div className="rounded-full bg-white px-2 py-1 text-sm font-medium text-black">
           {activeStatus.toUpperCase()}
         </div>

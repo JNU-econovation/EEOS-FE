@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   expo: {
     name: "eeos",
     slug: "eeos",
@@ -10,7 +10,8 @@ module.exports = {
     newArchEnabled: true,
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.geongyu09.xnative",
+      bundleIdentifier: "com.blackcompany.eeos",
+      appleTeamId: "3XD9F9256D",
       googleServicesFile: "./GoogleService-Info.plist",
       entitlements: {
         "aps-environment": "production",
@@ -33,7 +34,7 @@ module.exports = {
       googleServicesFile: "./google-services.json",
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
-      package: "com.geongyu09.xnative",
+      package: "com.blackcompany.eeos",
       // 웹뷰에서 http 도메인 허용. 빌드시에는 https로 변경 혹은 특정 도메인만 허용하도록 수정 필요
       usesCleartextTraffic: true,
       useNextNotificationsApi: true, // FCM을 위한 설정
@@ -80,8 +81,10 @@ module.exports = {
     },
     extra: {
       eas: {
-        projectId: "05949d1e-7d4a-4649-b8d7-84e37126e5a7",
+        projectId: "1cccc629-7c0b-4613-8646-e507982e2908",
       },
     },
   },
 };
+
+export default config;

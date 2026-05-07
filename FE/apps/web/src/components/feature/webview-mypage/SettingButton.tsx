@@ -1,12 +1,23 @@
+"use client";
+
 import Setting from "@/components/icons/items/Setting";
 import ROUTES from "@/constants/ROUTES";
-import Link from "next/link";
+import useRouteToWebviewScreenBridge from "@/hooks/bridge/useRouteToWebviewScreenBridge";
+import { useCallback } from "react";
 
 const SettingButton = () => {
+  const routeToWebviewScreen = useRouteToWebviewScreenBridge();
+
+  const handleOpenSetting = useCallback(() => {
+    routeToWebviewScreen({
+      uri: `${window.location.origin}${ROUTES.MOBILE.SETTING.MAIN}`,
+    });
+  }, [routeToWebviewScreen]);
+
   return (
-    <Link href={ROUTES.MOBILE.SETTING.MAIN}>
+    <button type="button" aria-label="설정 열기" onClick={handleOpenSetting}>
       <Setting />
-    </Link>
+    </button>
   );
 };
 

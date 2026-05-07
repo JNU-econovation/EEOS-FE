@@ -1,9 +1,8 @@
 "use client";
 
 import Spacing from "@/components/common/Spacing";
-import { ArrowRight } from "@/components/icons";
 import { ArrowLeft } from "@/components/icons/items/ArrotLeft";
-import PROGRAM from "@/constants/PROGRAM";
+import useGoBackBridge from "@/hooks/bridge/useGoBackBridge";
 import { useGetProgramByProgramId } from "@/hooks/query/useProgramQuery";
 import { useGetProgramId } from "@/hooks/usePrograms";
 import { SwitchCase } from "@toss/react";
@@ -24,6 +23,7 @@ function formatDeadlineText(deadLine: string) {
 const WebviewProgramHeaderSection = () => {
   const programId = useGetProgramId();
   const router = useRouter();
+  const goBackBridge = useGoBackBridge();
 
   const {
     data: programData,
@@ -36,12 +36,20 @@ const WebviewProgramHeaderSection = () => {
 
   const { deadLine, title, programStatus } = programData;
 
+  const handleGoBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+      return;
+    }
+    goBackBridge();
+  };
+
   return (
     <section className="sticky top-0 z-10 rounded-b-2xl border-b bg-white pt-[4.5rem]">
       <div className="relative">
         <button
           className="absolute left-5 top-1/2 -translate-y-1/2"
-          onClick={() => router.back()}
+          onClick={handleGoBack}
         >
           <ArrowLeft />
         </button>
