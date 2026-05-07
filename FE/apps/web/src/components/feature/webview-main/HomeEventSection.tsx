@@ -35,7 +35,7 @@ const HomeEventSection = () => {
   const routeToWebviewScreen = useRouteToWebviewScreenBridge();
 
   const handleViewAllPrograms = useCallback(() => {
-    routeToWebviewScreen({ uri: "/mobile/programs" });
+    routeToWebviewScreen({ uri: `${window.location.origin}/mobile/programs` });
   }, [routeToWebviewScreen]);
 
   const baseClass = `rounded-t-xl bg-[#00c3d0] px-4 py-3.5 flex flex-col relative ${FIXED_HEIGHT} relative`;

@@ -9,7 +9,7 @@ import { SsgoiTransition } from "@ssgoi/react";
 const WebviewMainPage = () => {
   return (
     <SsgoiTransition id="/main" className="min-h-screen bg-white">
-      <div className="flex h-screen flex-col">
+      <div className="flex min-h-screen flex-col">
         <div>
           <section className="relative z-10 bg-[#F2F2F7] px-6 pt-16 shadow-[0px_-10px_10px_0px_rgba(34,43,69,0.21)]">
             <div className="flex items-center justify-between">
