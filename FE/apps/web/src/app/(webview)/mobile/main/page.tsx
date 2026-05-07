@@ -8,7 +8,10 @@ import { SsgoiTransition } from "@ssgoi/react";
 
 const WebviewMainPage = () => {
   return (
-    <SsgoiTransition id="/main" className="min-h-screen bg-white">
+    <SsgoiTransition
+      id="/main"
+      className="relative max-h-screen min-h-screen overflow-auto bg-white"
+    >
       <div className="flex min-h-screen flex-col">
         <div>
           <section className="relative z-10 bg-[#F2F2F7] px-6 pt-16 shadow-[0px_-10px_10px_0px_rgba(34,43,69,0.21)]">
