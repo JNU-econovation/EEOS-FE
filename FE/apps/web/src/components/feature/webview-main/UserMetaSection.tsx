@@ -14,9 +14,9 @@ const UserMetaSection = () => {
       <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
         {name.split(" ")[0]}
       </div>
-      <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
+      {/* <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
         디자이너
-      </div>
+      </div> */}
       <div className="rounded-full bg-white px-2  py-1 text-sm  font-medium">
         {activeStatus.toUpperCase()}
       </div>

@@ -1,7 +1,9 @@
 "use client";
 
 import CharacterImage from "@/components/common/CharacterImage/Charactor-Image";
+import useRouteToWebviewScreenBridge from "@/hooks/bridge/useRouteToWebviewScreenBridge";
 import { useGetTwoMonthCalenderEventsQuery } from "@/hooks/query/useCalendarQuery";
+import { useCallback } from "react";
 
 const FIXED_HEIGHT = "min-h-[6rem]";
 
@@ -29,6 +31,12 @@ const HomeEventSection = () => {
     isLoading,
     isError,
   } = useGetTwoMonthCalenderEventsQuery();
+
+  const routeToWebviewScreen = useRouteToWebviewScreenBridge();
+
+  const handleViewAllPrograms = useCallback(() => {
+    routeToWebviewScreen({ uri: "/mobile/programs" });
+  }, [routeToWebviewScreen]);
 
   const baseClass = `rounded-t-xl bg-[#00c3d0] px-4 py-3.5 flex flex-col relative ${FIXED_HEIGHT} relative`;
 
@@ -63,9 +71,14 @@ const HomeEventSection = () => {
             아직 다가오는 일정이 없어요.
           </p>
         </div>
-        <p className="text-end text-[0.75rem] text-white">
+        <button
+          type="button"
+          aria-label="일정 전체보기"
+          onClick={handleViewAllPrograms}
+          className="text-end text-[0.75rem] text-white"
+        >
           일정 전체보기 {">"}
-        </p>
+        </button>
       </div>
     );
   }
@@ -126,6 +139,8 @@ const HomeEventSection = () => {
 
       <button
         type="button"
+        aria-label="일정 전체보기"
+        onClick={handleViewAllPrograms}
         className="absolute bottom-2 right-5 text-[0.75rem] text-white"
       >
         전체보기 {">"}
