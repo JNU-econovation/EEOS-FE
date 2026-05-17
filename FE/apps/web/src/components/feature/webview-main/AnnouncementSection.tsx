@@ -1,5 +1,6 @@
 "use client";
 
+import MarkdownViewer from "@/components/common/markdown/MarkdownViewer";
 import Spacing from "@/components/common/Spacing";
 import { useAnnouncementsQuery } from "@/hooks/query/useAnnouncementsQuery";
 import { useState } from "react";
@@ -40,7 +41,10 @@ const AnnouncementSection = () => {
             {isOpen && (
               <>
                 <Spacing size={20} unit="px" direction="vertical" />
-                <p className="text-sm text-[#767676]">{body}</p>
+                <MarkdownViewer
+                  value={body}
+                  className="!bg-transparent !p-0 !h-auto !overflow-visible text-sm text-[#767676]"
+                />
                 <div>
                   <Spacing size={20} unit="px" direction="vertical" />
                   <p className="text-right text-xs text-[#767676]">
