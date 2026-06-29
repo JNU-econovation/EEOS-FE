@@ -18,7 +18,7 @@ export const SSO_PATH = {
   LOGIN:
     SSO_BASE_URL +
     "?client-type=APP" +
-    "&redirect-url=" +
-    WEBVIEW_PATH.OAUTH_REDIRECT,
+    "&client-id=" +
+    process.env.EXPO_PUBLIC_SSO_CLIENT_ID,
   SIGN_UP: SSO_BASE_URL + "/signup",
 } as const;
